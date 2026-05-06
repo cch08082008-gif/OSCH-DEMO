@@ -915,24 +915,12 @@ function productSVG(p, size='md') {
   </svg>`;
 }
 
-// ── CART ──
-let cart = [];
+// ── ORDER STATE ──
+let currentOrder = [];
 let currentDetail = null;
 let detailQty = 1;
 
-function updateCartCount() {
-  const total = cart.reduce((s,i)=>s+i.qty,0);
-  document.getElementById('cart-count').textContent = total;
-}
-
-function addCart(id, qty=1) {
-  const p = products[id];
-  const ex = cart.find(i=>i.id===id);
-  if(ex) ex.qty += qty;
-  else cart.push({...p, qty});
-  updateCartCount();
-  showToast('Added to cart — '+p.name);
-}
+function updateCartCount() {} // kept for safety, no-op
 
 function showToast(msg) {
   const t = document.getElementById('toast');
@@ -946,7 +934,6 @@ function goPage(name) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
-  if(name==='cart') renderCart();
   if(name==='products') renderAllProducts();
   if(name==='checkout') renderCheckout();
   if(name==='success') renderSuccess();
@@ -1016,12 +1003,11 @@ function changeQty(d) {
   document.getElementById('d-qty').textContent = detailQty;
 }
 
-function addDetailToCart() {
-  if(currentDetail) { addCart(currentDetail.id, detailQty); }
-}
-
 function buyNow() {
-  if(currentDetail) { addCart(currentDetail.id, detailQty); goPage('cart'); }
+  if(currentDetail) {
+    currentOrder = [{...currentDetail, qty: detailQty}];
+    goPage('checkout');
+  }
 }
 
 function switchTab(name, btn) {
@@ -1031,73 +1017,10 @@ function switchTab(name, btn) {
   document.getElementById('tab-'+name).classList.add('active');
 }
 
-// ── CART PAGE ──
-function renderCart() {
-  const layout = document.getElementById('cart-layout');
-  if(cart.length===0) {
-    layout.innerHTML = `<div class="empty-cart" style="grid-column:1/-1">
-      <svg width="60" height="60" fill="none" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="#A8998B" stroke-width="1.5"/><line x1="3" y1="6" x2="21" y2="6" stroke="#A8998B" stroke-width="1.5"/><path d="M16 10a4 4 0 01-8 0" stroke="#A8998B" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <h3>Your cart is empty</h3>
-      <p>Discover our curated skincare collection</p>
-      <button class="btn btn-dark" style="margin-top:20px" onclick="goPage('products')">Shop Now</button>
-    </div>`;
-    return;
-  }
-  const subtotal = cart.reduce((s,i)=>s+i.price*i.qty,0);
-  const shipping = subtotal>=250 ? 0 : 10;
-  const total = subtotal+shipping;
-  layout.innerHTML = `
-    <div class="cart-items">
-      ${cart.map((item,idx)=>`
-        <div class="citem">
-          <div class="citem-img" style="background:${item.bg}">${productSVG(item,'sm')}</div>
-          <div>
-            <div class="citem-no">${item.no}</div>
-            <div class="citem-name">${item.name}</div>
-            <div class="qty-ctrl" style="margin-top:8px">
-              <button class="qty-btn" onclick="cartQty(${idx},-1)">−</button>
-              <span class="qty-val">${item.qty}</span>
-              <button class="qty-btn" onclick="cartQty(${idx},1)">+</button>
-            </div>
-          </div>
-          <div style="text-align:right">
-            <button class="remove-btn" onclick="removeCart(${idx})">
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </button>
-            <div class="citem-price" style="margin-top:8px">RM ${item.price*item.qty}</div>
-          </div>
-        </div>`).join('')}
-      <button class="btn btn-outline" onclick="goPage('products')" style="width:fit-content;margin-top:8px">← Continue Shopping</button>
-    </div>
-    <div class="cart-summary-box">
-      <h3>Order Summary</h3>
-      <div class="sum-row"><span>Subtotal (${cart.reduce((s,i)=>s+i.qty,0)} items)</span><span>RM ${subtotal}</span></div>
-      <div class="sum-row"><span>Shipping</span><span>${shipping===0?'<span style="color:#52C97A">Free</span>':'RM '+shipping}</span></div>
-      <div class="sum-total"><span>Total</span><span>RM ${total}</span></div>
-      ${subtotal<250?`<p style="font-size:11px;color:var(--taupe);margin:8px 0 12px">Add RM ${250-subtotal} more for free shipping</p>`:'<p style="font-size:11px;color:#52C97A;margin:8px 0 12px">✓ You qualify for free shipping</p>'}
-      <div class="promo-row">
-        <input class="promo-input" placeholder="Promo / Referral code">
-        <button class="btn btn-outline btn-sm">Apply</button>
-      </div>
-      <button class="btn btn-dark btn-full" style="padding:15px;margin-top:4px" onclick="goPage('checkout')">Proceed to Checkout</button>
-    </div>`;
-}
-
-function cartQty(idx, d) {
-  cart[idx].qty = Math.max(1, cart[idx].qty+d);
-  updateCartCount();
-  renderCart();
-}
-
-function removeCart(idx) {
-  cart.splice(idx,1);
-  updateCartCount();
-  renderCart();
-}
-
 // ── CHECKOUT ──
 function renderCheckout() {
-  const subtotal = cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const order = currentOrder;
+  const subtotal = order.reduce((s,i)=>s+i.price*i.qty,0);
   const shipping = subtotal>=250?0:10;
   const tax = Math.round(subtotal*0.08);
   const total = subtotal+shipping+tax;
@@ -1105,7 +1028,7 @@ function renderCheckout() {
   document.getElementById('co-shipping').textContent=shipping===0?'Free':'RM '+shipping;
   document.getElementById('co-tax').textContent='RM '+tax;
   document.getElementById('co-total').textContent='RM '+total;
-  document.getElementById('co-items-list').innerHTML=cart.map(item=>`
+  document.getElementById('co-items-list').innerHTML=order.map(item=>`
     <div class="co-item-row">
       <div class="co-item-img" style="background:${item.bg}">${productSVG(item,'sm')}</div>
       <div class="co-item-name">${item.name}<br><span style="font-size:11px;color:var(--taupe)">${item.no} × ${item.qty}</span></div>
@@ -1123,20 +1046,21 @@ function selectPay(el) {
 function renderSuccess() {
   const ref = 'OLV-2026-'+String(Math.floor(Math.random()*90000)+10000);
   document.getElementById('order-ref').textContent=ref;
-  const subtotal=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const order = currentOrder;
+  const subtotal=order.reduce((s,i)=>s+i.price*i.qty,0);
   const shipping=subtotal>=250?0:10;
   const tax=Math.round(subtotal*0.08);
   const total=subtotal+shipping+tax;
   document.getElementById('success-total').textContent='RM '+total;
-  document.getElementById('success-items-list').innerHTML=cart.map(item=>`
+  document.getElementById('success-items-list').innerHTML=order.map(item=>`
     <div class="success-item-row"><span>${item.name} × ${item.qty}</span><span>RM ${item.price*item.qty}</span></div>`).join('');
-  cart=[];
-  updateCartCount();
+  currentOrder=[];
 }
 
 function directBuy(id) {
-  addCart(id, 1);
-  goPage('cart');
+  const p = products[id];
+  currentOrder = [{...p, qty: 1}];
+  goPage('checkout');
 }
 
 // Init
@@ -1173,7 +1097,7 @@ renderAllProducts();
     <div style="font-size:12px;color:var(--taupe);letter-spacing:1px" id="ms-name"></div>
     <div class="mobile-sticky-price" id="ms-price"></div>
   </div>
-  <button class="btn btn-dark" style="padding:14px 28px" onclick="addDetailToCart()">Add to Cart</button>
+  <button class="btn btn-dark" style="padding:14px 28px" onclick="buyNow()">Buy Now</button>
 </div>
 </body>
 </html>
