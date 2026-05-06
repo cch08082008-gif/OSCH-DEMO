@@ -48,15 +48,15 @@ nav{background:var(--white);height:76px;padding:0 64px;display:flex;align-items:
 
 /* ─────────────────── HOMEPAGE ─────────────────── */
 /* Hero */
-.hero{min-height:88vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 80px;position:relative;overflow:hidden;background:linear-gradient(135deg,#f9f2ef 0%,#f2e6e1 100%)}
-.hero-right-bg{position:absolute;right:0;top:0;width:52%;height:100%;background:linear-gradient(155deg,#e8cfc8,#d9b8b2);clip-path:polygon(12% 0,100% 0,100% 100%,0 100%)}
-.hero-content{position:relative;z-index:2;max-width:500px}
+.hero{min-height:88vh;display:flex;align-items:center;padding:0 9%;position:relative;overflow:hidden;background:#f0e5df}
+.hero-img-bg{position:absolute;inset:0;background-size:cover;background-position:center right;background-repeat:no-repeat;z-index:0}
+.hero-img-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(250,242,238,.92) 0%,rgba(250,242,238,.75) 38%,rgba(250,242,238,.1) 70%,transparent 100%)}
+.hero-content{position:relative;z-index:2;max-width:480px}
 .hero-eyebrow{font-size:10px;letter-spacing:4.5px;text-transform:uppercase;color:var(--taupe);margin-bottom:22px;font-weight:300}
 .hero-title{font-size:56px;line-height:64px;color:var(--brown);margin-bottom:22px;font-weight:400}
 .hero-title em{font-style:italic;color:var(--rose)}
 .hero-sub{font-size:14px;line-height:27px;color:var(--taupe);margin-bottom:38px;max-width:360px;font-weight:300}
 .hero-btns{display:flex;gap:14px}
-.hero-visual{position:relative;z-index:3;display:flex;align-items:center;justify-content:center;height:100%;padding:60px 0}
 
 /* Trust strip — animated ticker */
 .trust-strip{background:var(--brown);padding:13px 0;overflow:hidden;white-space:nowrap}
@@ -376,13 +376,6 @@ footer{padding:36px 20px 20px}
     <button class="icon-btn">
       <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </button>
-    <button class="icon-btn">
-      <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-    </button>
-    <button class="icon-btn" onclick="goPage('cart')">
-      <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="1.5"/><path d="M16 10a4 4 0 01-8 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <span class="cart-count" id="cart-count">0</span>
-    </button>
   </div>
 </nav>
 
@@ -391,7 +384,7 @@ footer{padding:36px 20px 20px}
 
   <!-- Hero -->
   <div class="hero">
-    <div class="hero-right-bg"></div>
+    <div class="hero-img-bg" style="background-image:url('https://chatgpt.com/backend-api/estuary/content?id=file_00000000a88c720893e71bb02e65fade&ts=493910&p=fs&cid=1&sig=af3d3e4825f78a24e4616659a1d719d10f8543f21bd5fe32a733695a2fb93bac&v=0')"></div>
     <div class="hero-content">
       <div class="hero-eyebrow">Maria Galland Paris · Est. 1961</div>
       <h1 class="hero-title">Skin that<br><em>Radiates</em><br>Confidence</h1>
@@ -400,36 +393,6 @@ footer{padding:36px 20px 20px}
         <button class="btn btn-dark" onclick="goPage('products')">Shop Now</button>
         <button class="btn btn-outline" onclick="goPage('home')">Our Story</button>
       </div>
-    </div>
-    <div class="hero-visual">
-      <svg width="300" height="360" viewBox="0 0 300 360" fill="none">
-        <!-- Main bottle -->
-        <rect x="110" y="40" width="80" height="240" rx="12" fill="#e8d0cb"/>
-        <rect x="110" y="40" width="80" height="240" rx="12" fill="url(#bg1)"/>
-        <rect x="125" y="55" width="50" height="210" rx="8" fill="rgba(255,255,255,0.3)"/>
-        <rect x="120" y="30" width="60" height="20" rx="6" fill="#d4b8b3"/>
-        <text x="150" y="155" text-anchor="middle" font-family="Playfair Display,serif" font-size="11" fill="#4B403A">OLIVÉA</text>
-        <text x="150" y="170" text-anchor="middle" font-family="Lato,sans-serif" font-size="7" fill="#A8998B" letter-spacing="2">SKIN CARE</text>
-        <text x="150" y="188" text-anchor="middle" font-family="Lato,sans-serif" font-size="9" fill="#4B403A">No. 541</text>
-        <!-- Small tube -->
-        <rect x="45" y="120" width="55" height="170" rx="8" fill="#f0ddd8"/>
-        <rect x="55" y="135" width="35" height="140" rx="6" fill="rgba(255,255,255,0.25)"/>
-        <rect x="50" y="110" width="45" height="16" rx="5" fill="#e2c8c2"/>
-        <text x="72" y="205" text-anchor="middle" font-family="Playfair Display,serif" font-size="8" fill="#4B403A">OLIVÉA</text>
-        <text x="72" y="220" text-anchor="middle" font-family="Lato,sans-serif" font-size="6" fill="#A8998B">No. 60</text>
-        <!-- Small jar -->
-        <ellipse cx="225" cy="240" rx="40" ry="14" fill="#e2cdc8"/>
-        <rect x="185" y="190" width="80" height="50" rx="8" fill="#ead5d0"/>
-        <ellipse cx="225" cy="190" rx="40" ry="12" fill="#f0ddd8"/>
-        <text x="225" y="215" text-anchor="middle" font-family="Playfair Display,serif" font-size="8" fill="#4B403A">OLIVÉA</text>
-        <text x="225" y="228" text-anchor="middle" font-family="Lato,sans-serif" font-size="6" fill="#A8998B">No. 280</text>
-        <!-- Petals -->
-        <ellipse cx="80" cy="100" rx="12" ry="6" fill="#f6d6d6" transform="rotate(-30 80 100)"/>
-        <ellipse cx="92" cy="88" rx="12" ry="6" fill="#f6d6d6" transform="rotate(15 92 88)"/>
-        <ellipse cx="240" cy="160" rx="10" ry="5" fill="#f6d6d6" transform="rotate(40 240 160)"/>
-        <ellipse cx="255" cy="148" rx="10" ry="5" fill="#f0c8c8" transform="rotate(-10 255 148)"/>
-        <defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,0.15)"/><stop offset="100%" stop-color="rgba(0,0,0,0.05)"/></linearGradient></defs>
-      </svg>
     </div>
   </div>
 
@@ -471,7 +434,7 @@ footer{padding:36px 20px 20px}
           <div class="pcard-no">No. 60</div>
           <div class="pcard-name">Refreshing Cleansing Gel</div>
           <div class="pcard-price">RM 128</div>
-          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();addCart(0)">Add to Cart</button>
+          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();directBuy(0)">Buy Now</button>
         </div>
       </div>
       <div class="pcard" onclick="goDetail(1)">
@@ -482,7 +445,7 @@ footer{padding:36px 20px 20px}
           <div class="pcard-no">No. 280</div>
           <div class="pcard-name">Hydra Mask</div>
           <div class="pcard-price">RM 198</div>
-          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();addCart(1)">Add to Cart</button>
+          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();directBuy(1)">Buy Now</button>
         </div>
       </div>
       <div class="pcard" onclick="goDetail(2)">
@@ -494,7 +457,7 @@ footer{padding:36px 20px 20px}
           <div class="pcard-no">No. 240</div>
           <div class="pcard-name">Vital Serum</div>
           <div class="pcard-price">RM 268</div>
-          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();addCart(2)">Add to Cart</button>
+          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();directBuy(2)">Buy Now</button>
         </div>
       </div>
       <div class="pcard" onclick="goDetail(3)">
@@ -505,7 +468,7 @@ footer{padding:36px 20px 20px}
           <div class="pcard-no">No. 541</div>
           <div class="pcard-name">Lumin'Éclat Serum</div>
           <div class="pcard-price">RM 298</div>
-          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();addCart(3)">Add to Cart</button>
+          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();directBuy(3)">Buy Now</button>
         </div>
       </div>
     </div>
@@ -679,11 +642,7 @@ footer{padding:36px 20px 20px}
         </div>
       </div>
       <div class="detail-actions">
-        <button class="btn btn-dark" onclick="addDetailToCart()">Add to Cart</button>
-        <button class="btn btn-outline" onclick="buyNow()">Buy Now</button>
-        <button class="btn btn-outline" style="padding:15px 15px">
-          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
+        <button class="btn btn-dark" style="flex:1;padding:15px" onclick="buyNow()">Buy Now</button>
       </div>
       <div class="detail-perks">
         <div class="perk-item">
@@ -1007,7 +966,7 @@ function renderAllProducts(filter='all') {
         <div class="pcard-no">${p.no}</div>
         <div class="pcard-name">${p.name}</div>
         <div class="pcard-price">RM ${p.price}</div>
-        <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();addCart(${p.id})">Add to Cart</button>
+        <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();directBuy(${p.id})">Buy Now</button>
       </div>
     </div>`).join('');
 }
@@ -1173,6 +1132,11 @@ function renderSuccess() {
     <div class="success-item-row"><span>${item.name} × ${item.qty}</span><span>RM ${item.price*item.qty}</span></div>`).join('');
   cart=[];
   updateCartCount();
+}
+
+function directBuy(id) {
+  addCart(id, 1);
+  goPage('cart');
 }
 
 // Init
