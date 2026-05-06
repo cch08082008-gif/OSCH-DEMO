@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olivéa Skin Care House</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ivory:#FBF7F3; --blush:#F6D6D6; --rose:#C07078; --beige:#E8DED2;
+  --taupe:#A8998B; --brown:#4B403A; --white:#FFFFFF;
+  --sh-sm:0 2px 12px rgba(61,52,48,.05); --sh-md:0 8px 28px rgba(61,52,48,.08); --sh-lg:0 20px 48px rgba(61,52,48,.13);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Lato',sans-serif;background:var(--ivory);color:var(--brown);font-size:15px;line-height:26px}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:400}
+.page{display:none}.page.active{display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:'Lato',sans-serif}
+
+/* ── NAV ── */
+nav{background:var(--white);height:76px;padding:0 64px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 0 #ede4da;position:sticky;top:0;z-index:200}
+.logo{cursor:pointer;user-select:none}
+.logo-name{font-family:'Playfair Display',serif;font-size:24px;font-weight:400;letter-spacing:.3px;color:var(--brown)}
+.logo-sub{font-size:8.5px;letter-spacing:4.5px;text-transform:uppercase;color:var(--taupe);font-family:'Lato',sans-serif;font-weight:300;margin-top:-2px}
+.nav-links{display:flex;gap:38px;list-style:none}
+.nav-links a{font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--brown);transition:color .2s;font-weight:400}
+.nav-links a:hover{color:var(--rose)}
+.nav-right{display:flex;align-items:center;gap:18px}
+.icon-btn{background:none;border:none;color:var(--brown);display:flex;align-items:center;justify-content:center;padding:6px;transition:color .2s;position:relative}
+.icon-btn:hover{color:var(--rose)}
+.cart-count{position:absolute;top:-3px;right:-5px;background:var(--rose);color:#fff;font-size:9px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Lato',sans-serif}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:'Lato',sans-serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;padding:14px 34px;border-radius:3px;border:none;transition:all .25s;cursor:pointer;font-weight:400}
+.btn-dark{background:var(--brown);color:#fff}.btn-dark:hover{background:#2e2722;transform:translateY(-1px);box-shadow:0 6px 20px rgba(61,52,48,.2)}
+.btn-outline{background:transparent;border:1px solid var(--brown);color:var(--brown)}.btn-outline:hover{background:var(--brown);color:#fff}
+.btn-rose{background:var(--rose);color:#fff}.btn-rose:hover{background:#b5636e;transform:translateY(-1px)}
+.btn-full{width:100%}
+.btn-sm{padding:10px 22px;font-size:10px}
+
+/* ── INFO BAR ── */
+.info-bar{background:var(--blush);padding:10px 60px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:11.5px;letter-spacing:.8px;color:var(--brown)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:28px;right:28px;background:var(--brown);color:#fff;padding:13px 22px;border-radius:12px;font-size:13px;display:flex;align-items:center;gap:10px;box-shadow:var(--sh-lg);transform:translateY(80px);opacity:0;transition:all .3s;z-index:999;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* ─────────────────── HOMEPAGE ─────────────────── */
+/* Hero */
+.hero{min-height:88vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 80px;position:relative;overflow:hidden;background:linear-gradient(135deg,#f9f2ef 0%,#f2e6e1 100%)}
+.hero-right-bg{position:absolute;right:0;top:0;width:52%;height:100%;background:linear-gradient(155deg,#e8cfc8,#d9b8b2);clip-path:polygon(12% 0,100% 0,100% 100%,0 100%)}
+.hero-content{position:relative;z-index:2;max-width:500px}
+.hero-eyebrow{font-size:10px;letter-spacing:4.5px;text-transform:uppercase;color:var(--taupe);margin-bottom:22px;font-weight:300}
+.hero-title{font-size:56px;line-height:64px;color:var(--brown);margin-bottom:22px;font-weight:400}
+.hero-title em{font-style:italic;color:var(--rose)}
+.hero-sub{font-size:14px;line-height:27px;color:var(--taupe);margin-bottom:38px;max-width:360px;font-weight:300}
+.hero-btns{display:flex;gap:14px}
+.hero-visual{position:relative;z-index:3;display:flex;align-items:center;justify-content:center;height:100%;padding:60px 0}
+
+/* Trust strip — animated ticker */
+.trust-strip{background:var(--brown);padding:13px 0;overflow:hidden;white-space:nowrap}
+.trust-track{display:inline-flex;gap:0;animation:ticker 28s linear infinite}
+.trust-track:hover{animation-play-state:paused}
+.trust-item{display:inline-flex;align-items:center;gap:9px;color:var(--beige);font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;padding:0 40px;border-right:1px solid rgba(255,255,255,.12)}
+.trust-item:last-child{border-right:none}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* Sections */
+.section{padding:80px}
+.section-white{background:var(--white)}
+.section-beige{background:var(--beige)}
+.section-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--rose);margin-bottom:10px;font-weight:400}
+.section-title{font-size:36px;color:var(--brown);margin-bottom:10px;font-weight:400}
+.section-title-underline{width:36px;height:2px;background:var(--rose);margin-bottom:38px;border-radius:2px}
+.section-title-sm{font-size:28px;color:var(--brown);margin-bottom:24px;font-weight:400}
+
+/* Product Cards */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.pcard{background:var(--white);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s;position:relative;box-shadow:var(--sh-sm)}
+.pcard:hover{transform:translateY(-7px);box-shadow:var(--sh-lg)}
+.pcard-img{height:220px;display:flex;align-items:center;justify-content:center;position:relative}
+.pcard-body{padding:20px 22px 22px}
+.pcard-no{font-size:10px;letter-spacing:2px;color:var(--taupe);margin-bottom:5px;font-weight:300}
+.pcard-name{font-family:'Playfair Display',serif;font-size:15px;color:var(--brown);margin-bottom:10px;line-height:22px;font-weight:400}
+.pcard-price{font-size:14px;color:var(--rose);font-weight:700;margin-bottom:14px;letter-spacing:.3px}
+.badge{position:absolute;top:14px;left:14px;background:var(--rose);color:#fff;font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 11px;border-radius:3px}
+.badge-new{background:var(--brown)}
+
+/* Brand story */
+.story-visual{height:420px;border-radius:16px;background:linear-gradient(145deg,#dfc8c2,#c9aeaa);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.story-text p{font-size:14px;line-height:28px;color:var(--taupe);margin-bottom:14px}
+.story-text .btn{margin-top:12px}
+
+/* Categories */
+.cat-card{border-radius:16px;height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s;overflow:hidden;position:relative}
+.cat-card:hover{transform:translateY(-5px);box-shadow:var(--sh-md)}
+.cat-card-name{font-family:'Playfair Display',serif;font-size:20px;color:var(--brown);margin-top:12px}
+.cat-card-count{font-size:11px;letter-spacing:2px;color:var(--taupe);text-transform:uppercase;margin-top:3px}
+
+/* Footer */
+footer{background:var(--brown);color:var(--beige);padding:60px 80px 28px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:44px}
+.footer-logo-name{font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:4px}
+.footer-logo-sub{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--taupe);margin-bottom:16px}
+.footer-desc{font-size:12px;line-height:22px;color:var(--taupe)}
+.footer-col-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--beige);margin-bottom:14px;font-family:'Lato',sans-serif}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:var(--taupe);transition:color .2s}
+.footer-links a:hover{color:var(--rose)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:var(--taupe)}
+.footer-social{display:flex;gap:14px}
+
+/* ─────────────────── PRODUCTS PAGE ─────────────────── */
+.page-header{padding:56px 80px;background:linear-gradient(135deg,#f7eeea,#f0e0da);text-align:center}
+.page-header h1{font-size:44px;margin-bottom:8px}
+.page-header p{font-size:13px;color:var(--taupe);letter-spacing:1px}
+.filter-bar{background:var(--white);padding:18px 80px;display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--beige);position:sticky;top:72px;z-index:100}
+.fbtn{background:none;border:1px solid var(--beige);padding:8px 20px;border-radius:20px;font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;color:var(--taupe);transition:all .2s;font-family:'Lato',sans-serif}
+.fbtn.active,.fbtn:hover{background:var(--brown);color:#fff;border-color:var(--brown)}
+.products-grid-section{padding:48px 80px;background:var(--ivory)}
+
+/* ─────────────────── PRODUCT DETAIL ─────────────────── */
+.breadcrumb{padding:14px 80px;font-size:12px;color:var(--taupe);background:var(--white);border-bottom:1px solid var(--beige)}
+.breadcrumb span{cursor:pointer;transition:color .2s}.breadcrumb span:hover{color:var(--rose)}
+.detail-layout{display:grid;grid-template-columns:1fr 1fr;gap:72px;padding:56px 80px;background:var(--white)}
+.detail-gallery{position:sticky;top:90px;align-self:start}
+.detail-main-img{width:100%;height:440px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.detail-thumbs{display:flex;gap:10px}
+.thumb{width:72px;height:72px;border-radius:8px;border:2px solid transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s}
+.thumb.active,.thumb:hover{border-color:var(--rose)}
+.detail-info .pcard-no{font-size:11px;margin-bottom:8px}
+.detail-info h1{font-size:34px;line-height:42px;margin-bottom:4px}
+.stars{display:flex;gap:2px;align-items:center;margin-bottom:16px}
+.star-count{font-size:12px;color:var(--taupe);margin-left:6px}
+.detail-price{font-size:30px;color:var(--rose);font-weight:700;margin-bottom:20px}
+.detail-desc{font-size:13px;line-height:26px;color:var(--taupe);margin-bottom:28px}
+.qty-row{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.qty-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe)}
+.qty-ctrl{display:flex;align-items:center;border:1px solid var(--beige);border-radius:8px}
+.qty-btn{width:40px;height:40px;background:none;border:none;font-size:17px;color:var(--brown);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.qty-val{width:40px;text-align:center;font-size:14px}
+.detail-actions{display:flex;gap:12px;margin-bottom:28px}
+.detail-actions .btn-dark{flex:1;padding:15px}
+.detail-actions .btn-outline{padding:15px 18px}
+.detail-perks{display:flex;flex-direction:column;gap:10px;padding:20px;background:var(--ivory);border-radius:12px}
+.perk-item{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--taupe)}
+
+/* Tabs */
+.tab-section{padding:48px 80px;background:var(--ivory)}
+.tab-nav{display:flex;border-bottom:1px solid var(--beige);margin-bottom:28px}
+.tab-btn{background:none;border:none;padding:11px 22px;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;color:var(--taupe);border-bottom:2px solid transparent;margin-bottom:-1px;font-family:'Lato',sans-serif;transition:color .2s}
+.tab-btn.active{color:var(--brown);border-bottom-color:var(--rose)}
+.tab-pane{display:none}.tab-pane.active{display:block}
+.tab-pane p{font-size:14px;line-height:28px;color:var(--taupe);margin-bottom:14px;max-width:680px}
+.ingredients-list{display:flex;flex-wrap:wrap;gap:8px;max-width:700px}
+.ingr-tag{background:var(--beige);padding:6px 14px;border-radius:20px;font-size:12px;color:var(--brown)}
+.reviews-list{display:flex;flex-direction:column;gap:20px;max-width:680px}
+.review-card{background:var(--white);border-radius:12px;padding:20px;box-shadow:var(--sh-sm)}
+.review-author{font-size:13px;font-weight:700;color:var(--brown);margin-bottom:4px}
+.review-text{font-size:13px;color:var(--taupe);line-height:24px;margin-top:8px}
+
+/* ─────────────────── CART PAGE ─────────────────── */
+.cart-layout{display:grid;grid-template-columns:1fr 360px;gap:36px;padding:56px 80px;background:var(--ivory);min-height:65vh}
+.cart-items{display:flex;flex-direction:column;gap:14px}
+.citem{background:var(--white);border-radius:12px;padding:18px;display:grid;grid-template-columns:80px 1fr auto;gap:18px;align-items:center;box-shadow:var(--sh-sm)}
+.citem-img{width:80px;height:80px;border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.citem-name{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:3px}
+.citem-no{font-size:11px;color:var(--taupe);margin-bottom:10px}
+.citem-price{font-size:13px;color:var(--rose);font-weight:700}
+.remove-btn{background:none;border:none;color:var(--taupe);cursor:pointer;padding:4px;transition:color .2s}
+.remove-btn:hover{color:#e57373}
+.cart-summary-box{background:var(--white);border-radius:16px;padding:28px;box-shadow:var(--sh-md);height:fit-content;position:sticky;top:90px}
+.cart-summary-box h3{font-size:18px;margin-bottom:20px}
+.sum-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--beige);font-size:13px;color:var(--taupe)}
+.sum-total{display:flex;justify-content:space-between;padding:14px 0;font-size:17px;font-weight:700;color:var(--brown)}
+.promo-row{display:flex;gap:8px;margin:14px 0}
+.promo-input{flex:1;border:1px solid var(--beige);border-radius:8px;padding:10px 14px;font-size:13px;font-family:'Lato',sans-serif;outline:none;background:var(--ivory);color:var(--brown)}
+.promo-input:focus{border-color:var(--rose)}
+.empty-cart{text-align:center;padding:80px 40px;color:var(--taupe)}
+.empty-cart h3{font-size:22px;margin:16px 0 8px;color:var(--brown)}
+
+/* ─────────────────── CHECKOUT ─────────────────── */
+.checkout-layout{display:grid;grid-template-columns:1fr 360px;gap:36px;padding:56px 80px;background:var(--ivory)}
+.checkout-form{background:var(--white);border-radius:16px;padding:36px;box-shadow:var(--sh-sm)}
+.form-section{margin-bottom:36px}
+.form-section-title{font-size:16px;color:var(--brown);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--beige)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fg{display:flex;flex-direction:column;margin-bottom:14px}
+.fg label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:7px}
+.fg input,.fg select{border:1px solid var(--beige);border-radius:8px;padding:11px 14px;font-family:'Lato',sans-serif;font-size:13px;color:var(--brown);background:var(--ivory);outline:none;transition:border-color .2s}
+.fg input:focus,.fg select:focus{border-color:var(--rose)}
+.pay-option{border:1px solid var(--beige);border-radius:8px;padding:14px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;margin-bottom:10px;transition:border-color .2s}
+.pay-option.selected{border-color:var(--rose);background:#fdf2f3}
+.pay-option input[type=radio]{accent-color:var(--rose);width:15px;height:15px;flex-shrink:0}
+.pay-label{font-size:13px;color:var(--brown)}
+.pay-sub{font-size:11px;color:var(--taupe)}
+.checkout-summary{background:var(--white);border-radius:16px;padding:28px;box-shadow:var(--sh-md);height:fit-content;position:sticky;top:90px}
+.checkout-summary h3{font-size:17px;margin-bottom:18px}
+.co-item-row{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--beige)}
+.co-item-img{width:54px;height:54px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.co-item-name{font-size:13px;color:var(--brown);flex:1;line-height:18px}
+.co-item-price{font-size:13px;color:var(--rose);font-weight:700;white-space:nowrap}
+
+/* ─────────────────── SUCCESS ─────────────────── */
+.success-page{min-height:80vh;display:flex;align-items:center;justify-content:center;background:var(--ivory);padding:60px}
+.success-card{background:var(--white);border-radius:24px;padding:56px;text-align:center;max-width:520px;width:100%;box-shadow:var(--sh-lg)}
+.success-icon{width:80px;height:80px;background:#f0faf4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 28px}
+.success-card h2{font-size:30px;margin-bottom:10px}
+.success-card p{color:var(--taupe);font-size:13px;line-height:24px;margin-bottom:6px}
+.order-ref-box{background:var(--ivory);border-radius:12px;padding:18px;margin:22px 0}
+.order-ref-box .ref-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--taupe);margin-bottom:6px}
+.order-ref-box .ref-num{font-family:'Playfair Display',serif;font-size:22px;color:var(--brown)}
+.success-items{text-align:left;margin-bottom:24px}
+.success-items-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:12px}
+.success-item-row{display:flex;justify-content:space-between;font-size:13px;color:var(--brown);padding:7px 0;border-bottom:1px solid var(--beige)}
+.success-btns{display:flex;gap:12px}
+.success-btns .btn{flex:1;padding:13px}
+
+/* ══════════ HAMBURGER & DRAWER ══════════ */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px;cursor:pointer;margin-right:2px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--brown);transition:all .25s;border-radius:2px}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.drawer-overlay{position:fixed;inset:0;background:rgba(50,38,34,.45);z-index:400;opacity:0;pointer-events:none;transition:opacity .28s}
+.drawer-overlay.open{opacity:1;pointer-events:all}
+.drawer{position:fixed;top:0;right:-290px;width:270px;height:100vh;background:var(--white);z-index:500;transition:right .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-8px 0 32px rgba(0,0,0,.12)}
+.drawer.open{right:0}
+.drawer-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--beige)}
+.drawer-close{background:none;border:none;color:var(--taupe);cursor:pointer;padding:4px}
+.drawer-links{list-style:none;padding:12px 22px;flex:1}
+.drawer-links li{border-bottom:1px solid var(--beige)}
+.drawer-links a{display:block;padding:15px 0;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--brown);font-family:"Lato",sans-serif;transition:color .2s}
+.drawer-links a:hover{color:var(--rose)}
+.drawer-footer{padding:22px;border-top:1px solid var(--beige)}
+.drawer-footer p{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--taupe);margin-bottom:12px}
+
+/* ══════════ MOBILE STICKY CTA ══════════ */
+.mobile-sticky{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--white);padding:13px 20px;border-top:1px solid var(--beige);z-index:290;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 -4px 20px rgba(0,0,0,.07)}
+.mobile-sticky-price{font-size:20px;font-weight:700;color:var(--rose);font-family:"Playfair Display",serif;line-height:1}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media(max-width:768px){
+
+/* Nav */
+nav{height:60px;padding:0 18px}
+.nav-links{display:none}
+.hamburger{display:flex}
+.nav-right .icon-btn:nth-child(1){display:none}
+
+/* Info bar */
+.info-bar{font-size:10px;padding:8px 14px;justify-content:flex-start;overflow:hidden}
+
+/* Hero */
+.hero{grid-template-columns:1fr;min-height:auto;padding:56px 24px 48px;text-align:center;background:linear-gradient(155deg,#f8eeea 0%,#eddbda 100%)}
+.hero-right-bg{display:none}
+.hero-content{max-width:100%}
+.hero-eyebrow{margin-bottom:14px}
+.hero-title{font-size:36px;line-height:46px;margin-bottom:16px}
+.hero-sub{margin:0 auto 28px;max-width:290px}
+.hero-btns{justify-content:center;flex-wrap:wrap}
+.hero-visual{display:none}
+
+/* Sections */
+.section{padding:44px 20px}
+.section-title{font-size:26px;margin-bottom:24px}
+
+/* Featured products — 2 col compact */
+.grid-4{grid-template-columns:repeat(2,1fr);gap:13px}
+.pcard-img{height:148px}
+.pcard-body{padding:12px 13px 14px}
+.pcard-name{font-size:12.5px;margin-bottom:5px;line-height:18px}
+.pcard-price{font-size:13px;margin-bottom:10px}
+.pcard-body .btn-sm{padding:8px 10px;font-size:9.5px;letter-spacing:1.5px}
+
+/* Brand story — visual on top */
+.grid-2{grid-template-columns:1fr;gap:28px}
+.grid-2 .story-visual{order:-1}
+.story-visual{height:240px}
+
+/* Categories — horizontal scroll ribbon */
+.section .grid-3.cat-row{display:flex;overflow-x:auto;gap:12px;padding-bottom:4px;grid-template-columns:unset;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.section .grid-3.cat-row::-webkit-scrollbar{display:none}
+.cat-card{flex:0 0 145px;height:150px;border-radius:12px}
+.cat-card-name{font-size:16px;margin-top:10px}
+.cat-card-count{font-size:9.5px}
+
+/* Page header */
+.page-header{padding:32px 20px 24px}
+.page-header h1{font-size:28px}
+
+/* Filter bar */
+.filter-bar{padding:11px 18px;overflow-x:auto;flex-wrap:nowrap;gap:7px;top:60px}
+.filter-bar::-webkit-scrollbar{display:none}
+.fbtn{white-space:nowrap;padding:7px 14px;font-size:10px}
+
+/* Products grid */
+.products-grid-section{padding:22px 18px}
+.products-grid-section .grid-3{grid-template-columns:repeat(2,1fr);gap:13px}
+
+/* Product detail */
+.breadcrumb{padding:10px 18px;font-size:11px}
+.detail-layout{grid-template-columns:1fr;gap:0;padding:0 0 72px}
+.detail-gallery{position:relative;top:auto}
+.detail-main-img{border-radius:0;height:280px;margin-bottom:10px}
+.detail-thumbs{padding:0 18px}
+.detail-info{padding:20px 18px 8px}
+.detail-info h1{font-size:24px;line-height:32px}
+.detail-price{font-size:22px}
+.detail-actions{display:none}
+.tab-section{padding:28px 18px}
+.tab-btn{padding:9px 12px;font-size:10px;letter-spacing:1.5px}
+.mobile-sticky{display:flex}
+
+/* Cart */
+.cart-layout{grid-template-columns:1fr;padding:18px;gap:14px;min-height:auto}
+.cart-summary-box{position:relative;top:auto}
+.citem{gap:12px;padding:13px}
+.citem-img{width:62px;height:62px}
+
+/* Checkout */
+.checkout-layout{grid-template-columns:1fr;padding:18px;gap:14px}
+.checkout-form{padding:20px 16px}
+.form-row{grid-template-columns:1fr}
+.checkout-summary{position:relative;top:auto;order:-1}
+.co-item-row{padding:7px 0}
+
+/* Success */
+.success-page{padding:20px 16px}
+.success-card{padding:32px 20px}
+.success-btns{flex-direction:column}
+
+/* Footer */
+footer{padding:36px 20px 20px}
+.footer-grid{grid-template-columns:1fr 1fr;gap:22px}
+.footer-grid>div:first-child{grid-column:1/-1}
+.footer-bottom{flex-direction:column;gap:10px;text-align:center}
+}
+
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#6fcf97" stroke-width="2"/><path d="M7 12l4 4 6-6" stroke="#6fcf97" stroke-width="2" stroke-linecap="round"/></svg>
+  <span id="toast-msg">Added to cart</span>
+</div>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  Free shipping on orders above RM250 &nbsp;·&nbsp; Complimentary sample with every order
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo" onclick="goPage('home')">
+    <div class="logo-name">Olivéa</div>
+    <div class="logo-sub">Skin Care House</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="goPage('home');return false">Home</a></li>
+    <li><a href="#" onclick="goPage('products');return false">Shop</a></li>
+    <li><a href="#" onclick="goPage('home');return false">About</a></li>
+    <li><a href="#" onclick="goPage('home');return false">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-right">
+    <button class="icon-btn">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <button class="icon-btn">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <button class="icon-btn" onclick="goPage('cart')">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="1.5"/><path d="M16 10a4 4 0 01-8 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span class="cart-count" id="cart-count">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HOMEPAGE ═══════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-right-bg"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Maria Galland Paris · Est. 1961</div>
+      <h1 class="hero-title">Skin that<br><em>Radiates</em><br>Confidence</h1>
+      <p class="hero-sub">Luxurious French skincare science, thoughtfully curated for you by Olivéa Skin Care House.</p>
+      <div class="hero-btns">
+        <button class="btn btn-dark" onclick="goPage('products')">Shop Now</button>
+        <button class="btn btn-outline" onclick="goPage('home')">Our Story</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg width="300" height="360" viewBox="0 0 300 360" fill="none">
+        <!-- Main bottle -->
+        <rect x="110" y="40" width="80" height="240" rx="12" fill="#e8d0cb"/>
+        <rect x="110" y="40" width="80" height="240" rx="12" fill="url(#bg1)"/>
+        <rect x="125" y="55" width="50" height="210" rx="8" fill="rgba(255,255,255,0.3)"/>
+        <rect x="120" y="30" width="60" height="20" rx="6" fill="#d4b8b3"/>
+        <text x="150" y="155" text-anchor="middle" font-family="Playfair Display,serif" font-size="11" fill="#4B403A">OLIVÉA</text>
+        <text x="150" y="170" text-anchor="middle" font-family="Lato,sans-serif" font-size="7" fill="#A8998B" letter-spacing="2">SKIN CARE</text>
+        <text x="150" y="188" text-anchor="middle" font-family="Lato,sans-serif" font-size="9" fill="#4B403A">No. 541</text>
+        <!-- Small tube -->
+        <rect x="45" y="120" width="55" height="170" rx="8" fill="#f0ddd8"/>
+        <rect x="55" y="135" width="35" height="140" rx="6" fill="rgba(255,255,255,0.25)"/>
+        <rect x="50" y="110" width="45" height="16" rx="5" fill="#e2c8c2"/>
+        <text x="72" y="205" text-anchor="middle" font-family="Playfair Display,serif" font-size="8" fill="#4B403A">OLIVÉA</text>
+        <text x="72" y="220" text-anchor="middle" font-family="Lato,sans-serif" font-size="6" fill="#A8998B">No. 60</text>
+        <!-- Small jar -->
+        <ellipse cx="225" cy="240" rx="40" ry="14" fill="#e2cdc8"/>
+        <rect x="185" y="190" width="80" height="50" rx="8" fill="#ead5d0"/>
+        <ellipse cx="225" cy="190" rx="40" ry="12" fill="#f0ddd8"/>
+        <text x="225" y="215" text-anchor="middle" font-family="Playfair Display,serif" font-size="8" fill="#4B403A">OLIVÉA</text>
+        <text x="225" y="228" text-anchor="middle" font-family="Lato,sans-serif" font-size="6" fill="#A8998B">No. 280</text>
+        <!-- Petals -->
+        <ellipse cx="80" cy="100" rx="12" ry="6" fill="#f6d6d6" transform="rotate(-30 80 100)"/>
+        <ellipse cx="92" cy="88" rx="12" ry="6" fill="#f6d6d6" transform="rotate(15 92 88)"/>
+        <ellipse cx="240" cy="160" rx="10" ry="5" fill="#f6d6d6" transform="rotate(40 240 160)"/>
+        <ellipse cx="255" cy="148" rx="10" ry="5" fill="#f0c8c8" transform="rotate(-10 255 148)"/>
+        <defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,0.15)"/><stop offset="100%" stop-color="rgba(0,0,0,0.05)"/></linearGradient></defs>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Trust Strip — animated ticker -->
+  <div class="trust-strip">
+    <div class="trust-track" id="trust-track">
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Maria Galland Paris</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Express Delivery 1–3 Days</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Free Shipping Above RM 250</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Cruelty Free</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2C8 2 5 6 5 10c0 5.25 7 12 7 12s7-6.75 7-12c0-4-3-8-7-8zm0 10a2 2 0 110-4 2 2 0 010 4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Luxury Botanical</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622C17.176 19.29 21 14.591 21 9c0-1.034-.125-2.04-.354-3.016l-.028.016z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Dermatologist Tested</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Clean & Conscious</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Secure Payment</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Maria Galland Paris</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Express Delivery 1–3 Days</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Free Shipping Above RM 250</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Cruelty Free</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2C8 2 5 6 5 10c0 5.25 7 12 7 12s7-6.75 7-12c0-4-3-8-7-8zm0 10a2 2 0 110-4 2 2 0 010 4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Luxury Botanical</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622C17.176 19.29 21 14.591 21 9c0-1.034-.125-2.04-.354-3.016l-.028.016z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Dermatologist Tested</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Clean & Conscious</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Secure Payment</div>
+    </div>
+  </div>
+
+  <!-- Featured Products -->
+  <div class="section section-white">
+    <div class="section-label">Our Selection</div>
+    <div class="section-title">Bestselling Products</div>
+    <div class="section-title-underline"></div>
+    <div class="grid-4">
+      <div class="pcard" onclick="goDetail(0)">
+        <div class="pcard-img" style="background:linear-gradient(145deg,#f0e0dc,#e6cdc8)">
+          <span class="badge">Best Seller</span>
+          <svg width="70" height="120" viewBox="0 0 70 120"><rect x="15" y="10" width="40" height="100" rx="6" fill="#e8cfc9"/><rect x="20" y="15" width="30" height="90" rx="4" fill="rgba(255,255,255,0.3)"/><rect x="18" y="5" width="34" height="10" rx="4" fill="#d4b4ae"/><text x="35" y="62" text-anchor="middle" font-family="Playfair Display,serif" font-size="7" fill="#4B403A">OLIVÉA</text><text x="35" y="72" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">No. 60</text></svg>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-no">No. 60</div>
+          <div class="pcard-name">Refreshing Cleansing Gel</div>
+          <div class="pcard-price">RM 128</div>
+          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();addCart(0)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="pcard" onclick="goDetail(1)">
+        <div class="pcard-img" style="background:linear-gradient(145deg,#eadada,#d8c4c0)">
+          <svg width="100" height="100" viewBox="0 0 100 100"><ellipse cx="50" cy="72" rx="35" ry="12" fill="#dcc0ba"/><rect x="15" y="30" width="70" height="42" rx="8" fill="#e8cfc9"/><ellipse cx="50" cy="30" rx="35" ry="10" fill="#f0ddd8"/><text x="50" y="54" text-anchor="middle" font-family="Playfair Display,serif" font-size="8" fill="#4B403A">OLIVÉA</text><text x="50" y="65" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">No. 280</text></svg>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-no">No. 280</div>
+          <div class="pcard-name">Hydra Mask</div>
+          <div class="pcard-price">RM 198</div>
+          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();addCart(1)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="pcard" onclick="goDetail(2)">
+        <div class="pcard-img" style="background:linear-gradient(145deg,#e8e0f0,#d8cce8)">
+          <span class="badge badge-new">New</span>
+          <svg width="55" height="140" viewBox="0 0 55 140"><rect x="12" y="5" width="31" height="120" rx="10" fill="#ddd0ec"/><rect x="16" y="10" width="23" height="110" rx="8" fill="rgba(255,255,255,0.25)"/><path d="M20 0 Q27.5 -5 35 0 L35 8 L20 8 Z" fill="#c8bcdc"/><text x="27" y="68" text-anchor="middle" font-family="Playfair Display,serif" font-size="6" fill="#4B403A">OLIVÉA</text><text x="27" y="78" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">No. 240</text></svg>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-no">No. 240</div>
+          <div class="pcard-name">Vital Serum</div>
+          <div class="pcard-price">RM 268</div>
+          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();addCart(2)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="pcard" onclick="goDetail(3)">
+        <div class="pcard-img" style="background:linear-gradient(145deg,#f0e8d8,#e0d0bc)">
+          <svg width="55" height="140" viewBox="0 0 55 140"><rect x="12" y="5" width="31" height="120" rx="10" fill="#e8d8c0"/><rect x="16" y="10" width="23" height="110" rx="8" fill="rgba(255,255,255,0.25)"/><path d="M20 0 Q27.5 -5 35 0 L35 8 L20 8 Z" fill="#d4c4a8"/><text x="27" y="68" text-anchor="middle" font-family="Playfair Display,serif" font-size="6" fill="#4B403A">OLIVÉA</text><text x="27" y="78" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">No. 541</text></svg>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-no">No. 541</div>
+          <div class="pcard-name">Lumin'Éclat Serum</div>
+          <div class="pcard-price">RM 298</div>
+          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();addCart(3)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <button class="btn btn-outline" onclick="goPage('products')">View All Products</button>
+    </div>
+  </div>
+
+  <!-- Brand Story -->
+  <div class="section section-beige">
+    <div class="grid-2">
+      <div class="story-text">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title-sm" style="font-size:34px;line-height:42px;margin-bottom:20px">Timeless. Trusted.<br><em style="color:var(--rose)">Thoughtfully Crafted.</em></h2>
+        <p>Olivéa Skin Care House was founded with one belief — that everyone deserves access to exceptional skincare. As an authorised retailer of Maria Galland Paris, we bring over 60 years of French skincare expertise directly to you.</p>
+        <p>Every product in our collection is carefully selected, dermatologist-tested, and formulated with nature's finest ingredients. Your skin deserves nothing less.</p>
+        <button class="btn btn-dark" style="margin-top:12px">Learn More</button>
+      </div>
+      <div class="story-visual">
+        <svg width="320" height="380" viewBox="0 0 320 380" fill="none">
+          <rect x="40" y="40" width="240" height="300" rx="20" fill="rgba(255,255,255,0.2)"/>
+          <rect x="60" y="60" width="200" height="260" rx="14" fill="rgba(255,255,255,0.15)"/>
+          <!-- Product arrangement -->
+          <rect x="115" y="80" width="90" height="160" rx="10" fill="#e8cfc9"/>
+          <rect x="122" y="88" width="76" height="144" rx="7" fill="rgba(255,255,255,0.3)"/>
+          <rect x="120" y="70" width="80" height="16" rx="6" fill="#d4b4ae"/>
+          <text x="160" y="155" text-anchor="middle" font-family="Playfair Display,serif" font-size="10" fill="#4B403A">OLIVÉA</text>
+          <text x="160" y="168" text-anchor="middle" font-family="Lato,sans-serif" font-size="7" fill="#A8998B" letter-spacing="2">SKIN CARE</text>
+          <ellipse cx="100" cy="290" rx="30" ry="10" fill="#dcc0ba"/>
+          <rect x="70" y="258" width="60" height="32" rx="6" fill="#e8cfc9"/>
+          <ellipse cx="100" cy="258" rx="30" ry="9" fill="#f0ddd8"/>
+          <ellipse cx="220" cy="280" rx="28" ry="9" fill="#dcc0ba"/>
+          <rect x="192" y="250" width="56" height="30" rx="6" fill="#e8d0c8"/>
+          <ellipse cx="220" cy="250" rx="28" ry="9" fill="#f0ddd8"/>
+          <!-- Decorative dots -->
+          <circle cx="80" cy="110" r="4" fill="rgba(255,255,255,0.5)"/>
+          <circle cx="240" cy="90" r="6" fill="rgba(255,255,255,0.4)"/>
+          <circle cx="250" cy="200" r="3" fill="rgba(255,255,255,0.5)"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categories -->
+  <div class="section section-white">
+    <div class="section-label">Browse By</div>
+    <div class="section-title">Categories</div>
+    <div class="section-title-underline"></div>
+    <div class="grid-3 cat-row">
+      <div class="cat-card" style="background:linear-gradient(135deg,#f0e0dc,#e6cdc8)" onclick="goPage('products')">
+        <svg width="40" height="40" fill="none" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" stroke="#4B403A" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="cat-card-name">Cleansers</div>
+        <div class="cat-card-count">3 Products</div>
+      </div>
+      <div class="cat-card" style="background:linear-gradient(135deg,#ede0f0,#ddd0e8)" onclick="goPage('products')">
+        <svg width="40" height="40" fill="none" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke="#4B403A" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="cat-card-name">Serums</div>
+        <div class="cat-card-count">4 Products</div>
+      </div>
+      <div class="cat-card" style="background:linear-gradient(135deg,#f0ead8,#e8d8c0)" onclick="goPage('products')">
+        <svg width="40" height="40" fill="none" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="#4B403A" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="cat-card-name">Masks</div>
+        <div class="cat-card-count">2 Products</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-name">Olivéa</div>
+        <div class="footer-logo-sub">Skin Care House</div>
+        <p class="footer-desc">Authorised retailer of Maria Galland Paris. SSM Registration: CT0161902-X<br><br>Skincare inspired by nature, perfected by science.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Shop</div>
+        <ul class="footer-links">
+          <li><a href="#">All Products</a></li>
+          <li><a href="#">Cleansers</a></li>
+          <li><a href="#">Serums</a></li>
+          <li><a href="#">Masks</a></li>
+          <li><a href="#">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Help</div>
+        <ul class="footer-links">
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="#">+60 12-345 6789</a></li>
+          <li><a href="#">hello@olivea.com.my</a></li>
+          <li><a href="#">olivea.com.my</a></li>
+          <li style="margin-top:12px"><a href="#" style="display:flex;align-items:center;gap:8px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            WhatsApp Us
+          </a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Olivéa Skin Care House · All rights reserved</p>
+      <div class="footer-social">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#A8998B" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="#A8998B" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="#A8998B"/></svg>
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="#A8998B" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 00-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 00-5.487 0 12.36 12.36 0 00-.617-1.23A.077.077 0 008.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 00-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 00.031.055 20.03 20.03 0 005.993 2.98.078.078 0 00.084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 01-1.872-.878.075.075 0 01-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 01.078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 01.079.009c.12.098.245.195.372.288a.075.075 0 01-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 00-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 00.084.028 19.963 19.963 0 006.002-2.981.076.076 0 00.032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 00-.031-.028z" stroke="#A8998B" stroke-width="1.2"/></svg>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════ PRODUCTS PAGE ═══════════════════ -->
+<div id="page-products" class="page">
+  <div class="page-header">
+    <p class="section-label" style="text-align:center">Olivéa Collection</p>
+    <h1>All Products</h1>
+    <p style="margin-top:8px;font-size:13px;color:var(--taupe)">Curated skincare from Maria Galland Paris</p>
+  </div>
+  <div class="filter-bar">
+    <button class="fbtn active" onclick="filterProducts('all',this)">All</button>
+    <button class="fbtn" onclick="filterProducts('cleanser',this)">Cleanser</button>
+    <button class="fbtn" onclick="filterProducts('serum',this)">Serum</button>
+    <button class="fbtn" onclick="filterProducts('mask',this)">Mask</button>
+    <button class="fbtn" onclick="filterProducts('moisturiser',this)">Moisturiser</button>
+  </div>
+  <div class="products-grid-section">
+    <div class="grid-3" id="all-products-grid"></div>
+  </div>
+  <footer>
+    <div class="footer-bottom" style="border-top:none;padding-top:0">
+      <p>© 2026 Olivéa Skin Care House</p>
+      <p style="cursor:pointer;color:var(--taupe)" onclick="goPage('home')">← Back to Home</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════ PRODUCT DETAIL ═══════════════════ -->
+<div id="page-detail" class="page">
+  <div class="breadcrumb">
+    <span onclick="goPage('home')">Home</span> &nbsp;/&nbsp;
+    <span onclick="goPage('products')">Shop</span> &nbsp;/&nbsp;
+    <span id="bc-product-name" style="color:var(--brown)"></span>
+  </div>
+  <div class="detail-layout">
+    <div class="detail-gallery">
+      <div class="detail-main-img" id="detail-main-img" style="background:linear-gradient(145deg,#f0e0dc,#e6cdc8)">
+        <div id="detail-img-svg"></div>
+      </div>
+      <div class="detail-thumbs" id="detail-thumbs"></div>
+    </div>
+    <div class="detail-info">
+      <div class="pcard-no" id="d-no"></div>
+      <h1 id="d-name"></h1>
+      <div class="stars" id="d-stars"></div>
+      <div class="detail-price" id="d-price"></div>
+      <p class="detail-desc" id="d-desc"></p>
+      <div class="qty-row">
+        <span class="qty-label">Qty</span>
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <span class="qty-val" id="d-qty">1</span>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+      </div>
+      <div class="detail-actions">
+        <button class="btn btn-dark" onclick="addDetailToCart()">Add to Cart</button>
+        <button class="btn btn-outline" onclick="buyNow()">Buy Now</button>
+        <button class="btn btn-outline" style="padding:15px 15px">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="detail-perks">
+        <div class="perk-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="var(--rose)" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Secure checkout via FPX, DuitNow & Credit Card
+        </div>
+        <div class="perk-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Free shipping on orders above RM250
+        </div>
+        <div class="perk-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622C17.176 19.29 21 14.591 21 9c0-1.034-.125-2.04-.354-3.016l-.028.016z" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Authentic. Authorised. Guaranteed.
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Tabs -->
+  <div class="tab-section">
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('desc',this)">Description</button>
+      <button class="tab-btn" onclick="switchTab('ingr',this)">Ingredients</button>
+      <button class="tab-btn" onclick="switchTab('reviews',this)">Reviews (128)</button>
+    </div>
+    <div class="tab-pane active" id="tab-desc">
+      <p id="tab-desc-text"></p>
+      <p>Suitable for all skin types. For best results, use morning and evening as part of your skincare routine. Apply a small amount onto clean skin and massage gently until absorbed.</p>
+    </div>
+    <div class="tab-pane" id="tab-ingr">
+      <p style="margin-bottom:16px">Key active ingredients:</p>
+      <div class="ingredients-list" id="ingr-list"></div>
+    </div>
+    <div class="tab-pane" id="tab-reviews">
+      <div class="reviews-list">
+        <div class="review-card">
+          <div class="review-author">Aisyah R.</div>
+          <div class="stars">★★★★★<span class="star-count">5.0</span></div>
+          <p class="review-text">Absolutely love this product! My skin feels so soft and hydrated. Have been using it for 3 months and will definitely repurchase.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-author">Mei Lin C.</div>
+          <div class="stars">★★★★★<span class="star-count">5.0</span></div>
+          <p class="review-text">The quality is outstanding. You can really tell it's a premium French formulation. My skin has never looked better!</p>
+        </div>
+        <div class="review-card">
+          <div class="review-author">Priya S.</div>
+          <div class="stars">★★★★<span class="star-count" style="color:var(--taupe)">4.0</span></div>
+          <p class="review-text">Great product, fast shipping, and excellent packaging. The scent is very subtle and pleasant. Will be ordering again.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CART PAGE ═══════════════════ -->
+<div id="page-cart" class="page">
+  <div class="page-header" style="padding:40px 80px;text-align:left">
+    <p class="section-label">Your Selections</p>
+    <h1>Shopping Cart</h1>
+  </div>
+  <div class="cart-layout" id="cart-layout">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<!-- ═══════════════════ CHECKOUT PAGE ═══════════════════ -->
+<div id="page-checkout" class="page">
+  <div class="page-header" style="padding:40px 80px;text-align:left">
+    <p class="section-label">Final Step</p>
+    <h1>Checkout</h1>
+  </div>
+  <div class="checkout-layout">
+    <div class="checkout-form">
+      <div class="form-section">
+        <h3 class="form-section-title">Contact Information</h3>
+        <div class="form-row">
+          <div class="fg"><label>First Name</label><input type="text" placeholder="Aisyah"></div>
+          <div class="fg"><label>Last Name</label><input type="text" placeholder="Rahman"></div>
+        </div>
+        <div class="fg"><label>Email Address</label><input type="email" placeholder="aisyah@email.com"></div>
+        <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+60 12-345 6789"></div>
+      </div>
+      <div class="form-section">
+        <h3 class="form-section-title">Delivery Address</h3>
+        <div class="fg"><label>Address Line 1</label><input type="text" placeholder="No. 12, Jalan Bunga Raya"></div>
+        <div class="fg"><label>Address Line 2</label><input type="text" placeholder="Taman Sri Indah (optional)"></div>
+        <div class="form-row">
+          <div class="fg"><label>City</label><input type="text" placeholder="Kuala Lumpur"></div>
+          <div class="fg"><label>Postcode</label><input type="text" placeholder="50480"></div>
+        </div>
+        <div class="fg"><label>State</label>
+          <select>
+            <option>Kuala Lumpur</option><option>Selangor</option><option>Johor</option>
+            <option>Penang</option><option>Sabah</option><option>Sarawak</option>
+            <option>Perak</option><option>Kedah</option><option>Melaka</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-section">
+        <h3 class="form-section-title">Payment Method</h3>
+        <div class="pay-option selected" onclick="selectPay(this)">
+          <input type="radio" name="pay" checked>
+          <div>
+            <div class="pay-label">FPX — Online Banking</div>
+            <div class="pay-sub">Maybank, CIMB, RHB, Public Bank & more</div>
+          </div>
+          <svg width="32" height="20" viewBox="0 0 64 40" style="margin-left:auto"><rect width="64" height="40" rx="6" fill="#005BAC"/><text x="32" y="25" text-anchor="middle" font-family="Lato,sans-serif" font-size="11" font-weight="700" fill="#fff">FPX</text></svg>
+        </div>
+        <div class="pay-option" onclick="selectPay(this)">
+          <input type="radio" name="pay">
+          <div>
+            <div class="pay-label">DuitNow QR</div>
+            <div class="pay-sub">Scan and pay instantly</div>
+          </div>
+          <svg width="32" height="20" viewBox="0 0 64 40" style="margin-left:auto"><rect width="64" height="40" rx="6" fill="#FF3A5C"/><text x="32" y="25" text-anchor="middle" font-family="Lato,sans-serif" font-size="8" font-weight="700" fill="#fff">DuitNow</text></svg>
+        </div>
+        <div class="pay-option" onclick="selectPay(this)">
+          <input type="radio" name="pay">
+          <div>
+            <div class="pay-label">Credit / Debit Card</div>
+            <div class="pay-sub">Visa, Mastercard accepted</div>
+          </div>
+          <div style="display:flex;gap:6px;margin-left:auto">
+            <svg width="32" height="20" viewBox="0 0 64 40"><rect width="64" height="40" rx="6" fill="#1A1F71"/><text x="32" y="25" text-anchor="middle" font-family="Lato,sans-serif" font-size="10" font-weight="700" fill="#fff">VISA</text></svg>
+            <svg width="34" height="22" viewBox="0 0 68 44"><rect width="68" height="44" rx="5" fill="#fff" stroke="#ddd" stroke-width="1.5"/><defs><clipPath id="mcOvlp"><circle cx="28" cy="22" r="14"/></clipPath></defs><circle cx="28" cy="22" r="14" fill="#EB001B"/><circle cx="40" cy="22" r="14" fill="#F79E1B"/><circle cx="40" cy="22" r="14" fill="#FF5F00" clip-path="url(#mcOvlp)"/></svg>
+          </div>
+        </div>
+        <button class="btn btn-dark btn-full" style="margin-top:12px;padding:16px" onclick="goPage('success')">
+          Place Order &amp; Pay
+        </button>
+        <p style="text-align:center;font-size:11px;color:var(--taupe);margin-top:12px;letter-spacing:.5px">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" style="vertical-align:middle"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Secured by SSL · Powered by Billplz
+        </p>
+      </div>
+    </div>
+    <!-- Order Summary -->
+    <div class="checkout-summary">
+      <h3>Order Summary</h3>
+      <div id="co-items-list"></div>
+      <div class="sum-row"><span>Subtotal</span><span id="co-subtotal">RM 0</span></div>
+      <div class="sum-row"><span>Shipping</span><span id="co-shipping">RM 10</span></div>
+      <div class="sum-row"><span>SST (8%)</span><span id="co-tax">RM 0</span></div>
+      <div class="sum-total"><span>Total</span><span id="co-total">RM 0</span></div>
+      <p style="font-size:11px;color:var(--taupe);margin-top:12px;line-height:18px">Transaction fee: RM 0.70 per Billplz transaction. Free shipping on orders above RM 250.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SUCCESS PAGE ═══════════════════ -->
+<div id="page-success" class="page">
+  <div class="success-page">
+    <div class="success-card">
+      <div class="success-icon">
+        <svg width="36" height="36" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#52C97A" stroke-width="1.5"/><path d="M7 12l4 4 6-6" stroke="#52C97A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p class="section-label" style="text-align:center;margin-bottom:8px">Payment Confirmed</p>
+      <h2>Thank You!</h2>
+      <p>Your order has been placed successfully.<br>A confirmation email has been sent to you.</p>
+      <div class="order-ref-box">
+        <div class="ref-label">Order Reference</div>
+        <div class="ref-num" id="order-ref">OLV-2026-00142</div>
+      </div>
+      <div class="success-items">
+        <div class="success-items-title">Items Ordered</div>
+        <div id="success-items-list"></div>
+      </div>
+      <div class="sum-row" style="border:none;padding:4px 0"><span style="font-size:13px">Total Paid</span><span style="font-size:15px;font-weight:700;color:var(--rose)" id="success-total">RM 0</span></div>
+      <div class="success-btns" style="margin-top:24px">
+        <button class="btn btn-dark" onclick="goPage('home')">Continue Shopping</button>
+        <button class="btn btn-outline">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" style="margin-right:6px"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── DATA ──
+const products = [
+  {
+    id:0, no:'No. 60', name:'Refreshing Cleansing Gel', price:128, category:'cleanser',
+    bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)',
+    desc:'A gentle yet effective cleansing gel that transforms on contact with water into a refreshing foam, effectively removing all impurities and makeup while maintaining the skin\'s moisture balance.',
+    longDesc:'This luxurious cleansing gel is powered by a unique blend of botanical extracts and French pharmacy-grade actives. Suitable for daily use, it leaves skin feeling clean, balanced, and ready for your next skincare step.',
+    ingredients:['Aqua','Glycerin','Aloe Vera Extract','Green Tea Extract','Chamomile','Panthenol','Niacinamide','Allantoin'],
+    rating:4.9, badge:'Best Seller',
+    colors:['#f0e0dc','#e6cdc8','#f8f0ee']
+  },
+  {
+    id:1, no:'No. 280', name:'Hydra Mask', price:198, category:'mask',
+    bg:'linear-gradient(145deg,#eadada,#d8c4c0)',
+    desc:'An intensely hydrating mask infused with hyaluronic acid and botanical extracts. Apply, relax for 15 minutes, and reveal a visibly plumper, more radiant complexion.',
+    longDesc:'Formulated with a triple-action hydration complex, this mask penetrates deep into the skin\'s layers to deliver lasting moisture. Perfect for weekly treatment or whenever your skin needs an extra boost.',
+    ingredients:['Aqua','Hyaluronic Acid','Rose Hip Oil','Vitamin C','Ceramide NP','Squalane','Peptide Complex','Shea Butter'],
+    rating:4.8, badge:null,
+    colors:['#eadada','#d8c4c0','#f5ecec']
+  },
+  {
+    id:2, no:'No. 240', name:'Vital Serum', price:268, category:'serum',
+    bg:'linear-gradient(145deg,#e8e0f0,#d8cce8)',
+    desc:'A lightweight, fast-absorbing serum enriched with peptides and antioxidants. Targets fine lines, uneven tone, and loss of firmness for a visibly revitalised complexion.',
+    longDesc:'This science-backed serum is formulated with clinically proven actives at their optimal concentrations. Lightweight and non-greasy, it layers beautifully beneath your moisturiser.',
+    ingredients:['Aqua','Retinol','Vitamin C','Hyaluronic Acid','Bakuchiol','Resveratrol','Copper Peptides','Ferulic Acid'],
+    rating:4.7, badge:'New',
+    colors:['#e8e0f0','#d8cce8','#f4f0f8']
+  },
+  {
+    id:3, no:'No. 541', name:"Lumin'Éclat Serum", price:298, category:'serum',
+    bg:'linear-gradient(145deg,#f0e8d8,#e0d0bc)',
+    desc:'A brightening serum that targets dark spots, hyperpigmentation and dullness. Formulated with luminescent actives to restore your skin\'s natural radiance.',
+    longDesc:'Olivéa\'s bestselling brightening treatment. Rich in vitamin C derivatives and botanical lightening agents, it works synergistically to deliver a visibly more even and luminous complexion within 4 weeks.',
+    ingredients:['Aqua','Vitamin C Derivative','Alpha Arbutin','Niacinamide','Tranexamic Acid','Licorice Extract','Kojic Acid','Vitamin E'],
+    rating:5.0, badge:'Best Seller',
+    colors:['#f0e8d8','#e0d0bc','#f8f4ec']
+  },
+  {
+    id:4, no:'No. 391', name:'Uni Perfect SPF50', price:178, category:'moisturiser',
+    bg:'linear-gradient(145deg,#dde8f0,#ccd8e8)',
+    desc:'A multi-tasking daily moisturiser with broad-spectrum SPF50 protection. Lightweight gel-cream texture that hydrates, protects and primes skin for the day ahead.',
+    longDesc:'Wear it alone for a natural, dewy finish or under makeup. Water-resistant formula with Zinc Oxide and chemical filters provides reliable protection without white cast.',
+    ingredients:['Zinc Oxide','Titanium Dioxide','Niacinamide','Hyaluronic Acid','Vitamin E','Green Tea','Glycerin','Aloe Vera'],
+    rating:4.6, badge:null,
+    colors:['#dde8f0','#ccd8e8','#eef3f8']
+  },
+  {
+    id:5, no:'No. 100', name:'Barrier Moisturising Cream', price:218, category:'moisturiser',
+    bg:'linear-gradient(145deg,#e8f0e4,#d4e4cc)',
+    desc:'A rich, nourishing moisturiser that strengthens the skin barrier. Infused with ceramides, peptides and botanical oils to deeply nourish and protect.',
+    longDesc:'The cornerstone of any complete skincare routine. This velvety cream melts effortlessly into skin, providing 24-hour hydration and visibly improving skin texture over time.',
+    ingredients:['Ceramide NP','Ceramide AP','Ceramide EOP','Cholesterol','Fatty Acids','Squalane','Centella Asiatica','Panthenol'],
+    rating:4.8, badge:null,
+    colors:['#e8f0e4','#d4e4cc','#f0f5ee']
+  }
+];
+
+// Product SVGs
+function productSVG(p, size='md') {
+  const cat = p.category;
+  if(cat==='mask') {
+    const w = size==='lg'?160:72, h = size==='lg'?120:60;
+    return `<svg width="${w}" height="${h}" viewBox="0 0 100 80" fill="none" preserveAspectRatio="xMidYMid meet">
+      <ellipse cx="50" cy="60" rx="36" ry="11" fill="${p.colors[1]}"/>
+      <rect x="14" y="22" width="72" height="38" rx="8" fill="${p.colors[0]}"/>
+      <ellipse cx="50" cy="22" rx="36" ry="10" fill="${p.colors[2]}"/>
+      <text x="50" y="42" text-anchor="middle" font-family="Playfair Display,serif" font-size="8" fill="#4B403A">OLIVÉA</text>
+      <text x="50" y="54" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">${p.no}</text>
+    </svg>`;
+  }
+  if(cat==='cleanser') {
+    const w = size==='lg'?70:48, h = size==='lg'?140:76;
+    return `<svg width="${w}" height="${h}" viewBox="0 0 70 120" fill="none" preserveAspectRatio="xMidYMid meet">
+      <rect x="15" y="10" width="40" height="100" rx="6" fill="${p.colors[0]}"/>
+      <rect x="20" y="15" width="30" height="90" rx="4" fill="rgba(255,255,255,0.3)"/>
+      <rect x="18" y="5" width="34" height="10" rx="4" fill="${p.colors[1]}"/>
+      <text x="35" y="62" text-anchor="middle" font-family="Playfair Display,serif" font-size="7" fill="#4B403A">OLIVÉA</text>
+      <text x="35" y="73" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">${p.no}</text>
+    </svg>`;
+  }
+  // serum / moisturiser — tall bottle
+  const w = size==='lg'?55:38, h = size==='lg'?160:76;
+  return `<svg width="${w}" height="${h}" viewBox="0 0 55 140" fill="none" preserveAspectRatio="xMidYMid meet">
+    <rect x="12" y="5" width="31" height="120" rx="10" fill="${p.colors[0]}"/>
+    <rect x="16" y="10" width="23" height="110" rx="8" fill="rgba(255,255,255,0.25)"/>
+    <path d="M20 0 Q27.5 -5 35 0 L35 8 L20 8 Z" fill="${p.colors[1]}"/>
+    <text x="27" y="68" text-anchor="middle" font-family="Playfair Display,serif" font-size="6" fill="#4B403A">OLIVÉA</text>
+    <text x="27" y="80" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">${p.no}</text>
+  </svg>`;
+}
+
+// ── CART ──
+let cart = [];
+let currentDetail = null;
+let detailQty = 1;
+
+function updateCartCount() {
+  const total = cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cart-count').textContent = total;
+}
+
+function addCart(id, qty=1) {
+  const p = products[id];
+  const ex = cart.find(i=>i.id===id);
+  if(ex) ex.qty += qty;
+  else cart.push({...p, qty});
+  updateCartCount();
+  showToast('Added to cart — '+p.name);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ── PAGE ROUTING ──
+function goPage(name) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='cart') renderCart();
+  if(name==='products') renderAllProducts();
+  if(name==='checkout') renderCheckout();
+  if(name==='success') renderSuccess();
+}
+
+// ── PRODUCTS PAGE ──
+function renderAllProducts(filter='all') {
+  const grid = document.getElementById('all-products-grid');
+  const list = filter==='all' ? products : products.filter(p=>p.category===filter);
+  grid.innerHTML = list.map(p=>`
+    <div class="pcard" onclick="goDetail(${p.id})">
+      <div class="pcard-img" style="background:${p.bg}">
+        ${p.badge?`<span class="badge${p.badge==='New'?' badge-new':''}">${p.badge}</span>`:''}
+        ${productSVG(p)}
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-no">${p.no}</div>
+        <div class="pcard-name">${p.name}</div>
+        <div class="pcard-price">RM ${p.price}</div>
+        <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();addCart(${p.id})">Add to Cart</button>
+      </div>
+    </div>`).join('');
+}
+
+function filterProducts(cat, btn) {
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAllProducts(cat);
+}
+
+// ── DETAIL PAGE ──
+function goDetail(id) {
+  currentDetail = products[id];
+  detailQty = 1;
+  document.getElementById('bc-product-name').textContent = currentDetail.name;
+  document.getElementById('d-no').textContent = currentDetail.no;
+  document.getElementById('d-name').textContent = currentDetail.name;
+  document.getElementById('d-price').textContent = 'RM '+currentDetail.price;
+  document.getElementById('d-desc').textContent = currentDetail.desc;
+  document.getElementById('d-qty').textContent = '1';
+  document.getElementById('tab-desc-text').textContent = currentDetail.longDesc;
+  // Stars
+  const stars = Math.round(currentDetail.rating);
+  document.getElementById('d-stars').innerHTML = '★'.repeat(stars)+'☆'.repeat(5-stars)+`<span class="star-count">${currentDetail.rating} (128 reviews)</span>`;
+  // Main image
+  document.getElementById('detail-main-img').style.background = currentDetail.bg;
+  document.getElementById('detail-img-svg').innerHTML = productSVG(currentDetail,'lg');
+  // Thumbs
+  document.getElementById('detail-thumbs').innerHTML = currentDetail.colors.map((c,i)=>`
+    <div class="thumb ${i===0?'active':''}" style="background:linear-gradient(135deg,${c},${currentDetail.colors[1]})" onclick="selectThumb(this,${i})">
+    </div>`).join('');
+  // Ingredients
+  document.getElementById('ingr-list').innerHTML = currentDetail.ingredients.map(i=>`<span class="ingr-tag">${i}</span>`).join('');
+  // Reset tabs
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>{b.classList.toggle('active',i===0)});
+  document.querySelectorAll('.tab-pane').forEach((p,i)=>{p.classList.toggle('active',i===0)});
+  goPage('detail');
+}
+
+function selectThumb(el, idx) {
+  document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function changeQty(d) {
+  detailQty = Math.max(1, detailQty+d);
+  document.getElementById('d-qty').textContent = detailQty;
+}
+
+function addDetailToCart() {
+  if(currentDetail) { addCart(currentDetail.id, detailQty); }
+}
+
+function buyNow() {
+  if(currentDetail) { addCart(currentDetail.id, detailQty); goPage('cart'); }
+}
+
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
+}
+
+// ── CART PAGE ──
+function renderCart() {
+  const layout = document.getElementById('cart-layout');
+  if(cart.length===0) {
+    layout.innerHTML = `<div class="empty-cart" style="grid-column:1/-1">
+      <svg width="60" height="60" fill="none" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="#A8998B" stroke-width="1.5"/><line x1="3" y1="6" x2="21" y2="6" stroke="#A8998B" stroke-width="1.5"/><path d="M16 10a4 4 0 01-8 0" stroke="#A8998B" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <h3>Your cart is empty</h3>
+      <p>Discover our curated skincare collection</p>
+      <button class="btn btn-dark" style="margin-top:20px" onclick="goPage('products')">Shop Now</button>
+    </div>`;
+    return;
+  }
+  const subtotal = cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const shipping = subtotal>=250 ? 0 : 10;
+  const total = subtotal+shipping;
+  layout.innerHTML = `
+    <div class="cart-items">
+      ${cart.map((item,idx)=>`
+        <div class="citem">
+          <div class="citem-img" style="background:${item.bg}">${productSVG(item,'sm')}</div>
+          <div>
+            <div class="citem-no">${item.no}</div>
+            <div class="citem-name">${item.name}</div>
+            <div class="qty-ctrl" style="margin-top:8px">
+              <button class="qty-btn" onclick="cartQty(${idx},-1)">−</button>
+              <span class="qty-val">${item.qty}</span>
+              <button class="qty-btn" onclick="cartQty(${idx},1)">+</button>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <button class="remove-btn" onclick="removeCart(${idx})">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="citem-price" style="margin-top:8px">RM ${item.price*item.qty}</div>
+          </div>
+        </div>`).join('')}
+      <button class="btn btn-outline" onclick="goPage('products')" style="width:fit-content;margin-top:8px">← Continue Shopping</button>
+    </div>
+    <div class="cart-summary-box">
+      <h3>Order Summary</h3>
+      <div class="sum-row"><span>Subtotal (${cart.reduce((s,i)=>s+i.qty,0)} items)</span><span>RM ${subtotal}</span></div>
+      <div class="sum-row"><span>Shipping</span><span>${shipping===0?'<span style="color:#52C97A">Free</span>':'RM '+shipping}</span></div>
+      <div class="sum-total"><span>Total</span><span>RM ${total}</span></div>
+      ${subtotal<250?`<p style="font-size:11px;color:var(--taupe);margin:8px 0 12px">Add RM ${250-subtotal} more for free shipping</p>`:'<p style="font-size:11px;color:#52C97A;margin:8px 0 12px">✓ You qualify for free shipping</p>'}
+      <div class="promo-row">
+        <input class="promo-input" placeholder="Promo / Referral code">
+        <button class="btn btn-outline btn-sm">Apply</button>
+      </div>
+      <button class="btn btn-dark btn-full" style="padding:15px;margin-top:4px" onclick="goPage('checkout')">Proceed to Checkout</button>
+    </div>`;
+}
+
+function cartQty(idx, d) {
+  cart[idx].qty = Math.max(1, cart[idx].qty+d);
+  updateCartCount();
+  renderCart();
+}
+
+function removeCart(idx) {
+  cart.splice(idx,1);
+  updateCartCount();
+  renderCart();
+}
+
+// ── CHECKOUT ──
+function renderCheckout() {
+  const subtotal = cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const shipping = subtotal>=250?0:10;
+  const tax = Math.round(subtotal*0.08);
+  const total = subtotal+shipping+tax;
+  document.getElementById('co-subtotal').textContent='RM '+subtotal;
+  document.getElementById('co-shipping').textContent=shipping===0?'Free':'RM '+shipping;
+  document.getElementById('co-tax').textContent='RM '+tax;
+  document.getElementById('co-total').textContent='RM '+total;
+  document.getElementById('co-items-list').innerHTML=cart.map(item=>`
+    <div class="co-item-row">
+      <div class="co-item-img" style="background:${item.bg}">${productSVG(item,'sm')}</div>
+      <div class="co-item-name">${item.name}<br><span style="font-size:11px;color:var(--taupe)">${item.no} × ${item.qty}</span></div>
+      <div class="co-item-price">RM ${item.price*item.qty}</div>
+    </div>`).join('');
+}
+
+function selectPay(el) {
+  document.querySelectorAll('.pay-option').forEach(p=>{p.classList.remove('selected');p.querySelector('input').checked=false});
+  el.classList.add('selected');
+  el.querySelector('input').checked=true;
+}
+
+// ── SUCCESS ──
+function renderSuccess() {
+  const ref = 'OLV-2026-'+String(Math.floor(Math.random()*90000)+10000);
+  document.getElementById('order-ref').textContent=ref;
+  const subtotal=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const shipping=subtotal>=250?0:10;
+  const tax=Math.round(subtotal*0.08);
+  const total=subtotal+shipping+tax;
+  document.getElementById('success-total').textContent='RM '+total;
+  document.getElementById('success-items-list').innerHTML=cart.map(item=>`
+    <div class="success-item-row"><span>${item.name} × ${item.qty}</span><span>RM ${item.price*item.qty}</span></div>`).join('');
+  cart=[];
+  updateCartCount();
+}
+
+// Init
+renderAllProducts();
+</script>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <div class="logo"><div class="logo-name">Olivéa</div><div class="logo-sub">Skin Care House</div></div>
+    <button class="drawer-close" onclick="toggleDrawer()">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <ul class="drawer-links">
+    <li><a href="#" onclick="goPage('home');toggleDrawer();return false">Home</a></li>
+    <li><a href="#" onclick="goPage('products');toggleDrawer();return false">Shop</a></li>
+    <li><a href="#" onclick="toggleDrawer();return false">About</a></li>
+    <li><a href="#" onclick="toggleDrawer();return false">Contact</a></li>
+  </ul>
+  <div class="drawer-footer">
+    <p>Follow us</p>
+    <div style="display:flex;gap:14px">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#A8998B" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#A8998B" stroke="none"/></svg>
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#A8998B" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE STICKY ADD TO CART -->
+<div class="mobile-sticky" id="mobile-sticky">
+  <div>
+    <div style="font-size:12px;color:var(--taupe);letter-spacing:1px" id="ms-name"></div>
+    <div class="mobile-sticky-price" id="ms-price"></div>
+  </div>
+  <button class="btn btn-dark" style="padding:14px 28px" onclick="addDetailToCart()">Add to Cart</button>
+</div>
+</body>
+</html>
