@@ -137,9 +137,7 @@ footer{background:var(--brown);color:var(--beige);padding:60px 80px 28px}
 .thumb{width:72px;height:72px;border-radius:8px;border:2px solid transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s}
 .thumb.active,.thumb:hover{border-color:var(--rose)}
 .detail-info .pcard-no{font-size:11px;margin-bottom:8px}
-.detail-info h1{font-size:34px;line-height:42px;margin-bottom:4px}
-.stars{display:flex;gap:2px;align-items:center;margin-bottom:16px}
-.star-count{font-size:12px;color:var(--taupe);margin-left:6px}
+.detail-info h1{font-size:34px;line-height:42px;margin-bottom:14px}
 .detail-price{font-size:30px;color:var(--rose);font-weight:700;margin-bottom:20px}
 .detail-desc{font-size:13px;line-height:26px;color:var(--taupe);margin-bottom:28px}
 .qty-row{display:flex;align-items:center;gap:16px;margin-bottom:24px}
@@ -162,10 +160,6 @@ footer{background:var(--brown);color:var(--beige);padding:60px 80px 28px}
 .tab-pane p{font-size:14px;line-height:28px;color:var(--taupe);margin-bottom:14px;max-width:680px}
 .ingredients-list{display:flex;flex-wrap:wrap;gap:8px;max-width:700px}
 .ingr-tag{background:var(--beige);padding:6px 14px;border-radius:20px;font-size:12px;color:var(--brown)}
-.reviews-list{display:flex;flex-direction:column;gap:20px;max-width:680px}
-.review-card{background:var(--white);border-radius:12px;padding:20px;box-shadow:var(--sh-sm)}
-.review-author{font-size:13px;font-weight:700;color:var(--brown);margin-bottom:4px}
-.review-text{font-size:13px;color:var(--taupe);line-height:24px;margin-top:8px}
 
 /* ─────────────────── CART PAGE ─────────────────── */
 .cart-layout{display:grid;grid-template-columns:1fr 360px;gap:36px;padding:56px 80px;background:var(--ivory);min-height:65vh}
@@ -371,7 +365,6 @@ nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;
 .tab-btn{padding:10px 14px;font-size:10px;letter-spacing:1.5px;white-space:nowrap}
 .tab-pane p{font-size:13px;line-height:26px}
 .ingr-tag{font-size:11px;padding:5px 12px}
-.review-card{padding:16px}
 .mobile-sticky{display:flex}
 
 /* Cart */
@@ -728,7 +721,6 @@ footer{padding:32px 18px 20px}
     <div class="detail-info">
       <div class="pcard-no" id="d-no"></div>
       <h1 id="d-name"></h1>
-      <div class="stars" id="d-stars"></div>
       <div class="detail-price" id="d-price"></div>
       <p class="detail-desc" id="d-desc"></p>
       <div class="qty-row">
@@ -763,7 +755,6 @@ footer{padding:32px 18px 20px}
     <div class="tab-nav">
       <button class="tab-btn active" onclick="switchTab('desc',this)">Description</button>
       <button class="tab-btn" onclick="switchTab('ingr',this)">Ingredients</button>
-      <button class="tab-btn" onclick="switchTab('reviews',this)">Reviews (128)</button>
     </div>
     <div class="tab-pane active" id="tab-desc">
       <p id="tab-desc-text"></p>
@@ -772,25 +763,6 @@ footer{padding:32px 18px 20px}
     <div class="tab-pane" id="tab-ingr">
       <p style="margin-bottom:16px">Key active ingredients:</p>
       <div class="ingredients-list" id="ingr-list"></div>
-    </div>
-    <div class="tab-pane" id="tab-reviews">
-      <div class="reviews-list">
-        <div class="review-card">
-          <div class="review-author">Aisyah R.</div>
-          <div class="stars">★★★★★<span class="star-count">5.0</span></div>
-          <p class="review-text">Absolutely love this product! My skin feels so soft and hydrated. Have been using it for 3 months and will definitely repurchase.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-author">Mei Lin C.</div>
-          <div class="stars">★★★★★<span class="star-count">5.0</span></div>
-          <p class="review-text">The quality is outstanding. You can really tell it's a premium French formulation. My skin has never looked better!</p>
-        </div>
-        <div class="review-card">
-          <div class="review-author">Priya S.</div>
-          <div class="stars">★★★★<span class="star-count" style="color:var(--taupe)">4.0</span></div>
-          <p class="review-text">Great product, fast shipping, and excellent packaging. The scent is very subtle and pleasant. Will be ordering again.</p>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -1136,9 +1108,6 @@ function goDetail(id) {
   document.getElementById('d-desc').textContent = currentDetail.desc;
   document.getElementById('d-qty').textContent = '1';
   document.getElementById('tab-desc-text').textContent = currentDetail.longDesc;
-  // Stars
-  const stars = Math.round(currentDetail.rating);
-  document.getElementById('d-stars').innerHTML = '★'.repeat(stars)+'☆'.repeat(5-stars)+`<span class="star-count">${currentDetail.rating} (128 reviews)</span>`;
   // Main image
   document.getElementById('detail-main-img').style.background = currentDetail.bg;
   document.getElementById('detail-img-svg').innerHTML = productSVG(currentDetail,'lg');
