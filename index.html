@@ -53,7 +53,7 @@ nav{background:var(--white);height:76px;padding:0 64px;display:flex;align-items:
 .hero-img-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(250,242,238,.92) 0%,rgba(250,242,238,.75) 38%,rgba(250,242,238,.1) 70%,transparent 100%)}
 .hero-content{position:relative;z-index:2;max-width:480px}
 .hero-eyebrow{font-size:10px;letter-spacing:4.5px;text-transform:uppercase;color:var(--taupe);margin-bottom:22px;font-weight:300}
-.hero-title{font-size:56px;line-height:64px;color:var(--brown);margin-bottom:22px;font-weight:400}
+.hero-title{font-size:56px;line-height:64px;color:var(--brown);margin-bottom:22px;font-weight:600}
 .hero-title em{font-style:italic;color:var(--rose)}
 .hero-sub{font-size:14px;line-height:27px;color:var(--taupe);margin-bottom:38px;max-width:360px;font-weight:300}
 .hero-btns{display:flex;gap:14px}
@@ -281,10 +281,22 @@ nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;
 /* Info bar hidden on mobile (trust ticker covers it) */
 .info-bar{display:none}
 
-/* ── HERO mobile — full-bleed with bottom overlay ── */
-.hero{min-height:100svh;padding:0;align-items:flex-end;background:#f0e5df}
+/* ── HERO mobile — full-bleed, text at top, desktop colors ── */
+.hero{min-height:100svh;padding:0;align-items:flex-start;background:#f0e5df}
 .hero-img-bg{background-image:url('https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/hero%20phone.png') !important;background-position:center top !important}
-.hero-img-bg::after{background:linear-gradient(to top,rgba(40,28,24,.72) 0%,rgba(40,28,24,.38) 40%,rgba(40,28,24,.05) 70%,transparent 100%)}
+.hero-img-bg::after{background:linear-gradient(to bottom,rgba(250,242,238,.88) 0%,rgba(250,242,238,.6) 30%,rgba(250,242,238,.1) 55%,transparent 70%)}
+.hero-content{padding:32px 24px 0}
+.hero-eyebrow{color:var(--taupe)}
+.hero-title{font-size:40px;line-height:50px;color:var(--brown);font-weight:600;margin-bottom:16px}
+.hero-title em{color:var(--rose)}
+.hero-sub{color:var(--taupe);font-size:13px;line-height:24px;margin-bottom:28px}
+.hero-btns{flex-direction:column;gap:10px}
+.hero-btns .btn{width:100%;padding:15px;font-size:11px}
+.hero-btns .btn-dark{background:var(--brown);color:#fff}
+.hero-btns .btn-outline{border-color:var(--brown);color:var(--brown)}
+
+/* Brand cards — keep 2-col on mobile */
+#brand-cards{grid-template-columns:1fr 1fr !important;gap:12px}
 .hero-content{padding:0 24px 44px;max-width:100%}
 .hero-eyebrow{color:rgba(255,255,255,.7);margin-bottom:12px}
 .hero-title{font-size:42px;line-height:50px;color:#fff;margin-bottom:14px}
@@ -440,8 +452,8 @@ footer{padding:32px 18px 20px}
   <ul class="nav-links">
     <li><a href="#" onclick="goPage('home');return false">Home</a></li>
     <li><a href="#" onclick="goPage('products');return false">Shop</a></li>
-    <li><a href="#" onclick="goPage('home');return false">About</a></li>
-    <li><a href="#" onclick="goPage('home');return false">Contact</a></li>
+    <li><a href="#" onclick="goHomeScroll('our-story');return false">About</a></li>
+    <li><a href="#" onclick="goHomeScroll('footer-contact');return false">Contact</a></li>
   </ul>
   <div class="nav-right">
     <button class="icon-btn" onclick="openSearch()">
@@ -567,14 +579,13 @@ footer{padding:32px 18px 20px}
   </div>
 
   <!-- Brand Story -->
-  <div class="section section-beige">
+  <div class="section section-beige" id="our-story">
     <div class="grid-2">
       <div class="story-text">
         <div class="section-label">Our Story</div>
         <h2 class="section-title-sm" style="font-size:34px;line-height:42px;margin-bottom:20px">Timeless. Trusted.<br><em style="color:var(--rose)">Thoughtfully Crafted.</em></h2>
-        <p>Olivéa Skin Care House was founded with one belief — that everyone deserves access to exceptional skincare. As an authorised retailer of Maria Galland Paris, we bring over 60 years of French skincare expertise directly to you.</p>
+        <p>Olivéa Skin Care House was founded with one belief — that everyone deserves access to exceptional skincare. As an authorised retailer of Maria Galland Paris and Jyunka, we bring decades of French and Japanese skincare expertise directly to you.</p>
         <p>Every product in our collection is carefully selected, dermatologist-tested, and formulated with nature's finest ingredients. Your skin deserves nothing less.</p>
-        <button class="btn btn-dark" style="margin-top:12px">Learn More</button>
       </div>
       <div class="story-visual">
         <svg width="320" height="380" viewBox="0 0 320 380" fill="none">
@@ -604,23 +615,20 @@ footer{padding:32px 18px 20px}
   <!-- Categories -->
   <div class="section section-white">
     <div class="section-label">Browse By</div>
-    <div class="section-title">Categories</div>
+    <div class="section-title">Our Brands</div>
     <div class="section-title-underline"></div>
-    <div class="grid-3 cat-row">
-      <div class="cat-card" style="background:linear-gradient(135deg,#f0e0dc,#e6cdc8)" onclick="goPage('products')">
-        <svg width="40" height="40" fill="none" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" stroke="#4B403A" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <div class="cat-card-name">Cleansers</div>
-        <div class="cat-card-count">3 Products</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px" id="brand-cards">
+      <div class="cat-card" style="background:linear-gradient(135deg,#f0e0dc,#e6cdc8);height:200px" onclick="goPageBrand('maria-galland')">
+        <svg width="44" height="44" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#4B403A" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="cat-card-name" style="font-size:18px;margin-top:10px">Maria Galland</div>
+        <div class="cat-card-count" style="letter-spacing:1px">Paris · Est. 1961</div>
+        <div style="font-size:10px;color:var(--rose);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px">6 Products →</div>
       </div>
-      <div class="cat-card" style="background:linear-gradient(135deg,#ede0f0,#ddd0e8)" onclick="goPage('products')">
-        <svg width="40" height="40" fill="none" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke="#4B403A" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <div class="cat-card-name">Serums</div>
-        <div class="cat-card-count">4 Products</div>
-      </div>
-      <div class="cat-card" style="background:linear-gradient(135deg,#f0ead8,#e8d8c0)" onclick="goPage('products')">
-        <svg width="40" height="40" fill="none" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="#4B403A" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <div class="cat-card-name">Masks</div>
-        <div class="cat-card-count">2 Products</div>
+      <div class="cat-card" style="background:linear-gradient(135deg,#e4f0e8,#cce0d4);height:200px" onclick="goPageBrand('jyunka')">
+        <svg width="44" height="44" fill="none" viewBox="0 0 24 24"><path d="M12 22s-8-4-8-10a8 8 0 1116 0c0 6-8 10-8 10z" stroke="#4B403A" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="#4B403A" stroke-width="1.5"/></svg>
+        <div class="cat-card-name" style="font-size:18px;margin-top:10px">Jyunka</div>
+        <div class="cat-card-count" style="letter-spacing:1px">Japanese Botanical</div>
+        <div style="font-size:10px;color:var(--rose);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px">3 Products →</div>
       </div>
     </div>
   </div>
@@ -653,7 +661,7 @@ footer{padding:32px 18px 20px}
           <li><a href="#">Contact Us</a></li>
         </ul>
       </div>
-      <div>
+      <div id="footer-contact">
         <div class="footer-col-title">Contact</div>
         <ul class="footer-links">
           <li><a href="#">+60 12-345 6789</a></li>
@@ -685,11 +693,9 @@ footer{padding:32px 18px 20px}
     <p style="margin-top:8px;font-size:13px;color:var(--taupe)">Curated skincare from Maria Galland Paris</p>
   </div>
   <div class="filter-bar">
-    <button class="fbtn active" onclick="filterProducts('all',this)">All</button>
-    <button class="fbtn" onclick="filterProducts('cleanser',this)">Cleanser</button>
-    <button class="fbtn" onclick="filterProducts('serum',this)">Serum</button>
-    <button class="fbtn" onclick="filterProducts('mask',this)">Mask</button>
-    <button class="fbtn" onclick="filterProducts('moisturiser',this)">Moisturiser</button>
+    <button class="fbtn active" onclick="filterProducts('all',this)">All Brands</button>
+    <button class="fbtn" onclick="filterProducts('maria-galland',this)">Maria Galland Paris</button>
+    <button class="fbtn" onclick="filterProducts('jyunka',this)">Jyunka</button>
   </div>
   <div class="products-grid-section">
     <div class="grid-3" id="all-products-grid"></div>
@@ -915,7 +921,7 @@ footer{padding:32px 18px 20px}
 // ── DATA ──
 const products = [
   {
-    id:0, no:'No. 60', name:'Refreshing Cleansing Gel', price:128, category:'cleanser',
+    id:0, no:'No. 60', name:'Refreshing Cleansing Gel', price:128, category:'cleanser', brand:'maria-galland',
     bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)',
     desc:'A gentle yet effective cleansing gel that transforms on contact with water into a refreshing foam, effectively removing all impurities and makeup while maintaining the skin\'s moisture balance.',
     longDesc:'This luxurious cleansing gel is powered by a unique blend of botanical extracts and French pharmacy-grade actives. Suitable for daily use, it leaves skin feeling clean, balanced, and ready for your next skincare step.',
@@ -924,7 +930,7 @@ const products = [
     colors:['#f0e0dc','#e6cdc8','#f8f0ee']
   },
   {
-    id:1, no:'No. 280', name:'Hydra Mask', price:198, category:'mask',
+    id:1, no:'No. 280', name:'Hydra Mask', price:198, category:'mask', brand:'maria-galland',
     bg:'linear-gradient(145deg,#eadada,#d8c4c0)',
     desc:'An intensely hydrating mask infused with hyaluronic acid and botanical extracts. Apply, relax for 15 minutes, and reveal a visibly plumper, more radiant complexion.',
     longDesc:'Formulated with a triple-action hydration complex, this mask penetrates deep into the skin\'s layers to deliver lasting moisture. Perfect for weekly treatment or whenever your skin needs an extra boost.',
@@ -933,7 +939,7 @@ const products = [
     colors:['#eadada','#d8c4c0','#f5ecec']
   },
   {
-    id:2, no:'No. 240', name:'Vital Serum', price:268, category:'serum',
+    id:2, no:'No. 240', name:'Vital Serum', price:268, category:'serum', brand:'maria-galland',
     bg:'linear-gradient(145deg,#e8e0f0,#d8cce8)',
     desc:'A lightweight, fast-absorbing serum enriched with peptides and antioxidants. Targets fine lines, uneven tone, and loss of firmness for a visibly revitalised complexion.',
     longDesc:'This science-backed serum is formulated with clinically proven actives at their optimal concentrations. Lightweight and non-greasy, it layers beautifully beneath your moisturiser.',
@@ -942,7 +948,7 @@ const products = [
     colors:['#e8e0f0','#d8cce8','#f4f0f8']
   },
   {
-    id:3, no:'No. 541', name:"Lumin'Éclat Serum", price:298, category:'serum',
+    id:3, no:'No. 541', name:"Lumin'Éclat Serum", price:298, category:'serum', brand:'maria-galland',
     bg:'linear-gradient(145deg,#f0e8d8,#e0d0bc)',
     desc:'A brightening serum that targets dark spots, hyperpigmentation and dullness. Formulated with luminescent actives to restore your skin\'s natural radiance.',
     longDesc:'Olivéa\'s bestselling brightening treatment. Rich in vitamin C derivatives and botanical lightening agents, it works synergistically to deliver a visibly more even and luminous complexion within 4 weeks.',
@@ -951,7 +957,7 @@ const products = [
     colors:['#f0e8d8','#e0d0bc','#f8f4ec']
   },
   {
-    id:4, no:'No. 391', name:'Uni Perfect SPF50', price:178, category:'moisturiser',
+    id:4, no:'No. 391', name:'Uni Perfect SPF50', price:178, category:'moisturiser', brand:'maria-galland',
     bg:'linear-gradient(145deg,#dde8f0,#ccd8e8)',
     desc:'A multi-tasking daily moisturiser with broad-spectrum SPF50 protection. Lightweight gel-cream texture that hydrates, protects and primes skin for the day ahead.',
     longDesc:'Wear it alone for a natural, dewy finish or under makeup. Water-resistant formula with Zinc Oxide and chemical filters provides reliable protection without white cast.',
@@ -960,13 +966,40 @@ const products = [
     colors:['#dde8f0','#ccd8e8','#eef3f8']
   },
   {
-    id:5, no:'No. 100', name:'Barrier Moisturising Cream', price:218, category:'moisturiser',
+    id:5, no:'No. 100', name:'Barrier Moisturising Cream', price:218, category:'moisturiser', brand:'maria-galland',
     bg:'linear-gradient(145deg,#e8f0e4,#d4e4cc)',
     desc:'A rich, nourishing moisturiser that strengthens the skin barrier. Infused with ceramides, peptides and botanical oils to deeply nourish and protect.',
     longDesc:'The cornerstone of any complete skincare routine. This velvety cream melts effortlessly into skin, providing 24-hour hydration and visibly improving skin texture over time.',
     ingredients:['Ceramide NP','Ceramide AP','Ceramide EOP','Cholesterol','Fatty Acids','Squalane','Centella Asiatica','Panthenol'],
     rating:4.8, badge:null,
     colors:['#e8f0e4','#d4e4cc','#f0f5ee']
+  },
+  {
+    id:6, no:'JY-01', name:'Moisture Surge Serum', price:188, category:'serum', brand:'jyunka',
+    bg:'linear-gradient(145deg,#e4f0e8,#cce0d4)',
+    desc:'A deeply hydrating serum inspired by Japanese botanical wisdom. Formulated with fermented rice extract and Centella Asiatica to restore the skin\'s natural moisture barrier.',
+    longDesc:'Jyunka\'s hero serum blends Japanese herbal tradition with modern biotechnology. The lightweight, silky texture absorbs instantly, leaving skin visibly plumped and radiant from within.',
+    ingredients:['Fermented Rice Extract','Centella Asiatica','Hyaluronic Acid','Ceramide','Beta-Glucan','Niacinamide','Squalane','Aqua'],
+    rating:4.8, badge:'New',
+    colors:['#e4f0e8','#cce0d4','#f0f6f2']
+  },
+  {
+    id:7, no:'JY-02', name:'Soothing Botanical Mask', price:158, category:'mask', brand:'jyunka',
+    bg:'linear-gradient(145deg,#f0ece0,#e4d8c4)',
+    desc:'A calming sheet-style cream mask infused with Japanese Camellia oil and Mugwort extract. Soothes sensitive, reactive skin while restoring a healthy, balanced glow.',
+    longDesc:'Deeply inspired by Japanese onsen skincare rituals, this mask creates a protective veil over the skin. Ideal for weekly use on sensitive or stressed skin types.',
+    ingredients:['Camellia Oil','Mugwort Extract','Aloe Vera','Ceramide','Panthenol','Green Tea','Allantoin','Aqua'],
+    rating:4.7, badge:null,
+    colors:['#f0ece0','#e4d8c4','#f8f4ec']
+  },
+  {
+    id:8, no:'JY-03', name:'Brightening Essence', price:228, category:'serum', brand:'jyunka',
+    bg:'linear-gradient(145deg,#f4e8f0,#e8d4e4)',
+    desc:'A lightweight brightening essence powered by Sakura extract and Tranexamic Acid. Targets uneven skin tone, dark spots, and post-blemish marks for a luminous complexion.',
+    longDesc:'Jyunka\'s brightening essence draws on the Japanese concept of "透明感" — a luminous, glass-like skin appearance. Clinically tested for effectiveness on Asian skin tones.',
+    ingredients:['Sakura Extract','Tranexamic Acid','Alpha Arbutin','Vitamin C','Niacinamide','Licorice Root','Hyaluronic Acid','Aqua'],
+    rating:4.9, badge:'Best Seller',
+    colors:['#f4e8f0','#e8d4e4','#faf2f8']
   }
 ];
 
@@ -1045,7 +1078,7 @@ function goPage(name) {
 // ── PRODUCTS PAGE ──
 function renderAllProducts(filter='all') {
   const grid = document.getElementById('all-products-grid');
-  const list = filter==='all' ? products : products.filter(p=>p.category===filter);
+  const list = filter==='all' ? products : products.filter(p=>p.brand===filter);
   grid.innerHTML = list.map(p=>`
     <div class="pcard" onclick="goDetail(${p.id})">
       <div class="pcard-img" style="background:${p.bg}">
@@ -1053,18 +1086,31 @@ function renderAllProducts(filter='all') {
         ${productSVG(p)}
       </div>
       <div class="pcard-body">
-        <div class="pcard-no">${p.no}</div>
+        <div class="pcard-no">${p.no} · <span style="font-size:9px;letter-spacing:1px;color:var(--taupe);text-transform:uppercase">${p.brand==='jyunka'?'Jyunka':'Maria Galland'}</span></div>
         <div class="pcard-name">${p.name}</div>
         <div class="pcard-price">RM ${p.price}</div>
-        <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();directBuy(p.id)">Buy Now</button>
+        <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();directBuy(${p.id})">Buy Now</button>
       </div>
     </div>`).join('');
 }
 
-function filterProducts(cat, btn) {
+function filterProducts(brand, btn) {
   document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  renderAllProducts(cat);
+  renderAllProducts(brand);
+}
+
+function goPageBrand(brand) {
+  goPage('products');
+  setTimeout(()=>{
+    const btn = [...document.querySelectorAll('.fbtn')].find(b=>b.onclick&&b.getAttribute('onclick')&&b.getAttribute('onclick').includes(brand));
+    document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+    renderAllProducts(brand);
+    // highlight correct filter button
+    document.querySelectorAll('.fbtn').forEach(b=>{
+      if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes(brand)) b.classList.add('active');
+    });
+  }, 80);
 }
 
 // ── DETAIL PAGE ──
@@ -1187,7 +1233,9 @@ function removeCart(idx) {
 
 // ── CHECKOUT ──
 function renderCheckout() {
-  const subtotal = cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const order = currentOrder;
+  if(!order || !order.length) return;
+  const subtotal = order.reduce((s,i)=>s+i.price*i.qty,0);
   const shipping = subtotal>=250?0:10;
   const tax = Math.round(subtotal*0.08);
   const total = subtotal+shipping+tax;
@@ -1195,7 +1243,7 @@ function renderCheckout() {
   document.getElementById('co-shipping').textContent=shipping===0?'Free':'RM '+shipping;
   document.getElementById('co-tax').textContent='RM '+tax;
   document.getElementById('co-total').textContent='RM '+total;
-  document.getElementById('co-items-list').innerHTML=cart.map(item=>`
+  document.getElementById('co-items-list').innerHTML=order.map(item=>`
     <div class="co-item-row">
       <div class="co-item-img" style="background:${item.bg}">${productSVG(item,'sm')}</div>
       <div class="co-item-name">${item.name}<br><span style="font-size:11px;color:var(--taupe)">${item.no} × ${item.qty}</span></div>
@@ -1213,7 +1261,9 @@ function selectPay(el) {
 function renderSuccess() {
   const ref = 'OLV-2026-'+String(Math.floor(Math.random()*90000)+10000);
   document.getElementById('order-ref').textContent=ref;
-  const subtotal=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const order = currentOrder;
+  if(!order || !order.length) return;
+  const subtotal=order.reduce((s,i)=>s+i.price*i.qty,0);
   const shipping=subtotal>=250?0:10;
   const tax=Math.round(subtotal*0.08);
   const total=subtotal+shipping+tax;
@@ -1266,6 +1316,15 @@ function renderSearchResults(list) {
 }
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeSearch(); });
 
+function goHomeScroll(sectionId) {
+  if(!document.getElementById('page-home').classList.contains('active')) {
+    goPage('home');
+    setTimeout(()=>{ const el=document.getElementById(sectionId); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }, 400);
+  } else {
+    const el=document.getElementById(sectionId); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+
 // ── DRAWER ──
 function toggleDrawer() {
   const d = document.getElementById('drawer');
@@ -1277,17 +1336,19 @@ function toggleDrawer() {
   h.classList.toggle('open', !isOpen);
 }
 
-// ── MOBILE STICKY — show/hide on detail page ──
+// ── MOBILE STICKY — only on mobile, only on detail page ──
 function updateMobileSticky() {
   const ms = document.getElementById('mobile-sticky');
   if(!ms) return;
+  const isMobile = window.innerWidth <= 768;
   const isDetail = document.getElementById('page-detail').classList.contains('active');
-  ms.style.display = isDetail ? 'flex' : 'none';
-  if(isDetail && currentDetail) {
+  ms.style.display = (isMobile && isDetail) ? 'flex' : 'none';
+  if(isMobile && isDetail && currentDetail) {
     document.getElementById('ms-name').textContent = currentDetail.name;
     document.getElementById('ms-price').textContent = 'RM '+currentDetail.price;
   }
 }
+window.addEventListener('resize', updateMobileSticky);
 
 // Init
 renderAllProducts();
@@ -1306,8 +1367,8 @@ renderSearchResults(products);
   <ul class="drawer-links">
     <li><a href="#" onclick="goPage('home');toggleDrawer();return false">Home</a></li>
     <li><a href="#" onclick="goPage('products');toggleDrawer();return false">Shop</a></li>
-    <li><a href="#" onclick="toggleDrawer();return false">About</a></li>
-    <li><a href="#" onclick="toggleDrawer();return false">Contact</a></li>
+    <li><a href="#" onclick="toggleDrawer();goHomeScroll('our-story');return false">About</a></li>
+    <li><a href="#" onclick="toggleDrawer();goHomeScroll('footer-contact');return false">Contact</a></li>
   </ul>
   <div class="drawer-footer">
     <p>Follow us</p>
