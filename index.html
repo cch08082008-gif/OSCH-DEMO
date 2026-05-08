@@ -417,10 +417,10 @@ footer{padding:32px 18px 20px}
   <span id="toast-msg">Added to cart</span>
 </div>
 
-<!-- INFO BAR -->
-<div class="info-bar">
+<!-- INFO BAR (announcement) -->
+<div class="info-bar" id="info-bar">
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-  Free shipping on orders above RM250 &nbsp;·&nbsp; Complimentary sample with every order
+  <span id="info-bar-text">Free shipping on orders above RM250 · Complimentary sample with every order</span>
 </div>
 
 <!-- NAV -->
@@ -480,7 +480,6 @@ footer{padding:32px 18px 20px}
       <p class="hero-sub">Luxurious French skincare science, thoughtfully curated for you by Olivéa Skin Care House.</p>
       <div class="hero-btns">
         <button class="btn btn-dark" onclick="goPage('products')">Shop Now</button>
-        <button class="btn btn-outline" onclick="goPage('home')">Our Story</button>
       </div>
     </div>
   </div>
@@ -513,54 +512,7 @@ footer{padding:32px 18px 20px}
     <div class="section-label">Our Selection</div>
     <div class="section-title">Bestselling Products</div>
     <div class="section-title-underline"></div>
-    <div class="grid-4">
-      <div class="pcard" onclick="goDetail(0)">
-        <div class="pcard-img" style="background:linear-gradient(145deg,#f0e0dc,#e6cdc8)">
-          <span class="badge">Best Seller</span>
-          <svg width="70" height="120" viewBox="0 0 70 120"><rect x="15" y="10" width="40" height="100" rx="6" fill="#e8cfc9"/><rect x="20" y="15" width="30" height="90" rx="4" fill="rgba(255,255,255,0.3)"/><rect x="18" y="5" width="34" height="10" rx="4" fill="#d4b4ae"/><text x="35" y="62" text-anchor="middle" font-family="Playfair Display,serif" font-size="7" fill="#4B403A">OLIVÉA</text><text x="35" y="72" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">No. 60</text></svg>
-        </div>
-        <div class="pcard-body">
-          <div class="pcard-no">No. 60</div>
-          <div class="pcard-name">Refreshing Cleansing Gel</div>
-          <div class="pcard-price">RM 128</div>
-          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();directBuy(0)">Buy Now</button>
-        </div>
-      </div>
-      <div class="pcard" onclick="goDetail(1)">
-        <div class="pcard-img" style="background:linear-gradient(145deg,#eadada,#d8c4c0)">
-          <svg width="100" height="100" viewBox="0 0 100 100"><ellipse cx="50" cy="72" rx="35" ry="12" fill="#dcc0ba"/><rect x="15" y="30" width="70" height="42" rx="8" fill="#e8cfc9"/><ellipse cx="50" cy="30" rx="35" ry="10" fill="#f0ddd8"/><text x="50" y="54" text-anchor="middle" font-family="Playfair Display,serif" font-size="8" fill="#4B403A">OLIVÉA</text><text x="50" y="65" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">No. 280</text></svg>
-        </div>
-        <div class="pcard-body">
-          <div class="pcard-no">No. 280</div>
-          <div class="pcard-name">Hydra Mask</div>
-          <div class="pcard-price">RM 198</div>
-          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();directBuy(1)">Buy Now</button>
-        </div>
-      </div>
-      <div class="pcard" onclick="goDetail(2)">
-        <div class="pcard-img" style="background:linear-gradient(145deg,#e8e0f0,#d8cce8)">
-          <span class="badge badge-new">New</span>
-          <svg width="55" height="140" viewBox="0 0 55 140"><rect x="12" y="5" width="31" height="120" rx="10" fill="#ddd0ec"/><rect x="16" y="10" width="23" height="110" rx="8" fill="rgba(255,255,255,0.25)"/><path d="M20 0 Q27.5 -5 35 0 L35 8 L20 8 Z" fill="#c8bcdc"/><text x="27" y="68" text-anchor="middle" font-family="Playfair Display,serif" font-size="6" fill="#4B403A">OLIVÉA</text><text x="27" y="78" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">No. 240</text></svg>
-        </div>
-        <div class="pcard-body">
-          <div class="pcard-no">No. 240</div>
-          <div class="pcard-name">Vital Serum</div>
-          <div class="pcard-price">RM 268</div>
-          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();directBuy(2)">Buy Now</button>
-        </div>
-      </div>
-      <div class="pcard" onclick="goDetail(3)">
-        <div class="pcard-img" style="background:linear-gradient(145deg,#f0e8d8,#e0d0bc)">
-          <svg width="55" height="140" viewBox="0 0 55 140"><rect x="12" y="5" width="31" height="120" rx="10" fill="#e8d8c0"/><rect x="16" y="10" width="23" height="110" rx="8" fill="rgba(255,255,255,0.25)"/><path d="M20 0 Q27.5 -5 35 0 L35 8 L20 8 Z" fill="#d4c4a8"/><text x="27" y="68" text-anchor="middle" font-family="Playfair Display,serif" font-size="6" fill="#4B403A">OLIVÉA</text><text x="27" y="78" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">No. 541</text></svg>
-        </div>
-        <div class="pcard-body">
-          <div class="pcard-no">No. 541</div>
-          <div class="pcard-name">Lumin'Éclat Serum</div>
-          <div class="pcard-price">RM 298</div>
-          <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();directBuy(3)">Buy Now</button>
-        </div>
-      </div>
-    </div>
+    <div class="grid-4" id="featured-grid"></div>
     <div style="text-align:center;margin-top:40px">
       <button class="btn btn-outline" onclick="goPage('products')">View All Products</button>
     </div>
@@ -610,13 +562,13 @@ footer{padding:32px 18px 20px}
         <svg width="44" height="44" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#4B403A" stroke-width="1.5" stroke-linecap="round"/></svg>
         <div class="cat-card-name" style="font-size:18px;margin-top:10px">Maria Galland</div>
         <div class="cat-card-count" style="letter-spacing:1px">Paris · Est. 1961</div>
-        <div style="font-size:10px;color:var(--rose);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px">6 Products →</div>
+        <div style="font-size:10px;color:var(--rose);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px" id="count-mg">6 Products →</div>
       </div>
       <div class="cat-card" style="background:linear-gradient(135deg,#e4f0e8,#cce0d4);height:200px" onclick="goPageBrand('jyunka')">
         <svg width="44" height="44" fill="none" viewBox="0 0 24 24"><path d="M12 22s-8-4-8-10a8 8 0 1116 0c0 6-8 10-8 10z" stroke="#4B403A" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="#4B403A" stroke-width="1.5"/></svg>
         <div class="cat-card-name" style="font-size:18px;margin-top:10px">Jyunka</div>
         <div class="cat-card-count" style="letter-spacing:1px">Japanese Botanical</div>
-        <div style="font-size:10px;color:var(--rose);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px">3 Products →</div>
+        <div style="font-size:10px;color:var(--rose);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px" id="count-jy">3 Products →</div>
       </div>
     </div>
   </div>
@@ -778,27 +730,35 @@ footer{padding:32px 18px 20px}
       <div class="form-section">
         <h3 class="form-section-title">Contact Information</h3>
         <div class="form-row">
-          <div class="fg"><label>First Name</label><input type="text" placeholder="Aisyah"></div>
-          <div class="fg"><label>Last Name</label><input type="text" placeholder="Rahman"></div>
+          <div class="fg"><label>First Name</label><input id="co-fname" type="text" placeholder="Aisyah"></div>
+          <div class="fg"><label>Last Name</label><input id="co-lname" type="text" placeholder="Rahman"></div>
         </div>
-        <div class="fg"><label>Email Address</label><input type="email" placeholder="aisyah@email.com"></div>
-        <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+60 12-345 6789"></div>
+        <div class="fg"><label>Email Address</label><input id="co-email" type="email" placeholder="aisyah@email.com"></div>
+        <div class="fg"><label>Phone Number</label><input id="co-phone" type="tel" placeholder="+60 12-345 6789"></div>
       </div>
       <div class="form-section">
         <h3 class="form-section-title">Delivery Address</h3>
-        <div class="fg"><label>Address Line 1</label><input type="text" placeholder="No. 12, Jalan Bunga Raya"></div>
-        <div class="fg"><label>Address Line 2</label><input type="text" placeholder="Taman Sri Indah (optional)"></div>
+        <div class="fg"><label>Address Line 1</label><input id="co-addr1" type="text" placeholder="No. 12, Jalan Bunga Raya"></div>
+        <div class="fg"><label>Address Line 2</label><input id="co-addr2" type="text" placeholder="Taman Sri Indah (optional)"></div>
         <div class="form-row">
-          <div class="fg"><label>City</label><input type="text" placeholder="Kuala Lumpur"></div>
-          <div class="fg"><label>Postcode</label><input type="text" placeholder="50480"></div>
+          <div class="fg"><label>City</label><input id="co-city" type="text" placeholder="Kuala Lumpur"></div>
+          <div class="fg"><label>Postcode</label><input id="co-post" type="text" placeholder="50480"></div>
         </div>
         <div class="fg"><label>State</label>
-          <select>
+          <select id="co-state">
             <option>Kuala Lumpur</option><option>Selangor</option><option>Johor</option>
             <option>Penang</option><option>Sabah</option><option>Sarawak</option>
             <option>Perak</option><option>Kedah</option><option>Melaka</option>
           </select>
         </div>
+      </div>
+      <div class="form-section">
+        <h3 class="form-section-title">Promo Code</h3>
+        <div style="display:flex;gap:8px;align-items:center">
+          <input id="promo-input" class="fg-input" type="text" placeholder="Enter code (e.g. WELCOME10)" style="flex:1;border:1px solid var(--beige);border-radius:8px;padding:11px 14px;font-family:'Lato',sans-serif;font-size:13px;color:var(--brown);background:var(--ivory);outline:none;text-transform:uppercase">
+          <button class="btn btn-outline btn-sm" onclick="applyPromoCode()">Apply</button>
+        </div>
+        <div id="promo-status" style="font-size:12px;margin-top:6px"></div>
       </div>
       <div class="form-section">
         <h3 class="form-section-title">Payment Method</h3>
@@ -829,7 +789,7 @@ footer{padding:32px 18px 20px}
             <svg width="34" height="22" viewBox="0 0 68 44"><rect width="68" height="44" rx="5" fill="#fff" stroke="#ddd" stroke-width="1.5"/><defs><clipPath id="mcOvlp"><circle cx="28" cy="22" r="14"/></clipPath></defs><circle cx="28" cy="22" r="14" fill="#EB001B"/><circle cx="40" cy="22" r="14" fill="#F79E1B"/><circle cx="40" cy="22" r="14" fill="#FF5F00" clip-path="url(#mcOvlp)"/></svg>
           </div>
         </div>
-        <button class="btn btn-dark btn-full" style="margin-top:12px;padding:16px" onclick="goPage('success')">
+        <button class="btn btn-dark btn-full" style="margin-top:12px;padding:16px" onclick="placeOrder()">
           Place Order &amp; Pay
         </button>
         <p style="text-align:center;font-size:11px;color:var(--taupe);margin-top:12px;letter-spacing:.5px">
@@ -843,6 +803,7 @@ footer{padding:32px 18px 20px}
       <h3>Order Summary</h3>
       <div id="co-items-list"></div>
       <div class="sum-row"><span>Subtotal</span><span id="co-subtotal">RM 0</span></div>
+      <div class="sum-row" id="co-discount-row" style="display:none"><span>Discount</span><span>RM 0</span></div>
       <div class="sum-row"><span>Shipping</span><span id="co-shipping">RM 10</span></div>
       <div class="sum-row"><span>SST (8%)</span><span id="co-tax">RM 0</span></div>
       <div class="sum-total"><span>Total</span><span id="co-total">RM 0</span></div>
@@ -881,94 +842,202 @@ footer{padding:32px 18px 20px}
   </div>
 </div>
 
+<!-- ═══════════════════ LOGIN PAGE ═══════════════════ -->
+<div id="page-login" class="page">
+  <div class="login-page">
+    <div class="login-card">
+      <div class="login-logo">
+        <div class="logo-name" style="font-family:'Playfair Display',serif;font-size:30px;color:var(--brown)">Olivéa</div>
+        <div class="logo-sub" style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--taupe);margin-top:-2px">Skin Care House</div>
+      </div>
+      <h2 class="login-title">Admin Sign In</h2>
+      <p class="login-sub">Enter your password to access the dashboard.</p>
+      <div class="fg" style="margin-top:24px">
+        <label style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:7px;display:block">Password</label>
+        <input id="login-pass" type="password" placeholder="••••••••" onkeypress="if(event.key==='Enter')tryLogin()">
+      </div>
+      <p id="login-err" style="font-size:12px;color:#e57373;margin-top:8px;min-height:18px"></p>
+      <button class="btn btn-dark btn-full" style="margin-top:14px;padding:14px" onclick="tryLogin()">Sign In</button>
+      <p style="font-size:11px;color:var(--taupe);margin-top:18px;text-align:center;line-height:18px">Default password: <code style="background:var(--ivory);padding:2px 8px;border-radius:4px">olivea2026</code><br>Please change after first login.</p>
+      <p style="text-align:center;margin-top:18px"><a href="#" onclick="goPage('home');return false" style="font-size:11px;color:var(--taupe);letter-spacing:1px">← Back to website</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ADMIN DASHBOARD ═══════════════════ -->
+<div id="page-admin" class="page page-admin"></div>
+<div id="page-admin-overview" class="page page-admin"></div>
+<div id="page-admin-orders" class="page page-admin"></div>
+<div id="page-admin-products" class="page page-admin"></div>
+<div id="page-admin-promos" class="page page-admin"></div>
+<div id="page-admin-announcement" class="page page-admin"></div>
+
+<!-- Shared admin shell — inserted into whichever admin page is active -->
+<template id="admin-shell-template">
+  <div class="adm-shell">
+    <aside class="adm-sidebar">
+      <div class="adm-sidebar-logo" onclick="goPage('home')">
+        <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--brown)">Olivéa</div>
+        <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--taupe);margin-top:-2px">Admin Panel</div>
+      </div>
+      <nav class="adm-nav">
+        <div class="adm-nav-item ${'overview'===adminSection?'active':''}" data-section="overview" onclick="switchAdmin('overview')">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="3" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="12" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="16" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+          Overview
+        </div>
+        <div class="adm-nav-item ${'orders'===adminSection?'active':''}" data-section="orders" onclick="switchAdmin('orders')">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Orders
+        </div>
+        <div class="adm-nav-item ${'products'===adminSection?'active':''}" data-section="products" onclick="switchAdmin('products')">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Products
+        </div>
+        <div class="adm-nav-item ${'promos'===adminSection?'active':''}" data-section="promos" onclick="switchAdmin('promos')">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="7" y1="7" x2="7.01" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Promotions
+        </div>
+        <div class="adm-nav-item ${'announcement'===adminSection?'active':''}" data-section="announcement" onclick="switchAdmin('announcement')">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M3 11v3a4 4 0 004 4h6a4 4 0 004-4v-3M3 11V8a4 4 0 014-4h6a4 4 0 014 4v3M3 11h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Announcement
+        </div>
+      </nav>
+      <div class="adm-sidebar-footer">
+        <button class="adm-logout-btn" onclick="logout()">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Sign Out
+        </button>
+        <button class="adm-logout-btn" style="margin-top:6px;color:var(--taupe)" onclick="if(confirm('Reset all data to defaults? This will clear all orders, products, and promo codes.')){resetStore();renderAdminBody();}">
+          Reset Demo Data
+        </button>
+      </div>
+    </aside>
+    <main class="adm-main">
+      <div id="admin-body"></div>
+    </main>
+  </div>
+  <div class="adm-modal-overlay" id="adm-modal" onclick="if(event.target===this)closeAdmModal()">
+    <div class="adm-modal">
+      <button class="adm-modal-close" onclick="closeAdmModal()">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <div id="adm-modal-body"></div>
+    </div>
+  </div>
+</template>
+
 <script>
-// ── DATA ──
-const products = [
-  {
-    id:0, no:'No. 60', name:'Refreshing Cleansing Gel', price:128, category:'cleanser', brand:'maria-galland',
+// ═══════════════════ STORE — single source of truth ═══════════════════
+const STORAGE_KEY = 'olivea-store-v1';
+const ADMIN_PASS = 'olivea2026'; // default — client should change
+
+const DEFAULT_PRODUCTS = [
+  { id:0, no:'No. 60', name:'Refreshing Cleansing Gel', price:128, stock:24, category:'cleanser', brand:'maria-galland', image:'',
     bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)',
     desc:'A gentle yet effective cleansing gel that transforms on contact with water into a refreshing foam, effectively removing all impurities and makeup while maintaining the skin\'s moisture balance.',
     longDesc:'This luxurious cleansing gel is powered by a unique blend of botanical extracts and French pharmacy-grade actives. Suitable for daily use, it leaves skin feeling clean, balanced, and ready for your next skincare step.',
     ingredients:['Aqua','Glycerin','Aloe Vera Extract','Green Tea Extract','Chamomile','Panthenol','Niacinamide','Allantoin'],
-    rating:4.9, badge:'Best Seller',
-    colors:['#f0e0dc','#e6cdc8','#f8f0ee']
-  },
-  {
-    id:1, no:'No. 280', name:'Hydra Mask', price:198, category:'mask', brand:'maria-galland',
+    badge:'Best Seller', colors:['#f0e0dc','#e6cdc8','#f8f0ee'] },
+  { id:1, no:'No. 280', name:'Hydra Mask', price:198, stock:18, category:'mask', brand:'maria-galland', image:'',
     bg:'linear-gradient(145deg,#eadada,#d8c4c0)',
     desc:'An intensely hydrating mask infused with hyaluronic acid and botanical extracts. Apply, relax for 15 minutes, and reveal a visibly plumper, more radiant complexion.',
     longDesc:'Formulated with a triple-action hydration complex, this mask penetrates deep into the skin\'s layers to deliver lasting moisture. Perfect for weekly treatment or whenever your skin needs an extra boost.',
     ingredients:['Aqua','Hyaluronic Acid','Rose Hip Oil','Vitamin C','Ceramide NP','Squalane','Peptide Complex','Shea Butter'],
-    rating:4.8, badge:null,
-    colors:['#eadada','#d8c4c0','#f5ecec']
-  },
-  {
-    id:2, no:'No. 240', name:'Vital Serum', price:268, category:'serum', brand:'maria-galland',
+    badge:null, colors:['#eadada','#d8c4c0','#f5ecec'] },
+  { id:2, no:'No. 240', name:'Vital Serum', price:268, stock:3, category:'serum', brand:'maria-galland', image:'',
     bg:'linear-gradient(145deg,#e8e0f0,#d8cce8)',
     desc:'A lightweight, fast-absorbing serum enriched with peptides and antioxidants. Targets fine lines, uneven tone, and loss of firmness for a visibly revitalised complexion.',
     longDesc:'This science-backed serum is formulated with clinically proven actives at their optimal concentrations. Lightweight and non-greasy, it layers beautifully beneath your moisturiser.',
     ingredients:['Aqua','Retinol','Vitamin C','Hyaluronic Acid','Bakuchiol','Resveratrol','Copper Peptides','Ferulic Acid'],
-    rating:4.7, badge:'New',
-    colors:['#e8e0f0','#d8cce8','#f4f0f8']
-  },
-  {
-    id:3, no:'No. 541', name:"Lumin'Éclat Serum", price:298, category:'serum', brand:'maria-galland',
+    badge:'New', colors:['#e8e0f0','#d8cce8','#f4f0f8'] },
+  { id:3, no:'No. 541', name:"Lumin'Éclat Serum", price:298, stock:15, category:'serum', brand:'maria-galland', image:'',
     bg:'linear-gradient(145deg,#f0e8d8,#e0d0bc)',
     desc:'A brightening serum that targets dark spots, hyperpigmentation and dullness. Formulated with luminescent actives to restore your skin\'s natural radiance.',
     longDesc:'Olivéa\'s bestselling brightening treatment. Rich in vitamin C derivatives and botanical lightening agents, it works synergistically to deliver a visibly more even and luminous complexion within 4 weeks.',
     ingredients:['Aqua','Vitamin C Derivative','Alpha Arbutin','Niacinamide','Tranexamic Acid','Licorice Extract','Kojic Acid','Vitamin E'],
-    rating:5.0, badge:'Best Seller',
-    colors:['#f0e8d8','#e0d0bc','#f8f4ec']
-  },
-  {
-    id:4, no:'No. 391', name:'Uni Perfect SPF50', price:178, category:'moisturiser', brand:'maria-galland',
+    badge:'Best Seller', colors:['#f0e8d8','#e0d0bc','#f8f4ec'] },
+  { id:4, no:'No. 391', name:'Uni Perfect SPF50', price:178, stock:0, category:'moisturiser', brand:'maria-galland', image:'',
     bg:'linear-gradient(145deg,#dde8f0,#ccd8e8)',
     desc:'A multi-tasking daily moisturiser with broad-spectrum SPF50 protection. Lightweight gel-cream texture that hydrates, protects and primes skin for the day ahead.',
     longDesc:'Wear it alone for a natural, dewy finish or under makeup. Water-resistant formula with Zinc Oxide and chemical filters provides reliable protection without white cast.',
     ingredients:['Zinc Oxide','Titanium Dioxide','Niacinamide','Hyaluronic Acid','Vitamin E','Green Tea','Glycerin','Aloe Vera'],
-    rating:4.6, badge:null,
-    colors:['#dde8f0','#ccd8e8','#eef3f8']
-  },
-  {
-    id:5, no:'No. 100', name:'Barrier Moisturising Cream', price:218, category:'moisturiser', brand:'maria-galland',
+    badge:null, colors:['#dde8f0','#ccd8e8','#eef3f8'] },
+  { id:5, no:'No. 100', name:'Barrier Moisturising Cream', price:218, stock:12, category:'moisturiser', brand:'maria-galland', image:'',
     bg:'linear-gradient(145deg,#e8f0e4,#d4e4cc)',
     desc:'A rich, nourishing moisturiser that strengthens the skin barrier. Infused with ceramides, peptides and botanical oils to deeply nourish and protect.',
     longDesc:'The cornerstone of any complete skincare routine. This velvety cream melts effortlessly into skin, providing 24-hour hydration and visibly improving skin texture over time.',
     ingredients:['Ceramide NP','Ceramide AP','Ceramide EOP','Cholesterol','Fatty Acids','Squalane','Centella Asiatica','Panthenol'],
-    rating:4.8, badge:null,
-    colors:['#e8f0e4','#d4e4cc','#f0f5ee']
-  },
-  {
-    id:6, no:'JY-01', name:'Moisture Surge Serum', price:188, category:'serum', brand:'jyunka',
+    badge:null, colors:['#e8f0e4','#d4e4cc','#f0f5ee'] },
+  { id:6, no:'JY-01', name:'Moisture Surge Serum', price:188, stock:20, category:'serum', brand:'jyunka', image:'',
     bg:'linear-gradient(145deg,#e4f0e8,#cce0d4)',
     desc:'A deeply hydrating serum inspired by Japanese botanical wisdom. Formulated with fermented rice extract and Centella Asiatica to restore the skin\'s natural moisture barrier.',
     longDesc:'Jyunka\'s hero serum blends Japanese herbal tradition with modern biotechnology. The lightweight, silky texture absorbs instantly, leaving skin visibly plumped and radiant from within.',
     ingredients:['Fermented Rice Extract','Centella Asiatica','Hyaluronic Acid','Ceramide','Beta-Glucan','Niacinamide','Squalane','Aqua'],
-    rating:4.8, badge:'New',
-    colors:['#e4f0e8','#cce0d4','#f0f6f2']
-  },
-  {
-    id:7, no:'JY-02', name:'Soothing Botanical Mask', price:158, category:'mask', brand:'jyunka',
+    badge:'New', colors:['#e4f0e8','#cce0d4','#f0f6f2'] },
+  { id:7, no:'JY-02', name:'Soothing Botanical Mask', price:158, stock:9, category:'mask', brand:'jyunka', image:'',
     bg:'linear-gradient(145deg,#f0ece0,#e4d8c4)',
     desc:'A calming sheet-style cream mask infused with Japanese Camellia oil and Mugwort extract. Soothes sensitive, reactive skin while restoring a healthy, balanced glow.',
     longDesc:'Deeply inspired by Japanese onsen skincare rituals, this mask creates a protective veil over the skin. Ideal for weekly use on sensitive or stressed skin types.',
     ingredients:['Camellia Oil','Mugwort Extract','Aloe Vera','Ceramide','Panthenol','Green Tea','Allantoin','Aqua'],
-    rating:4.7, badge:null,
-    colors:['#f0ece0','#e4d8c4','#f8f4ec']
-  },
-  {
-    id:8, no:'JY-03', name:'Brightening Essence', price:228, category:'serum', brand:'jyunka',
+    badge:null, colors:['#f0ece0','#e4d8c4','#f8f4ec'] },
+  { id:8, no:'JY-03', name:'Brightening Essence', price:228, stock:4, category:'serum', brand:'jyunka', image:'',
     bg:'linear-gradient(145deg,#f4e8f0,#e8d4e4)',
     desc:'A lightweight brightening essence powered by Sakura extract and Tranexamic Acid. Targets uneven skin tone, dark spots, and post-blemish marks for a luminous complexion.',
     longDesc:'Jyunka\'s brightening essence draws on the Japanese concept of "透明感" — a luminous, glass-like skin appearance. Clinically tested for effectiveness on Asian skin tones.',
     ingredients:['Sakura Extract','Tranexamic Acid','Alpha Arbutin','Vitamin C','Niacinamide','Licorice Root','Hyaluronic Acid','Aqua'],
-    rating:4.9, badge:'Best Seller',
-    colors:['#f4e8f0','#e8d4e4','#faf2f8']
-  }
+    badge:'Best Seller', colors:['#f4e8f0','#e8d4e4','#faf2f8'] }
 ];
 
-// Product SVGs
+const DEFAULT_STORE = {
+  products: DEFAULT_PRODUCTS,
+  orders: [],
+  promos: [
+    { code:'WELCOME10', discount:10, active:true, uses:0 },
+    { code:'OLIVEA15', discount:15, active:true, uses:0 }
+  ],
+  announcement: 'Free shipping on orders above RM250 · Complimentary sample with every order',
+  nextProductId: 9,
+  nextOrderId: 1
+};
+
+let store = loadStore();
+function loadStore() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw) {
+      const parsed = JSON.parse(raw);
+      // Backfill missing fields from defaults
+      return {...DEFAULT_STORE, ...parsed};
+    }
+  } catch(e) { console.warn('Store load failed', e); }
+  return JSON.parse(JSON.stringify(DEFAULT_STORE));
+}
+function saveStore() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(store)); } catch(e) { console.warn('Store save failed', e); }
+}
+function resetStore() {
+  store = JSON.parse(JSON.stringify(DEFAULT_STORE));
+  saveStore();
+  refreshAll();
+}
+
+// `products` is just an alias to store.products for backwards-compat with the rest of the script
+let products = store.products;
+
+function refreshAll() {
+  products = store.products;
+  document.getElementById('info-bar-text').textContent = store.announcement;
+  if(document.getElementById('page-products').classList.contains('active')) applyFilters();
+  renderFeaturedProducts();
+}
+
+// Product image (uses uploaded image if set, else SVG illustration)
 function productSVG(p, size='md') {
+  if(p.image) {
+    const w = size==='lg'?'100%':(size==='sm'?'48px':'100%');
+    const h = size==='lg'?'100%':(size==='sm'?'48px':'100%');
+    return `<img src="${p.image}" style="width:${w};height:${h};object-fit:cover;border-radius:6px" alt="${p.name}">`;
+  }
   const cat = p.category;
   if(cat==='mask') {
     const w = size==='lg'?160:72, h = size==='lg'?120:60;
@@ -1013,23 +1082,53 @@ function showToast(msg) {
   setTimeout(()=>t.classList.remove('show'),2800);
 }
 
-// ── PAGE ROUTING ──
-function goPage(name) {
+// ── PAGE ROUTING (with browser history) ──
+function goPage(name, push=true) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('page-'+name).classList.add('active');
+  const target = document.getElementById('page-'+name);
+  if(!target) { goPage('home', push); return; }
+  target.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
-  if(name==='products') renderAllProducts();
+  if(name==='products') applyFilters();
   if(name==='checkout') renderCheckout();
   if(name==='success') renderSuccess();
+  if(name.startsWith('admin')) renderAdmin(name);
   setTimeout(updateMobileSticky, 50);
+  if(push) {
+    history.pushState({page:name}, '', '#'+name);
+  }
 }
+window.addEventListener('popstate', e => {
+  const name = (e.state && e.state.page) || (location.hash.replace('#','') || 'home');
+  goPage(name, false);
+});
 
-// ── PRODUCTS PAGE — two-tier filter (brand + category) ──
+// ── PRODUCTS PAGE — two-tier filter ──
 let filterState = { brand: 'all', category: 'all' };
+
+function pcardHTML(p) {
+  const oos = p.stock <= 0;
+  return `<div class="pcard${oos?' pcard-oos':''}" onclick="goDetail(${p.id})">
+    <div class="pcard-img" style="background:${p.bg}">
+      ${p.badge && !oos?`<span class="badge${p.badge==='New'?' badge-new':''}">${p.badge}</span>`:''}
+      ${oos?'<span class="badge" style="background:#888;left:auto;right:14px">Out of Stock</span>':''}
+      ${productSVG(p)}
+    </div>
+    <div class="pcard-body">
+      <div class="pcard-no">${p.no} · <span style="font-size:9px;letter-spacing:1px;color:var(--taupe);text-transform:uppercase">${p.brand==='jyunka'?'Jyunka':'Maria Galland'}</span></div>
+      <div class="pcard-name">${p.name}</div>
+      <div class="pcard-price">RM ${p.price}</div>
+      ${oos
+        ? `<button class="btn btn-full btn-sm" style="background:#ddd;color:#888;cursor:not-allowed" onclick="event.stopPropagation()">Out of Stock</button>`
+        : `<button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();directBuy(${p.id})">Buy Now</button>`}
+    </div>
+  </div>`;
+}
 
 function applyFilters() {
   const grid = document.getElementById('all-products-grid');
-  let list = products;
+  if(!grid) return;
+  let list = store.products;
   if(filterState.brand !== 'all') list = list.filter(p=>p.brand===filterState.brand);
   if(filterState.category !== 'all') list = list.filter(p=>p.category===filterState.category);
   if(!list.length) {
@@ -1039,24 +1138,32 @@ function applyFilters() {
     </div>`;
     return;
   }
-  grid.innerHTML = list.map(p=>`
-    <div class="pcard" onclick="goDetail(${p.id})">
-      <div class="pcard-img" style="background:${p.bg}">
-        ${p.badge?`<span class="badge${p.badge==='New'?' badge-new':''}">${p.badge}</span>`:''}
-        ${productSVG(p)}
-      </div>
-      <div class="pcard-body">
-        <div class="pcard-no">${p.no} · <span style="font-size:9px;letter-spacing:1px;color:var(--taupe);text-transform:uppercase">${p.brand==='jyunka'?'Jyunka':'Maria Galland'}</span></div>
-        <div class="pcard-name">${p.name}</div>
-        <div class="pcard-price">RM ${p.price}</div>
-        <button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();directBuy(${p.id})">Buy Now</button>
-      </div>
-    </div>`).join('');
+  grid.innerHTML = list.map(pcardHTML).join('');
 }
 
 function renderAllProducts(brandFilter='all') {
   filterState.brand = brandFilter;
   applyFilters();
+}
+
+function renderFeaturedProducts() {
+  const wrap = document.getElementById('featured-grid');
+  if(!wrap) return;
+  // Top 4 in-stock products, with priority for "Best Seller" badge
+  const inStock = store.products.filter(p=>p.stock>0);
+  const sorted = inStock.sort((a,b)=>{
+    const aBest = a.badge==='Best Seller'?1:0;
+    const bBest = b.badge==='Best Seller'?1:0;
+    return bBest - aBest;
+  });
+  wrap.innerHTML = sorted.slice(0,4).map(pcardHTML).join('');
+  // Update brand counts on homepage
+  const mgCount = store.products.filter(p=>p.brand==='maria-galland').length;
+  const jyCount = store.products.filter(p=>p.brand==='jyunka').length;
+  const mgEl = document.getElementById('count-mg');
+  const jyEl = document.getElementById('count-jy');
+  if(mgEl) mgEl.textContent = mgCount + ' Products →';
+  if(jyEl) jyEl.textContent = jyCount + ' Products →';
 }
 
 function filterProducts(brand, btn) {
@@ -1075,7 +1182,7 @@ function filterCategory(cat, btn) {
 
 function resetFilters() {
   filterState = { brand:'all', category:'all' };
-  document.querySelectorAll('.fbtn').forEach((b,i)=>{
+  document.querySelectorAll('.fbtn').forEach(b=>{
     b.classList.toggle('active', b.textContent.trim()==='All Brands' || b.textContent.trim()==='All');
   });
   applyFilters();
@@ -1099,24 +1206,31 @@ function goPageBrand(brand) {
 
 // ── DETAIL PAGE ──
 function goDetail(id) {
-  currentDetail = products[id];
+  const p = store.products.find(x=>x.id===id);
+  if(!p) return;
+  currentDetail = p;
   detailQty = 1;
-  document.getElementById('bc-product-name').textContent = currentDetail.name;
-  document.getElementById('d-no').textContent = currentDetail.no;
-  document.getElementById('d-name').textContent = currentDetail.name;
-  document.getElementById('d-price').textContent = 'RM '+currentDetail.price;
-  document.getElementById('d-desc').textContent = currentDetail.desc;
+  document.getElementById('bc-product-name').textContent = p.name;
+  document.getElementById('d-no').textContent = p.no + ' · ' + (p.brand==='jyunka'?'Jyunka':'Maria Galland');
+  document.getElementById('d-name').textContent = p.name;
+  document.getElementById('d-price').textContent = 'RM '+p.price;
+  document.getElementById('d-desc').textContent = p.desc;
   document.getElementById('d-qty').textContent = '1';
-  document.getElementById('tab-desc-text').textContent = currentDetail.longDesc;
-  // Main image
-  document.getElementById('detail-main-img').style.background = currentDetail.bg;
-  document.getElementById('detail-img-svg').innerHTML = productSVG(currentDetail,'lg');
-  // Thumbs
-  document.getElementById('detail-thumbs').innerHTML = currentDetail.colors.map((c,i)=>`
-    <div class="thumb ${i===0?'active':''}" style="background:linear-gradient(135deg,${c},${currentDetail.colors[1]})" onclick="selectThumb(this,${i})">
-    </div>`).join('');
-  // Ingredients
-  document.getElementById('ingr-list').innerHTML = currentDetail.ingredients.map(i=>`<span class="ingr-tag">${i}</span>`).join('');
+  document.getElementById('tab-desc-text').textContent = p.longDesc;
+  document.getElementById('detail-main-img').style.background = p.bg;
+  document.getElementById('detail-img-svg').innerHTML = productSVG(p,'lg');
+  document.getElementById('detail-thumbs').innerHTML = p.colors.map((c,i)=>`
+    <div class="thumb ${i===0?'active':''}" style="background:linear-gradient(135deg,${c},${p.colors[1]})" onclick="selectThumb(this,${i})"></div>`).join('');
+  document.getElementById('ingr-list').innerHTML = p.ingredients.map(i=>`<span class="ingr-tag">${i}</span>`).join('');
+  // Update Buy Now button based on stock
+  const buyBtn = document.querySelector('.detail-actions');
+  if(buyBtn) {
+    if(p.stock <= 0) {
+      buyBtn.innerHTML = '<button class="btn btn-full" style="background:#ddd;color:#888;cursor:not-allowed;flex:1;padding:15px">Out of Stock</button>';
+    } else {
+      buyBtn.innerHTML = '<button class="btn btn-dark" style="flex:1;padding:15px" onclick="buyNow()">Buy Now</button>';
+    }
+  }
   // Reset tabs
   document.querySelectorAll('.tab-btn').forEach((b,i)=>{b.classList.toggle('active',i===0)});
   document.querySelectorAll('.tab-pane').forEach((p,i)=>{p.classList.toggle('active',i===0)});
@@ -1134,15 +1248,14 @@ function changeQty(d) {
 }
 
 function buyNow() {
-  if(currentDetail) {
-    currentOrder = [{...currentDetail, qty: detailQty}];
-    goPage('checkout');
-  }
+  if(!currentDetail || currentDetail.stock <= 0) return;
+  currentOrder = [{...currentDetail, qty: detailQty}];
+  goPage('checkout');
 }
 
 function directBuy(id) {
-  const p = products[id];
-  if(!p) return;
+  const p = store.products.find(x=>x.id===id);
+  if(!p || p.stock <= 0) return;
   currentOrder = [{...p, qty: 1}];
   goPage('checkout');
 }
@@ -1155,23 +1268,101 @@ function switchTab(name, btn) {
 }
 
 // ── CHECKOUT ──
+let appliedPromo = null;
+
 function renderCheckout() {
   const order = currentOrder;
   if(!order || !order.length) return;
   const subtotal = order.reduce((s,i)=>s+i.price*i.qty,0);
-  const shipping = subtotal>=250?0:10;
-  const tax = Math.round(subtotal*0.08);
-  const total = subtotal+shipping+tax;
+  const discount = appliedPromo ? Math.round(subtotal * appliedPromo.discount / 100) : 0;
+  const afterDisc = subtotal - discount;
+  const shipping = afterDisc>=250?0:10;
+  const tax = Math.round(afterDisc*0.08);
+  const total = afterDisc+shipping+tax;
   document.getElementById('co-subtotal').textContent='RM '+subtotal;
   document.getElementById('co-shipping').textContent=shipping===0?'Free':'RM '+shipping;
   document.getElementById('co-tax').textContent='RM '+tax;
   document.getElementById('co-total').textContent='RM '+total;
+  // Discount row (if any)
+  const discRow = document.getElementById('co-discount-row');
+  if(discRow) {
+    if(discount>0) {
+      discRow.style.display='flex';
+      discRow.innerHTML = `<span style="color:#52C97A">Discount (${appliedPromo.code})</span><span style="color:#52C97A">−RM ${discount}</span>`;
+    } else {
+      discRow.style.display='none';
+    }
+  }
   document.getElementById('co-items-list').innerHTML=order.map(item=>`
     <div class="co-item-row">
       <div class="co-item-img" style="background:${item.bg}">${productSVG(item,'sm')}</div>
       <div class="co-item-name">${item.name}<br><span style="font-size:11px;color:var(--taupe)">${item.no} × ${item.qty}</span></div>
       <div class="co-item-price">RM ${item.price*item.qty}</div>
     </div>`).join('');
+}
+
+function applyPromoCode() {
+  const input = document.getElementById('promo-input');
+  const status = document.getElementById('promo-status');
+  const code = (input.value||'').trim().toUpperCase();
+  if(!code) { status.textContent=''; return; }
+  const promo = store.promos.find(p=>p.code===code && p.active);
+  if(promo) {
+    appliedPromo = promo;
+    status.innerHTML = `<span style="color:#52C97A">✓ ${promo.discount}% discount applied</span>`;
+  } else {
+    appliedPromo = null;
+    status.innerHTML = `<span style="color:#e57373">Invalid or inactive code</span>`;
+  }
+  renderCheckout();
+}
+
+function placeOrder() {
+  const order = currentOrder;
+  if(!order || !order.length) return;
+  const fname = (document.getElementById('co-fname')?.value || 'Customer').trim() || 'Customer';
+  const lname = (document.getElementById('co-lname')?.value || '').trim();
+  const email = (document.getElementById('co-email')?.value || '').trim();
+  const phone = (document.getElementById('co-phone')?.value || '').trim();
+  const addr1 = (document.getElementById('co-addr1')?.value || '').trim();
+  const addr2 = (document.getElementById('co-addr2')?.value || '').trim();
+  const city = (document.getElementById('co-city')?.value || '').trim();
+  const post = (document.getElementById('co-post')?.value || '').trim();
+  const state = (document.getElementById('co-state')?.value || '').trim();
+  const subtotal = order.reduce((s,i)=>s+i.price*i.qty,0);
+  const discount = appliedPromo ? Math.round(subtotal * appliedPromo.discount / 100) : 0;
+  const afterDisc = subtotal - discount;
+  const shipping = afterDisc>=250?0:10;
+  const tax = Math.round(afterDisc*0.08);
+  const total = afterDisc+shipping+tax;
+  const ref = 'OLV-2026-'+String(store.nextOrderId).padStart(5,'0');
+  store.nextOrderId += 1;
+  // Decrement stock for each item
+  order.forEach(item=>{
+    const p = store.products.find(x=>x.id===item.id);
+    if(p) p.stock = Math.max(0, p.stock - item.qty);
+  });
+  // Increment promo usage
+  if(appliedPromo) {
+    const sp = store.promos.find(p=>p.code===appliedPromo.code);
+    if(sp) sp.uses = (sp.uses||0) + 1;
+  }
+  // Save order
+  const newOrder = {
+    ref, status:'pending', tracking:'', createdAt:Date.now(),
+    customer:{fname,lname,email,phone,addr1,addr2,city,post,state},
+    items:order.map(i=>({id:i.id,no:i.no,name:i.name,price:i.price,qty:i.qty})),
+    subtotal, discount, promoCode:appliedPromo?appliedPromo.code:'',
+    shipping, tax, total
+  };
+  store.orders.unshift(newOrder);
+  saveStore();
+  refreshAll();
+  // Stash for success page
+  window._lastOrderRef = ref;
+  window._lastOrderTotal = total;
+  appliedPromo = null;
+  goPage('success');
 }
 
 function selectPay(el) {
@@ -1182,14 +1373,11 @@ function selectPay(el) {
 
 // ── SUCCESS ──
 function renderSuccess() {
-  const ref = 'OLV-2026-'+String(Math.floor(Math.random()*90000)+10000);
+  const ref = window._lastOrderRef || ('OLV-2026-'+String(Math.floor(Math.random()*90000)+10000));
   document.getElementById('order-ref').textContent=ref;
   const order = currentOrder;
   if(!order || !order.length) return;
-  const subtotal=order.reduce((s,i)=>s+i.price*i.qty,0);
-  const shipping=subtotal>=250?0:10;
-  const tax=Math.round(subtotal*0.08);
-  const total=subtotal+shipping+tax;
+  const total = window._lastOrderTotal || order.reduce((s,i)=>s+i.price*i.qty,0);
   document.getElementById('success-total').textContent='RM '+total;
   document.getElementById('success-items-list').innerHTML=order.map(item=>`
     <div class="success-item-row"><span>${item.name} × ${item.qty}</span><span>RM ${item.price*item.qty}</span></div>`).join('');
@@ -1273,9 +1461,545 @@ function updateMobileSticky() {
 }
 window.addEventListener('resize', updateMobileSticky);
 
-// Init
-renderAllProducts();
-renderSearchResults(products);
+// ═══════════════════ ADMIN DASHBOARD ═══════════════════
+
+function isLoggedIn() { return sessionStorage.getItem('olivea-admin') === 'yes'; }
+function setLoggedIn(v) { v ? sessionStorage.setItem('olivea-admin','yes') : sessionStorage.removeItem('olivea-admin'); }
+
+function tryLogin() {
+  const pass = document.getElementById('login-pass').value;
+  const err = document.getElementById('login-err');
+  if(pass === ADMIN_PASS) {
+    setLoggedIn(true);
+    err.textContent = '';
+    goPage('admin');
+  } else {
+    err.textContent = 'Incorrect password. Please try again.';
+    document.getElementById('login-pass').value = '';
+  }
+}
+
+function logout() {
+  setLoggedIn(false);
+  goPage('home');
+}
+
+let adminSection = 'overview';
+
+function renderAdmin(pageName) {
+  // Gate: if accessing /admin without login, redirect to login
+  if(pageName === 'admin' || pageName.startsWith('admin')) {
+    if(!isLoggedIn()) {
+      goPage('login', false);
+      return;
+    }
+  }
+  if(pageName === 'admin') adminSection = 'overview';
+  else if(pageName.startsWith('admin-')) adminSection = pageName.replace('admin-','');
+  renderAdminBody();
+}
+
+function switchAdmin(section) {
+  adminSection = section;
+  renderAdminBody();
+  history.pushState({page:'admin-'+section}, '', '#admin-'+section);
+}
+
+function renderAdminBody() {
+  // Sidebar active state
+  document.querySelectorAll('.admin-nav-item').forEach(el=>{
+    el.classList.toggle('active', el.dataset.section === adminSection);
+  });
+  const body = document.getElementById('admin-body');
+  if(adminSection === 'overview') body.innerHTML = renderAdminOverview();
+  else if(adminSection === 'orders') body.innerHTML = renderAdminOrders();
+  else if(adminSection === 'products') body.innerHTML = renderAdminProducts();
+  else if(adminSection === 'promos') body.innerHTML = renderAdminPromos();
+  else if(adminSection === 'announcement') body.innerHTML = renderAdminAnnouncement();
+}
+
+// ── Overview ──
+function renderAdminOverview() {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const todayMs = today.getTime();
+  const monthStart = new Date(today.getFullYear(), today.getMonth(), 1).getTime();
+  const todayOrders = store.orders.filter(o => o.createdAt >= todayMs);
+  const monthOrders = store.orders.filter(o => o.createdAt >= monthStart);
+  const todayRev = todayOrders.reduce((s,o)=>s+o.total,0);
+  const monthRev = monthOrders.reduce((s,o)=>s+o.total,0);
+  const lowStock = store.products.filter(p=>p.stock<=5);
+  // Best sellers: count units across all orders
+  const counts = {};
+  store.orders.forEach(o=>o.items.forEach(it=>{counts[it.id]=(counts[it.id]||0)+it.qty}));
+  const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([id,qty])=>{
+    const p = store.products.find(x=>x.id==id);
+    return p ? {p,qty} : null;
+  }).filter(Boolean);
+  return `
+    <h1 class="adm-title">Overview</h1>
+    <p class="adm-sub">Welcome back. Here's what's happening today.</p>
+    <div class="adm-stats">
+      <div class="adm-stat-card">
+        <div class="adm-stat-label">Today's Orders</div>
+        <div class="adm-stat-value">${todayOrders.length}</div>
+        <div class="adm-stat-sub">RM ${todayRev}</div>
+      </div>
+      <div class="adm-stat-card">
+        <div class="adm-stat-label">This Month Revenue</div>
+        <div class="adm-stat-value">RM ${monthRev}</div>
+        <div class="adm-stat-sub">${monthOrders.length} orders</div>
+      </div>
+      <div class="adm-stat-card">
+        <div class="adm-stat-label">Total Products</div>
+        <div class="adm-stat-value">${store.products.length}</div>
+        <div class="adm-stat-sub">${store.products.filter(p=>p.stock>0).length} in stock</div>
+      </div>
+      <div class="adm-stat-card ${lowStock.length?'adm-stat-warn':''}">
+        <div class="adm-stat-label">Low Stock Alert</div>
+        <div class="adm-stat-value">${lowStock.length}</div>
+        <div class="adm-stat-sub">${lowStock.length ? 'needs attention' : 'all good'}</div>
+      </div>
+    </div>
+    <div class="adm-grid-2">
+      <div class="adm-panel">
+        <h3 class="adm-panel-title">Top Selling Products</h3>
+        ${top.length === 0 ? '<p class="adm-empty">No orders yet — your bestsellers will appear here.</p>' : top.map(t=>`
+          <div class="adm-row">
+            <div style="flex:1">
+              <div style="font-weight:500">${t.p.name}</div>
+              <div style="font-size:11px;color:var(--taupe)">${t.p.no} · ${t.p.brand==='jyunka'?'Jyunka':'Maria Galland'}</div>
+            </div>
+            <div style="font-weight:700;color:var(--rose)">${t.qty} sold</div>
+          </div>`).join('')}
+      </div>
+      <div class="adm-panel">
+        <h3 class="adm-panel-title">Low Stock Items</h3>
+        ${lowStock.length === 0 ? '<p class="adm-empty">All products are well stocked. ✓</p>' : lowStock.map(p=>`
+          <div class="adm-row">
+            <div style="flex:1">
+              <div style="font-weight:500">${p.name}</div>
+              <div style="font-size:11px;color:var(--taupe)">${p.no}</div>
+            </div>
+            <div style="font-weight:700;color:${p.stock===0?'#e57373':'#e8a957'}">${p.stock===0?'Out':p.stock+' left'}</div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+// ── Orders ──
+let adminOrderFilter = 'all';
+function renderAdminOrders() {
+  return `
+    <h1 class="adm-title">Orders</h1>
+    <div class="adm-filter-row">
+      <button class="adm-filter ${adminOrderFilter==='all'?'active':''}" onclick="filterOrders('all')">All (${store.orders.length})</button>
+      <button class="adm-filter ${adminOrderFilter==='pending'?'active':''}" onclick="filterOrders('pending')">Pending (${store.orders.filter(o=>o.status==='pending').length})</button>
+      <button class="adm-filter ${adminOrderFilter==='shipped'?'active':''}" onclick="filterOrders('shipped')">Shipped (${store.orders.filter(o=>o.status==='shipped').length})</button>
+      <button class="adm-filter ${adminOrderFilter==='completed'?'active':''}" onclick="filterOrders('completed')">Completed (${store.orders.filter(o=>o.status==='completed').length})</button>
+    </div>
+    <div class="adm-panel" style="padding:0">
+    ${renderOrderTable()}
+    </div>`;
+}
+
+function renderOrderTable() {
+  const list = adminOrderFilter==='all' ? store.orders : store.orders.filter(o=>o.status===adminOrderFilter);
+  if(!list.length) return '<p class="adm-empty" style="padding:32px">No orders in this view.</p>';
+  return `<table class="adm-table">
+    <thead><tr><th>Order Ref</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+    <tbody>
+      ${list.map(o=>`<tr>
+        <td><strong>${o.ref}</strong></td>
+        <td>${o.customer.fname} ${o.customer.lname||''}<br><span style="font-size:11px;color:var(--taupe)">${o.customer.phone||'—'}</span></td>
+        <td>${o.items.reduce((s,i)=>s+i.qty,0)} items</td>
+        <td><strong>RM ${o.total}</strong></td>
+        <td><span class="adm-badge adm-badge-${o.status}">${o.status}</span></td>
+        <td style="font-size:12px;color:var(--taupe)">${new Date(o.createdAt).toLocaleDateString('en-MY',{day:'numeric',month:'short',year:'numeric'})}</td>
+        <td><button class="adm-btn-sm" onclick="openOrder('${o.ref}')">View</button></td>
+      </tr>`).join('')}
+    </tbody>
+  </table>`;
+}
+
+function filterOrders(f) { adminOrderFilter = f; renderAdminBody(); }
+
+function openOrder(ref) {
+  const o = store.orders.find(x=>x.ref===ref);
+  if(!o) return;
+  const modal = document.getElementById('adm-modal');
+  document.getElementById('adm-modal-body').innerHTML = `
+    <h2 style="font-family:'Playfair Display',serif;margin-bottom:4px">${o.ref}</h2>
+    <p style="color:var(--taupe);font-size:13px;margin-bottom:20px">Placed ${new Date(o.createdAt).toLocaleString('en-MY')}</p>
+    <div class="adm-grid-2" style="gap:24px">
+      <div>
+        <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:8px">Customer</h4>
+        <p style="font-size:13px;line-height:22px">
+          ${o.customer.fname} ${o.customer.lname||''}<br>
+          ${o.customer.email||'—'}<br>
+          ${o.customer.phone||'—'}<br><br>
+          ${o.customer.addr1||''}${o.customer.addr2?', '+o.customer.addr2:''}<br>
+          ${o.customer.city||''} ${o.customer.post||''}<br>
+          ${o.customer.state||''}
+        </p>
+      </div>
+      <div>
+        <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:8px">Status</h4>
+        <select id="ord-status" class="adm-input" style="margin-bottom:14px">
+          <option value="pending" ${o.status==='pending'?'selected':''}>Pending</option>
+          <option value="shipped" ${o.status==='shipped'?'selected':''}>Shipped</option>
+          <option value="completed" ${o.status==='completed'?'selected':''}>Completed</option>
+          <option value="cancelled" ${o.status==='cancelled'?'selected':''}>Cancelled</option>
+        </select>
+        <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:8px">Tracking Number</h4>
+        <input id="ord-tracking" class="adm-input" type="text" placeholder="e.g. EC123456789MY" value="${o.tracking||''}">
+      </div>
+    </div>
+    <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin:24px 0 12px">Items</h4>
+    <table class="adm-table">
+      <tbody>
+      ${o.items.map(it=>`<tr>
+        <td>${it.name}<br><span style="font-size:11px;color:var(--taupe)">${it.no}</span></td>
+        <td>× ${it.qty}</td>
+        <td><strong>RM ${it.price*it.qty}</strong></td>
+      </tr>`).join('')}
+      </tbody>
+    </table>
+    <div style="border-top:1px solid var(--beige);padding-top:14px;margin-top:14px;font-size:13px">
+      <div style="display:flex;justify-content:space-between;padding:4px 0"><span>Subtotal</span><span>RM ${o.subtotal}</span></div>
+      ${o.discount?`<div style="display:flex;justify-content:space-between;padding:4px 0;color:#52C97A"><span>Discount (${o.promoCode})</span><span>−RM ${o.discount}</span></div>`:''}
+      <div style="display:flex;justify-content:space-between;padding:4px 0"><span>Shipping</span><span>RM ${o.shipping}</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0"><span>SST</span><span>RM ${o.tax}</span></div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;font-weight:700;font-size:16px;border-top:1px solid var(--beige);margin-top:8px"><span>Total</span><span>RM ${o.total}</span></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:24px">
+      <button class="btn btn-dark" onclick="saveOrderEdits('${o.ref}')">Save Changes</button>
+      <button class="btn btn-outline" onclick="printShippingLabel('${o.ref}')">Print Shipping Label</button>
+      <button class="btn btn-outline" style="margin-left:auto" onclick="closeAdmModal()">Close</button>
+    </div>`;
+  modal.classList.add('open');
+}
+
+function saveOrderEdits(ref) {
+  const o = store.orders.find(x=>x.ref===ref);
+  if(!o) return;
+  o.status = document.getElementById('ord-status').value;
+  o.tracking = document.getElementById('ord-tracking').value.trim();
+  saveStore();
+  closeAdmModal();
+  renderAdminBody();
+  showToast('Order updated');
+}
+
+function printShippingLabel(ref) {
+  const o = store.orders.find(x=>x.ref===ref);
+  if(!o) return;
+  const w = window.open('', '_blank', 'width=600,height=800');
+  w.document.write(`<!DOCTYPE html><html><head><title>${o.ref} - Shipping Label</title>
+    <style>
+      body{font-family:Arial,sans-serif;padding:40px;color:#333}
+      .label{border:2px solid #333;padding:24px;max-width:500px}
+      h1{font-size:18px;margin-bottom:4px}
+      h2{font-size:14px;margin-top:20px;border-bottom:1px solid #ccc;padding-bottom:4px}
+      .from{font-size:12px;color:#666;margin-bottom:14px}
+      .to{font-size:14px;line-height:22px}
+      table{width:100%;border-collapse:collapse;margin-top:12px;font-size:12px}
+      td,th{border:1px solid #ccc;padding:6px;text-align:left}
+      .ref{font-size:20px;font-weight:bold;letter-spacing:1px}
+      .track{background:#fffbe6;padding:8px;border:1px dashed #ccc;margin-top:12px;font-size:12px}
+    </style></head><body>
+    <div class="label">
+      <h1>OLIVÉA SKIN CARE HOUSE</h1>
+      <p style="font-size:11px;color:#666">SSM: CT0161902-X</p>
+      <p class="ref" style="margin-top:14px">${o.ref}</p>
+      <p style="font-size:11px;color:#666">${new Date(o.createdAt).toLocaleString('en-MY')}</p>
+      <h2>Ship To</h2>
+      <p class="to">
+        <strong>${o.customer.fname} ${o.customer.lname||''}</strong><br>
+        ${o.customer.addr1||''}${o.customer.addr2?', '+o.customer.addr2:''}<br>
+        ${o.customer.city||''} ${o.customer.post||''}<br>
+        ${o.customer.state||''}<br>
+        ${o.customer.phone||''}
+      </p>
+      <h2>Items</h2>
+      <table><thead><tr><th>Product</th><th>Qty</th></tr></thead><tbody>
+        ${o.items.map(i=>`<tr><td>${i.name} (${i.no})</td><td>${i.qty}</td></tr>`).join('')}
+      </tbody></table>
+      ${o.tracking?`<div class="track"><strong>Tracking:</strong> ${o.tracking}</div>`:''}
+      <p style="text-align:center;margin-top:20px;font-size:11px;color:#999">olivea.com.my</p>
+    </div>
+    <script>window.print();<\/script>
+    </body></html>`);
+  w.document.close();
+}
+
+// ── Products ──
+function renderAdminProducts() {
+  return `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <h1 class="adm-title" style="margin-bottom:0">Products</h1>
+      <button class="btn btn-dark" onclick="openProductEditor()">+ Add Product</button>
+    </div>
+    <div class="adm-panel" style="padding:0">
+      <table class="adm-table">
+        <thead><tr><th>Product</th><th>Brand</th><th>Category</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead>
+        <tbody>
+        ${store.products.map(p=>`<tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:40px;height:40px;border-radius:6px;background:${p.bg};display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">${productSVG(p,'sm')}</div>
+              <div><strong>${p.name}</strong><br><span style="font-size:11px;color:var(--taupe)">${p.no}</span></div>
+            </div>
+          </td>
+          <td>${p.brand==='jyunka'?'Jyunka':'Maria Galland'}</td>
+          <td style="text-transform:capitalize">${p.category}</td>
+          <td><strong>RM ${p.price}</strong></td>
+          <td><span style="color:${p.stock===0?'#e57373':p.stock<=5?'#e8a957':'var(--brown)'}">${p.stock}</span></td>
+          <td>
+            <button class="adm-btn-sm" onclick="openProductEditor(${p.id})">Edit</button>
+            <button class="adm-btn-sm adm-btn-danger" onclick="deleteProduct(${p.id})">Delete</button>
+          </td>
+        </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+function openProductEditor(id) {
+  const p = id != null ? store.products.find(x=>x.id===id) : {
+    id: store.nextProductId, no:'', name:'', price:0, stock:0, category:'serum', brand:'maria-galland', image:'',
+    bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)', desc:'', longDesc:'', ingredients:[], badge:null, colors:['#f0e0dc','#e6cdc8','#f8f0ee']
+  };
+  const isNew = id == null;
+  const modal = document.getElementById('adm-modal');
+  document.getElementById('adm-modal-body').innerHTML = `
+    <h2 style="font-family:'Playfair Display',serif;margin-bottom:18px">${isNew?'Add Product':'Edit Product'}</h2>
+    <div class="adm-grid-2">
+      <div class="fg"><label class="adm-label">Product Code</label><input id="ed-no" class="adm-input" type="text" value="${p.no}" placeholder="No. 60 or JY-04"></div>
+      <div class="fg"><label class="adm-label">Brand</label>
+        <select id="ed-brand" class="adm-input">
+          <option value="maria-galland" ${p.brand==='maria-galland'?'selected':''}>Maria Galland</option>
+          <option value="jyunka" ${p.brand==='jyunka'?'selected':''}>Jyunka</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg"><label class="adm-label">Product Name</label><input id="ed-name" class="adm-input" type="text" value="${p.name}"></div>
+    <div class="adm-grid-2">
+      <div class="fg"><label class="adm-label">Category</label>
+        <select id="ed-category" class="adm-input">
+          <option value="cleanser" ${p.category==='cleanser'?'selected':''}>Cleanser</option>
+          <option value="serum" ${p.category==='serum'?'selected':''}>Serum</option>
+          <option value="mask" ${p.category==='mask'?'selected':''}>Mask</option>
+          <option value="moisturiser" ${p.category==='moisturiser'?'selected':''}>Moisturiser</option>
+        </select>
+      </div>
+      <div class="fg"><label class="adm-label">Badge</label>
+        <select id="ed-badge" class="adm-input">
+          <option value="">None</option>
+          <option value="Best Seller" ${p.badge==='Best Seller'?'selected':''}>Best Seller</option>
+          <option value="New" ${p.badge==='New'?'selected':''}>New</option>
+        </select>
+      </div>
+    </div>
+    <div class="adm-grid-2">
+      <div class="fg"><label class="adm-label">Price (RM)</label><input id="ed-price" class="adm-input" type="number" value="${p.price}" min="0"></div>
+      <div class="fg"><label class="adm-label">Stock</label><input id="ed-stock" class="adm-input" type="number" value="${p.stock}" min="0"></div>
+    </div>
+    <div class="fg"><label class="adm-label">Short Description</label><textarea id="ed-desc" class="adm-input" rows="2">${p.desc}</textarea></div>
+    <div class="fg"><label class="adm-label">Long Description</label><textarea id="ed-longdesc" class="adm-input" rows="3">${p.longDesc}</textarea></div>
+    <div class="fg"><label class="adm-label">Ingredients (comma separated)</label><input id="ed-ingr" class="adm-input" type="text" value="${(p.ingredients||[]).join(', ')}"></div>
+    <div class="fg"><label class="adm-label">Product Image (optional)</label>
+      <div style="display:flex;gap:10px;align-items:center">
+        <div id="ed-img-preview" style="width:60px;height:60px;border-radius:8px;background:${p.bg};display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">${p.image?`<img src="${p.image}" style="width:100%;height:100%;object-fit:cover">`:productSVG(p,'sm')}</div>
+        <input type="file" accept="image/*" onchange="handleImageUpload(this,'${p.id}')" style="font-size:12px">
+        <button class="adm-btn-sm" onclick="clearProductImage(${p.id})">Use Default</button>
+      </div>
+      <p style="font-size:11px;color:var(--taupe);margin-top:6px">If no image is uploaded, a styled placeholder is used.</p>
+    </div>
+    <input type="hidden" id="ed-id" value="${p.id}">
+    <input type="hidden" id="ed-isnew" value="${isNew?'1':'0'}">
+    <input type="hidden" id="ed-image" value="${p.image||''}">
+    <div style="display:flex;gap:10px;margin-top:24px">
+      <button class="btn btn-dark" onclick="saveProduct()">${isNew?'Add Product':'Save Changes'}</button>
+      <button class="btn btn-outline" onclick="closeAdmModal()" style="margin-left:auto">Cancel</button>
+    </div>`;
+  modal.classList.add('open');
+}
+
+function handleImageUpload(input, pid) {
+  const file = input.files && input.files[0];
+  if(!file) return;
+  if(file.size > 600*1024) { alert('Image too large. Please use an image under 600KB.'); return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('ed-image').value = e.target.result;
+    document.getElementById('ed-img-preview').innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover">`;
+  };
+  reader.readAsDataURL(file);
+}
+
+function clearProductImage(pid) {
+  document.getElementById('ed-image').value = '';
+  const p = store.products.find(x=>x.id===pid) || {bg:'#eee',colors:['#eee','#ddd','#fff'],category:'serum',no:''};
+  document.getElementById('ed-img-preview').innerHTML = productSVG(p,'sm');
+}
+
+function saveProduct() {
+  const isNew = document.getElementById('ed-isnew').value === '1';
+  const id = parseInt(document.getElementById('ed-id').value);
+  const data = {
+    no: document.getElementById('ed-no').value.trim(),
+    name: document.getElementById('ed-name').value.trim(),
+    brand: document.getElementById('ed-brand').value,
+    category: document.getElementById('ed-category').value,
+    badge: document.getElementById('ed-badge').value || null,
+    price: parseFloat(document.getElementById('ed-price').value) || 0,
+    stock: parseInt(document.getElementById('ed-stock').value) || 0,
+    desc: document.getElementById('ed-desc').value.trim(),
+    longDesc: document.getElementById('ed-longdesc').value.trim(),
+    ingredients: document.getElementById('ed-ingr').value.split(',').map(s=>s.trim()).filter(Boolean),
+    image: document.getElementById('ed-image').value
+  };
+  if(!data.no || !data.name) { alert('Product code and name are required.'); return; }
+  if(isNew) {
+    const palettes = [
+      {bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)',colors:['#f0e0dc','#e6cdc8','#f8f0ee']},
+      {bg:'linear-gradient(145deg,#e4f0e8,#cce0d4)',colors:['#e4f0e8','#cce0d4','#f0f6f2']},
+      {bg:'linear-gradient(145deg,#f4e8f0,#e8d4e4)',colors:['#f4e8f0','#e8d4e4','#faf2f8']},
+      {bg:'linear-gradient(145deg,#dde8f0,#ccd8e8)',colors:['#dde8f0','#ccd8e8','#eef3f8']}
+    ];
+    const palette = palettes[Math.floor(Math.random()*palettes.length)];
+    const newP = { id: store.nextProductId, ...data, ...palette };
+    store.products.push(newP);
+    store.nextProductId += 1;
+  } else {
+    const p = store.products.find(x=>x.id===id);
+    if(p) Object.assign(p, data);
+  }
+  saveStore();
+  refreshAll();
+  closeAdmModal();
+  renderAdminBody();
+  showToast(isNew?'Product added':'Product saved');
+}
+
+function deleteProduct(id) {
+  if(!confirm('Delete this product? This cannot be undone.')) return;
+  store.products = store.products.filter(p=>p.id!==id);
+  saveStore();
+  refreshAll();
+  renderAdminBody();
+  showToast('Product deleted');
+}
+
+// ── Promotions ──
+function renderAdminPromos() {
+  return `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <h1 class="adm-title" style="margin-bottom:0">Promotions</h1>
+      <button class="btn btn-dark" onclick="openPromoEditor()">+ Add Promo Code</button>
+    </div>
+    <div class="adm-panel" style="padding:0">
+      <table class="adm-table">
+        <thead><tr><th>Code</th><th>Discount</th><th>Status</th><th>Times Used</th><th>Actions</th></tr></thead>
+        <tbody>
+        ${store.promos.length === 0 ? '<tr><td colspan="5" style="text-align:center;padding:32px;color:var(--taupe)">No promo codes yet.</td></tr>' :
+        store.promos.map((pr,idx)=>`<tr>
+          <td><strong style="font-family:monospace;letter-spacing:1px">${pr.code}</strong></td>
+          <td><strong style="color:var(--rose)">${pr.discount}%</strong></td>
+          <td><span class="adm-badge ${pr.active?'adm-badge-shipped':'adm-badge-cancelled'}">${pr.active?'Active':'Inactive'}</span></td>
+          <td>${pr.uses||0}</td>
+          <td>
+            <button class="adm-btn-sm" onclick="togglePromo(${idx})">${pr.active?'Disable':'Enable'}</button>
+            <button class="adm-btn-sm adm-btn-danger" onclick="deletePromo(${idx})">Delete</button>
+          </td>
+        </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+function openPromoEditor() {
+  const modal = document.getElementById('adm-modal');
+  document.getElementById('adm-modal-body').innerHTML = `
+    <h2 style="font-family:'Playfair Display',serif;margin-bottom:18px">Add Promo Code</h2>
+    <div class="fg"><label class="adm-label">Code (uppercase, no spaces)</label>
+      <input id="pr-code" class="adm-input" type="text" placeholder="e.g. SAVE20" style="text-transform:uppercase;font-family:monospace">
+    </div>
+    <div class="fg"><label class="adm-label">Discount Percentage</label>
+      <input id="pr-disc" class="adm-input" type="number" min="1" max="99" value="10">
+    </div>
+    <p style="font-size:12px;color:var(--taupe)">Customer enters this code at checkout to receive the discount on subtotal.</p>
+    <div style="display:flex;gap:10px;margin-top:24px">
+      <button class="btn btn-dark" onclick="savePromo()">Add Code</button>
+      <button class="btn btn-outline" onclick="closeAdmModal()" style="margin-left:auto">Cancel</button>
+    </div>`;
+  modal.classList.add('open');
+}
+
+function savePromo() {
+  const code = document.getElementById('pr-code').value.trim().toUpperCase().replace(/\s/g,'');
+  const disc = parseInt(document.getElementById('pr-disc').value);
+  if(!code || disc<1 || disc>99) { alert('Invalid code or discount.'); return; }
+  if(store.promos.find(p=>p.code===code)) { alert('Code already exists.'); return; }
+  store.promos.push({ code, discount:disc, active:true, uses:0 });
+  saveStore();
+  closeAdmModal();
+  renderAdminBody();
+  showToast('Promo code added');
+}
+
+function togglePromo(idx) {
+  store.promos[idx].active = !store.promos[idx].active;
+  saveStore();
+  renderAdminBody();
+}
+
+function deletePromo(idx) {
+  if(!confirm('Delete this promo code?')) return;
+  store.promos.splice(idx,1);
+  saveStore();
+  renderAdminBody();
+}
+
+// ── Announcement ──
+function renderAdminAnnouncement() {
+  return `
+    <h1 class="adm-title">Announcement Bar</h1>
+    <p class="adm-sub">Edit the message that shows at the top of every page.</p>
+    <div class="adm-panel">
+      <div class="fg"><label class="adm-label">Announcement Text</label>
+        <textarea id="ann-text" class="adm-input" rows="3">${store.announcement}</textarea>
+      </div>
+      <button class="btn btn-dark" onclick="saveAnnouncement()">Save Changes</button>
+      <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin:24px 0 10px">Preview</h4>
+      <div class="info-bar" style="border-radius:8px">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span id="ann-preview">${store.announcement}</span>
+      </div>
+    </div>`;
+}
+
+function saveAnnouncement() {
+  store.announcement = document.getElementById('ann-text').value.trim() || 'Welcome to Olivéa Skin Care House';
+  saveStore();
+  refreshAll();
+  document.getElementById('ann-preview').textContent = store.announcement;
+  showToast('Announcement updated');
+}
+
+function closeAdmModal() {
+  document.getElementById('adm-modal').classList.remove('open');
+}
+
+// ═══════════════════ INIT ═══════════════════
+function init() {
+  refreshAll();
+  // Determine starting page from hash
+  const hash = location.hash.replace('#','');
+  if(hash) goPage(hash, false);
+  else goPage('home', false);
+}
+init();
 </script>
 
 <!-- MOBILE DRAWER -->
