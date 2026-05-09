@@ -407,6 +407,111 @@ footer{padding:32px 18px 20px}
 .search-input{font-size:17px}
 }
 
+/* ═══════════════════ ADMIN DASHBOARD ═══════════════════ */
+body.admin-mode > nav,
+body.admin-mode > .info-bar,
+body.admin-mode > .mobile-sticky,
+body.admin-mode > .drawer,
+body.admin-mode > .drawer-overlay,
+body.admin-mode > .search-overlay { display:none !important; }
+body.admin-mode { overflow-x:hidden; }
+
+.adm-shell { display:grid; grid-template-columns:240px 1fr; min-height:100vh; background:#f6f3f0; }
+.adm-sidebar { background:var(--white); border-right:1px solid var(--beige); display:flex; flex-direction:column; position:sticky; top:0; height:100vh; overflow-y:auto; }
+.adm-sidebar-logo { padding:24px 22px; border-bottom:1px solid var(--beige); cursor:pointer; }
+.adm-nav { padding:14px 12px; flex:1; }
+.adm-nav-item { display:flex; align-items:center; gap:11px; padding:11px 14px; border-radius:8px; font-size:13px; color:var(--brown); cursor:pointer; margin-bottom:3px; transition:background .15s; letter-spacing:.3px; }
+.adm-nav-item:hover { background:var(--ivory); }
+.adm-nav-item.active { background:var(--brown); color:#fff; }
+.adm-sidebar-footer { padding:16px; border-top:1px solid var(--beige); }
+.adm-logout-btn { width:100%; display:flex; align-items:center; justify-content:center; gap:8px; padding:10px; background:none; border:1px solid var(--beige); border-radius:8px; color:var(--brown); font-size:12px; letter-spacing:1px; cursor:pointer; font-family:'Lato',sans-serif; transition:all .2s; }
+.adm-logout-btn:hover { background:var(--ivory); }
+
+.adm-main { padding:36px 44px; width:100%; max-width:1200px; }
+.adm-title { font-family:'Playfair Display',serif; font-size:30px; color:var(--brown); margin-bottom:6px; font-weight:500; }
+.adm-sub { font-size:13px; color:var(--taupe); margin-bottom:28px; }
+
+.adm-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:28px; }
+.adm-stat-card { background:var(--white); border-radius:14px; padding:22px; box-shadow:var(--sh-sm); border:1px solid var(--beige); }
+.adm-stat-card.adm-stat-warn { border-color:#e8a957; background:#fff8ef; }
+.adm-stat-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); margin-bottom:8px; }
+.adm-stat-value { font-family:'Playfair Display',serif; font-size:30px; color:var(--brown); font-weight:500; line-height:1.1; }
+.adm-stat-sub { font-size:12px; color:var(--taupe); margin-top:4px; }
+
+.adm-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.adm-panel { background:var(--white); border-radius:14px; padding:24px; border:1px solid var(--beige); box-shadow:var(--sh-sm); }
+.adm-panel-title { font-family:'Playfair Display',serif; font-size:18px; color:var(--brown); margin-bottom:14px; font-weight:500; }
+.adm-row { display:flex; align-items:center; gap:12px; padding:11px 0; border-bottom:1px solid var(--beige); font-size:13px; }
+.adm-row:last-child { border-bottom:none; }
+.adm-empty { font-size:13px; color:var(--taupe); padding:14px 0; }
+
+.adm-filter-row { display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap; }
+.adm-filter { background:var(--white); border:1px solid var(--beige); padding:8px 16px; border-radius:20px; font-size:11px; letter-spacing:1px; text-transform:uppercase; cursor:pointer; color:var(--taupe); font-family:'Lato',sans-serif; }
+.adm-filter.active { background:var(--brown); color:#fff; border-color:var(--brown); }
+
+.adm-table { width:100%; border-collapse:collapse; font-size:13px; }
+.adm-table th { background:var(--ivory); text-align:left; padding:13px 18px; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); font-weight:400; border-bottom:1px solid var(--beige); }
+.adm-table td { padding:14px 18px; border-bottom:1px solid var(--beige); vertical-align:middle; }
+.adm-table tr:last-child td { border-bottom:none; }
+.adm-table tr:hover { background:var(--ivory); }
+
+.adm-badge { display:inline-block; padding:3px 10px; border-radius:4px; font-size:10px; letter-spacing:1px; text-transform:uppercase; font-weight:500; }
+.adm-badge-pending { background:#fff4e0; color:#b07820; }
+.adm-badge-shipped { background:#e0f0ff; color:#1a6dac; }
+.adm-badge-completed { background:#e0f5e8; color:#2a8a4a; }
+.adm-badge-cancelled { background:#f5e0e0; color:#a64040; }
+
+.adm-btn-sm { background:var(--white); border:1px solid var(--beige); padding:6px 12px; border-radius:6px; font-size:11px; letter-spacing:.5px; cursor:pointer; color:var(--brown); font-family:'Lato',sans-serif; margin-right:4px; transition:all .15s; }
+.adm-btn-sm:hover { background:var(--brown); color:#fff; border-color:var(--brown); }
+.adm-btn-danger { color:#a64040; }
+.adm-btn-danger:hover { background:#a64040; color:#fff; border-color:#a64040; }
+
+.adm-input { border:1px solid var(--beige); border-radius:8px; padding:11px 14px; font-family:'Lato',sans-serif; font-size:13px; color:var(--brown); background:var(--ivory); outline:none; width:100%; transition:border-color .2s; }
+.adm-input:focus { border-color:var(--rose); }
+.adm-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); margin-bottom:7px; display:block; }
+
+.adm-modal-overlay { position:fixed; inset:0; background:rgba(50,38,34,.55); z-index:700; opacity:0; pointer-events:none; transition:opacity .25s; backdrop-filter:blur(3px); display:flex; align-items:flex-start; justify-content:center; padding:50px 20px; overflow-y:auto; }
+.adm-modal-overlay.open { opacity:1; pointer-events:all; }
+.adm-modal { background:var(--white); border-radius:16px; padding:32px; max-width:680px; width:100%; position:relative; box-shadow:var(--sh-lg); }
+.adm-modal-close { position:absolute; top:16px; right:16px; background:none; border:none; color:var(--taupe); cursor:pointer; padding:6px; border-radius:6px; transition:background .15s; }
+.adm-modal-close:hover { background:var(--ivory); }
+
+/* Login page */
+.login-page-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px 20px; background:linear-gradient(135deg,#f9f2ef,#f2e6e1); }
+.login-card { background:var(--white); border-radius:20px; padding:48px 40px; max-width:420px; width:100%; box-shadow:var(--sh-lg); }
+.login-logo { text-align:center; margin-bottom:32px; }
+.login-title { font-family:'Playfair Display',serif; font-size:26px; color:var(--brown); text-align:center; margin-bottom:6px; font-weight:500; }
+.login-sub { font-size:13px; color:var(--taupe); text-align:center; }
+.login-card input { width:100%; border:1px solid var(--beige); border-radius:8px; padding:13px 14px; font-family:'Lato',sans-serif; font-size:14px; color:var(--brown); background:var(--ivory); outline:none; }
+.login-card input:focus { border-color:var(--rose); }
+
+/* Out-of-stock card dimming */
+.pcard-oos { opacity:.7; }
+.pcard-oos:hover { transform:none; box-shadow:var(--sh-sm); }
+
+/* Admin responsive */
+@media(max-width:900px) {
+  .adm-shell { grid-template-columns:1fr; }
+  .adm-sidebar { position:relative; height:auto; flex-direction:row; align-items:center; border-right:none; border-bottom:1px solid var(--beige); }
+  .adm-sidebar-logo { padding:14px 18px; border-bottom:none; border-right:1px solid var(--beige); flex-shrink:0; }
+  .adm-nav { display:flex; padding:10px; overflow-x:auto; gap:4px; flex:1; scrollbar-width:none; }
+  .adm-nav::-webkit-scrollbar { display:none; }
+  .adm-nav-item { flex-shrink:0; padding:8px 12px; font-size:11px; letter-spacing:.3px; }
+  .adm-sidebar-footer { padding:10px; border-top:none; border-left:1px solid var(--beige); display:flex; flex-shrink:0; }
+  .adm-sidebar-footer .adm-logout-btn { width:auto; padding:7px 12px; font-size:10px; margin:0 4px 0 0; }
+  .adm-sidebar-footer .adm-logout-btn + .adm-logout-btn { display:none; }
+  .adm-main { padding:20px 16px; }
+  .adm-title { font-size:22px; }
+  .adm-stats { grid-template-columns:1fr 1fr; gap:10px; }
+  .adm-stat-card { padding:14px; }
+  .adm-stat-value { font-size:22px; }
+  .adm-grid-2 { grid-template-columns:1fr; gap:14px; }
+  .adm-panel { padding:16px; }
+  .adm-table { font-size:11.5px; }
+  .adm-table th, .adm-table td { padding:8px 10px; }
+  .adm-modal { padding:22px 18px; }
+}
+
 </style>
 </head>
 <body>
@@ -865,66 +970,18 @@ footer{padding:32px 18px 20px}
 </div>
 
 <!-- ═══════════════════ ADMIN DASHBOARD ═══════════════════ -->
+<!-- ═══════════════════ ADMIN DASHBOARD ═══════════════════ -->
 <div id="page-admin" class="page page-admin"></div>
+
+<!-- Aliases so URLs like #admin-orders also work -->
 <div id="page-admin-overview" class="page page-admin"></div>
 <div id="page-admin-orders" class="page page-admin"></div>
 <div id="page-admin-products" class="page page-admin"></div>
 <div id="page-admin-promos" class="page page-admin"></div>
 <div id="page-admin-announcement" class="page page-admin"></div>
+<div id="page-admin-settings" class="page page-admin"></div>
 
-<!-- Shared admin shell — inserted into whichever admin page is active -->
-<template id="admin-shell-template">
-  <div class="adm-shell">
-    <aside class="adm-sidebar">
-      <div class="adm-sidebar-logo" onclick="goPage('home')">
-        <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--brown)">Olivéa</div>
-        <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--taupe);margin-top:-2px">Admin Panel</div>
-      </div>
-      <nav class="adm-nav">
-        <div class="adm-nav-item ${'overview'===adminSection?'active':''}" data-section="overview" onclick="switchAdmin('overview')">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="3" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="12" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="16" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
-          Overview
-        </div>
-        <div class="adm-nav-item ${'orders'===adminSection?'active':''}" data-section="orders" onclick="switchAdmin('orders')">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          Orders
-        </div>
-        <div class="adm-nav-item ${'products'===adminSection?'active':''}" data-section="products" onclick="switchAdmin('products')">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          Products
-        </div>
-        <div class="adm-nav-item ${'promos'===adminSection?'active':''}" data-section="promos" onclick="switchAdmin('promos')">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="7" y1="7" x2="7.01" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          Promotions
-        </div>
-        <div class="adm-nav-item ${'announcement'===adminSection?'active':''}" data-section="announcement" onclick="switchAdmin('announcement')">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M3 11v3a4 4 0 004 4h6a4 4 0 004-4v-3M3 11V8a4 4 0 014-4h6a4 4 0 014 4v3M3 11h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          Announcement
-        </div>
-      </nav>
-      <div class="adm-sidebar-footer">
-        <button class="adm-logout-btn" onclick="logout()">
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          Sign Out
-        </button>
-        <button class="adm-logout-btn" style="margin-top:6px;color:var(--taupe)" onclick="if(confirm('Reset all data to defaults? This will clear all orders, products, and promo codes.')){resetStore();renderAdminBody();}">
-          Reset Demo Data
-        </button>
-      </div>
-    </aside>
-    <main class="adm-main">
-      <div id="admin-body"></div>
-    </main>
-  </div>
-  <div class="adm-modal-overlay" id="adm-modal" onclick="if(event.target===this)closeAdmModal()">
-    <div class="adm-modal">
-      <button class="adm-modal-close" onclick="closeAdmModal()">
-        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </button>
-      <div id="adm-modal-body"></div>
-    </div>
-  </div>
-</template>
+<!-- Admin shell is rendered via JS, no static template needed -->
 
 <script>
 // ═══════════════════ STORE — single source of truth ═══════════════════
@@ -1084,19 +1141,27 @@ function showToast(msg) {
 
 // ── PAGE ROUTING (with browser history) ──
 function goPage(name, push=true) {
+  // Admin login gate
+  if(name === 'admin' || name.startsWith('admin-')) {
+    if(!isLoggedIn()) { goPage('login', push); return; }
+  }
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const target = document.getElementById('page-'+name);
   if(!target) { goPage('home', push); return; }
   target.classList.add('active');
+  // Toggle admin-mode body class to hide site chrome on admin/login
+  if(name === 'admin' || name.startsWith('admin-') || name === 'login') {
+    document.body.classList.add('admin-mode');
+  } else {
+    document.body.classList.remove('admin-mode');
+  }
   window.scrollTo({top:0,behavior:'smooth'});
   if(name==='products') applyFilters();
   if(name==='checkout') renderCheckout();
   if(name==='success') renderSuccess();
-  if(name.startsWith('admin')) renderAdmin(name);
+  if(name==='admin' || name.startsWith('admin-')) renderAdmin(name);
   setTimeout(updateMobileSticky, 50);
-  if(push) {
-    history.pushState({page:name}, '', '#'+name);
-  }
+  if(push) history.pushState({page:name}, '', '#'+name);
 }
 window.addEventListener('popstate', e => {
   const name = (e.state && e.state.page) || (location.hash.replace('#','') || 'home');
@@ -1388,20 +1453,20 @@ function renderSuccess() {
 function openSearch() {
   document.getElementById('search-overlay').classList.add('open');
   setTimeout(()=>document.getElementById('search-input').focus(),300);
-  renderSearchResults(products);
+  renderSearchResults(store.products);
 }
 function closeSearch() {
   document.getElementById('search-overlay').classList.remove('open');
   document.getElementById('search-input').value='';
-  renderSearchResults(products);
+  renderSearchResults(store.products);
 }
 function closeSearchIfOutside(e) {
   if(e.target===document.getElementById('search-overlay')) closeSearch();
 }
 function runSearch(q) {
   const trimmed = q.trim().toLowerCase();
-  if(!trimmed) { renderSearchResults(products); return; }
-  const res = products.filter(p=>
+  if(!trimmed) { renderSearchResults(store.products); return; }
+  const res = store.products.filter(p=>
     p.name.toLowerCase().includes(trimmed) ||
     p.no.toLowerCase().includes(trimmed) ||
     p.category.toLowerCase().includes(trimmed) ||
@@ -1465,13 +1530,15 @@ window.addEventListener('resize', updateMobileSticky);
 
 function isLoggedIn() { return sessionStorage.getItem('olivea-admin') === 'yes'; }
 function setLoggedIn(v) { v ? sessionStorage.setItem('olivea-admin','yes') : sessionStorage.removeItem('olivea-admin'); }
+function getCurrentPassword() { return localStorage.getItem('olivea-admin-pass') || ADMIN_PASS; }
 
 function tryLogin() {
   const pass = document.getElementById('login-pass').value;
   const err = document.getElementById('login-err');
-  if(pass === ADMIN_PASS) {
+  if(pass === getCurrentPassword()) {
     setLoggedIn(true);
     err.textContent = '';
+    document.getElementById('login-pass').value = '';
     goPage('admin');
   } else {
     err.textContent = 'Incorrect password. Please try again.';
@@ -1481,28 +1548,28 @@ function tryLogin() {
 
 function logout() {
   setLoggedIn(false);
+  document.body.classList.remove('admin-mode');
   goPage('home');
 }
 
 let adminSection = 'overview';
 
 function renderAdmin(pageName) {
-  // Login gate
-  if(!isLoggedIn()) {
-    goPage('login', false);
-    return;
+  if(!isLoggedIn()) { goPage('login', false); return; }
+  if(pageName === 'admin') {
+    // keep current adminSection or default to overview
+    if(!adminSection) adminSection = 'overview';
+  } else if(pageName.startsWith('admin-')) {
+    adminSection = pageName.replace('admin-','');
   }
-  if(pageName === 'admin') adminSection = adminSection || 'overview';
-  else if(pageName.startsWith('admin-')) adminSection = pageName.replace('admin-','');
-  document.body.classList.add('admin-mode');
-  // Inject the shell into the active admin page
-  const activePage = document.getElementById('page-' + pageName);
-  if(activePage) activePage.innerHTML = renderAdminShell();
+  // Inject shell into the active admin page div (the page that goPage activated)
+  const activePage = document.getElementById('page-'+pageName);
+  if(activePage) activePage.innerHTML = adminShellHTML();
   renderAdminBody();
 }
 
-function renderAdminShell() {
-  const item = (sec, label, svg) => `
+function adminShellHTML() {
+  const navItem = (sec, label, svg) => `
     <div class="adm-nav-item${sec===adminSection?' active':''}" data-section="${sec}" onclick="switchAdmin('${sec}')">
       ${svg}<span>${label}</span>
     </div>`;
@@ -1514,19 +1581,19 @@ function renderAdminShell() {
           <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--taupe);margin-top:-2px">Admin Panel</div>
         </div>
         <nav class="adm-nav">
-          ${item('overview','Overview','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="3" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="12" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="16" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>')}
-          ${item('orders','Orders','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>')}
-          ${item('products','Products','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>')}
-          ${item('promos','Promotions','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="7" cy="7" r="1" fill="currentColor"/></svg>')}
-          ${item('announcement','Announcement','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M3 11l18-7v16L3 13zM11 19l1-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>')}
-          ${item('settings','Settings','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>')}
+          ${navItem('overview','Overview','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="3" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="12" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="16" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>')}
+          ${navItem('orders','Orders','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>')}
+          ${navItem('products','Products','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>')}
+          ${navItem('promos','Promotions','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="7" cy="7" r="1" fill="currentColor"/></svg>')}
+          ${navItem('announcement','Announcement','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M3 11l18-7v16L3 13z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>')}
+          ${navItem('settings','Settings','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.5"/></svg>')}
         </nav>
         <div class="adm-sidebar-footer">
           <button class="adm-logout-btn" onclick="logout()">
             <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             Sign Out
           </button>
-          <button class="adm-logout-btn" style="margin-top:6px;color:var(--taupe);font-size:10px" onclick="if(confirm('Reset all data to defaults? This will clear all orders, products, and promo codes.')){resetStore();renderAdminBody();}">
+          <button class="adm-logout-btn" style="margin-top:6px;color:var(--taupe);font-size:10px" onclick="if(confirm('Reset all data to defaults?')){resetStore();renderAdminBody();showToast('Reset complete');}">
             Reset Demo Data
           </button>
         </div>
@@ -1547,21 +1614,26 @@ function renderAdminShell() {
 
 function switchAdmin(section) {
   adminSection = section;
+  // Re-render the shell to update active nav state
+  const active = document.querySelector('.page-admin.active');
+  if(active) active.innerHTML = adminShellHTML();
   renderAdminBody();
   history.pushState({page:'admin-'+section}, '', '#admin-'+section);
 }
 
 function renderAdminBody() {
-  // Sidebar active state
-  document.querySelectorAll('.admin-nav-item').forEach(el=>{
+  // Sidebar active state — note: classes are .adm-nav-item not .admin-nav-item
+  document.querySelectorAll('.adm-nav-item').forEach(el=>{
     el.classList.toggle('active', el.dataset.section === adminSection);
   });
   const body = document.getElementById('admin-body');
+  if(!body) return;
   if(adminSection === 'overview') body.innerHTML = renderAdminOverview();
   else if(adminSection === 'orders') body.innerHTML = renderAdminOrders();
   else if(adminSection === 'products') body.innerHTML = renderAdminProducts();
   else if(adminSection === 'promos') body.innerHTML = renderAdminPromos();
   else if(adminSection === 'announcement') body.innerHTML = renderAdminAnnouncement();
+  else if(adminSection === 'settings') body.innerHTML = renderAdminSettings();
 }
 
 // ── Overview ──
@@ -2033,6 +2105,64 @@ function saveAnnouncement() {
   showToast('Announcement updated');
 }
 
+// ── Settings (Change Password) ──
+function renderAdminSettings() {
+  return `
+    <h1 class="adm-title">Settings</h1>
+    <p class="adm-sub">Manage your admin account.</p>
+    <div class="adm-panel" style="max-width:520px">
+      <h3 class="adm-panel-title">Change Password</h3>
+      <p style="font-size:12px;color:var(--taupe);margin-bottom:18px">Choose a strong password — at least 6 characters.</p>
+      <div class="fg" style="margin-bottom:14px">
+        <label class="adm-label">Current Password</label>
+        <input id="set-current" class="adm-input" type="password" placeholder="Enter current password">
+      </div>
+      <div class="fg" style="margin-bottom:14px">
+        <label class="adm-label">New Password</label>
+        <input id="set-new" class="adm-input" type="password" placeholder="At least 6 characters">
+      </div>
+      <div class="fg" style="margin-bottom:14px">
+        <label class="adm-label">Confirm New Password</label>
+        <input id="set-confirm" class="adm-input" type="password" placeholder="Re-enter new password">
+      </div>
+      <p id="set-status" style="font-size:12px;min-height:18px;margin-bottom:10px"></p>
+      <button class="btn btn-dark" onclick="changePassword()">Update Password</button>
+    </div>
+    <div class="adm-panel" style="max-width:520px;margin-top:20px">
+      <h3 class="adm-panel-title">About This Account</h3>
+      <p style="font-size:13px;color:var(--taupe);line-height:22px">
+        Default password: <code style="background:var(--ivory);padding:2px 6px;border-radius:4px;font-size:11px">olivea2026</code><br>
+        Once you change it, the default no longer works.<br><br>
+        Tip: bookmark <code style="background:var(--ivory);padding:2px 6px;border-radius:4px;font-size:11px">/#admin</code> for quick access.
+      </p>
+    </div>`;
+}
+
+function changePassword() {
+  const current = document.getElementById('set-current').value;
+  const newPass = document.getElementById('set-new').value;
+  const confirm = document.getElementById('set-confirm').value;
+  const status = document.getElementById('set-status');
+  if(current !== getCurrentPassword()) {
+    status.innerHTML = '<span style="color:#e57373">Current password is incorrect.</span>';
+    return;
+  }
+  if(!newPass || newPass.length < 6) {
+    status.innerHTML = '<span style="color:#e57373">New password must be at least 6 characters.</span>';
+    return;
+  }
+  if(newPass !== confirm) {
+    status.innerHTML = '<span style="color:#e57373">Passwords do not match.</span>';
+    return;
+  }
+  localStorage.setItem('olivea-admin-pass', newPass);
+  status.innerHTML = '<span style="color:#52C97A">✓ Password updated successfully.</span>';
+  document.getElementById('set-current').value = '';
+  document.getElementById('set-new').value = '';
+  document.getElementById('set-confirm').value = '';
+  showToast('Password updated');
+}
+
 function closeAdmModal() {
   document.getElementById('adm-modal').classList.remove('open');
 }
@@ -2040,10 +2170,19 @@ function closeAdmModal() {
 // ═══════════════════ INIT ═══════════════════
 function init() {
   refreshAll();
-  // Determine starting page from hash
   const hash = location.hash.replace('#','');
-  if(hash) goPage(hash, false);
-  else goPage('home', false);
+  if(hash.startsWith('admin-')) {
+    if(!isLoggedIn()) { goPage('login', false); return; }
+    adminSection = hash.replace('admin-','') || 'overview';
+    goPage('admin', false);
+  } else if(hash === 'admin') {
+    if(!isLoggedIn()) { goPage('login', false); return; }
+    goPage('admin', false);
+  } else if(hash) {
+    goPage(hash, false);
+  } else {
+    goPage('home', false);
+  }
 }
 init();
 </script>
