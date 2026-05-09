@@ -379,18 +379,92 @@ body.admin-mode > .drawer-overlay,
 body.admin-mode > .search-overlay { display:none !important; }
 body.admin-mode { overflow-x:hidden; }
 
-.adm-shell { display:grid; grid-template-columns:240px 1fr; min-height:100vh; background:#f6f3f0; }
-.adm-sidebar { background:var(--white); border-right:1px solid var(--beige); display:flex; flex-direction:column; position:sticky; top:0; height:100vh; overflow-y:auto; }
-.adm-sidebar-logo { padding:24px 22px; border-bottom:1px solid var(--beige); cursor:pointer; }
-.adm-nav { padding:14px 12px; flex:1; }
-.adm-nav-item { display:flex; align-items:center; gap:11px; padding:11px 14px; border-radius:8px; font-size:13px; color:var(--brown); cursor:pointer; margin-bottom:3px; transition:background .15s; letter-spacing:.3px; }
-.adm-nav-item:hover { background:var(--ivory); }
+/* ── Admin Top Navbar ── */
+.adm-wrap { min-height:100vh; background:#f6f3f0; display:flex; flex-direction:column; }
+
+.adm-navbar {
+  background:var(--white);
+  border-bottom:1px solid var(--beige);
+  height:64px;
+  padding:0 32px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  position:sticky;
+  top:0;
+  z-index:200;
+  box-shadow:var(--sh-sm);
+}
+
+.adm-navbar-logo {
+  cursor:pointer;
+  flex-shrink:0;
+  display:flex;
+  flex-direction:column;
+  margin-right:16px;
+}
+.adm-navbar-logo-sub {
+  font-size:7px;
+  letter-spacing:3.5px;
+  text-transform:uppercase;
+  color:var(--taupe);
+  margin-top:2px;
+}
+
+.adm-navbar-links {
+  display:flex;
+  align-items:center;
+  gap:2px;
+  flex:1;
+}
+
+.adm-nav-item {
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 14px;
+  border-radius:8px;
+  font-size:12px;
+  color:var(--taupe);
+  cursor:pointer;
+  transition:all .15s;
+  letter-spacing:.3px;
+  white-space:nowrap;
+  font-family:'Lato',sans-serif;
+}
+.adm-nav-item:hover { background:var(--ivory); color:var(--brown); }
 .adm-nav-item.active { background:var(--brown); color:#fff; }
-.adm-sidebar-footer { padding:16px; border-top:1px solid var(--beige); }
-.adm-logout-btn { width:100%; display:flex; align-items:center; justify-content:center; gap:8px; padding:10px; background:none; border:1px solid var(--beige); border-radius:8px; color:var(--brown); font-size:12px; letter-spacing:1px; cursor:pointer; font-family:'Lato',sans-serif; transition:all .2s; }
+.adm-nav-item svg { flex-shrink:0; }
+
+.adm-navbar-right {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-shrink:0;
+  margin-left:auto;
+}
+
+.adm-logout-btn {
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 16px;
+  background:none;
+  border:1px solid var(--beige);
+  border-radius:8px;
+  color:var(--brown);
+  font-size:11px;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  cursor:pointer;
+  font-family:'Lato',sans-serif;
+  transition:all .2s;
+  white-space:nowrap;
+}
 .adm-logout-btn:hover { background:var(--ivory); }
 
-.adm-main { padding:36px 44px; width:100%; max-width:1200px; }
+/* Admin main content */
+.adm-main { padding:36px 44px; width:100%; max-width:1200px; margin:0 auto; }
 .adm-title { font-family:'Playfair Display',serif; font-size:30px; color:var(--brown); margin-bottom:6px; font-weight:500; }
 .adm-sub { font-size:13px; color:var(--taupe); margin-bottom:28px; }
 
@@ -439,6 +513,37 @@ body.admin-mode { overflow-x:hidden; }
 .adm-modal-close { position:absolute; top:16px; right:16px; background:none; border:none; color:var(--taupe); cursor:pointer; padding:6px; border-radius:6px; transition:background .15s; }
 .adm-modal-close:hover { background:var(--ivory); }
 
+/* ── Admin Responsive (mobile) ── */
+@media(max-width:768px) {
+  .adm-navbar { height:52px; padding:0 12px; gap:0; }
+  .adm-navbar-logo { margin-right:8px; }
+  .adm-navbar-logo img { height:24px; }
+  .adm-navbar-logo-sub { display:none; }
+  .adm-navbar-links {
+    overflow-x:auto;
+    scrollbar-width:none;
+    justify-content:flex-start;
+    gap:2px;
+  }
+  .adm-navbar-links::-webkit-scrollbar { display:none; }
+  .adm-nav-item { padding:7px 10px; font-size:11px; gap:5px; }
+  .adm-nav-item span { display:none; }
+  .adm-nav-item svg { width:18px; height:18px; }
+  .adm-navbar-right { gap:4px; }
+  .adm-logout-btn { padding:7px 10px; font-size:10px; letter-spacing:0; }
+  .adm-logout-btn span { display:none; }
+  .adm-main { padding:16px; }
+  .adm-title { font-size:22px; }
+  .adm-stats { grid-template-columns:1fr 1fr; gap:10px; }
+  .adm-stat-card { padding:14px; }
+  .adm-stat-value { font-size:22px; }
+  .adm-grid-2 { grid-template-columns:1fr; gap:14px; }
+  .adm-panel { padding:16px; }
+  .adm-table { font-size:11.5px; }
+  .adm-table th, .adm-table td { padding:8px 10px; }
+  .adm-modal { padding:22px 18px; }
+}
+
 /* Login page */
 .login-page-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px 20px; background:linear-gradient(135deg,#f9f2ef,#f2e6e1); }
 .login-card { background:var(--white); border-radius:20px; padding:48px 40px; max-width:420px; width:100%; box-shadow:var(--sh-lg); }
@@ -451,52 +556,6 @@ body.admin-mode { overflow-x:hidden; }
 /* Out-of-stock card dimming */
 .pcard-oos { opacity:.7; }
 .pcard-oos:hover { transform:none; box-shadow:var(--sh-sm); }
-
-/* ══════════ ADMIN RESPONSIVE — fixed vertical sidebar on mobile ══════════ */
-@media(max-width:900px) {
-  .adm-shell { grid-template-columns:1fr; min-height:100vh; }
-  /* Sidebar becomes a sticky vertical panel at top — compact */
-  .adm-sidebar {
-    position:sticky; top:0; z-index:200;
-    height:auto; min-height:0; overflow-y:visible;
-    flex-direction:column;
-    border-right:none;
-    border-bottom:1px solid var(--beige);
-  }
-  .adm-sidebar-logo { padding:14px 20px; border-bottom:1px solid var(--beige); }
-  /* Nav items in a horizontal scroll row */
-  .adm-nav {
-    display:flex; flex-direction:row;
-    padding:8px 12px; flex:unset; width:100%;
-    overflow-x:auto; gap:4px;
-    scrollbar-width:none;
-    border-bottom:1px solid var(--beige);
-  }
-  .adm-nav::-webkit-scrollbar { display:none; }
-  .adm-nav-item {
-    flex-shrink:0; flex-direction:row;
-    padding:8px 14px; font-size:11px; letter-spacing:.3px;
-    margin-bottom:0; border-radius:6px;
-    white-space:nowrap;
-  }
-  /* Footer (sign out) in a horizontal row */
-  .adm-sidebar-footer {
-    padding:10px 14px;
-    border-top:none;
-    display:flex; flex-direction:row; gap:8px; align-items:center;
-  }
-  .adm-sidebar-footer .adm-logout-btn { width:auto; padding:7px 14px; font-size:11px; margin:0; }
-  .adm-main { padding:20px 16px; }
-  .adm-title { font-size:22px; }
-  .adm-stats { grid-template-columns:1fr 1fr; gap:10px; }
-  .adm-stat-card { padding:14px; }
-  .adm-stat-value { font-size:22px; }
-  .adm-grid-2 { grid-template-columns:1fr; gap:14px; }
-  .adm-panel { padding:16px; }
-  .adm-table { font-size:11.5px; }
-  .adm-table th, .adm-table td { padding:8px 10px; }
-  .adm-modal { padding:22px 18px; }
-}
 </style>
 </head>
 <body>
@@ -518,11 +577,9 @@ body.admin-mode { overflow-x:hidden; }
   <button class="hamburger" id="hamburger" onclick="toggleDrawer()">
     <span></span><span></span><span></span>
   </button>
-  <!-- Desktop logo — actual logo image -->
   <div class="logo" onclick="goPage('home')">
     <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa Skin Care House" style="height:44px;width:auto;display:block">
   </div>
-  <!-- Mobile center logo -->
   <div class="nav-logo-center" onclick="goPage('home')">
     <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa" style="height:34px;width:auto;display:block;margin:0 auto">
   </div>
@@ -559,8 +616,6 @@ body.admin-mode { overflow-x:hidden; }
 
 <!-- ═══════════════════ HOMEPAGE ═══════════════════ -->
 <div id="page-home" class="page active">
-
-  <!-- Hero -->
   <div class="hero">
     <div class="hero-img-bg" style="background-image:url('https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/hero.png')"></div>
     <div class="hero-content">
@@ -573,7 +628,6 @@ body.admin-mode { overflow-x:hidden; }
     </div>
   </div>
 
-  <!-- Trust Strip -->
   <div class="trust-strip">
     <div class="trust-track" id="trust-track">
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Maria Galland Paris</div>
@@ -584,7 +638,6 @@ body.admin-mode { overflow-x:hidden; }
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622C17.176 19.29 21 14.591 21 9c0-1.034-.125-2.04-.354-3.016l-.028.016z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Dermatologist Tested</div>
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Clean &amp; Conscious</div>
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Secure Payment</div>
-      <!-- Duplicate for seamless loop -->
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Maria Galland Paris</div>
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Express Delivery 1–3 Days</div>
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Free Shipping Above RM 250</div>
@@ -596,7 +649,6 @@ body.admin-mode { overflow-x:hidden; }
     </div>
   </div>
 
-  <!-- Featured Products -->
   <div class="section section-white">
     <div class="section-label">Our Selection</div>
     <div class="section-title">Bestselling Products</div>
@@ -607,7 +659,6 @@ body.admin-mode { overflow-x:hidden; }
     </div>
   </div>
 
-  <!-- Brand Story -->
   <div class="section section-beige" id="our-story">
     <div class="grid-2">
       <div class="story-text">
@@ -639,7 +690,6 @@ body.admin-mode { overflow-x:hidden; }
     </div>
   </div>
 
-  <!-- Categories / Brands -->
   <div class="section section-white">
     <div class="section-label">Browse By</div>
     <div class="section-title">Our Brands</div>
@@ -660,11 +710,9 @@ body.admin-mode { overflow-x:hidden; }
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-grid">
       <div>
-        <!-- Footer logo — inverted to show on dark background -->
         <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa Skin Care House" style="height:38px;width:auto;display:block;filter:brightness(0) invert(1);opacity:0.85;margin-bottom:12px">
         <p class="footer-desc">Authorised retailer of Maria Galland Paris. SSM Registration: CT0161902-X<br><br>Skincare inspired by nature, perfected by science.</p>
       </div>
@@ -840,7 +888,7 @@ body.admin-mode { overflow-x:hidden; }
       <div class="form-section">
         <h3 class="form-section-title">Promo Code</h3>
         <div style="display:flex;gap:8px;align-items:center">
-          <input id="promo-input" class="fg-input" type="text" placeholder="Enter code (e.g. WELCOME10)" style="flex:1;border:1px solid var(--beige);border-radius:8px;padding:11px 14px;font-family:'Lato',sans-serif;font-size:13px;color:var(--brown);background:var(--ivory);outline:none;text-transform:uppercase">
+          <input id="promo-input" type="text" placeholder="Enter code (e.g. WELCOME10)" style="flex:1;border:1px solid var(--beige);border-radius:8px;padding:11px 14px;font-family:'Lato',sans-serif;font-size:13px;color:var(--brown);background:var(--ivory);outline:none;text-transform:uppercase">
           <button class="btn btn-outline btn-sm" onclick="applyPromoCode()">Apply</button>
         </div>
         <div id="promo-status" style="font-size:12px;margin-top:6px"></div>
@@ -874,9 +922,7 @@ body.admin-mode { overflow-x:hidden; }
             <svg width="34" height="22" viewBox="0 0 68 44"><rect width="68" height="44" rx="5" fill="#fff" stroke="#ddd" stroke-width="1.5"/><defs><clipPath id="mcOvlp"><circle cx="28" cy="22" r="14"/></clipPath></defs><circle cx="28" cy="22" r="14" fill="#EB001B"/><circle cx="40" cy="22" r="14" fill="#F79E1B"/><circle cx="40" cy="22" r="14" fill="#FF5F00" clip-path="url(#mcOvlp)"/></svg>
           </div>
         </div>
-        <button class="btn btn-dark btn-full" style="margin-top:12px;padding:16px" onclick="placeOrder()">
-          Place Order &amp; Pay
-        </button>
+        <button class="btn btn-dark btn-full" style="margin-top:12px;padding:16px" onclick="placeOrder()">Place Order &amp; Pay</button>
         <p style="text-align:center;font-size:11px;color:var(--taupe);margin-top:12px;letter-spacing:.5px">
           <svg width="12" height="12" fill="none" viewBox="0 0 24 24" style="vertical-align:middle"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           Secured by SSL · Powered by Billplz
@@ -931,7 +977,6 @@ body.admin-mode { overflow-x:hidden; }
   <div class="login-page-wrap">
     <div class="login-card">
       <div class="login-logo">
-        <!-- Login page logo -->
         <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa Skin Care House" style="height:52px;width:auto;display:block;margin:0 auto">
       </div>
       <h2 class="login-title" style="margin-top:16px">Admin Sign In</h2>
@@ -948,7 +993,7 @@ body.admin-mode { overflow-x:hidden; }
   </div>
 </div>
 
-<!-- ═══════════════════ ADMIN DASHBOARD ═══════════════════ -->
+<!-- ═══════════════════ ADMIN PAGES ═══════════════════ -->
 <div id="page-admin" class="page page-admin"></div>
 <div id="page-admin-overview" class="page page-admin"></div>
 <div id="page-admin-orders" class="page page-admin"></div>
@@ -964,56 +1009,47 @@ const ADMIN_PASS = 'olivea2026';
 
 const DEFAULT_PRODUCTS = [
   { id:0, no:'No. 60', name:'Refreshing Cleansing Gel', price:128, stock:24, category:'cleanser', brand:'maria-galland', image:'',
-    bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)',
-    desc:'A gentle yet effective cleansing gel that transforms on contact with water into a refreshing foam, effectively removing all impurities and makeup while maintaining the skin\'s moisture balance.',
+    bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)', desc:'A gentle yet effective cleansing gel that transforms on contact with water into a refreshing foam, effectively removing all impurities and makeup while maintaining the skin\'s moisture balance.',
     longDesc:'This luxurious cleansing gel is powered by a unique blend of botanical extracts and French pharmacy-grade actives. Suitable for daily use, it leaves skin feeling clean, balanced, and ready for your next skincare step.',
     ingredients:['Aqua','Glycerin','Aloe Vera Extract','Green Tea Extract','Chamomile','Panthenol','Niacinamide','Allantoin'],
     badge:'Best Seller', colors:['#f0e0dc','#e6cdc8','#f8f0ee'] },
   { id:1, no:'No. 280', name:'Hydra Mask', price:198, stock:18, category:'mask', brand:'maria-galland', image:'',
-    bg:'linear-gradient(145deg,#eadada,#d8c4c0)',
-    desc:'An intensely hydrating mask infused with hyaluronic acid and botanical extracts. Apply, relax for 15 minutes, and reveal a visibly plumper, more radiant complexion.',
+    bg:'linear-gradient(145deg,#eadada,#d8c4c0)', desc:'An intensely hydrating mask infused with hyaluronic acid and botanical extracts. Apply, relax for 15 minutes, and reveal a visibly plumper, more radiant complexion.',
     longDesc:'Formulated with a triple-action hydration complex, this mask penetrates deep into the skin\'s layers to deliver lasting moisture. Perfect for weekly treatment or whenever your skin needs an extra boost.',
     ingredients:['Aqua','Hyaluronic Acid','Rose Hip Oil','Vitamin C','Ceramide NP','Squalane','Peptide Complex','Shea Butter'],
     badge:null, colors:['#eadada','#d8c4c0','#f5ecec'] },
   { id:2, no:'No. 240', name:'Vital Serum', price:268, stock:3, category:'serum', brand:'maria-galland', image:'',
-    bg:'linear-gradient(145deg,#e8e0f0,#d8cce8)',
-    desc:'A lightweight, fast-absorbing serum enriched with peptides and antioxidants. Targets fine lines, uneven tone, and loss of firmness for a visibly revitalised complexion.',
+    bg:'linear-gradient(145deg,#e8e0f0,#d8cce8)', desc:'A lightweight, fast-absorbing serum enriched with peptides and antioxidants. Targets fine lines, uneven tone, and loss of firmness for a visibly revitalised complexion.',
     longDesc:'This science-backed serum is formulated with clinically proven actives at their optimal concentrations. Lightweight and non-greasy, it layers beautifully beneath your moisturiser.',
     ingredients:['Aqua','Retinol','Vitamin C','Hyaluronic Acid','Bakuchiol','Resveratrol','Copper Peptides','Ferulic Acid'],
     badge:'New', colors:['#e8e0f0','#d8cce8','#f4f0f8'] },
   { id:3, no:'No. 541', name:"Lumin'Éclat Serum", price:298, stock:15, category:'serum', brand:'maria-galland', image:'',
-    bg:'linear-gradient(145deg,#f0e8d8,#e0d0bc)',
-    desc:'A brightening serum that targets dark spots, hyperpigmentation and dullness. Formulated with luminescent actives to restore your skin\'s natural radiance.',
+    bg:'linear-gradient(145deg,#f0e8d8,#e0d0bc)', desc:'A brightening serum that targets dark spots, hyperpigmentation and dullness. Formulated with luminescent actives to restore your skin\'s natural radiance.',
     longDesc:'Olivéa\'s bestselling brightening treatment. Rich in vitamin C derivatives and botanical lightening agents, it works synergistically to deliver a visibly more even and luminous complexion within 4 weeks.',
     ingredients:['Aqua','Vitamin C Derivative','Alpha Arbutin','Niacinamide','Tranexamic Acid','Licorice Extract','Kojic Acid','Vitamin E'],
     badge:'Best Seller', colors:['#f0e8d8','#e0d0bc','#f8f4ec'] },
   { id:4, no:'No. 391', name:'Uni Perfect SPF50', price:178, stock:0, category:'moisturiser', brand:'maria-galland', image:'',
-    bg:'linear-gradient(145deg,#dde8f0,#ccd8e8)',
-    desc:'A multi-tasking daily moisturiser with broad-spectrum SPF50 protection. Lightweight gel-cream texture that hydrates, protects and primes skin for the day ahead.',
+    bg:'linear-gradient(145deg,#dde8f0,#ccd8e8)', desc:'A multi-tasking daily moisturiser with broad-spectrum SPF50 protection. Lightweight gel-cream texture that hydrates, protects and primes skin for the day ahead.',
     longDesc:'Wear it alone for a natural, dewy finish or under makeup. Water-resistant formula with Zinc Oxide and chemical filters provides reliable protection without white cast.',
     ingredients:['Zinc Oxide','Titanium Dioxide','Niacinamide','Hyaluronic Acid','Vitamin E','Green Tea','Glycerin','Aloe Vera'],
     badge:null, colors:['#dde8f0','#ccd8e8','#eef3f8'] },
   { id:5, no:'No. 100', name:'Barrier Moisturising Cream', price:218, stock:12, category:'moisturiser', brand:'maria-galland', image:'',
-    bg:'linear-gradient(145deg,#e8f0e4,#d4e4cc)',
-    desc:'A rich, nourishing moisturiser that strengthens the skin barrier. Infused with ceramides, peptides and botanical oils to deeply nourish and protect.',
+    bg:'linear-gradient(145deg,#e8f0e4,#d4e4cc)', desc:'A rich, nourishing moisturiser that strengthens the skin barrier. Infused with ceramides, peptides and botanical oils to deeply nourish and protect.',
     longDesc:'The cornerstone of any complete skincare routine. This velvety cream melts effortlessly into skin, providing 24-hour hydration and visibly improving skin texture over time.',
     ingredients:['Ceramide NP','Ceramide AP','Ceramide EOP','Cholesterol','Fatty Acids','Squalane','Centella Asiatica','Panthenol'],
     badge:null, colors:['#e8f0e4','#d4e4cc','#f0f5ee'] },
   { id:6, no:'JY-01', name:'Moisture Surge Serum', price:188, stock:20, category:'serum', brand:'jyunka', image:'',
-    bg:'linear-gradient(145deg,#e4f0e8,#cce0d4)',
-    desc:'A deeply hydrating serum inspired by Japanese botanical wisdom. Formulated with fermented rice extract and Centella Asiatica to restore the skin\'s natural moisture barrier.',
+    bg:'linear-gradient(145deg,#e4f0e8,#cce0d4)', desc:'A deeply hydrating serum inspired by Japanese botanical wisdom. Formulated with fermented rice extract and Centella Asiatica to restore the skin\'s natural moisture barrier.',
     longDesc:'Jyunka\'s hero serum blends Japanese herbal tradition with modern biotechnology. The lightweight, silky texture absorbs instantly, leaving skin visibly plumped and radiant from within.',
     ingredients:['Fermented Rice Extract','Centella Asiatica','Hyaluronic Acid','Ceramide','Beta-Glucan','Niacinamide','Squalane','Aqua'],
     badge:'New', colors:['#e4f0e8','#cce0d4','#f0f6f2'] },
   { id:7, no:'JY-02', name:'Soothing Botanical Mask', price:158, stock:9, category:'mask', brand:'jyunka', image:'',
-    bg:'linear-gradient(145deg,#f0ece0,#e4d8c4)',
-    desc:'A calming sheet-style cream mask infused with Japanese Camellia oil and Mugwort extract. Soothes sensitive, reactive skin while restoring a healthy, balanced glow.',
+    bg:'linear-gradient(145deg,#f0ece0,#e4d8c4)', desc:'A calming sheet-style cream mask infused with Japanese Camellia oil and Mugwort extract. Soothes sensitive, reactive skin while restoring a healthy, balanced glow.',
     longDesc:'Deeply inspired by Japanese onsen skincare rituals, this mask creates a protective veil over the skin. Ideal for weekly use on sensitive or stressed skin types.',
     ingredients:['Camellia Oil','Mugwort Extract','Aloe Vera','Ceramide','Panthenol','Green Tea','Allantoin','Aqua'],
     badge:null, colors:['#f0ece0','#e4d8c4','#f8f4ec'] },
   { id:8, no:'JY-03', name:'Brightening Essence', price:228, stock:4, category:'serum', brand:'jyunka', image:'',
-    bg:'linear-gradient(145deg,#f4e8f0,#e8d4e4)',
-    desc:'A lightweight brightening essence powered by Sakura extract and Tranexamic Acid. Targets uneven skin tone, dark spots, and post-blemish marks for a luminous complexion.',
+    bg:'linear-gradient(145deg,#f4e8f0,#e8d4e4)', desc:'A lightweight brightening essence powered by Sakura extract and Tranexamic Acid. Targets uneven skin tone, dark spots, and post-blemish marks for a luminous complexion.',
     longDesc:'Jyunka\'s brightening essence draws on the Japanese concept of "透明感" — a luminous, glass-like skin appearance. Clinically tested for effectiveness on Asian skin tones.',
     ingredients:['Sakura Extract','Tranexamic Acid','Alpha Arbutin','Vitamin C','Niacinamide','Licorice Root','Hyaluronic Acid','Aqua'],
     badge:'Best Seller', colors:['#f4e8f0','#e8d4e4','#faf2f8'] }
@@ -1033,20 +1069,11 @@ const DEFAULT_STORE = {
 
 let store = loadStore();
 function loadStore() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if(raw) { const parsed = JSON.parse(raw); return {...DEFAULT_STORE, ...parsed}; }
-  } catch(e) { console.warn('Store load failed', e); }
+  try { const raw = localStorage.getItem(STORAGE_KEY); if(raw) { return {...DEFAULT_STORE, ...JSON.parse(raw)}; } } catch(e) {}
   return JSON.parse(JSON.stringify(DEFAULT_STORE));
 }
-function saveStore() {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(store)); } catch(e) { console.warn('Store save failed', e); }
-}
-function resetStore() {
-  store = JSON.parse(JSON.stringify(DEFAULT_STORE));
-  saveStore();
-  refreshAll();
-}
+function saveStore() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(store)); } catch(e) {} }
+function resetStore() { store = JSON.parse(JSON.stringify(DEFAULT_STORE)); saveStore(); refreshAll(); }
 
 let products = store.products;
 
@@ -1059,9 +1086,8 @@ function refreshAll() {
 
 function productSVG(p, size='md') {
   if(p.image) {
-    const w = size==='lg'?'100%':(size==='sm'?'48px':'100%');
-    const h = size==='lg'?'100%':(size==='sm'?'48px':'100%');
-    return `<img src="${p.image}" style="width:${w};height:${h};object-fit:cover;border-radius:6px" alt="${p.name}">`;
+    const dim = size==='sm' ? '100%' : '100%';
+    return `<img src="${p.image}" style="width:${dim};height:${dim};object-fit:cover;border-radius:6px" alt="${p.name}">`;
   }
   const cat = p.category;
   if(cat==='mask') {
@@ -1174,11 +1200,9 @@ function renderFeaturedProducts() {
   const inStock = store.products.filter(p=>p.stock>0);
   const sorted = inStock.sort((a,b)=>{ const aBest=a.badge==='Best Seller'?1:0; const bBest=b.badge==='Best Seller'?1:0; return bBest-aBest; });
   wrap.innerHTML = sorted.slice(0,4).map(pcardHTML).join('');
-  const mgCount = store.products.filter(p=>p.brand==='maria-galland').length;
-  const jyCount = store.products.filter(p=>p.brand==='jyunka').length;
   const mgEl = document.getElementById('count-mg'); const jyEl = document.getElementById('count-jy');
-  if(mgEl) mgEl.textContent = mgCount + ' Products →';
-  if(jyEl) jyEl.textContent = jyCount + ' Products →';
+  if(mgEl) mgEl.textContent = store.products.filter(p=>p.brand==='maria-galland').length + ' Products →';
+  if(jyEl) jyEl.textContent = store.products.filter(p=>p.brand==='jyunka').length + ' Products →';
 }
 
 function filterProducts(brand, btn) {
@@ -1200,7 +1224,8 @@ function goPageBrand(brand) {
     filterState = { brand:brand, category:'all' };
     document.querySelectorAll('.fbtn').forEach(b=>{
       const oc = b.getAttribute('onclick') || '';
-      if(oc.includes("'"+brand+"'") || (b.textContent.trim()==='All' && oc.includes('filterCategory'))) { b.classList.add('active'); } else { b.classList.remove('active'); }
+      if(oc.includes("'"+brand+"'") || (b.textContent.trim()==='All' && oc.includes('filterCategory'))) b.classList.add('active');
+      else b.classList.remove('active');
     });
     applyFilters();
   }, 80);
@@ -1224,17 +1249,15 @@ function goDetail(id) {
   document.getElementById('ingr-list').innerHTML = p.ingredients.map(i=>`<span class="ingr-tag">${i}</span>`).join('');
   const buyBtn = document.querySelector('.detail-actions');
   if(buyBtn) {
-    if(p.stock <= 0) {
-      buyBtn.innerHTML = '<button class="btn btn-full" style="background:#ddd;color:#888;cursor:not-allowed;flex:1;padding:15px">Out of Stock</button>';
-    } else {
-      buyBtn.innerHTML = '<button class="btn btn-dark" style="flex:1;padding:15px" onclick="buyNow()">Buy Now</button>';
-    }
+    buyBtn.innerHTML = p.stock <= 0
+      ? '<button class="btn btn-full" style="background:#ddd;color:#888;cursor:not-allowed;flex:1;padding:15px">Out of Stock</button>'
+      : '<button class="btn btn-dark" style="flex:1;padding:15px" onclick="buyNow()">Buy Now</button>';
   }
-  document.querySelectorAll('.tab-btn').forEach((b,i)=>{b.classList.toggle('active',i===0)});
-  document.querySelectorAll('.tab-pane').forEach((p,i)=>{p.classList.toggle('active',i===0)});
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',i===0));
+  document.querySelectorAll('.tab-pane').forEach((p,i)=>p.classList.toggle('active',i===0));
   goPage('detail');
 }
-function selectThumb(el, idx) { document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active')); el.classList.add('active'); }
+function selectThumb(el) { document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active')); el.classList.add('active'); }
 function changeQty(d) { detailQty = Math.max(1, detailQty+d); document.getElementById('d-qty').textContent = detailQty; }
 function buyNow() { if(!currentDetail || currentDetail.stock <= 0) return; currentOrder = [{...currentDetail, qty: detailQty}]; goPage('checkout'); }
 function directBuy(id) { const p = store.products.find(x=>x.id===id); if(!p || p.stock <= 0) return; currentOrder = [{...p, qty: 1}]; goPage('checkout'); }
@@ -1260,8 +1283,8 @@ function renderCheckout() {
   document.getElementById('co-total').textContent='RM '+total;
   const discRow = document.getElementById('co-discount-row');
   if(discRow) {
-    if(discount>0) { discRow.style.display='flex'; discRow.innerHTML = `<span style="color:#52C97A">Discount (${appliedPromo.code})</span><span style="color:#52C97A">−RM ${discount}</span>`; }
-    else { discRow.style.display='none'; }
+    if(discount>0) { discRow.style.display='flex'; discRow.innerHTML=`<span style="color:#52C97A">Discount (${appliedPromo.code})</span><span style="color:#52C97A">−RM ${discount}</span>`; }
+    else discRow.style.display='none';
   }
   document.getElementById('co-items-list').innerHTML=order.map(item=>`
     <div class="co-item-row">
@@ -1276,22 +1299,14 @@ function applyPromoCode() {
   const code = (input.value||'').trim().toUpperCase();
   if(!code) { status.textContent=''; return; }
   const promo = store.promos.find(p=>p.code===code && p.active);
-  if(promo) { appliedPromo = promo; status.innerHTML = `<span style="color:#52C97A">✓ ${promo.discount}% discount applied</span>`; }
-  else { appliedPromo = null; status.innerHTML = `<span style="color:#e57373">Invalid or inactive code</span>`; }
+  if(promo) { appliedPromo = promo; status.innerHTML=`<span style="color:#52C97A">✓ ${promo.discount}% discount applied</span>`; }
+  else { appliedPromo = null; status.innerHTML=`<span style="color:#e57373">Invalid or inactive code</span>`; }
   renderCheckout();
 }
 function placeOrder() {
   const order = currentOrder;
   if(!order || !order.length) return;
-  const fname = (document.getElementById('co-fname')?.value || 'Customer').trim() || 'Customer';
-  const lname = (document.getElementById('co-lname')?.value || '').trim();
-  const email = (document.getElementById('co-email')?.value || '').trim();
-  const phone = (document.getElementById('co-phone')?.value || '').trim();
-  const addr1 = (document.getElementById('co-addr1')?.value || '').trim();
-  const addr2 = (document.getElementById('co-addr2')?.value || '').trim();
-  const city = (document.getElementById('co-city')?.value || '').trim();
-  const post = (document.getElementById('co-post')?.value || '').trim();
-  const state = (document.getElementById('co-state')?.value || '').trim();
+  const g = id => (document.getElementById(id)?.value||'').trim();
   const subtotal = order.reduce((s,i)=>s+i.price*i.qty,0);
   const discount = appliedPromo ? Math.round(subtotal * appliedPromo.discount / 100) : 0;
   const afterDisc = subtotal - discount;
@@ -1301,9 +1316,11 @@ function placeOrder() {
   const ref = 'OLV-2026-'+String(store.nextOrderId).padStart(5,'0');
   store.nextOrderId += 1;
   order.forEach(item=>{ const p = store.products.find(x=>x.id===item.id); if(p) p.stock = Math.max(0, p.stock - item.qty); });
-  if(appliedPromo) { const sp = store.promos.find(p=>p.code===appliedPromo.code); if(sp) sp.uses = (sp.uses||0) + 1; }
-  const newOrder = { ref, status:'pending', tracking:'', createdAt:Date.now(), customer:{fname,lname,email,phone,addr1,addr2,city,post,state}, items:order.map(i=>({id:i.id,no:i.no,name:i.name,price:i.price,qty:i.qty})), subtotal, discount, promoCode:appliedPromo?appliedPromo.code:'', shipping, tax, total };
-  store.orders.unshift(newOrder);
+  if(appliedPromo) { const sp = store.promos.find(p=>p.code===appliedPromo.code); if(sp) sp.uses = (sp.uses||0)+1; }
+  store.orders.unshift({ ref, status:'pending', tracking:'', createdAt:Date.now(),
+    customer:{fname:g('co-fname'),lname:g('co-lname'),email:g('co-email'),phone:g('co-phone'),addr1:g('co-addr1'),addr2:g('co-addr2'),city:g('co-city'),post:g('co-post'),state:g('co-state')},
+    items:order.map(i=>({id:i.id,no:i.no,name:i.name,price:i.price,qty:i.qty})),
+    subtotal, discount, promoCode:appliedPromo?appliedPromo.code:'', shipping, tax, total });
   saveStore(); refreshAll();
   window._lastOrderRef = ref; window._lastOrderTotal = total;
   appliedPromo = null; goPage('success');
@@ -1313,12 +1330,10 @@ function selectPay(el) {
   el.classList.add('selected'); el.querySelector('input').checked=true;
 }
 function renderSuccess() {
-  const ref = window._lastOrderRef || ('OLV-2026-'+String(Math.floor(Math.random()*90000)+10000));
-  document.getElementById('order-ref').textContent=ref;
+  document.getElementById('order-ref').textContent = window._lastOrderRef || ('OLV-2026-'+String(Math.floor(Math.random()*90000)+10000));
   const order = currentOrder;
   if(!order || !order.length) return;
-  const total = window._lastOrderTotal || order.reduce((s,i)=>s+i.price*i.qty,0);
-  document.getElementById('success-total').textContent='RM '+total;
+  document.getElementById('success-total').textContent='RM '+(window._lastOrderTotal||0);
   document.getElementById('success-items-list').innerHTML=order.map(item=>`
     <div class="success-item-row"><span>${item.name} × ${item.qty}</span><span>RM ${item.price*item.qty}</span></div>`).join('');
   currentOrder=[];
@@ -1327,10 +1342,14 @@ function renderSuccess() {
 function openSearch() { document.getElementById('search-overlay').classList.add('open'); setTimeout(()=>document.getElementById('search-input').focus(),300); renderSearchResults(store.products); }
 function closeSearch() { document.getElementById('search-overlay').classList.remove('open'); document.getElementById('search-input').value=''; renderSearchResults(store.products); }
 function closeSearchIfOutside(e) { if(e.target===document.getElementById('search-overlay')) closeSearch(); }
-function runSearch(q) { const trimmed = q.trim().toLowerCase(); if(!trimmed) { renderSearchResults(store.products); return; } const res = store.products.filter(p=> p.name.toLowerCase().includes(trimmed) || p.no.toLowerCase().includes(trimmed) || p.category.toLowerCase().includes(trimmed) || p.ingredients.some(i=>i.toLowerCase().includes(trimmed))); renderSearchResults(res); }
+function runSearch(q) {
+  const t = q.trim().toLowerCase();
+  if(!t) { renderSearchResults(store.products); return; }
+  renderSearchResults(store.products.filter(p=> p.name.toLowerCase().includes(t) || p.no.toLowerCase().includes(t) || p.category.toLowerCase().includes(t) || p.ingredients.some(i=>i.toLowerCase().includes(t))));
+}
 function renderSearchResults(list) {
   const el = document.getElementById('search-results-list');
-  if(!list.length) { el.innerHTML='<div class="search-no-results">No products found. Try a different keyword.</div>'; return; }
+  if(!list.length) { el.innerHTML='<div class="search-no-results">No products found.</div>'; return; }
   el.innerHTML = list.map(p=>`
     <div class="search-result-item" onclick="closeSearch();goDetail(${p.id})">
       <div class="search-result-img" style="background:${p.bg}">${productSVG(p,'sm')}</div>
@@ -1346,21 +1365,20 @@ function goHomeScroll(sectionId) {
   } else { const el=document.getElementById(sectionId); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
 }
 function toggleDrawer() {
-  const d = document.getElementById('drawer'); const o = document.getElementById('drawer-overlay'); const h = document.getElementById('hamburger');
-  const isOpen = d.classList.contains('open');
-  d.classList.toggle('open', !isOpen); o.classList.toggle('open', !isOpen); h.classList.toggle('open', !isOpen);
+  const d=document.getElementById('drawer'); const o=document.getElementById('drawer-overlay'); const h=document.getElementById('hamburger');
+  const isOpen=d.classList.contains('open');
+  d.classList.toggle('open',!isOpen); o.classList.toggle('open',!isOpen); h.classList.toggle('open',!isOpen);
 }
 function updateMobileSticky() {
-  const ms = document.getElementById('mobile-sticky'); if(!ms) return;
-  const isMobile = window.innerWidth <= 768;
-  const isDetail = document.getElementById('page-detail').classList.contains('active');
-  ms.style.display = (isMobile && isDetail) ? 'flex' : 'none';
-  if(isMobile && isDetail && currentDetail) { document.getElementById('ms-name').textContent = currentDetail.name; document.getElementById('ms-price').textContent = 'RM '+currentDetail.price; }
+  const ms=document.getElementById('mobile-sticky'); if(!ms) return;
+  const isMobile=window.innerWidth<=768;
+  const isDetail=document.getElementById('page-detail').classList.contains('active');
+  ms.style.display=(isMobile&&isDetail)?'flex':'none';
+  if(isMobile&&isDetail&&currentDetail) { document.getElementById('ms-name').textContent=currentDetail.name; document.getElementById('ms-price').textContent='RM '+currentDetail.price; }
 }
 window.addEventListener('resize', updateMobileSticky);
 
 // ═══════════════════ ADMIN ═══════════════════
-// FIX 3: Use localStorage so admin stays logged in across page reloads/revisits
 function isLoggedIn() { return localStorage.getItem('olivea-admin') === 'yes'; }
 function setLoggedIn(v) { v ? localStorage.setItem('olivea-admin','yes') : localStorage.removeItem('olivea-admin'); }
 function getCurrentPassword() { return localStorage.getItem('olivea-admin-pass') || ADMIN_PASS; }
@@ -1369,8 +1387,8 @@ function tryLogin() {
   const pass = document.getElementById('login-pass').value;
   const err = document.getElementById('login-err');
   if(pass === getCurrentPassword()) {
-    setLoggedIn(true); err.textContent = ''; document.getElementById('login-pass').value = ''; goPage('admin');
-  } else { err.textContent = 'Incorrect password. Please try again.'; document.getElementById('login-pass').value = ''; }
+    setLoggedIn(true); err.textContent=''; document.getElementById('login-pass').value=''; goPage('admin');
+  } else { err.textContent='Incorrect password. Please try again.'; document.getElementById('login-pass').value=''; }
 }
 function logout() { setLoggedIn(false); document.body.classList.remove('admin-mode'); goPage('home'); }
 
@@ -1378,44 +1396,42 @@ let adminSection = 'overview';
 
 function renderAdmin(pageName) {
   if(!isLoggedIn()) { goPage('login', false); return; }
-  if(pageName === 'admin') { if(!adminSection) adminSection = 'overview'; }
-  else if(pageName.startsWith('admin-')) { adminSection = pageName.replace('admin-','') || 'overview'; }
+  if(pageName === 'admin') adminSection = adminSection || 'overview';
+  else if(pageName.startsWith('admin-')) adminSection = pageName.replace('admin-','') || 'overview';
   const activePage = document.getElementById('page-'+pageName);
   if(activePage) activePage.innerHTML = adminShellHTML();
   renderAdminBody();
 }
 
 function adminShellHTML() {
-  const LOGO_URL = 'https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png';
-  const navItem = (sec, label, svg) => `
+  const LOGO = 'https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png';
+  const ni = (sec, label, svg) => `
     <div class="adm-nav-item${sec===adminSection?' active':''}" data-section="${sec}" onclick="switchAdmin('${sec}')">
       ${svg}<span>${label}</span>
     </div>`;
   return `
-    <div class="adm-shell">
-      <aside class="adm-sidebar">
-        <div class="adm-sidebar-logo" onclick="goPage('home')">
-          <img src="${LOGO_URL}" alt="Olivéa" style="height:28px;width:auto;display:block;margin-bottom:4px">
-          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--taupe)">Admin Panel</div>
+    <div class="adm-wrap">
+      <nav class="adm-navbar">
+        <div class="adm-navbar-logo" onclick="goPage('home')">
+          <img src="${LOGO}" alt="Olivéa" style="height:28px;width:auto;display:block">
+          <div class="adm-navbar-logo-sub">Admin Panel</div>
         </div>
-        <nav class="adm-nav">
-          ${navItem('overview','Overview','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="3" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="12" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="16" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>')}
-          ${navItem('orders','Orders','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>')}
-          ${navItem('products','Products','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>')}
-          ${navItem('promos','Promotions','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="7" cy="7" r="1" fill="currentColor"/></svg>')}
-          ${navItem('announcement','Announcement','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M3 11l18-7v16L3 13z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>')}
-          ${navItem('settings','Settings','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.5"/></svg>')}
-        </nav>
-        <div class="adm-sidebar-footer">
+        <div class="adm-navbar-links">
+          ${ni('overview','Overview','<svg width="15" height="15" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="3" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="12" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="16" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>')}
+          ${ni('orders','Orders','<svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>')}
+          ${ni('products','Products','<svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>')}
+          ${ni('promos','Promotions','<svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="7" cy="7" r="1" fill="currentColor"/></svg>')}
+          ${ni('announcement','Announcement','<svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M3 11l18-7v16L3 13z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>')}
+          ${ni('settings','Settings','<svg width="15" height="15" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.5"/></svg>')}
+        </div>
+        <div class="adm-navbar-right">
+          <button class="adm-btn-sm" style="white-space:nowrap" onclick="if(confirm('Reset all data to defaults?')){resetStore();renderAdminBody();showToast('Reset complete');}">Reset Data</button>
           <button class="adm-logout-btn" onclick="logout()">
             <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            Sign Out
-          </button>
-          <button class="adm-logout-btn" style="margin-top:6px;color:var(--taupe);font-size:10px" onclick="if(confirm('Reset all data to defaults?')){resetStore();renderAdminBody();showToast('Reset complete');}">
-            Reset Data
+            <span>Sign Out</span>
           </button>
         </div>
-      </aside>
+      </nav>
       <main class="adm-main">
         <div id="admin-body"></div>
       </main>
@@ -1439,29 +1455,29 @@ function switchAdmin(section) {
 }
 
 function renderAdminBody() {
-  document.querySelectorAll('.adm-nav-item').forEach(el=>{ el.classList.toggle('active', el.dataset.section === adminSection); });
+  document.querySelectorAll('.adm-nav-item').forEach(el=>el.classList.toggle('active', el.dataset.section===adminSection));
   const body = document.getElementById('admin-body');
   if(!body) return;
-  if(adminSection === 'overview') body.innerHTML = renderAdminOverview();
-  else if(adminSection === 'orders') body.innerHTML = renderAdminOrders();
-  else if(adminSection === 'products') body.innerHTML = renderAdminProducts();
-  else if(adminSection === 'promos') body.innerHTML = renderAdminPromos();
-  else if(adminSection === 'announcement') body.innerHTML = renderAdminAnnouncement();
-  else if(adminSection === 'settings') body.innerHTML = renderAdminSettings();
+  if(adminSection==='overview') body.innerHTML=renderAdminOverview();
+  else if(adminSection==='orders') body.innerHTML=renderAdminOrders();
+  else if(adminSection==='products') body.innerHTML=renderAdminProducts();
+  else if(adminSection==='promos') body.innerHTML=renderAdminPromos();
+  else if(adminSection==='announcement') body.innerHTML=renderAdminAnnouncement();
+  else if(adminSection==='settings') body.innerHTML=renderAdminSettings();
 }
 
 function renderAdminOverview() {
-  const today = new Date(); today.setHours(0,0,0,0);
-  const todayMs = today.getTime();
-  const monthStart = new Date(today.getFullYear(), today.getMonth(), 1).getTime();
-  const todayOrders = store.orders.filter(o => o.createdAt >= todayMs);
-  const monthOrders = store.orders.filter(o => o.createdAt >= monthStart);
-  const todayRev = todayOrders.reduce((s,o)=>s+o.total,0);
-  const monthRev = monthOrders.reduce((s,o)=>s+o.total,0);
-  const lowStock = store.products.filter(p=>p.stock<=5);
-  const counts = {};
+  const today=new Date(); today.setHours(0,0,0,0);
+  const todayMs=today.getTime();
+  const monthStart=new Date(today.getFullYear(),today.getMonth(),1).getTime();
+  const todayOrders=store.orders.filter(o=>o.createdAt>=todayMs);
+  const monthOrders=store.orders.filter(o=>o.createdAt>=monthStart);
+  const todayRev=todayOrders.reduce((s,o)=>s+o.total,0);
+  const monthRev=monthOrders.reduce((s,o)=>s+o.total,0);
+  const lowStock=store.products.filter(p=>p.stock<=5);
+  const counts={};
   store.orders.forEach(o=>o.items.forEach(it=>{counts[it.id]=(counts[it.id]||0)+it.qty}));
-  const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([id,qty])=>{ const p = store.products.find(x=>x.id==id); return p ? {p,qty} : null; }).filter(Boolean);
+  const top=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([id,qty])=>{ const p=store.products.find(x=>x.id==id); return p?{p,qty}:null; }).filter(Boolean);
   return `
     <h1 class="adm-title">Overview</h1>
     <p class="adm-sub">Welcome back. Here's what's happening today.</p>
@@ -1469,23 +1485,23 @@ function renderAdminOverview() {
       <div class="adm-stat-card"><div class="adm-stat-label">Today's Orders</div><div class="adm-stat-value">${todayOrders.length}</div><div class="adm-stat-sub">RM ${todayRev}</div></div>
       <div class="adm-stat-card"><div class="adm-stat-label">This Month Revenue</div><div class="adm-stat-value">RM ${monthRev}</div><div class="adm-stat-sub">${monthOrders.length} orders</div></div>
       <div class="adm-stat-card"><div class="adm-stat-label">Total Products</div><div class="adm-stat-value">${store.products.length}</div><div class="adm-stat-sub">${store.products.filter(p=>p.stock>0).length} in stock</div></div>
-      <div class="adm-stat-card ${lowStock.length?'adm-stat-warn':''}"><div class="adm-stat-label">Low Stock Alert</div><div class="adm-stat-value">${lowStock.length}</div><div class="adm-stat-sub">${lowStock.length ? 'needs attention' : 'all good'}</div></div>
+      <div class="adm-stat-card ${lowStock.length?'adm-stat-warn':''}"><div class="adm-stat-label">Low Stock Alert</div><div class="adm-stat-value">${lowStock.length}</div><div class="adm-stat-sub">${lowStock.length?'needs attention':'all good'}</div></div>
     </div>
     <div class="adm-grid-2">
       <div class="adm-panel">
         <h3 class="adm-panel-title">Top Selling Products</h3>
-        ${top.length === 0 ? '<p class="adm-empty">No orders yet — your bestsellers will appear here.</p>' : top.map(t=>`
-          <div class="adm-row"><div style="flex:1"><div style="font-weight:500">${t.p.name}</div><div style="font-size:11px;color:var(--taupe)">${t.p.no} · ${t.p.brand==='jyunka'?'Jyunka':'Maria Galland'}</div></div><div style="font-weight:700;color:var(--rose)">${t.qty} sold</div></div>`).join('')}
+        ${top.length===0?'<p class="adm-empty">No orders yet.</p>':top.map(t=>`
+          <div class="adm-row"><div style="flex:1"><div style="font-weight:500">${t.p.name}</div><div style="font-size:11px;color:var(--taupe)">${t.p.no}</div></div><div style="font-weight:700;color:var(--rose)">${t.qty} sold</div></div>`).join('')}
       </div>
       <div class="adm-panel">
         <h3 class="adm-panel-title">Low Stock Items</h3>
-        ${lowStock.length === 0 ? '<p class="adm-empty">All products are well stocked. ✓</p>' : lowStock.map(p=>`
+        ${lowStock.length===0?'<p class="adm-empty">All products are well stocked. ✓</p>':lowStock.map(p=>`
           <div class="adm-row"><div style="flex:1"><div style="font-weight:500">${p.name}</div><div style="font-size:11px;color:var(--taupe)">${p.no}</div></div><div style="font-weight:700;color:${p.stock===0?'#e57373':'#e8a957'}">${p.stock===0?'Out':p.stock+' left'}</div></div>`).join('')}
       </div>
     </div>`;
 }
 
-let adminOrderFilter = 'all';
+let adminOrderFilter='all';
 function renderAdminOrders() {
   return `
     <h1 class="adm-title">Orders</h1>
@@ -1498,26 +1514,25 @@ function renderAdminOrders() {
     <div class="adm-panel" style="padding:0">${renderOrderTable()}</div>`;
 }
 function renderOrderTable() {
-  const list = adminOrderFilter==='all' ? store.orders : store.orders.filter(o=>o.status===adminOrderFilter);
+  const list=adminOrderFilter==='all'?store.orders:store.orders.filter(o=>o.status===adminOrderFilter);
   if(!list.length) return '<p class="adm-empty" style="padding:32px">No orders in this view.</p>';
   return `<table class="adm-table">
     <thead><tr><th>Order Ref</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
     <tbody>${list.map(o=>`<tr>
-        <td><strong>${o.ref}</strong></td>
-        <td>${o.customer.fname} ${o.customer.lname||''}<br><span style="font-size:11px;color:var(--taupe)">${o.customer.phone||'—'}</span></td>
-        <td>${o.items.reduce((s,i)=>s+i.qty,0)} items</td>
-        <td><strong>RM ${o.total}</strong></td>
-        <td><span class="adm-badge adm-badge-${o.status}">${o.status}</span></td>
-        <td style="font-size:12px;color:var(--taupe)">${new Date(o.createdAt).toLocaleDateString('en-MY',{day:'numeric',month:'short',year:'numeric'})}</td>
-        <td><button class="adm-btn-sm" onclick="openOrder('${o.ref}')">View</button></td>
-      </tr>`).join('')}</tbody></table>`;
+      <td><strong>${o.ref}</strong></td>
+      <td>${o.customer.fname} ${o.customer.lname||''}<br><span style="font-size:11px;color:var(--taupe)">${o.customer.phone||'—'}</span></td>
+      <td>${o.items.reduce((s,i)=>s+i.qty,0)} items</td>
+      <td><strong>RM ${o.total}</strong></td>
+      <td><span class="adm-badge adm-badge-${o.status}">${o.status}</span></td>
+      <td style="font-size:12px;color:var(--taupe)">${new Date(o.createdAt).toLocaleDateString('en-MY',{day:'numeric',month:'short',year:'numeric'})}</td>
+      <td><button class="adm-btn-sm" onclick="openOrder('${o.ref}')">View</button></td>
+    </tr>`).join('')}</tbody></table>`;
 }
-function filterOrders(f) { adminOrderFilter = f; renderAdminBody(); }
+function filterOrders(f) { adminOrderFilter=f; renderAdminBody(); }
 
 function openOrder(ref) {
-  const o = store.orders.find(x=>x.ref===ref); if(!o) return;
-  const modal = document.getElementById('adm-modal');
-  document.getElementById('adm-modal-body').innerHTML = `
+  const o=store.orders.find(x=>x.ref===ref); if(!o) return;
+  document.getElementById('adm-modal-body').innerHTML=`
     <h2 style="font-family:'Playfair Display',serif;margin-bottom:4px">${o.ref}</h2>
     <p style="color:var(--taupe);font-size:13px;margin-bottom:20px">Placed ${new Date(o.createdAt).toLocaleString('en-MY')}</p>
     <div class="adm-grid-2" style="gap:24px">
@@ -1530,7 +1545,7 @@ function openOrder(ref) {
           <option value="completed" ${o.status==='completed'?'selected':''}>Completed</option>
           <option value="cancelled" ${o.status==='cancelled'?'selected':''}>Cancelled</option>
         </select>
-        <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:8px">Tracking Number</h4>
+        <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:8px">Tracking</h4>
         <input id="ord-tracking" class="adm-input" type="text" placeholder="e.g. EC123456789MY" value="${o.tracking||''}"></div>
     </div>
     <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin:24px 0 12px">Items</h4>
@@ -1547,26 +1562,24 @@ function openOrder(ref) {
       <button class="btn btn-outline" onclick="printShippingLabel('${o.ref}')">Print Label</button>
       <button class="btn btn-outline" style="margin-left:auto" onclick="closeAdmModal()">Close</button>
     </div>`;
-  modal.classList.add('open');
+  document.getElementById('adm-modal').classList.add('open');
 }
 function saveOrderEdits(ref) {
-  const o = store.orders.find(x=>x.ref===ref); if(!o) return;
-  o.status = document.getElementById('ord-status').value;
-  o.tracking = document.getElementById('ord-tracking').value.trim();
+  const o=store.orders.find(x=>x.ref===ref); if(!o) return;
+  o.status=document.getElementById('ord-status').value;
+  o.tracking=document.getElementById('ord-tracking').value.trim();
   saveStore(); closeAdmModal(); renderAdminBody(); showToast('Order updated');
 }
 function printShippingLabel(ref) {
-  const o = store.orders.find(x=>x.ref===ref); if(!o) return;
-  const w = window.open('', '_blank', 'width=600,height=800');
-  w.document.write(`<!DOCTYPE html><html><head><title>${o.ref} - Shipping Label</title>
-    <style>body{font-family:Arial,sans-serif;padding:40px;color:#333}.label{border:2px solid #333;padding:24px;max-width:500px}h1{font-size:18px;margin-bottom:4px}h2{font-size:14px;margin-top:20px;border-bottom:1px solid #ccc;padding-bottom:4px}.to{font-size:14px;line-height:22px}table{width:100%;border-collapse:collapse;margin-top:12px;font-size:12px}td,th{border:1px solid #ccc;padding:6px;text-align:left}.ref{font-size:20px;font-weight:bold;letter-spacing:1px}</style></head><body>
-    <div class="label"><h1>OLIVÉA SKIN CARE HOUSE</h1><p style="font-size:11px;color:#666">SSM: CT0161902-X</p>
-    <p class="ref" style="margin-top:14px">${o.ref}</p><p style="font-size:11px;color:#666">${new Date(o.createdAt).toLocaleString('en-MY')}</p>
-    <h2>Ship To</h2><p class="to"><strong>${o.customer.fname} ${o.customer.lname||''}</strong><br>${o.customer.addr1||''}${o.customer.addr2?', '+o.customer.addr2:''}<br>${o.customer.city||''} ${o.customer.post||''}<br>${o.customer.state||''}<br>${o.customer.phone||''}</p>
-    <h2>Items</h2><table><thead><tr><th>Product</th><th>Qty</th></tr></thead><tbody>${o.items.map(i=>`<tr><td>${i.name} (${i.no})</td><td>${i.qty}</td></tr>`).join('')}</tbody></table>
-    ${o.tracking?`<div style="background:#fffbe6;padding:8px;border:1px dashed #ccc;margin-top:12px;font-size:12px"><strong>Tracking:</strong> ${o.tracking}</div>`:''}
-    <p style="text-align:center;margin-top:20px;font-size:11px;color:#999">olivea.com.my</p></div>
-    <script>window.print();<\/script></body></html>`);
+  const o=store.orders.find(x=>x.ref===ref); if(!o) return;
+  const w=window.open('','_blank','width=600,height=800');
+  w.document.write(`<!DOCTYPE html><html><head><title>${o.ref}</title>
+    <style>body{font-family:Arial,sans-serif;padding:40px}.label{border:2px solid #333;padding:24px;max-width:500px}h2{font-size:18px}table{width:100%;border-collapse:collapse;margin-top:12px;font-size:12px}td,th{border:1px solid #ccc;padding:6px;text-align:left}</style></head><body>
+    <div class="label"><h2>OLIVÉA SKIN CARE HOUSE</h2><p style="font-size:13px;font-weight:bold;margin:10px 0">${o.ref}</p>
+    <p><strong>${o.customer.fname} ${o.customer.lname||''}</strong><br>${o.customer.addr1||''}<br>${o.customer.city||''} ${o.customer.post||''}, ${o.customer.state||''}<br>${o.customer.phone||''}</p>
+    <table><thead><tr><th>Product</th><th>Qty</th></tr></thead><tbody>${o.items.map(i=>`<tr><td>${i.name}</td><td>${i.qty}</td></tr>`).join('')}</tbody></table>
+    ${o.tracking?`<p style="margin-top:12px"><strong>Tracking:</strong> ${o.tracking}</p>`:''}
+    </div><script>window.print();<\/script></body></html>`);
   w.document.close();
 }
 
@@ -1594,10 +1607,9 @@ function renderAdminProducts() {
 }
 
 function openProductEditor(id) {
-  const p = id != null ? store.products.find(x=>x.id===id) : { id: store.nextProductId, no:'', name:'', price:0, stock:0, category:'serum', brand:'maria-galland', image:'', bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)', desc:'', longDesc:'', ingredients:[], badge:null, colors:['#f0e0dc','#e6cdc8','#f8f0ee'] };
-  const isNew = id == null;
-  const modal = document.getElementById('adm-modal');
-  document.getElementById('adm-modal-body').innerHTML = `
+  const p = id!=null ? store.products.find(x=>x.id===id) : {id:store.nextProductId,no:'',name:'',price:0,stock:0,category:'serum',brand:'maria-galland',image:'',bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)',desc:'',longDesc:'',ingredients:[],badge:null,colors:['#f0e0dc','#e6cdc8','#f8f0ee']};
+  const isNew = id==null;
+  document.getElementById('adm-modal-body').innerHTML=`
     <h2 style="font-family:'Playfair Display',serif;margin-bottom:18px">${isNew?'Add Product':'Edit Product'}</h2>
     <div class="adm-grid-2">
       <div class="fg"><label class="adm-label">Product Code</label><input id="ed-no" class="adm-input" type="text" value="${p.no}" placeholder="No. 60 or JY-04"></div>
@@ -1621,7 +1633,6 @@ function openProductEditor(id) {
         <input type="file" accept="image/*" onchange="handleImageUpload(this,'${p.id}')" style="font-size:12px">
         <button class="adm-btn-sm" onclick="clearProductImage(${p.id})">Use Default</button>
       </div>
-      <p style="font-size:11px;color:var(--taupe);margin-top:6px">If no image is uploaded, a styled placeholder is used.</p>
     </div>
     <input type="hidden" id="ed-id" value="${p.id}">
     <input type="hidden" id="ed-isnew" value="${isNew?'1':'0'}">
@@ -1630,35 +1641,35 @@ function openProductEditor(id) {
       <button class="btn btn-dark" onclick="saveProduct()">${isNew?'Add Product':'Save Changes'}</button>
       <button class="btn btn-outline" onclick="closeAdmModal()" style="margin-left:auto">Cancel</button>
     </div>`;
-  modal.classList.add('open');
+  document.getElementById('adm-modal').classList.add('open');
 }
-function handleImageUpload(input, pid) {
-  const file = input.files && input.files[0]; if(!file) return;
-  if(file.size > 600*1024) { alert('Image too large. Please use an image under 600KB.'); return; }
-  const reader = new FileReader();
-  reader.onload = e => { document.getElementById('ed-image').value = e.target.result; document.getElementById('ed-img-preview').innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover">`; };
+function handleImageUpload(input) {
+  const file=input.files&&input.files[0]; if(!file) return;
+  if(file.size>600*1024) { alert('Image too large. Please use under 600KB.'); return; }
+  const reader=new FileReader();
+  reader.onload=e=>{ document.getElementById('ed-image').value=e.target.result; document.getElementById('ed-img-preview').innerHTML=`<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover">`; };
   reader.readAsDataURL(file);
 }
 function clearProductImage(pid) {
-  document.getElementById('ed-image').value = '';
-  const p = store.products.find(x=>x.id===pid) || {bg:'#eee',colors:['#eee','#ddd','#fff'],category:'serum',no:''};
-  document.getElementById('ed-img-preview').innerHTML = productSVG(p,'sm');
+  document.getElementById('ed-image').value='';
+  const p=store.products.find(x=>x.id===pid)||{bg:'#eee',colors:['#eee','#ddd','#fff'],category:'serum',no:''};
+  document.getElementById('ed-img-preview').innerHTML=productSVG(p,'sm');
 }
 function saveProduct() {
-  const isNew = document.getElementById('ed-isnew').value === '1';
-  const id = parseInt(document.getElementById('ed-id').value);
-  const data = { no: document.getElementById('ed-no').value.trim(), name: document.getElementById('ed-name').value.trim(), brand: document.getElementById('ed-brand').value, category: document.getElementById('ed-category').value, badge: document.getElementById('ed-badge').value || null, price: parseFloat(document.getElementById('ed-price').value) || 0, stock: parseInt(document.getElementById('ed-stock').value) || 0, desc: document.getElementById('ed-desc').value.trim(), longDesc: document.getElementById('ed-longdesc').value.trim(), ingredients: document.getElementById('ed-ingr').value.split(',').map(s=>s.trim()).filter(Boolean), image: document.getElementById('ed-image').value };
-  if(!data.no || !data.name) { alert('Product code and name are required.'); return; }
+  const isNew=document.getElementById('ed-isnew').value==='1';
+  const id=parseInt(document.getElementById('ed-id').value);
+  const data={no:document.getElementById('ed-no').value.trim(),name:document.getElementById('ed-name').value.trim(),brand:document.getElementById('ed-brand').value,category:document.getElementById('ed-category').value,badge:document.getElementById('ed-badge').value||null,price:parseFloat(document.getElementById('ed-price').value)||0,stock:parseInt(document.getElementById('ed-stock').value)||0,desc:document.getElementById('ed-desc').value.trim(),longDesc:document.getElementById('ed-longdesc').value.trim(),ingredients:document.getElementById('ed-ingr').value.split(',').map(s=>s.trim()).filter(Boolean),image:document.getElementById('ed-image').value};
+  if(!data.no||!data.name) { alert('Product code and name are required.'); return; }
   if(isNew) {
-    const palettes = [{bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)',colors:['#f0e0dc','#e6cdc8','#f8f0ee']},{bg:'linear-gradient(145deg,#e4f0e8,#cce0d4)',colors:['#e4f0e8','#cce0d4','#f0f6f2']},{bg:'linear-gradient(145deg,#f4e8f0,#e8d4e4)',colors:['#f4e8f0','#e8d4e4','#faf2f8']},{bg:'linear-gradient(145deg,#dde8f0,#ccd8e8)',colors:['#dde8f0','#ccd8e8','#eef3f8']}];
-    const palette = palettes[Math.floor(Math.random()*palettes.length)];
-    store.products.push({ id: store.nextProductId, ...data, ...palette }); store.nextProductId += 1;
-  } else { const p = store.products.find(x=>x.id===id); if(p) Object.assign(p, data); }
+    const palettes=[{bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)',colors:['#f0e0dc','#e6cdc8','#f8f0ee']},{bg:'linear-gradient(145deg,#e4f0e8,#cce0d4)',colors:['#e4f0e8','#cce0d4','#f0f6f2']},{bg:'linear-gradient(145deg,#f4e8f0,#e8d4e4)',colors:['#f4e8f0','#e8d4e4','#faf2f8']},{bg:'linear-gradient(145deg,#dde8f0,#ccd8e8)',colors:['#dde8f0','#ccd8e8','#eef3f8']}];
+    const palette=palettes[Math.floor(Math.random()*palettes.length)];
+    store.products.push({id:store.nextProductId,...data,...palette}); store.nextProductId+=1;
+  } else { const p=store.products.find(x=>x.id===id); if(p) Object.assign(p,data); }
   saveStore(); refreshAll(); closeAdmModal(); renderAdminBody(); showToast(isNew?'Product added':'Product saved');
 }
 function deleteProduct(id) {
-  if(!confirm('Delete this product? This cannot be undone.')) return;
-  store.products = store.products.filter(p=>p.id!==id);
+  if(!confirm('Delete this product?')) return;
+  store.products=store.products.filter(p=>p.id!==id);
   saveStore(); refreshAll(); renderAdminBody(); showToast('Product deleted');
 }
 
@@ -1671,7 +1682,7 @@ function renderAdminPromos() {
     <div class="adm-panel" style="padding:0">
       <table class="adm-table">
         <thead><tr><th>Code</th><th>Discount</th><th>Status</th><th>Times Used</th><th>Actions</th></tr></thead>
-        <tbody>${store.promos.length === 0 ? '<tr><td colspan="5" style="text-align:center;padding:32px;color:var(--taupe)">No promo codes yet.</td></tr>' :
+        <tbody>${store.promos.length===0?'<tr><td colspan="5" style="text-align:center;padding:32px;color:var(--taupe)">No promo codes yet.</td></tr>':
         store.promos.map((pr,idx)=>`<tr>
           <td><strong style="font-family:monospace;letter-spacing:1px">${pr.code}</strong></td>
           <td><strong style="color:var(--rose)">${pr.discount}%</strong></td>
@@ -1683,30 +1694,28 @@ function renderAdminPromos() {
     </div>`;
 }
 function openPromoEditor() {
-  const modal = document.getElementById('adm-modal');
-  document.getElementById('adm-modal-body').innerHTML = `
+  document.getElementById('adm-modal-body').innerHTML=`
     <h2 style="font-family:'Playfair Display',serif;margin-bottom:18px">Add Promo Code</h2>
-    <div class="fg"><label class="adm-label">Code (uppercase, no spaces)</label><input id="pr-code" class="adm-input" type="text" placeholder="e.g. SAVE20" style="text-transform:uppercase;font-family:monospace"></div>
-    <div class="fg"><label class="adm-label">Discount Percentage</label><input id="pr-disc" class="adm-input" type="number" min="1" max="99" value="10"></div>
-    <p style="font-size:12px;color:var(--taupe)">Customer enters this code at checkout to receive the discount on subtotal.</p>
+    <div class="fg"><label class="adm-label">Code (uppercase)</label><input id="pr-code" class="adm-input" type="text" placeholder="e.g. SAVE20" style="text-transform:uppercase;font-family:monospace"></div>
+    <div class="fg"><label class="adm-label">Discount %</label><input id="pr-disc" class="adm-input" type="number" min="1" max="99" value="10"></div>
     <div style="display:flex;gap:10px;margin-top:24px"><button class="btn btn-dark" onclick="savePromo()">Add Code</button><button class="btn btn-outline" onclick="closeAdmModal()" style="margin-left:auto">Cancel</button></div>`;
-  modal.classList.add('open');
+  document.getElementById('adm-modal').classList.add('open');
 }
 function savePromo() {
-  const code = document.getElementById('pr-code').value.trim().toUpperCase().replace(/\s/g,'');
-  const disc = parseInt(document.getElementById('pr-disc').value);
-  if(!code || disc<1 || disc>99) { alert('Invalid code or discount.'); return; }
+  const code=document.getElementById('pr-code').value.trim().toUpperCase().replace(/\s/g,'');
+  const disc=parseInt(document.getElementById('pr-disc').value);
+  if(!code||disc<1||disc>99) { alert('Invalid code or discount.'); return; }
   if(store.promos.find(p=>p.code===code)) { alert('Code already exists.'); return; }
-  store.promos.push({ code, discount:disc, active:true, uses:0 });
+  store.promos.push({code,discount:disc,active:true,uses:0});
   saveStore(); closeAdmModal(); renderAdminBody(); showToast('Promo code added');
 }
-function togglePromo(idx) { store.promos[idx].active = !store.promos[idx].active; saveStore(); renderAdminBody(); }
+function togglePromo(idx) { store.promos[idx].active=!store.promos[idx].active; saveStore(); renderAdminBody(); }
 function deletePromo(idx) { if(!confirm('Delete this promo code?')) return; store.promos.splice(idx,1); saveStore(); renderAdminBody(); }
 
 function renderAdminAnnouncement() {
   return `
     <h1 class="adm-title">Announcement Bar</h1>
-    <p class="adm-sub">Edit the message that shows at the top of every page.</p>
+    <p class="adm-sub">Edit the message shown at the top of every page.</p>
     <div class="adm-panel">
       <div class="fg"><label class="adm-label">Announcement Text</label><textarea id="ann-text" class="adm-input" rows="3">${store.announcement}</textarea></div>
       <button class="btn btn-dark" onclick="saveAnnouncement()">Save Changes</button>
@@ -1715,8 +1724,8 @@ function renderAdminAnnouncement() {
     </div>`;
 }
 function saveAnnouncement() {
-  store.announcement = document.getElementById('ann-text').value.trim() || 'Welcome to Olivéa Skin Care House';
-  saveStore(); refreshAll(); document.getElementById('ann-preview').textContent = store.announcement; showToast('Announcement updated');
+  store.announcement=document.getElementById('ann-text').value.trim()||'Welcome to Olivéa Skin Care House';
+  saveStore(); refreshAll(); document.getElementById('ann-preview').textContent=store.announcement; showToast('Announcement updated');
 }
 
 function renderAdminSettings() {
@@ -1725,29 +1734,28 @@ function renderAdminSettings() {
     <p class="adm-sub">Manage your admin account.</p>
     <div class="adm-panel" style="max-width:520px">
       <h3 class="adm-panel-title">Change Password</h3>
-      <p style="font-size:12px;color:var(--taupe);margin-bottom:18px">Choose a strong password — at least 6 characters.</p>
-      <div class="fg" style="margin-bottom:14px"><label class="adm-label">Current Password</label><input id="set-current" class="adm-input" type="password" placeholder="Enter current password"></div>
+      <div class="fg" style="margin-bottom:14px"><label class="adm-label">Current Password</label><input id="set-current" class="adm-input" type="password"></div>
       <div class="fg" style="margin-bottom:14px"><label class="adm-label">New Password</label><input id="set-new" class="adm-input" type="password" placeholder="At least 6 characters"></div>
-      <div class="fg" style="margin-bottom:14px"><label class="adm-label">Confirm New Password</label><input id="set-confirm" class="adm-input" type="password" placeholder="Re-enter new password"></div>
+      <div class="fg" style="margin-bottom:14px"><label class="adm-label">Confirm New Password</label><input id="set-confirm" class="adm-input" type="password"></div>
       <p id="set-status" style="font-size:12px;min-height:18px;margin-bottom:10px"></p>
       <button class="btn btn-dark" onclick="changePassword()">Update Password</button>
     </div>
     <div class="adm-panel" style="max-width:520px;margin-top:20px">
-      <h3 class="adm-panel-title">About This Account</h3>
-      <p style="font-size:13px;color:var(--taupe);line-height:22px">Default password: <code style="background:var(--ivory);padding:2px 6px;border-radius:4px;font-size:11px">olivea2026</code><br>Once you change it, the default no longer works.<br><br>Tip: bookmark <code style="background:var(--ivory);padding:2px 6px;border-radius:4px;font-size:11px">/#admin</code> for quick access.</p>
+      <h3 class="adm-panel-title">About</h3>
+      <p style="font-size:13px;color:var(--taupe);line-height:22px">Default password: <code style="background:var(--ivory);padding:2px 6px;border-radius:4px;font-size:11px">olivea2026</code><br>Tip: bookmark <code style="background:var(--ivory);padding:2px 6px;border-radius:4px;font-size:11px">/#admin</code> for quick access.</p>
     </div>`;
 }
 function changePassword() {
-  const current = document.getElementById('set-current').value;
-  const newPass = document.getElementById('set-new').value;
-  const confirm = document.getElementById('set-confirm').value;
-  const status = document.getElementById('set-status');
-  if(current !== getCurrentPassword()) { status.innerHTML = '<span style="color:#e57373">Current password is incorrect.</span>'; return; }
-  if(!newPass || newPass.length < 6) { status.innerHTML = '<span style="color:#e57373">New password must be at least 6 characters.</span>'; return; }
-  if(newPass !== confirm) { status.innerHTML = '<span style="color:#e57373">Passwords do not match.</span>'; return; }
-  localStorage.setItem('olivea-admin-pass', newPass);
-  status.innerHTML = '<span style="color:#52C97A">✓ Password updated successfully.</span>';
-  document.getElementById('set-current').value = ''; document.getElementById('set-new').value = ''; document.getElementById('set-confirm').value = '';
+  const current=document.getElementById('set-current').value;
+  const newPass=document.getElementById('set-new').value;
+  const confirm=document.getElementById('set-confirm').value;
+  const status=document.getElementById('set-status');
+  if(current!==getCurrentPassword()) { status.innerHTML='<span style="color:#e57373">Current password is incorrect.</span>'; return; }
+  if(!newPass||newPass.length<6) { status.innerHTML='<span style="color:#e57373">New password must be at least 6 characters.</span>'; return; }
+  if(newPass!==confirm) { status.innerHTML='<span style="color:#e57373">Passwords do not match.</span>'; return; }
+  localStorage.setItem('olivea-admin-pass',newPass);
+  status.innerHTML='<span style="color:#52C97A">✓ Password updated successfully.</span>';
+  document.getElementById('set-current').value=''; document.getElementById('set-new').value=''; document.getElementById('set-confirm').value='';
   showToast('Password updated');
 }
 function closeAdmModal() { document.getElementById('adm-modal').classList.remove('open'); }
@@ -1755,11 +1763,11 @@ function closeAdmModal() { document.getElementById('adm-modal').classList.remove
 // ═══════════════════ INIT ═══════════════════
 function init() {
   refreshAll();
-  const hash = location.hash.replace('#','');
-  if(hash.startsWith('admin-')) { if(!isLoggedIn()) { goPage('login', false); return; } adminSection = hash.replace('admin-','') || 'overview'; goPage('admin', false); }
-  else if(hash === 'admin') { if(!isLoggedIn()) { goPage('login', false); return; } goPage('admin', false); }
-  else if(hash) { goPage(hash, false); }
-  else { goPage('home', false); }
+  const hash=location.hash.replace('#','');
+  if(hash.startsWith('admin-')) { if(!isLoggedIn()) { goPage('login',false); return; } adminSection=hash.replace('admin-','')||'overview'; goPage('admin',false); }
+  else if(hash==='admin') { if(!isLoggedIn()) { goPage('login',false); return; } goPage('admin',false); }
+  else if(hash) goPage(hash,false);
+  else goPage('home',false);
 }
 init();
 </script>
