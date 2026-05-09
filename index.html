@@ -48,7 +48,6 @@ nav{background:var(--white);height:76px;padding:0 64px;display:flex;align-items:
 .toast.show{transform:translateY(0);opacity:1}
 
 /* ─────────────────── HOMEPAGE ─────────────────── */
-/* Hero */
 .hero{min-height:88vh;display:flex;align-items:center;padding:0 9%;position:relative;overflow:hidden;background:#f0e5df}
 .hero-img-bg{position:absolute;inset:0;background-size:cover;background-position:center right;background-repeat:no-repeat;z-index:0}
 .hero-img-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(250,242,238,.92) 0%,rgba(250,242,238,.75) 38%,rgba(250,242,238,.1) 70%,transparent 100%)}
@@ -59,7 +58,7 @@ nav{background:var(--white);height:76px;padding:0 64px;display:flex;align-items:
 .hero-sub{font-size:14px;line-height:27px;color:var(--taupe);margin-bottom:38px;max-width:360px;font-weight:300}
 .hero-btns{display:flex;gap:14px}
 
-/* Trust strip — animated ticker */
+/* Trust strip */
 .trust-strip{background:var(--brown);padding:13px 0;overflow:hidden;white-space:nowrap}
 .trust-track{display:inline-flex;gap:0;animation:ticker 28s linear infinite}
 .trust-track:hover{animation-play-state:paused}
@@ -264,8 +263,6 @@ footer{background:var(--brown);color:var(--beige);padding:60px 80px 28px}
 
 /* ══════════ RESPONSIVE ══════════ */
 @media(max-width:768px){
-
-/* Nav — hamburger · logo · search */
 nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;align-items:center}
 .logo{display:none}
 .nav-links{display:none}
@@ -275,11 +272,7 @@ nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;
 .nav-logo-center .logo-sub{font-size:7.5px;letter-spacing:4px;text-transform:uppercase;color:var(--taupe);font-family:'Lato',sans-serif;font-weight:300}
 .nav-right{justify-self:end}
 .nav-right .icon-btn{padding:4px}
-
-/* Info bar hidden on mobile (trust ticker covers it) */
 .info-bar{display:none}
-
-/* ── HERO mobile — full-bleed, text at top, desktop colors ── */
 .hero{min-height:100svh;padding:0;align-items:flex-start;background:#f0e5df}
 .hero-img-bg{background-image:url('https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/hero%20phone.png') !important;background-position:center top !important}
 .hero-img-bg::after{background:linear-gradient(to bottom,rgba(250,242,238,.88) 0%,rgba(250,242,238,.6) 30%,rgba(250,242,238,.1) 55%,transparent 70%)}
@@ -292,20 +285,12 @@ nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;
 .hero-btns .btn{width:100%;padding:15px;font-size:11px}
 .hero-btns .btn-dark{background:var(--brown);color:#fff}
 .hero-btns .btn-outline{border-color:var(--brown);color:var(--brown)}
-
-/* Brand cards — keep 2-col on mobile */
 #brand-cards{grid-template-columns:1fr 1fr !important;gap:12px}
-
-/* Trust strip — smaller on mobile */
 .trust-strip{padding:10px 0}
 .trust-item{font-size:9.5px;letter-spacing:2px;padding:0 24px}
-
-/* Sections */
 .section{padding:44px 20px}
 .section-title{font-size:26px}
 .section-title-underline{margin-bottom:28px}
-
-/* Featured products — 2 col */
 .grid-4{grid-template-columns:repeat(2,1fr);gap:12px}
 .pcard{border-radius:14px}
 .pcard-img{height:160px}
@@ -315,36 +300,24 @@ nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;
 .pcard-price{font-size:13px;margin-bottom:11px}
 .pcard-body .btn-sm{padding:9px 10px;font-size:9.5px;letter-spacing:1.5px}
 .badge{font-size:8px;padding:3px 9px;top:10px;left:10px}
-
-/* Brand story */
 .grid-2{grid-template-columns:1fr;gap:28px}
 .grid-2 .story-visual{order:-1}
 .story-visual{height:220px;border-radius:12px}
 .story-text p{font-size:13px;line-height:26px}
-
-/* Categories — horizontal scroll */
 .section .grid-3.cat-row{display:flex;overflow-x:auto;gap:10px;padding-bottom:4px;grid-template-columns:unset;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .section .grid-3.cat-row::-webkit-scrollbar{display:none}
 .cat-card{flex:0 0 140px;height:148px;border-radius:14px}
 .cat-card-name{font-size:17px;margin-top:10px}
 .cat-card-count{font-size:9.5px}
-
-/* Page header */
 .page-header{padding:28px 20px 20px}
 .page-header h1{font-size:28px}
-
-/* Filter bar */
 .filter-bar{padding:10px 16px;overflow-x:auto;flex-wrap:nowrap;gap:7px;top:58px}
 .filter-bar::-webkit-scrollbar{display:none}
 .filter-bar-sub{padding:9px 16px}
 .fbtn{white-space:nowrap;padding:7px 14px;font-size:9.5px;letter-spacing:.8px}
 .fbtn-sub{padding:5px 11px;font-size:9px}
-
-/* Products grid */
 .products-grid-section{padding:20px 16px}
 .products-grid-section .grid-3{grid-template-columns:repeat(2,1fr);gap:12px}
-
-/* Product detail */
 .breadcrumb{padding:10px 16px;font-size:11px}
 .detail-layout{grid-template-columns:1fr;gap:0;padding:0 0 80px}
 .detail-gallery{position:relative;top:auto}
@@ -366,8 +339,6 @@ nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;
 .tab-pane p{font-size:13px;line-height:26px}
 .ingr-tag{font-size:11px;padding:5px 12px}
 .mobile-sticky{display:flex}
-
-/* Cart */
 .cart-layout{grid-template-columns:1fr;padding:16px;gap:14px;min-height:auto}
 .page-header.cart-header{padding:28px 20px 20px}
 .cart-summary-box{position:relative;top:auto;border-radius:14px;padding:22px}
@@ -377,8 +348,6 @@ nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;
 .citem-name{font-size:14px}
 .sum-total{font-size:15px}
 .promo-row{margin:10px 0}
-
-/* Checkout */
 .checkout-layout{grid-template-columns:1fr;padding:16px;gap:14px}
 .checkout-form{padding:18px 16px;border-radius:14px}
 .form-section-title{font-size:14px}
@@ -388,21 +357,15 @@ nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;
 .co-item-row{padding:8px 0}
 .pay-option{padding:12px 14px}
 .pay-label{font-size:12px}
-
-/* Success */
 .success-page{padding:16px;align-items:flex-start;padding-top:32px}
 .success-card{padding:28px 18px;border-radius:18px}
 .success-card h2{font-size:26px}
 .success-icon{width:68px;height:68px;margin-bottom:20px}
 .success-btns{flex-direction:column}
-
-/* Footer */
 footer{padding:32px 18px 20px}
 .footer-grid{grid-template-columns:1fr 1fr;gap:20px}
 .footer-grid>div:first-child{grid-column:1/-1}
 .footer-bottom{flex-direction:column;gap:10px;text-align:center}
-
-/* Search overlay on mobile */
 .search-box{padding:16px 18px 14px}
 .search-input{font-size:17px}
 }
@@ -489,17 +452,40 @@ body.admin-mode { overflow-x:hidden; }
 .pcard-oos { opacity:.7; }
 .pcard-oos:hover { transform:none; box-shadow:var(--sh-sm); }
 
-/* Admin responsive */
+/* ══════════ ADMIN RESPONSIVE — fixed vertical sidebar on mobile ══════════ */
 @media(max-width:900px) {
-  .adm-shell { grid-template-columns:1fr; }
-  .adm-sidebar { position:relative; height:auto; flex-direction:row; align-items:center; border-right:none; border-bottom:1px solid var(--beige); }
-  .adm-sidebar-logo { padding:14px 18px; border-bottom:none; border-right:1px solid var(--beige); flex-shrink:0; }
-  .adm-nav { display:flex; padding:10px; overflow-x:auto; gap:4px; flex:1; scrollbar-width:none; }
+  .adm-shell { grid-template-columns:1fr; min-height:100vh; }
+  /* Sidebar becomes a sticky vertical panel at top — compact */
+  .adm-sidebar {
+    position:sticky; top:0; z-index:200;
+    height:auto; min-height:0; overflow-y:visible;
+    flex-direction:column;
+    border-right:none;
+    border-bottom:1px solid var(--beige);
+  }
+  .adm-sidebar-logo { padding:14px 20px; border-bottom:1px solid var(--beige); }
+  /* Nav items in a horizontal scroll row */
+  .adm-nav {
+    display:flex; flex-direction:row;
+    padding:8px 12px; flex:unset; width:100%;
+    overflow-x:auto; gap:4px;
+    scrollbar-width:none;
+    border-bottom:1px solid var(--beige);
+  }
   .adm-nav::-webkit-scrollbar { display:none; }
-  .adm-nav-item { flex-shrink:0; padding:8px 12px; font-size:11px; letter-spacing:.3px; }
-  .adm-sidebar-footer { padding:10px; border-top:none; border-left:1px solid var(--beige); display:flex; flex-shrink:0; }
-  .adm-sidebar-footer .adm-logout-btn { width:auto; padding:7px 12px; font-size:10px; margin:0 4px 0 0; }
-  .adm-sidebar-footer .adm-logout-btn + .adm-logout-btn { display:none; }
+  .adm-nav-item {
+    flex-shrink:0; flex-direction:row;
+    padding:8px 14px; font-size:11px; letter-spacing:.3px;
+    margin-bottom:0; border-radius:6px;
+    white-space:nowrap;
+  }
+  /* Footer (sign out) in a horizontal row */
+  .adm-sidebar-footer {
+    padding:10px 14px;
+    border-top:none;
+    display:flex; flex-direction:row; gap:8px; align-items:center;
+  }
+  .adm-sidebar-footer .adm-logout-btn { width:auto; padding:7px 14px; font-size:11px; margin:0; }
   .adm-main { padding:20px 16px; }
   .adm-title { font-size:22px; }
   .adm-stats { grid-template-columns:1fr 1fr; gap:10px; }
@@ -511,7 +497,6 @@ body.admin-mode { overflow-x:hidden; }
   .adm-table th, .adm-table td { padding:8px 10px; }
   .adm-modal { padding:22px 18px; }
 }
-
 </style>
 </head>
 <body>
@@ -522,7 +507,7 @@ body.admin-mode { overflow-x:hidden; }
   <span id="toast-msg">Added to cart</span>
 </div>
 
-<!-- INFO BAR (announcement) -->
+<!-- INFO BAR -->
 <div class="info-bar" id="info-bar">
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
   <span id="info-bar-text">Free shipping on orders above RM250 · Complimentary sample with every order</span>
@@ -533,14 +518,13 @@ body.admin-mode { overflow-x:hidden; }
   <button class="hamburger" id="hamburger" onclick="toggleDrawer()">
     <span></span><span></span><span></span>
   </button>
+  <!-- Desktop logo — actual logo image -->
   <div class="logo" onclick="goPage('home')">
-    <div class="logo-name">Olivéa</div>
-    <div class="logo-sub">Skin Care House</div>
+    <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa Skin Care House" style="height:44px;width:auto;display:block">
   </div>
   <!-- Mobile center logo -->
   <div class="nav-logo-center" onclick="goPage('home')">
-    <div class="logo-name">Olivéa</div>
-    <div class="logo-sub">Skin Care House</div>
+    <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa" style="height:34px;width:auto;display:block;margin:0 auto">
   </div>
   <ul class="nav-links">
     <li><a href="#" onclick="goPage('home');return false">Home</a></li>
@@ -589,7 +573,7 @@ body.admin-mode { overflow-x:hidden; }
     </div>
   </div>
 
-  <!-- Trust Strip — animated ticker -->
+  <!-- Trust Strip -->
   <div class="trust-strip">
     <div class="trust-track" id="trust-track">
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Maria Galland Paris</div>
@@ -598,7 +582,7 @@ body.admin-mode { overflow-x:hidden; }
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Cruelty Free</div>
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2C8 2 5 6 5 10c0 5.25 7 12 7 12s7-6.75 7-12c0-4-3-8-7-8zm0 10a2 2 0 110-4 2 2 0 010 4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Luxury Botanical</div>
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622C17.176 19.29 21 14.591 21 9c0-1.034-.125-2.04-.354-3.016l-.028.016z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Dermatologist Tested</div>
-      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Clean & Conscious</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Clean &amp; Conscious</div>
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Secure Payment</div>
       <!-- Duplicate for seamless loop -->
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Maria Galland Paris</div>
@@ -607,7 +591,7 @@ body.admin-mode { overflow-x:hidden; }
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Cruelty Free</div>
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2C8 2 5 6 5 10c0 5.25 7 12 7 12s7-6.75 7-12c0-4-3-8-7-8zm0 10a2 2 0 110-4 2 2 0 010 4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Luxury Botanical</div>
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622C17.176 19.29 21 14.591 21 9c0-1.034-.125-2.04-.354-3.016l-.028.016z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Dermatologist Tested</div>
-      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Clean & Conscious</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Clean &amp; Conscious</div>
       <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Secure Payment</div>
     </div>
   </div>
@@ -636,7 +620,6 @@ body.admin-mode { overflow-x:hidden; }
         <svg width="320" height="380" viewBox="0 0 320 380" fill="none">
           <rect x="40" y="40" width="240" height="300" rx="20" fill="rgba(255,255,255,0.2)"/>
           <rect x="60" y="60" width="200" height="260" rx="14" fill="rgba(255,255,255,0.15)"/>
-          <!-- Product arrangement -->
           <rect x="115" y="80" width="90" height="160" rx="10" fill="#e8cfc9"/>
           <rect x="122" y="88" width="76" height="144" rx="7" fill="rgba(255,255,255,0.3)"/>
           <rect x="120" y="70" width="80" height="16" rx="6" fill="#d4b4ae"/>
@@ -648,7 +631,6 @@ body.admin-mode { overflow-x:hidden; }
           <ellipse cx="220" cy="280" rx="28" ry="9" fill="#dcc0ba"/>
           <rect x="192" y="250" width="56" height="30" rx="6" fill="#e8d0c8"/>
           <ellipse cx="220" cy="250" rx="28" ry="9" fill="#f0ddd8"/>
-          <!-- Decorative dots -->
           <circle cx="80" cy="110" r="4" fill="rgba(255,255,255,0.5)"/>
           <circle cx="240" cy="90" r="6" fill="rgba(255,255,255,0.4)"/>
           <circle cx="250" cy="200" r="3" fill="rgba(255,255,255,0.5)"/>
@@ -657,7 +639,7 @@ body.admin-mode { overflow-x:hidden; }
     </div>
   </div>
 
-  <!-- Categories -->
+  <!-- Categories / Brands -->
   <div class="section section-white">
     <div class="section-label">Browse By</div>
     <div class="section-title">Our Brands</div>
@@ -682,8 +664,8 @@ body.admin-mode { overflow-x:hidden; }
   <footer>
     <div class="footer-grid">
       <div>
-        <div class="footer-logo-name">Olivéa</div>
-        <div class="footer-logo-sub">Skin Care House</div>
+        <!-- Footer logo — inverted to show on dark background -->
+        <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa Skin Care House" style="height:38px;width:auto;display:block;filter:brightness(0) invert(1);opacity:0.85;margin-bottom:12px">
         <p class="footer-desc">Authorised retailer of Maria Galland Paris. SSM Registration: CT0161902-X<br><br>Skincare inspired by nature, perfected by science.</p>
       </div>
       <div>
@@ -724,7 +706,6 @@ body.admin-mode { overflow-x:hidden; }
       <div class="footer-social">
         <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#A8998B" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="#A8998B" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="#A8998B"/></svg>
         <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="#A8998B" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 00-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 00-5.487 0 12.36 12.36 0 00-.617-1.23A.077.077 0 008.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 00-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 00.031.055 20.03 20.03 0 005.993 2.98.078.078 0 00.084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 01-1.872-.878.075.075 0 01-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 01.078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 01.079.009c.12.098.245.195.372.288a.075.075 0 01-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 00-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 00.084.028 19.963 19.963 0 006.002-2.981.076.076 0 00.032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 00-.031-.028z" stroke="#A8998B" stroke-width="1.2"/></svg>
       </div>
     </div>
   </footer>
@@ -794,7 +775,7 @@ body.admin-mode { overflow-x:hidden; }
       <div class="detail-perks">
         <div class="perk-item">
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="var(--rose)" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round"/></svg>
-          Secure checkout via FPX, DuitNow & Credit Card
+          Secure checkout via FPX, DuitNow &amp; Credit Card
         </div>
         <div class="perk-item">
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -807,7 +788,6 @@ body.admin-mode { overflow-x:hidden; }
       </div>
     </div>
   </div>
-  <!-- Tabs -->
   <div class="tab-section">
     <div class="tab-nav">
       <button class="tab-btn active" onclick="switchTab('desc',this)">Description</button>
@@ -871,7 +851,7 @@ body.admin-mode { overflow-x:hidden; }
           <input type="radio" name="pay" checked>
           <div>
             <div class="pay-label">FPX — Online Banking</div>
-            <div class="pay-sub">Maybank, CIMB, RHB, Public Bank & more</div>
+            <div class="pay-sub">Maybank, CIMB, RHB, Public Bank &amp; more</div>
           </div>
           <svg width="32" height="20" viewBox="0 0 64 40" style="margin-left:auto"><rect width="64" height="40" rx="6" fill="#005BAC"/><text x="32" y="25" text-anchor="middle" font-family="Lato,sans-serif" font-size="11" font-weight="700" fill="#fff">FPX</text></svg>
         </div>
@@ -903,7 +883,6 @@ body.admin-mode { overflow-x:hidden; }
         </p>
       </div>
     </div>
-    <!-- Order Summary -->
     <div class="checkout-summary">
       <h3>Order Summary</h3>
       <div id="co-items-list"></div>
@@ -949,13 +928,13 @@ body.admin-mode { overflow-x:hidden; }
 
 <!-- ═══════════════════ LOGIN PAGE ═══════════════════ -->
 <div id="page-login" class="page">
-  <div class="login-page">
+  <div class="login-page-wrap">
     <div class="login-card">
       <div class="login-logo">
-        <div class="logo-name" style="font-family:'Playfair Display',serif;font-size:30px;color:var(--brown)">Olivéa</div>
-        <div class="logo-sub" style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--taupe);margin-top:-2px">Skin Care House</div>
+        <!-- Login page logo -->
+        <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa Skin Care House" style="height:52px;width:auto;display:block;margin:0 auto">
       </div>
-      <h2 class="login-title">Admin Sign In</h2>
+      <h2 class="login-title" style="margin-top:16px">Admin Sign In</h2>
       <p class="login-sub">Enter your password to access the dashboard.</p>
       <div class="fg" style="margin-top:24px">
         <label style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:7px;display:block">Password</label>
@@ -970,10 +949,7 @@ body.admin-mode { overflow-x:hidden; }
 </div>
 
 <!-- ═══════════════════ ADMIN DASHBOARD ═══════════════════ -->
-<!-- ═══════════════════ ADMIN DASHBOARD ═══════════════════ -->
 <div id="page-admin" class="page page-admin"></div>
-
-<!-- Aliases so URLs like #admin-orders also work -->
 <div id="page-admin-overview" class="page page-admin"></div>
 <div id="page-admin-orders" class="page page-admin"></div>
 <div id="page-admin-products" class="page page-admin"></div>
@@ -981,12 +957,10 @@ body.admin-mode { overflow-x:hidden; }
 <div id="page-admin-announcement" class="page page-admin"></div>
 <div id="page-admin-settings" class="page page-admin"></div>
 
-<!-- Admin shell is rendered via JS, no static template needed -->
-
 <script>
-// ═══════════════════ STORE — single source of truth ═══════════════════
+// ═══════════════════ STORE ═══════════════════
 const STORAGE_KEY = 'olivea-store-v1';
-const ADMIN_PASS = 'olivea2026'; // default — client should change
+const ADMIN_PASS = 'olivea2026';
 
 const DEFAULT_PRODUCTS = [
   { id:0, no:'No. 60', name:'Refreshing Cleansing Gel', price:128, stock:24, category:'cleanser', brand:'maria-galland', image:'',
@@ -1061,11 +1035,7 @@ let store = loadStore();
 function loadStore() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if(raw) {
-      const parsed = JSON.parse(raw);
-      // Backfill missing fields from defaults
-      return {...DEFAULT_STORE, ...parsed};
-    }
+    if(raw) { const parsed = JSON.parse(raw); return {...DEFAULT_STORE, ...parsed}; }
   } catch(e) { console.warn('Store load failed', e); }
   return JSON.parse(JSON.stringify(DEFAULT_STORE));
 }
@@ -1078,7 +1048,6 @@ function resetStore() {
   refreshAll();
 }
 
-// `products` is just an alias to store.products for backwards-compat with the rest of the script
 let products = store.products;
 
 function refreshAll() {
@@ -1088,7 +1057,6 @@ function refreshAll() {
   renderFeaturedProducts();
 }
 
-// Product image (uses uploaded image if set, else SVG illustration)
 function productSVG(p, size='md') {
   if(p.image) {
     const w = size==='lg'?'100%':(size==='sm'?'48px':'100%');
@@ -1116,7 +1084,6 @@ function productSVG(p, size='md') {
       <text x="35" y="73" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">${p.no}</text>
     </svg>`;
   }
-  // serum / moisturiser — tall bottle
   const w = size==='lg'?55:38, h = size==='lg'?160:76;
   return `<svg width="${w}" height="${h}" viewBox="0 0 55 140" fill="none" preserveAspectRatio="xMidYMid meet">
     <rect x="12" y="5" width="31" height="120" rx="10" fill="${p.colors[0]}"/>
@@ -1127,7 +1094,6 @@ function productSVG(p, size='md') {
   </svg>`;
 }
 
-// ── STATE ──
 let currentOrder = [];
 let currentDetail = null;
 let detailQty = 1;
@@ -1139,9 +1105,7 @@ function showToast(msg) {
   setTimeout(()=>t.classList.remove('show'),2800);
 }
 
-// ── PAGE ROUTING (with browser history) ──
 function goPage(name, push=true) {
-  // Admin login gate
   if(name === 'admin' || name.startsWith('admin-')) {
     if(!isLoggedIn()) { goPage('login', push); return; }
   }
@@ -1149,7 +1113,6 @@ function goPage(name, push=true) {
   const target = document.getElementById('page-'+name);
   if(!target) { goPage('home', push); return; }
   target.classList.add('active');
-  // Toggle admin-mode body class to hide site chrome on admin/login
   if(name === 'admin' || name.startsWith('admin-') || name === 'login') {
     document.body.classList.add('admin-mode');
   } else {
@@ -1168,7 +1131,6 @@ window.addEventListener('popstate', e => {
   goPage(name, false);
 });
 
-// ── PRODUCTS PAGE — two-tier filter ──
 let filterState = { brand: 'all', category: 'all' };
 
 function pcardHTML(p) {
@@ -1206,75 +1168,48 @@ function applyFilters() {
   grid.innerHTML = list.map(pcardHTML).join('');
 }
 
-function renderAllProducts(brandFilter='all') {
-  filterState.brand = brandFilter;
-  applyFilters();
-}
-
 function renderFeaturedProducts() {
   const wrap = document.getElementById('featured-grid');
   if(!wrap) return;
-  // Top 4 in-stock products, with priority for "Best Seller" badge
   const inStock = store.products.filter(p=>p.stock>0);
-  const sorted = inStock.sort((a,b)=>{
-    const aBest = a.badge==='Best Seller'?1:0;
-    const bBest = b.badge==='Best Seller'?1:0;
-    return bBest - aBest;
-  });
+  const sorted = inStock.sort((a,b)=>{ const aBest=a.badge==='Best Seller'?1:0; const bBest=b.badge==='Best Seller'?1:0; return bBest-aBest; });
   wrap.innerHTML = sorted.slice(0,4).map(pcardHTML).join('');
-  // Update brand counts on homepage
   const mgCount = store.products.filter(p=>p.brand==='maria-galland').length;
   const jyCount = store.products.filter(p=>p.brand==='jyunka').length;
-  const mgEl = document.getElementById('count-mg');
-  const jyEl = document.getElementById('count-jy');
+  const mgEl = document.getElementById('count-mg'); const jyEl = document.getElementById('count-jy');
   if(mgEl) mgEl.textContent = mgCount + ' Products →';
   if(jyEl) jyEl.textContent = jyCount + ' Products →';
 }
 
 function filterProducts(brand, btn) {
   document.querySelectorAll('.filter-bar:not(.filter-bar-sub) .fbtn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  filterState.brand = brand;
-  applyFilters();
+  btn.classList.add('active'); filterState.brand = brand; applyFilters();
 }
-
 function filterCategory(cat, btn) {
   document.querySelectorAll('.fbtn-sub').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  filterState.category = cat;
-  applyFilters();
+  btn.classList.add('active'); filterState.category = cat; applyFilters();
 }
-
 function resetFilters() {
   filterState = { brand:'all', category:'all' };
-  document.querySelectorAll('.fbtn').forEach(b=>{
-    b.classList.toggle('active', b.textContent.trim()==='All Brands' || b.textContent.trim()==='All');
-  });
+  document.querySelectorAll('.fbtn').forEach(b=>{ b.classList.toggle('active', b.textContent.trim()==='All Brands' || b.textContent.trim()==='All'); });
   applyFilters();
 }
-
 function goPageBrand(brand) {
   goPage('products');
   setTimeout(()=>{
     filterState = { brand:brand, category:'all' };
     document.querySelectorAll('.fbtn').forEach(b=>{
       const oc = b.getAttribute('onclick') || '';
-      if(oc.includes("'"+brand+"'") || (b.textContent.trim()==='All' && oc.includes('filterCategory'))) {
-        b.classList.add('active');
-      } else {
-        b.classList.remove('active');
-      }
+      if(oc.includes("'"+brand+"'") || (b.textContent.trim()==='All' && oc.includes('filterCategory'))) { b.classList.add('active'); } else { b.classList.remove('active'); }
     });
     applyFilters();
   }, 80);
 }
 
-// ── DETAIL PAGE ──
 function goDetail(id) {
   const p = store.products.find(x=>x.id===id);
   if(!p) return;
-  currentDetail = p;
-  detailQty = 1;
+  currentDetail = p; detailQty = 1;
   document.getElementById('bc-product-name').textContent = p.name;
   document.getElementById('d-no').textContent = p.no + ' · ' + (p.brand==='jyunka'?'Jyunka':'Maria Galland');
   document.getElementById('d-name').textContent = p.name;
@@ -1287,7 +1222,6 @@ function goDetail(id) {
   document.getElementById('detail-thumbs').innerHTML = p.colors.map((c,i)=>`
     <div class="thumb ${i===0?'active':''}" style="background:linear-gradient(135deg,${c},${p.colors[1]})" onclick="selectThumb(this,${i})"></div>`).join('');
   document.getElementById('ingr-list').innerHTML = p.ingredients.map(i=>`<span class="ingr-tag">${i}</span>`).join('');
-  // Update Buy Now button based on stock
   const buyBtn = document.querySelector('.detail-actions');
   if(buyBtn) {
     if(p.stock <= 0) {
@@ -1296,45 +1230,21 @@ function goDetail(id) {
       buyBtn.innerHTML = '<button class="btn btn-dark" style="flex:1;padding:15px" onclick="buyNow()">Buy Now</button>';
     }
   }
-  // Reset tabs
   document.querySelectorAll('.tab-btn').forEach((b,i)=>{b.classList.toggle('active',i===0)});
   document.querySelectorAll('.tab-pane').forEach((p,i)=>{p.classList.toggle('active',i===0)});
   goPage('detail');
 }
-
-function selectThumb(el, idx) {
-  document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-}
-
-function changeQty(d) {
-  detailQty = Math.max(1, detailQty+d);
-  document.getElementById('d-qty').textContent = detailQty;
-}
-
-function buyNow() {
-  if(!currentDetail || currentDetail.stock <= 0) return;
-  currentOrder = [{...currentDetail, qty: detailQty}];
-  goPage('checkout');
-}
-
-function directBuy(id) {
-  const p = store.products.find(x=>x.id===id);
-  if(!p || p.stock <= 0) return;
-  currentOrder = [{...p, qty: 1}];
-  goPage('checkout');
-}
-
+function selectThumb(el, idx) { document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active')); el.classList.add('active'); }
+function changeQty(d) { detailQty = Math.max(1, detailQty+d); document.getElementById('d-qty').textContent = detailQty; }
+function buyNow() { if(!currentDetail || currentDetail.stock <= 0) return; currentOrder = [{...currentDetail, qty: detailQty}]; goPage('checkout'); }
+function directBuy(id) { const p = store.products.find(x=>x.id===id); if(!p || p.stock <= 0) return; currentOrder = [{...p, qty: 1}]; goPage('checkout'); }
 function switchTab(name, btn) {
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active'); document.getElementById('tab-'+name).classList.add('active');
 }
 
-// ── CHECKOUT ──
 let appliedPromo = null;
-
 function renderCheckout() {
   const order = currentOrder;
   if(!order || !order.length) return;
@@ -1348,15 +1258,10 @@ function renderCheckout() {
   document.getElementById('co-shipping').textContent=shipping===0?'Free':'RM '+shipping;
   document.getElementById('co-tax').textContent='RM '+tax;
   document.getElementById('co-total').textContent='RM '+total;
-  // Discount row (if any)
   const discRow = document.getElementById('co-discount-row');
   if(discRow) {
-    if(discount>0) {
-      discRow.style.display='flex';
-      discRow.innerHTML = `<span style="color:#52C97A">Discount (${appliedPromo.code})</span><span style="color:#52C97A">−RM ${discount}</span>`;
-    } else {
-      discRow.style.display='none';
-    }
+    if(discount>0) { discRow.style.display='flex'; discRow.innerHTML = `<span style="color:#52C97A">Discount (${appliedPromo.code})</span><span style="color:#52C97A">−RM ${discount}</span>`; }
+    else { discRow.style.display='none'; }
   }
   document.getElementById('co-items-list').innerHTML=order.map(item=>`
     <div class="co-item-row">
@@ -1365,23 +1270,16 @@ function renderCheckout() {
       <div class="co-item-price">RM ${item.price*item.qty}</div>
     </div>`).join('');
 }
-
 function applyPromoCode() {
   const input = document.getElementById('promo-input');
   const status = document.getElementById('promo-status');
   const code = (input.value||'').trim().toUpperCase();
   if(!code) { status.textContent=''; return; }
   const promo = store.promos.find(p=>p.code===code && p.active);
-  if(promo) {
-    appliedPromo = promo;
-    status.innerHTML = `<span style="color:#52C97A">✓ ${promo.discount}% discount applied</span>`;
-  } else {
-    appliedPromo = null;
-    status.innerHTML = `<span style="color:#e57373">Invalid or inactive code</span>`;
-  }
+  if(promo) { appliedPromo = promo; status.innerHTML = `<span style="color:#52C97A">✓ ${promo.discount}% discount applied</span>`; }
+  else { appliedPromo = null; status.innerHTML = `<span style="color:#e57373">Invalid or inactive code</span>`; }
   renderCheckout();
 }
-
 function placeOrder() {
   const order = currentOrder;
   if(!order || !order.length) return;
@@ -1402,41 +1300,18 @@ function placeOrder() {
   const total = afterDisc+shipping+tax;
   const ref = 'OLV-2026-'+String(store.nextOrderId).padStart(5,'0');
   store.nextOrderId += 1;
-  // Decrement stock for each item
-  order.forEach(item=>{
-    const p = store.products.find(x=>x.id===item.id);
-    if(p) p.stock = Math.max(0, p.stock - item.qty);
-  });
-  // Increment promo usage
-  if(appliedPromo) {
-    const sp = store.promos.find(p=>p.code===appliedPromo.code);
-    if(sp) sp.uses = (sp.uses||0) + 1;
-  }
-  // Save order
-  const newOrder = {
-    ref, status:'pending', tracking:'', createdAt:Date.now(),
-    customer:{fname,lname,email,phone,addr1,addr2,city,post,state},
-    items:order.map(i=>({id:i.id,no:i.no,name:i.name,price:i.price,qty:i.qty})),
-    subtotal, discount, promoCode:appliedPromo?appliedPromo.code:'',
-    shipping, tax, total
-  };
+  order.forEach(item=>{ const p = store.products.find(x=>x.id===item.id); if(p) p.stock = Math.max(0, p.stock - item.qty); });
+  if(appliedPromo) { const sp = store.promos.find(p=>p.code===appliedPromo.code); if(sp) sp.uses = (sp.uses||0) + 1; }
+  const newOrder = { ref, status:'pending', tracking:'', createdAt:Date.now(), customer:{fname,lname,email,phone,addr1,addr2,city,post,state}, items:order.map(i=>({id:i.id,no:i.no,name:i.name,price:i.price,qty:i.qty})), subtotal, discount, promoCode:appliedPromo?appliedPromo.code:'', shipping, tax, total };
   store.orders.unshift(newOrder);
-  saveStore();
-  refreshAll();
-  // Stash for success page
-  window._lastOrderRef = ref;
-  window._lastOrderTotal = total;
-  appliedPromo = null;
-  goPage('success');
+  saveStore(); refreshAll();
+  window._lastOrderRef = ref; window._lastOrderTotal = total;
+  appliedPromo = null; goPage('success');
 }
-
 function selectPay(el) {
   document.querySelectorAll('.pay-option').forEach(p=>{p.classList.remove('selected');p.querySelector('input').checked=false});
-  el.classList.add('selected');
-  el.querySelector('input').checked=true;
+  el.classList.add('selected'); el.querySelector('input').checked=true;
 }
-
-// ── SUCCESS ──
 function renderSuccess() {
   const ref = window._lastOrderRef || ('OLV-2026-'+String(Math.floor(Math.random()*90000)+10000));
   document.getElementById('order-ref').textContent=ref;
@@ -1449,44 +1324,17 @@ function renderSuccess() {
   currentOrder=[];
 }
 
-// ── SEARCH ──
-function openSearch() {
-  document.getElementById('search-overlay').classList.add('open');
-  setTimeout(()=>document.getElementById('search-input').focus(),300);
-  renderSearchResults(store.products);
-}
-function closeSearch() {
-  document.getElementById('search-overlay').classList.remove('open');
-  document.getElementById('search-input').value='';
-  renderSearchResults(store.products);
-}
-function closeSearchIfOutside(e) {
-  if(e.target===document.getElementById('search-overlay')) closeSearch();
-}
-function runSearch(q) {
-  const trimmed = q.trim().toLowerCase();
-  if(!trimmed) { renderSearchResults(store.products); return; }
-  const res = store.products.filter(p=>
-    p.name.toLowerCase().includes(trimmed) ||
-    p.no.toLowerCase().includes(trimmed) ||
-    p.category.toLowerCase().includes(trimmed) ||
-    p.ingredients.some(i=>i.toLowerCase().includes(trimmed))
-  );
-  renderSearchResults(res);
-}
+function openSearch() { document.getElementById('search-overlay').classList.add('open'); setTimeout(()=>document.getElementById('search-input').focus(),300); renderSearchResults(store.products); }
+function closeSearch() { document.getElementById('search-overlay').classList.remove('open'); document.getElementById('search-input').value=''; renderSearchResults(store.products); }
+function closeSearchIfOutside(e) { if(e.target===document.getElementById('search-overlay')) closeSearch(); }
+function runSearch(q) { const trimmed = q.trim().toLowerCase(); if(!trimmed) { renderSearchResults(store.products); return; } const res = store.products.filter(p=> p.name.toLowerCase().includes(trimmed) || p.no.toLowerCase().includes(trimmed) || p.category.toLowerCase().includes(trimmed) || p.ingredients.some(i=>i.toLowerCase().includes(trimmed))); renderSearchResults(res); }
 function renderSearchResults(list) {
   const el = document.getElementById('search-results-list');
-  if(!list.length) {
-    el.innerHTML='<div class="search-no-results">No products found. Try a different keyword.</div>';
-    return;
-  }
+  if(!list.length) { el.innerHTML='<div class="search-no-results">No products found. Try a different keyword.</div>'; return; }
   el.innerHTML = list.map(p=>`
     <div class="search-result-item" onclick="closeSearch();goDetail(${p.id})">
       <div class="search-result-img" style="background:${p.bg}">${productSVG(p,'sm')}</div>
-      <div>
-        <div class="search-result-name">${p.name}</div>
-        <div class="search-result-price">RM ${p.price}</div>
-      </div>
+      <div><div class="search-result-name">${p.name}</div><div class="search-result-price">RM ${p.price}</div></div>
       <svg width="14" height="14" fill="none" viewBox="0 0 24 24" style="margin-left:auto;flex-shrink:0;color:var(--taupe)"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </div>`).join('');
 }
@@ -1494,81 +1342,51 @@ document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeSearch(); })
 
 function goHomeScroll(sectionId) {
   if(!document.getElementById('page-home').classList.contains('active')) {
-    goPage('home');
-    setTimeout(()=>{ const el=document.getElementById(sectionId); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }, 400);
-  } else {
-    const el=document.getElementById(sectionId); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-  }
+    goPage('home'); setTimeout(()=>{ const el=document.getElementById(sectionId); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }, 400);
+  } else { const el=document.getElementById(sectionId); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
 }
-
-// ── DRAWER ──
 function toggleDrawer() {
-  const d = document.getElementById('drawer');
-  const o = document.getElementById('drawer-overlay');
-  const h = document.getElementById('hamburger');
+  const d = document.getElementById('drawer'); const o = document.getElementById('drawer-overlay'); const h = document.getElementById('hamburger');
   const isOpen = d.classList.contains('open');
-  d.classList.toggle('open', !isOpen);
-  o.classList.toggle('open', !isOpen);
-  h.classList.toggle('open', !isOpen);
+  d.classList.toggle('open', !isOpen); o.classList.toggle('open', !isOpen); h.classList.toggle('open', !isOpen);
 }
-
-// ── MOBILE STICKY — only on mobile, only on detail page ──
 function updateMobileSticky() {
-  const ms = document.getElementById('mobile-sticky');
-  if(!ms) return;
+  const ms = document.getElementById('mobile-sticky'); if(!ms) return;
   const isMobile = window.innerWidth <= 768;
   const isDetail = document.getElementById('page-detail').classList.contains('active');
   ms.style.display = (isMobile && isDetail) ? 'flex' : 'none';
-  if(isMobile && isDetail && currentDetail) {
-    document.getElementById('ms-name').textContent = currentDetail.name;
-    document.getElementById('ms-price').textContent = 'RM '+currentDetail.price;
-  }
+  if(isMobile && isDetail && currentDetail) { document.getElementById('ms-name').textContent = currentDetail.name; document.getElementById('ms-price').textContent = 'RM '+currentDetail.price; }
 }
 window.addEventListener('resize', updateMobileSticky);
 
-// ═══════════════════ ADMIN DASHBOARD ═══════════════════
-
-function isLoggedIn() { return sessionStorage.getItem('olivea-admin') === 'yes'; }
-function setLoggedIn(v) { v ? sessionStorage.setItem('olivea-admin','yes') : sessionStorage.removeItem('olivea-admin'); }
+// ═══════════════════ ADMIN ═══════════════════
+// FIX 3: Use localStorage so admin stays logged in across page reloads/revisits
+function isLoggedIn() { return localStorage.getItem('olivea-admin') === 'yes'; }
+function setLoggedIn(v) { v ? localStorage.setItem('olivea-admin','yes') : localStorage.removeItem('olivea-admin'); }
 function getCurrentPassword() { return localStorage.getItem('olivea-admin-pass') || ADMIN_PASS; }
 
 function tryLogin() {
   const pass = document.getElementById('login-pass').value;
   const err = document.getElementById('login-err');
   if(pass === getCurrentPassword()) {
-    setLoggedIn(true);
-    err.textContent = '';
-    document.getElementById('login-pass').value = '';
-    goPage('admin');
-  } else {
-    err.textContent = 'Incorrect password. Please try again.';
-    document.getElementById('login-pass').value = '';
-  }
+    setLoggedIn(true); err.textContent = ''; document.getElementById('login-pass').value = ''; goPage('admin');
+  } else { err.textContent = 'Incorrect password. Please try again.'; document.getElementById('login-pass').value = ''; }
 }
-
-function logout() {
-  setLoggedIn(false);
-  document.body.classList.remove('admin-mode');
-  goPage('home');
-}
+function logout() { setLoggedIn(false); document.body.classList.remove('admin-mode'); goPage('home'); }
 
 let adminSection = 'overview';
 
 function renderAdmin(pageName) {
   if(!isLoggedIn()) { goPage('login', false); return; }
-  if(pageName === 'admin') {
-    // keep current adminSection or default to overview
-    if(!adminSection) adminSection = 'overview';
-  } else if(pageName.startsWith('admin-')) {
-    adminSection = pageName.replace('admin-','');
-  }
-  // Inject shell into the active admin page div (the page that goPage activated)
+  if(pageName === 'admin') { if(!adminSection) adminSection = 'overview'; }
+  else if(pageName.startsWith('admin-')) { adminSection = pageName.replace('admin-','') || 'overview'; }
   const activePage = document.getElementById('page-'+pageName);
   if(activePage) activePage.innerHTML = adminShellHTML();
   renderAdminBody();
 }
 
 function adminShellHTML() {
+  const LOGO_URL = 'https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png';
   const navItem = (sec, label, svg) => `
     <div class="adm-nav-item${sec===adminSection?' active':''}" data-section="${sec}" onclick="switchAdmin('${sec}')">
       ${svg}<span>${label}</span>
@@ -1577,8 +1395,8 @@ function adminShellHTML() {
     <div class="adm-shell">
       <aside class="adm-sidebar">
         <div class="adm-sidebar-logo" onclick="goPage('home')">
-          <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--brown)">Olivéa</div>
-          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--taupe);margin-top:-2px">Admin Panel</div>
+          <img src="${LOGO_URL}" alt="Olivéa" style="height:28px;width:auto;display:block;margin-bottom:4px">
+          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--taupe)">Admin Panel</div>
         </div>
         <nav class="adm-nav">
           ${navItem('overview','Overview','<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="3" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="12" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="16" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>')}
@@ -1594,7 +1412,7 @@ function adminShellHTML() {
             Sign Out
           </button>
           <button class="adm-logout-btn" style="margin-top:6px;color:var(--taupe);font-size:10px" onclick="if(confirm('Reset all data to defaults?')){resetStore();renderAdminBody();showToast('Reset complete');}">
-            Reset Demo Data
+            Reset Data
           </button>
         </div>
       </aside>
@@ -1614,7 +1432,6 @@ function adminShellHTML() {
 
 function switchAdmin(section) {
   adminSection = section;
-  // Re-render the shell to update active nav state
   const active = document.querySelector('.page-admin.active');
   if(active) active.innerHTML = adminShellHTML();
   renderAdminBody();
@@ -1622,10 +1439,7 @@ function switchAdmin(section) {
 }
 
 function renderAdminBody() {
-  // Sidebar active state — note: classes are .adm-nav-item not .admin-nav-item
-  document.querySelectorAll('.adm-nav-item').forEach(el=>{
-    el.classList.toggle('active', el.dataset.section === adminSection);
-  });
+  document.querySelectorAll('.adm-nav-item').forEach(el=>{ el.classList.toggle('active', el.dataset.section === adminSection); });
   const body = document.getElementById('admin-body');
   if(!body) return;
   if(adminSection === 'overview') body.innerHTML = renderAdminOverview();
@@ -1636,7 +1450,6 @@ function renderAdminBody() {
   else if(adminSection === 'settings') body.innerHTML = renderAdminSettings();
 }
 
-// ── Overview ──
 function renderAdminOverview() {
   const today = new Date(); today.setHours(0,0,0,0);
   const todayMs = today.getTime();
@@ -1646,65 +1459,32 @@ function renderAdminOverview() {
   const todayRev = todayOrders.reduce((s,o)=>s+o.total,0);
   const monthRev = monthOrders.reduce((s,o)=>s+o.total,0);
   const lowStock = store.products.filter(p=>p.stock<=5);
-  // Best sellers: count units across all orders
   const counts = {};
   store.orders.forEach(o=>o.items.forEach(it=>{counts[it.id]=(counts[it.id]||0)+it.qty}));
-  const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([id,qty])=>{
-    const p = store.products.find(x=>x.id==id);
-    return p ? {p,qty} : null;
-  }).filter(Boolean);
+  const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([id,qty])=>{ const p = store.products.find(x=>x.id==id); return p ? {p,qty} : null; }).filter(Boolean);
   return `
     <h1 class="adm-title">Overview</h1>
     <p class="adm-sub">Welcome back. Here's what's happening today.</p>
     <div class="adm-stats">
-      <div class="adm-stat-card">
-        <div class="adm-stat-label">Today's Orders</div>
-        <div class="adm-stat-value">${todayOrders.length}</div>
-        <div class="adm-stat-sub">RM ${todayRev}</div>
-      </div>
-      <div class="adm-stat-card">
-        <div class="adm-stat-label">This Month Revenue</div>
-        <div class="adm-stat-value">RM ${monthRev}</div>
-        <div class="adm-stat-sub">${monthOrders.length} orders</div>
-      </div>
-      <div class="adm-stat-card">
-        <div class="adm-stat-label">Total Products</div>
-        <div class="adm-stat-value">${store.products.length}</div>
-        <div class="adm-stat-sub">${store.products.filter(p=>p.stock>0).length} in stock</div>
-      </div>
-      <div class="adm-stat-card ${lowStock.length?'adm-stat-warn':''}">
-        <div class="adm-stat-label">Low Stock Alert</div>
-        <div class="adm-stat-value">${lowStock.length}</div>
-        <div class="adm-stat-sub">${lowStock.length ? 'needs attention' : 'all good'}</div>
-      </div>
+      <div class="adm-stat-card"><div class="adm-stat-label">Today's Orders</div><div class="adm-stat-value">${todayOrders.length}</div><div class="adm-stat-sub">RM ${todayRev}</div></div>
+      <div class="adm-stat-card"><div class="adm-stat-label">This Month Revenue</div><div class="adm-stat-value">RM ${monthRev}</div><div class="adm-stat-sub">${monthOrders.length} orders</div></div>
+      <div class="adm-stat-card"><div class="adm-stat-label">Total Products</div><div class="adm-stat-value">${store.products.length}</div><div class="adm-stat-sub">${store.products.filter(p=>p.stock>0).length} in stock</div></div>
+      <div class="adm-stat-card ${lowStock.length?'adm-stat-warn':''}"><div class="adm-stat-label">Low Stock Alert</div><div class="adm-stat-value">${lowStock.length}</div><div class="adm-stat-sub">${lowStock.length ? 'needs attention' : 'all good'}</div></div>
     </div>
     <div class="adm-grid-2">
       <div class="adm-panel">
         <h3 class="adm-panel-title">Top Selling Products</h3>
         ${top.length === 0 ? '<p class="adm-empty">No orders yet — your bestsellers will appear here.</p>' : top.map(t=>`
-          <div class="adm-row">
-            <div style="flex:1">
-              <div style="font-weight:500">${t.p.name}</div>
-              <div style="font-size:11px;color:var(--taupe)">${t.p.no} · ${t.p.brand==='jyunka'?'Jyunka':'Maria Galland'}</div>
-            </div>
-            <div style="font-weight:700;color:var(--rose)">${t.qty} sold</div>
-          </div>`).join('')}
+          <div class="adm-row"><div style="flex:1"><div style="font-weight:500">${t.p.name}</div><div style="font-size:11px;color:var(--taupe)">${t.p.no} · ${t.p.brand==='jyunka'?'Jyunka':'Maria Galland'}</div></div><div style="font-weight:700;color:var(--rose)">${t.qty} sold</div></div>`).join('')}
       </div>
       <div class="adm-panel">
         <h3 class="adm-panel-title">Low Stock Items</h3>
         ${lowStock.length === 0 ? '<p class="adm-empty">All products are well stocked. ✓</p>' : lowStock.map(p=>`
-          <div class="adm-row">
-            <div style="flex:1">
-              <div style="font-weight:500">${p.name}</div>
-              <div style="font-size:11px;color:var(--taupe)">${p.no}</div>
-            </div>
-            <div style="font-weight:700;color:${p.stock===0?'#e57373':'#e8a957'}">${p.stock===0?'Out':p.stock+' left'}</div>
-          </div>`).join('')}
+          <div class="adm-row"><div style="flex:1"><div style="font-weight:500">${p.name}</div><div style="font-size:11px;color:var(--taupe)">${p.no}</div></div><div style="font-weight:700;color:${p.stock===0?'#e57373':'#e8a957'}">${p.stock===0?'Out':p.stock+' left'}</div></div>`).join('')}
       </div>
     </div>`;
 }
 
-// ── Orders ──
 let adminOrderFilter = 'all';
 function renderAdminOrders() {
   return `
@@ -1715,18 +1495,14 @@ function renderAdminOrders() {
       <button class="adm-filter ${adminOrderFilter==='shipped'?'active':''}" onclick="filterOrders('shipped')">Shipped (${store.orders.filter(o=>o.status==='shipped').length})</button>
       <button class="adm-filter ${adminOrderFilter==='completed'?'active':''}" onclick="filterOrders('completed')">Completed (${store.orders.filter(o=>o.status==='completed').length})</button>
     </div>
-    <div class="adm-panel" style="padding:0">
-    ${renderOrderTable()}
-    </div>`;
+    <div class="adm-panel" style="padding:0">${renderOrderTable()}</div>`;
 }
-
 function renderOrderTable() {
   const list = adminOrderFilter==='all' ? store.orders : store.orders.filter(o=>o.status===adminOrderFilter);
   if(!list.length) return '<p class="adm-empty" style="padding:32px">No orders in this view.</p>';
   return `<table class="adm-table">
     <thead><tr><th>Order Ref</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
-    <tbody>
-      ${list.map(o=>`<tr>
+    <tbody>${list.map(o=>`<tr>
         <td><strong>${o.ref}</strong></td>
         <td>${o.customer.fname} ${o.customer.lname||''}<br><span style="font-size:11px;color:var(--taupe)">${o.customer.phone||'—'}</span></td>
         <td>${o.items.reduce((s,i)=>s+i.qty,0)} items</td>
@@ -1734,34 +1510,20 @@ function renderOrderTable() {
         <td><span class="adm-badge adm-badge-${o.status}">${o.status}</span></td>
         <td style="font-size:12px;color:var(--taupe)">${new Date(o.createdAt).toLocaleDateString('en-MY',{day:'numeric',month:'short',year:'numeric'})}</td>
         <td><button class="adm-btn-sm" onclick="openOrder('${o.ref}')">View</button></td>
-      </tr>`).join('')}
-    </tbody>
-  </table>`;
+      </tr>`).join('')}</tbody></table>`;
 }
-
 function filterOrders(f) { adminOrderFilter = f; renderAdminBody(); }
 
 function openOrder(ref) {
-  const o = store.orders.find(x=>x.ref===ref);
-  if(!o) return;
+  const o = store.orders.find(x=>x.ref===ref); if(!o) return;
   const modal = document.getElementById('adm-modal');
   document.getElementById('adm-modal-body').innerHTML = `
     <h2 style="font-family:'Playfair Display',serif;margin-bottom:4px">${o.ref}</h2>
     <p style="color:var(--taupe);font-size:13px;margin-bottom:20px">Placed ${new Date(o.createdAt).toLocaleString('en-MY')}</p>
     <div class="adm-grid-2" style="gap:24px">
-      <div>
-        <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:8px">Customer</h4>
-        <p style="font-size:13px;line-height:22px">
-          ${o.customer.fname} ${o.customer.lname||''}<br>
-          ${o.customer.email||'—'}<br>
-          ${o.customer.phone||'—'}<br><br>
-          ${o.customer.addr1||''}${o.customer.addr2?', '+o.customer.addr2:''}<br>
-          ${o.customer.city||''} ${o.customer.post||''}<br>
-          ${o.customer.state||''}
-        </p>
-      </div>
-      <div>
-        <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:8px">Status</h4>
+      <div><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:8px">Customer</h4>
+        <p style="font-size:13px;line-height:22px">${o.customer.fname} ${o.customer.lname||''}<br>${o.customer.email||'—'}<br>${o.customer.phone||'—'}<br><br>${o.customer.addr1||''}${o.customer.addr2?', '+o.customer.addr2:''}<br>${o.customer.city||''} ${o.customer.post||''}<br>${o.customer.state||''}</p></div>
+      <div><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:8px">Status</h4>
         <select id="ord-status" class="adm-input" style="margin-bottom:14px">
           <option value="pending" ${o.status==='pending'?'selected':''}>Pending</option>
           <option value="shipped" ${o.status==='shipped'?'selected':''}>Shipped</option>
@@ -1769,19 +1531,10 @@ function openOrder(ref) {
           <option value="cancelled" ${o.status==='cancelled'?'selected':''}>Cancelled</option>
         </select>
         <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:8px">Tracking Number</h4>
-        <input id="ord-tracking" class="adm-input" type="text" placeholder="e.g. EC123456789MY" value="${o.tracking||''}">
-      </div>
+        <input id="ord-tracking" class="adm-input" type="text" placeholder="e.g. EC123456789MY" value="${o.tracking||''}"></div>
     </div>
     <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin:24px 0 12px">Items</h4>
-    <table class="adm-table">
-      <tbody>
-      ${o.items.map(it=>`<tr>
-        <td>${it.name}<br><span style="font-size:11px;color:var(--taupe)">${it.no}</span></td>
-        <td>× ${it.qty}</td>
-        <td><strong>RM ${it.price*it.qty}</strong></td>
-      </tr>`).join('')}
-      </tbody>
-    </table>
+    <table class="adm-table"><tbody>${o.items.map(it=>`<tr><td>${it.name}<br><span style="font-size:11px;color:var(--taupe)">${it.no}</span></td><td>× ${it.qty}</td><td><strong>RM ${it.price*it.qty}</strong></td></tr>`).join('')}</tbody></table>
     <div style="border-top:1px solid var(--beige);padding-top:14px;margin-top:14px;font-size:13px">
       <div style="display:flex;justify-content:space-between;padding:4px 0"><span>Subtotal</span><span>RM ${o.subtotal}</span></div>
       ${o.discount?`<div style="display:flex;justify-content:space-between;padding:4px 0;color:#52C97A"><span>Discount (${o.promoCode})</span><span>−RM ${o.discount}</span></div>`:''}
@@ -1791,66 +1544,32 @@ function openOrder(ref) {
     </div>
     <div style="display:flex;gap:10px;margin-top:24px">
       <button class="btn btn-dark" onclick="saveOrderEdits('${o.ref}')">Save Changes</button>
-      <button class="btn btn-outline" onclick="printShippingLabel('${o.ref}')">Print Shipping Label</button>
+      <button class="btn btn-outline" onclick="printShippingLabel('${o.ref}')">Print Label</button>
       <button class="btn btn-outline" style="margin-left:auto" onclick="closeAdmModal()">Close</button>
     </div>`;
   modal.classList.add('open');
 }
-
 function saveOrderEdits(ref) {
-  const o = store.orders.find(x=>x.ref===ref);
-  if(!o) return;
+  const o = store.orders.find(x=>x.ref===ref); if(!o) return;
   o.status = document.getElementById('ord-status').value;
   o.tracking = document.getElementById('ord-tracking').value.trim();
-  saveStore();
-  closeAdmModal();
-  renderAdminBody();
-  showToast('Order updated');
+  saveStore(); closeAdmModal(); renderAdminBody(); showToast('Order updated');
 }
-
 function printShippingLabel(ref) {
-  const o = store.orders.find(x=>x.ref===ref);
-  if(!o) return;
+  const o = store.orders.find(x=>x.ref===ref); if(!o) return;
   const w = window.open('', '_blank', 'width=600,height=800');
   w.document.write(`<!DOCTYPE html><html><head><title>${o.ref} - Shipping Label</title>
-    <style>
-      body{font-family:Arial,sans-serif;padding:40px;color:#333}
-      .label{border:2px solid #333;padding:24px;max-width:500px}
-      h1{font-size:18px;margin-bottom:4px}
-      h2{font-size:14px;margin-top:20px;border-bottom:1px solid #ccc;padding-bottom:4px}
-      .from{font-size:12px;color:#666;margin-bottom:14px}
-      .to{font-size:14px;line-height:22px}
-      table{width:100%;border-collapse:collapse;margin-top:12px;font-size:12px}
-      td,th{border:1px solid #ccc;padding:6px;text-align:left}
-      .ref{font-size:20px;font-weight:bold;letter-spacing:1px}
-      .track{background:#fffbe6;padding:8px;border:1px dashed #ccc;margin-top:12px;font-size:12px}
-    </style></head><body>
-    <div class="label">
-      <h1>OLIVÉA SKIN CARE HOUSE</h1>
-      <p style="font-size:11px;color:#666">SSM: CT0161902-X</p>
-      <p class="ref" style="margin-top:14px">${o.ref}</p>
-      <p style="font-size:11px;color:#666">${new Date(o.createdAt).toLocaleString('en-MY')}</p>
-      <h2>Ship To</h2>
-      <p class="to">
-        <strong>${o.customer.fname} ${o.customer.lname||''}</strong><br>
-        ${o.customer.addr1||''}${o.customer.addr2?', '+o.customer.addr2:''}<br>
-        ${o.customer.city||''} ${o.customer.post||''}<br>
-        ${o.customer.state||''}<br>
-        ${o.customer.phone||''}
-      </p>
-      <h2>Items</h2>
-      <table><thead><tr><th>Product</th><th>Qty</th></tr></thead><tbody>
-        ${o.items.map(i=>`<tr><td>${i.name} (${i.no})</td><td>${i.qty}</td></tr>`).join('')}
-      </tbody></table>
-      ${o.tracking?`<div class="track"><strong>Tracking:</strong> ${o.tracking}</div>`:''}
-      <p style="text-align:center;margin-top:20px;font-size:11px;color:#999">olivea.com.my</p>
-    </div>
-    <script>window.print();<\/script>
-    </body></html>`);
+    <style>body{font-family:Arial,sans-serif;padding:40px;color:#333}.label{border:2px solid #333;padding:24px;max-width:500px}h1{font-size:18px;margin-bottom:4px}h2{font-size:14px;margin-top:20px;border-bottom:1px solid #ccc;padding-bottom:4px}.to{font-size:14px;line-height:22px}table{width:100%;border-collapse:collapse;margin-top:12px;font-size:12px}td,th{border:1px solid #ccc;padding:6px;text-align:left}.ref{font-size:20px;font-weight:bold;letter-spacing:1px}</style></head><body>
+    <div class="label"><h1>OLIVÉA SKIN CARE HOUSE</h1><p style="font-size:11px;color:#666">SSM: CT0161902-X</p>
+    <p class="ref" style="margin-top:14px">${o.ref}</p><p style="font-size:11px;color:#666">${new Date(o.createdAt).toLocaleString('en-MY')}</p>
+    <h2>Ship To</h2><p class="to"><strong>${o.customer.fname} ${o.customer.lname||''}</strong><br>${o.customer.addr1||''}${o.customer.addr2?', '+o.customer.addr2:''}<br>${o.customer.city||''} ${o.customer.post||''}<br>${o.customer.state||''}<br>${o.customer.phone||''}</p>
+    <h2>Items</h2><table><thead><tr><th>Product</th><th>Qty</th></tr></thead><tbody>${o.items.map(i=>`<tr><td>${i.name} (${i.no})</td><td>${i.qty}</td></tr>`).join('')}</tbody></table>
+    ${o.tracking?`<div style="background:#fffbe6;padding:8px;border:1px dashed #ccc;margin-top:12px;font-size:12px"><strong>Tracking:</strong> ${o.tracking}</div>`:''}
+    <p style="text-align:center;margin-top:20px;font-size:11px;color:#999">olivea.com.my</p></div>
+    <script>window.print();<\/script></body></html>`);
   w.document.close();
 }
 
-// ── Products ──
 function renderAdminProducts() {
   return `
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
@@ -1860,63 +1579,34 @@ function renderAdminProducts() {
     <div class="adm-panel" style="padding:0">
       <table class="adm-table">
         <thead><tr><th>Product</th><th>Brand</th><th>Category</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead>
-        <tbody>
-        ${store.products.map(p=>`<tr>
-          <td>
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:40px;height:40px;border-radius:6px;background:${p.bg};display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">${productSVG(p,'sm')}</div>
-              <div><strong>${p.name}</strong><br><span style="font-size:11px;color:var(--taupe)">${p.no}</span></div>
-            </div>
-          </td>
+        <tbody>${store.products.map(p=>`<tr>
+          <td><div style="display:flex;align-items:center;gap:10px">
+            <div style="width:40px;height:40px;border-radius:6px;background:${p.bg};display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">${productSVG(p,'sm')}</div>
+            <div><strong>${p.name}</strong><br><span style="font-size:11px;color:var(--taupe)">${p.no}</span></div></div></td>
           <td>${p.brand==='jyunka'?'Jyunka':'Maria Galland'}</td>
           <td style="text-transform:capitalize">${p.category}</td>
           <td><strong>RM ${p.price}</strong></td>
           <td><span style="color:${p.stock===0?'#e57373':p.stock<=5?'#e8a957':'var(--brown)'}">${p.stock}</span></td>
-          <td>
-            <button class="adm-btn-sm" onclick="openProductEditor(${p.id})">Edit</button>
-            <button class="adm-btn-sm adm-btn-danger" onclick="deleteProduct(${p.id})">Delete</button>
-          </td>
-        </tr>`).join('')}
-        </tbody>
+          <td><button class="adm-btn-sm" onclick="openProductEditor(${p.id})">Edit</button><button class="adm-btn-sm adm-btn-danger" onclick="deleteProduct(${p.id})">Delete</button></td>
+        </tr>`).join('')}</tbody>
       </table>
     </div>`;
 }
 
 function openProductEditor(id) {
-  const p = id != null ? store.products.find(x=>x.id===id) : {
-    id: store.nextProductId, no:'', name:'', price:0, stock:0, category:'serum', brand:'maria-galland', image:'',
-    bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)', desc:'', longDesc:'', ingredients:[], badge:null, colors:['#f0e0dc','#e6cdc8','#f8f0ee']
-  };
+  const p = id != null ? store.products.find(x=>x.id===id) : { id: store.nextProductId, no:'', name:'', price:0, stock:0, category:'serum', brand:'maria-galland', image:'', bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)', desc:'', longDesc:'', ingredients:[], badge:null, colors:['#f0e0dc','#e6cdc8','#f8f0ee'] };
   const isNew = id == null;
   const modal = document.getElementById('adm-modal');
   document.getElementById('adm-modal-body').innerHTML = `
     <h2 style="font-family:'Playfair Display',serif;margin-bottom:18px">${isNew?'Add Product':'Edit Product'}</h2>
     <div class="adm-grid-2">
       <div class="fg"><label class="adm-label">Product Code</label><input id="ed-no" class="adm-input" type="text" value="${p.no}" placeholder="No. 60 or JY-04"></div>
-      <div class="fg"><label class="adm-label">Brand</label>
-        <select id="ed-brand" class="adm-input">
-          <option value="maria-galland" ${p.brand==='maria-galland'?'selected':''}>Maria Galland</option>
-          <option value="jyunka" ${p.brand==='jyunka'?'selected':''}>Jyunka</option>
-        </select>
-      </div>
+      <div class="fg"><label class="adm-label">Brand</label><select id="ed-brand" class="adm-input"><option value="maria-galland" ${p.brand==='maria-galland'?'selected':''}>Maria Galland</option><option value="jyunka" ${p.brand==='jyunka'?'selected':''}>Jyunka</option></select></div>
     </div>
     <div class="fg"><label class="adm-label">Product Name</label><input id="ed-name" class="adm-input" type="text" value="${p.name}"></div>
     <div class="adm-grid-2">
-      <div class="fg"><label class="adm-label">Category</label>
-        <select id="ed-category" class="adm-input">
-          <option value="cleanser" ${p.category==='cleanser'?'selected':''}>Cleanser</option>
-          <option value="serum" ${p.category==='serum'?'selected':''}>Serum</option>
-          <option value="mask" ${p.category==='mask'?'selected':''}>Mask</option>
-          <option value="moisturiser" ${p.category==='moisturiser'?'selected':''}>Moisturiser</option>
-        </select>
-      </div>
-      <div class="fg"><label class="adm-label">Badge</label>
-        <select id="ed-badge" class="adm-input">
-          <option value="">None</option>
-          <option value="Best Seller" ${p.badge==='Best Seller'?'selected':''}>Best Seller</option>
-          <option value="New" ${p.badge==='New'?'selected':''}>New</option>
-        </select>
-      </div>
+      <div class="fg"><label class="adm-label">Category</label><select id="ed-category" class="adm-input"><option value="cleanser" ${p.category==='cleanser'?'selected':''}>Cleanser</option><option value="serum" ${p.category==='serum'?'selected':''}>Serum</option><option value="mask" ${p.category==='mask'?'selected':''}>Mask</option><option value="moisturiser" ${p.category==='moisturiser'?'selected':''}>Moisturiser</option></select></div>
+      <div class="fg"><label class="adm-label">Badge</label><select id="ed-badge" class="adm-input"><option value="">None</option><option value="Best Seller" ${p.badge==='Best Seller'?'selected':''}>Best Seller</option><option value="New" ${p.badge==='New'?'selected':''}>New</option></select></div>
     </div>
     <div class="adm-grid-2">
       <div class="fg"><label class="adm-label">Price (RM)</label><input id="ed-price" class="adm-input" type="number" value="${p.price}" min="0"></div>
@@ -1942,74 +1632,36 @@ function openProductEditor(id) {
     </div>`;
   modal.classList.add('open');
 }
-
 function handleImageUpload(input, pid) {
-  const file = input.files && input.files[0];
-  if(!file) return;
+  const file = input.files && input.files[0]; if(!file) return;
   if(file.size > 600*1024) { alert('Image too large. Please use an image under 600KB.'); return; }
   const reader = new FileReader();
-  reader.onload = e => {
-    document.getElementById('ed-image').value = e.target.result;
-    document.getElementById('ed-img-preview').innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover">`;
-  };
+  reader.onload = e => { document.getElementById('ed-image').value = e.target.result; document.getElementById('ed-img-preview').innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover">`; };
   reader.readAsDataURL(file);
 }
-
 function clearProductImage(pid) {
   document.getElementById('ed-image').value = '';
   const p = store.products.find(x=>x.id===pid) || {bg:'#eee',colors:['#eee','#ddd','#fff'],category:'serum',no:''};
   document.getElementById('ed-img-preview').innerHTML = productSVG(p,'sm');
 }
-
 function saveProduct() {
   const isNew = document.getElementById('ed-isnew').value === '1';
   const id = parseInt(document.getElementById('ed-id').value);
-  const data = {
-    no: document.getElementById('ed-no').value.trim(),
-    name: document.getElementById('ed-name').value.trim(),
-    brand: document.getElementById('ed-brand').value,
-    category: document.getElementById('ed-category').value,
-    badge: document.getElementById('ed-badge').value || null,
-    price: parseFloat(document.getElementById('ed-price').value) || 0,
-    stock: parseInt(document.getElementById('ed-stock').value) || 0,
-    desc: document.getElementById('ed-desc').value.trim(),
-    longDesc: document.getElementById('ed-longdesc').value.trim(),
-    ingredients: document.getElementById('ed-ingr').value.split(',').map(s=>s.trim()).filter(Boolean),
-    image: document.getElementById('ed-image').value
-  };
+  const data = { no: document.getElementById('ed-no').value.trim(), name: document.getElementById('ed-name').value.trim(), brand: document.getElementById('ed-brand').value, category: document.getElementById('ed-category').value, badge: document.getElementById('ed-badge').value || null, price: parseFloat(document.getElementById('ed-price').value) || 0, stock: parseInt(document.getElementById('ed-stock').value) || 0, desc: document.getElementById('ed-desc').value.trim(), longDesc: document.getElementById('ed-longdesc').value.trim(), ingredients: document.getElementById('ed-ingr').value.split(',').map(s=>s.trim()).filter(Boolean), image: document.getElementById('ed-image').value };
   if(!data.no || !data.name) { alert('Product code and name are required.'); return; }
   if(isNew) {
-    const palettes = [
-      {bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)',colors:['#f0e0dc','#e6cdc8','#f8f0ee']},
-      {bg:'linear-gradient(145deg,#e4f0e8,#cce0d4)',colors:['#e4f0e8','#cce0d4','#f0f6f2']},
-      {bg:'linear-gradient(145deg,#f4e8f0,#e8d4e4)',colors:['#f4e8f0','#e8d4e4','#faf2f8']},
-      {bg:'linear-gradient(145deg,#dde8f0,#ccd8e8)',colors:['#dde8f0','#ccd8e8','#eef3f8']}
-    ];
+    const palettes = [{bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)',colors:['#f0e0dc','#e6cdc8','#f8f0ee']},{bg:'linear-gradient(145deg,#e4f0e8,#cce0d4)',colors:['#e4f0e8','#cce0d4','#f0f6f2']},{bg:'linear-gradient(145deg,#f4e8f0,#e8d4e4)',colors:['#f4e8f0','#e8d4e4','#faf2f8']},{bg:'linear-gradient(145deg,#dde8f0,#ccd8e8)',colors:['#dde8f0','#ccd8e8','#eef3f8']}];
     const palette = palettes[Math.floor(Math.random()*palettes.length)];
-    const newP = { id: store.nextProductId, ...data, ...palette };
-    store.products.push(newP);
-    store.nextProductId += 1;
-  } else {
-    const p = store.products.find(x=>x.id===id);
-    if(p) Object.assign(p, data);
-  }
-  saveStore();
-  refreshAll();
-  closeAdmModal();
-  renderAdminBody();
-  showToast(isNew?'Product added':'Product saved');
+    store.products.push({ id: store.nextProductId, ...data, ...palette }); store.nextProductId += 1;
+  } else { const p = store.products.find(x=>x.id===id); if(p) Object.assign(p, data); }
+  saveStore(); refreshAll(); closeAdmModal(); renderAdminBody(); showToast(isNew?'Product added':'Product saved');
 }
-
 function deleteProduct(id) {
   if(!confirm('Delete this product? This cannot be undone.')) return;
   store.products = store.products.filter(p=>p.id!==id);
-  saveStore();
-  refreshAll();
-  renderAdminBody();
-  showToast('Product deleted');
+  saveStore(); refreshAll(); renderAdminBody(); showToast('Product deleted');
 }
 
-// ── Promotions ──
 function renderAdminPromos() {
   return `
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
@@ -2019,93 +1671,54 @@ function renderAdminPromos() {
     <div class="adm-panel" style="padding:0">
       <table class="adm-table">
         <thead><tr><th>Code</th><th>Discount</th><th>Status</th><th>Times Used</th><th>Actions</th></tr></thead>
-        <tbody>
-        ${store.promos.length === 0 ? '<tr><td colspan="5" style="text-align:center;padding:32px;color:var(--taupe)">No promo codes yet.</td></tr>' :
+        <tbody>${store.promos.length === 0 ? '<tr><td colspan="5" style="text-align:center;padding:32px;color:var(--taupe)">No promo codes yet.</td></tr>' :
         store.promos.map((pr,idx)=>`<tr>
           <td><strong style="font-family:monospace;letter-spacing:1px">${pr.code}</strong></td>
           <td><strong style="color:var(--rose)">${pr.discount}%</strong></td>
           <td><span class="adm-badge ${pr.active?'adm-badge-shipped':'adm-badge-cancelled'}">${pr.active?'Active':'Inactive'}</span></td>
           <td>${pr.uses||0}</td>
-          <td>
-            <button class="adm-btn-sm" onclick="togglePromo(${idx})">${pr.active?'Disable':'Enable'}</button>
-            <button class="adm-btn-sm adm-btn-danger" onclick="deletePromo(${idx})">Delete</button>
-          </td>
-        </tr>`).join('')}
-        </tbody>
+          <td><button class="adm-btn-sm" onclick="togglePromo(${idx})">${pr.active?'Disable':'Enable'}</button><button class="adm-btn-sm adm-btn-danger" onclick="deletePromo(${idx})">Delete</button></td>
+        </tr>`).join('')}</tbody>
       </table>
     </div>`;
 }
-
 function openPromoEditor() {
   const modal = document.getElementById('adm-modal');
   document.getElementById('adm-modal-body').innerHTML = `
     <h2 style="font-family:'Playfair Display',serif;margin-bottom:18px">Add Promo Code</h2>
-    <div class="fg"><label class="adm-label">Code (uppercase, no spaces)</label>
-      <input id="pr-code" class="adm-input" type="text" placeholder="e.g. SAVE20" style="text-transform:uppercase;font-family:monospace">
-    </div>
-    <div class="fg"><label class="adm-label">Discount Percentage</label>
-      <input id="pr-disc" class="adm-input" type="number" min="1" max="99" value="10">
-    </div>
+    <div class="fg"><label class="adm-label">Code (uppercase, no spaces)</label><input id="pr-code" class="adm-input" type="text" placeholder="e.g. SAVE20" style="text-transform:uppercase;font-family:monospace"></div>
+    <div class="fg"><label class="adm-label">Discount Percentage</label><input id="pr-disc" class="adm-input" type="number" min="1" max="99" value="10"></div>
     <p style="font-size:12px;color:var(--taupe)">Customer enters this code at checkout to receive the discount on subtotal.</p>
-    <div style="display:flex;gap:10px;margin-top:24px">
-      <button class="btn btn-dark" onclick="savePromo()">Add Code</button>
-      <button class="btn btn-outline" onclick="closeAdmModal()" style="margin-left:auto">Cancel</button>
-    </div>`;
+    <div style="display:flex;gap:10px;margin-top:24px"><button class="btn btn-dark" onclick="savePromo()">Add Code</button><button class="btn btn-outline" onclick="closeAdmModal()" style="margin-left:auto">Cancel</button></div>`;
   modal.classList.add('open');
 }
-
 function savePromo() {
   const code = document.getElementById('pr-code').value.trim().toUpperCase().replace(/\s/g,'');
   const disc = parseInt(document.getElementById('pr-disc').value);
   if(!code || disc<1 || disc>99) { alert('Invalid code or discount.'); return; }
   if(store.promos.find(p=>p.code===code)) { alert('Code already exists.'); return; }
   store.promos.push({ code, discount:disc, active:true, uses:0 });
-  saveStore();
-  closeAdmModal();
-  renderAdminBody();
-  showToast('Promo code added');
+  saveStore(); closeAdmModal(); renderAdminBody(); showToast('Promo code added');
 }
+function togglePromo(idx) { store.promos[idx].active = !store.promos[idx].active; saveStore(); renderAdminBody(); }
+function deletePromo(idx) { if(!confirm('Delete this promo code?')) return; store.promos.splice(idx,1); saveStore(); renderAdminBody(); }
 
-function togglePromo(idx) {
-  store.promos[idx].active = !store.promos[idx].active;
-  saveStore();
-  renderAdminBody();
-}
-
-function deletePromo(idx) {
-  if(!confirm('Delete this promo code?')) return;
-  store.promos.splice(idx,1);
-  saveStore();
-  renderAdminBody();
-}
-
-// ── Announcement ──
 function renderAdminAnnouncement() {
   return `
     <h1 class="adm-title">Announcement Bar</h1>
     <p class="adm-sub">Edit the message that shows at the top of every page.</p>
     <div class="adm-panel">
-      <div class="fg"><label class="adm-label">Announcement Text</label>
-        <textarea id="ann-text" class="adm-input" rows="3">${store.announcement}</textarea>
-      </div>
+      <div class="fg"><label class="adm-label">Announcement Text</label><textarea id="ann-text" class="adm-input" rows="3">${store.announcement}</textarea></div>
       <button class="btn btn-dark" onclick="saveAnnouncement()">Save Changes</button>
       <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin:24px 0 10px">Preview</h4>
-      <div class="info-bar" style="border-radius:8px">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span id="ann-preview">${store.announcement}</span>
-      </div>
+      <div class="info-bar" style="border-radius:8px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span id="ann-preview">${store.announcement}</span></div>
     </div>`;
 }
-
 function saveAnnouncement() {
   store.announcement = document.getElementById('ann-text').value.trim() || 'Welcome to Olivéa Skin Care House';
-  saveStore();
-  refreshAll();
-  document.getElementById('ann-preview').textContent = store.announcement;
-  showToast('Announcement updated');
+  saveStore(); refreshAll(); document.getElementById('ann-preview').textContent = store.announcement; showToast('Announcement updated');
 }
 
-// ── Settings (Change Password) ──
 function renderAdminSettings() {
   return `
     <h1 class="adm-title">Settings</h1>
@@ -2113,76 +1726,40 @@ function renderAdminSettings() {
     <div class="adm-panel" style="max-width:520px">
       <h3 class="adm-panel-title">Change Password</h3>
       <p style="font-size:12px;color:var(--taupe);margin-bottom:18px">Choose a strong password — at least 6 characters.</p>
-      <div class="fg" style="margin-bottom:14px">
-        <label class="adm-label">Current Password</label>
-        <input id="set-current" class="adm-input" type="password" placeholder="Enter current password">
-      </div>
-      <div class="fg" style="margin-bottom:14px">
-        <label class="adm-label">New Password</label>
-        <input id="set-new" class="adm-input" type="password" placeholder="At least 6 characters">
-      </div>
-      <div class="fg" style="margin-bottom:14px">
-        <label class="adm-label">Confirm New Password</label>
-        <input id="set-confirm" class="adm-input" type="password" placeholder="Re-enter new password">
-      </div>
+      <div class="fg" style="margin-bottom:14px"><label class="adm-label">Current Password</label><input id="set-current" class="adm-input" type="password" placeholder="Enter current password"></div>
+      <div class="fg" style="margin-bottom:14px"><label class="adm-label">New Password</label><input id="set-new" class="adm-input" type="password" placeholder="At least 6 characters"></div>
+      <div class="fg" style="margin-bottom:14px"><label class="adm-label">Confirm New Password</label><input id="set-confirm" class="adm-input" type="password" placeholder="Re-enter new password"></div>
       <p id="set-status" style="font-size:12px;min-height:18px;margin-bottom:10px"></p>
       <button class="btn btn-dark" onclick="changePassword()">Update Password</button>
     </div>
     <div class="adm-panel" style="max-width:520px;margin-top:20px">
       <h3 class="adm-panel-title">About This Account</h3>
-      <p style="font-size:13px;color:var(--taupe);line-height:22px">
-        Default password: <code style="background:var(--ivory);padding:2px 6px;border-radius:4px;font-size:11px">olivea2026</code><br>
-        Once you change it, the default no longer works.<br><br>
-        Tip: bookmark <code style="background:var(--ivory);padding:2px 6px;border-radius:4px;font-size:11px">/#admin</code> for quick access.
-      </p>
+      <p style="font-size:13px;color:var(--taupe);line-height:22px">Default password: <code style="background:var(--ivory);padding:2px 6px;border-radius:4px;font-size:11px">olivea2026</code><br>Once you change it, the default no longer works.<br><br>Tip: bookmark <code style="background:var(--ivory);padding:2px 6px;border-radius:4px;font-size:11px">/#admin</code> for quick access.</p>
     </div>`;
 }
-
 function changePassword() {
   const current = document.getElementById('set-current').value;
   const newPass = document.getElementById('set-new').value;
   const confirm = document.getElementById('set-confirm').value;
   const status = document.getElementById('set-status');
-  if(current !== getCurrentPassword()) {
-    status.innerHTML = '<span style="color:#e57373">Current password is incorrect.</span>';
-    return;
-  }
-  if(!newPass || newPass.length < 6) {
-    status.innerHTML = '<span style="color:#e57373">New password must be at least 6 characters.</span>';
-    return;
-  }
-  if(newPass !== confirm) {
-    status.innerHTML = '<span style="color:#e57373">Passwords do not match.</span>';
-    return;
-  }
+  if(current !== getCurrentPassword()) { status.innerHTML = '<span style="color:#e57373">Current password is incorrect.</span>'; return; }
+  if(!newPass || newPass.length < 6) { status.innerHTML = '<span style="color:#e57373">New password must be at least 6 characters.</span>'; return; }
+  if(newPass !== confirm) { status.innerHTML = '<span style="color:#e57373">Passwords do not match.</span>'; return; }
   localStorage.setItem('olivea-admin-pass', newPass);
   status.innerHTML = '<span style="color:#52C97A">✓ Password updated successfully.</span>';
-  document.getElementById('set-current').value = '';
-  document.getElementById('set-new').value = '';
-  document.getElementById('set-confirm').value = '';
+  document.getElementById('set-current').value = ''; document.getElementById('set-new').value = ''; document.getElementById('set-confirm').value = '';
   showToast('Password updated');
 }
-
-function closeAdmModal() {
-  document.getElementById('adm-modal').classList.remove('open');
-}
+function closeAdmModal() { document.getElementById('adm-modal').classList.remove('open'); }
 
 // ═══════════════════ INIT ═══════════════════
 function init() {
   refreshAll();
   const hash = location.hash.replace('#','');
-  if(hash.startsWith('admin-')) {
-    if(!isLoggedIn()) { goPage('login', false); return; }
-    adminSection = hash.replace('admin-','') || 'overview';
-    goPage('admin', false);
-  } else if(hash === 'admin') {
-    if(!isLoggedIn()) { goPage('login', false); return; }
-    goPage('admin', false);
-  } else if(hash) {
-    goPage(hash, false);
-  } else {
-    goPage('home', false);
-  }
+  if(hash.startsWith('admin-')) { if(!isLoggedIn()) { goPage('login', false); return; } adminSection = hash.replace('admin-','') || 'overview'; goPage('admin', false); }
+  else if(hash === 'admin') { if(!isLoggedIn()) { goPage('login', false); return; } goPage('admin', false); }
+  else if(hash) { goPage(hash, false); }
+  else { goPage('home', false); }
 }
 init();
 </script>
@@ -2191,7 +1768,7 @@ init();
 <div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
 <div class="drawer" id="drawer">
   <div class="drawer-header">
-    <div class="logo"><div class="logo-name">Olivéa</div><div class="logo-sub">Skin Care House</div></div>
+    <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa" style="height:32px;width:auto;display:block">
     <button class="drawer-close" onclick="toggleDrawer()">
       <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </button>
