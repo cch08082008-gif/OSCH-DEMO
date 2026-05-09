@@ -1074,21 +1074,44 @@ const DEFAULT_STORE = {
 let store = JSON.parse(JSON.stringify(DEFAULT_STORE));
 
 async function loadStore() {
-  const [prodRes, promoRes, settRes] = await Promise.all([
-    db.from('products').select('*'),
-    db.from('promos').select('*'),
-    db.from('settings').select('*')
-  ]);
-  if(prodRes.data?.length)  store.products = prodRes.data;
-  if(promoRes.data?.length) store.promos   = promoRes.data;
-  if(settRes.data?.length) {
-    settRes.data.forEach(s => {
-      if(s.key === 'announcement') store.announcement = JSON.parse(s.value);
-    });
+  try {
+    const [prodRes, promoRes, settRes] = await Promise.all([
+      db.from('products').select('*').order('id'),
+      db.from('promos').select('*'),
+      db.from('settings').select('*')
+    ]);
+    
+    if(prodRes.data?.length) {
+      // 确保每个产品有 colors/bg/ingredients,即使 Supabase 缺这些字段
+      store.products = prodRes.data.map(p => ({
+        ...p,
+        colors: Array.isArray(p.colors) ? p.colors : ['#f0e0dc','#e6cdc8','#f8f0ee'],
+        ingredients: Array.isArray(p.ingredients) ? p.ingredients : [],
+        bg: p.bg || 'linear-gradient(145deg,#f0e0dc,#e6cdc8)',
+        image: p.image || '',
+        desc: p.desc || '',
+        longDesc: p.longDesc || p.long_desc || '',
+        badge: p.badge || null
+      }));
+    }
+    if(promoRes.data) store.promos = promoRes.data;
+    if(settRes.data?.length) {
+      settRes.data.forEach(s => {
+        if(s.key === 'announcement') {
+          try { 
+  const parsed = JSON.parse(s.value);
+  store.announcement = typeof parsed === 'string' ? parsed : s.value;
+} catch(e) { 
+  store.announcement = s.value; 
+}
+        }
+      });
+    }
+  } catch(e) {
+    console.error('Supabase load failed, using defaults:', e);
   }
   refreshAll();
 }
-
 async function saveStore() {}  // 不再需要整体保存
 function resetStore() {}       // 暂时停用
 let products = store.products;
@@ -1832,7 +1855,7 @@ function renderAdminAnnouncement() {
 }
 async function saveAnnouncement() {
   const text = document.getElementById('ann-text').value.trim() || 'Welcome to Olivéa Skin Care House';
-  await db.from('settings').upsert({key: 'announcement', value: JSON.stringify(text)});
+  await db.from('settings').upsert({key: 'announcement', value: text}); // 去掉 JSON.stringify
   store.announcement = text;
   refreshAll();
   document.getElementById('ann-preview').textContent = text;
@@ -1874,9 +1897,24 @@ function closeAdmModal() { document.getElementById('adm-modal').classList.remove
 // ═══════════════════ INIT ═══════════════════
 async function init() {
   await loadStore();
-  const hash=location.hash.replace('#','');
-  if(hash.startsWith('admin-')) { if(!isLoggedIn()) { goPage('login',false); return; } adminSection=hash.replace('admin-','')||'overview'; goPage('admin',false); }
-  else if(hash==='admin') { if(!isLoggedIn()) { goPage('login',false); return; } goPage('admin',false); }
+  const hash = location.hash.replace('#','');
+  
+  // detail page 不能直接靠 hash 还原 — 跳回 home
+  if(hash === 'detail' || hash === 'checkout' || hash === 'success') {
+    goPage('home', false);
+    history.replaceState({page:'home'}, '', '#home');
+    return;
+  }
+  
+  if(hash.startsWith('admin-')) { 
+    if(!isLoggedIn()) { goPage('login',false); return; } 
+    adminSection = hash.replace('admin-','')||'overview'; 
+    goPage('admin',false); 
+  }
+  else if(hash==='admin') { 
+    if(!isLoggedIn()) { goPage('login',false); return; } 
+    goPage('admin',false); 
+  }
   else if(hash) goPage(hash,false);
   else goPage('home',false);
 }
