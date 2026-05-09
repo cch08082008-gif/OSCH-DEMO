@@ -1433,8 +1433,9 @@ function logout() { setLoggedIn(false); document.body.classList.remove('admin-mo
 
 let adminSection = 'overview';
 
-function renderAdmin(pageName) {
+async function renderAdmin(pageName) {
   if(!isLoggedIn()) { goPage('login', false); return; }
+  await loadOrders();
   if(pageName === 'admin') adminSection = adminSection || 'overview';
   else if(pageName.startsWith('admin-')) adminSection = pageName.replace('admin-','') || 'overview';
   const activePage = document.getElementById('page-'+pageName);
@@ -1485,10 +1486,11 @@ function adminShellHTML() {
     </div>`;
 }
 
-function switchAdmin(section) {
+async function switchAdmin(section) {
   adminSection = section;
   const active = document.querySelector('.page-admin.active');
   if(active) active.innerHTML = adminShellHTML();
+  if(section === 'orders' || section === 'overview') await loadOrders();
   renderAdminBody();
   history.pushState({page:'admin-'+section}, '', '#admin-'+section);
 }
@@ -1539,7 +1541,16 @@ function renderAdminOverview() {
       </div>
     </div>`;
 }
-
+async function loadOrders() {
+  const { data } = await db.from('orders').select('*').order('created_at', {ascending: false});
+  if(data) store.orders = data.map(o => ({
+    ...o,
+    ref: o.ref || o.id,
+    createdAt: new Date(o.created_at).getTime(),
+    customer: o.customer || {},
+    items: o.items || []
+  }));
+}
 let adminOrderFilter='all';
 function renderAdminOrders() {
   return `
@@ -1603,11 +1614,14 @@ function openOrder(ref) {
     </div>`;
   document.getElementById('adm-modal').classList.add('open');
 }
-function saveOrderEdits(ref) {
-  const o=store.orders.find(x=>x.ref===ref); if(!o) return;
-  o.status=document.getElementById('ord-status').value;
-  o.tracking=document.getElementById('ord-tracking').value.trim();
-  saveStore(); closeAdmModal(); renderAdminBody(); showToast('Order updated');
+async function saveOrderEdits(ref) {
+  const o = store.orders.find(x=>x.ref===ref); if(!o) return;
+  const newStatus = document.getElementById('ord-status').value;
+  const newTracking = document.getElementById('ord-tracking').value.trim();
+  await db.from('orders').update({status: newStatus, tracking: newTracking}).eq('ref', ref);
+  o.status = newStatus;
+  o.tracking = newTracking;
+  closeAdmModal(); renderAdminBody(); showToast('Order updated');
 }
 function printShippingLabel(ref) {
   const o=store.orders.find(x=>x.ref===ref); if(!o) return;
@@ -1682,34 +1696,77 @@ function openProductEditor(id) {
     </div>`;
   document.getElementById('adm-modal').classList.add('open');
 }
-function handleImageUpload(input) {
-  const file=input.files&&input.files[0]; if(!file) return;
-  if(file.size>600*1024) { alert('Image too large. Please use under 600KB.'); return; }
-  const reader=new FileReader();
-  reader.onload=e=>{ document.getElementById('ed-image').value=e.target.result; document.getElementById('ed-img-preview').innerHTML=`<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover">`; };
-  reader.readAsDataURL(file);
+async function handleImageUpload(input) {
+  const file = input.files && input.files[0];
+  if(!file) return;
+  if(file.size > 5*1024*1024) { alert('Image too large. Please use under 5MB.'); return; }
+
+  const preview = document.getElementById('ed-img-preview');
+  preview.innerHTML = `<div style="font-size:10px;color:var(--taupe);text-align:center">Uploading...</div>`;
+
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('upload_preset', 'olivea_products');
+  formData.append('folder', 'olivea');
+
+  try {
+    const res = await fetch('https://api.cloudinary.com/v1_1/dfsiime13/image/upload', {
+      method: 'POST',
+      body: formData
+    });
+    const data = await res.json();
+    if(data.secure_url) {
+      document.getElementById('ed-image').value = data.secure_url;
+      preview.innerHTML = `<img src="${data.secure_url}" style="width:100%;height:100%;object-fit:cover">`;
+    } else {
+      alert('Upload failed. Please try again.');
+      preview.innerHTML = '';
+    }
+  } catch(e) {
+    alert('Upload error: ' + e.message);
+    preview.innerHTML = '';
+  }
 }
+
 function clearProductImage(pid) {
-  document.getElementById('ed-image').value='';
-  const p=store.products.find(x=>x.id===pid)||{bg:'#eee',colors:['#eee','#ddd','#fff'],category:'serum',no:''};
-  document.getElementById('ed-img-preview').innerHTML=productSVG(p,'sm');
+  document.getElementById('ed-image').value = '';
+  const p = store.products.find(x=>x.id===pid) || {bg:'#eee',colors:['#eee','#ddd','#fff'],category:'serum',no:''};
+  document.getElementById('ed-img-preview').innerHTML = productSVG(p,'sm');
 }
-function saveProduct() {
-  const isNew=document.getElementById('ed-isnew').value==='1';
-  const id=parseInt(document.getElementById('ed-id').value);
-  const data={no:document.getElementById('ed-no').value.trim(),name:document.getElementById('ed-name').value.trim(),brand:document.getElementById('ed-brand').value,category:document.getElementById('ed-category').value,badge:document.getElementById('ed-badge').value||null,price:parseFloat(document.getElementById('ed-price').value)||0,stock:parseInt(document.getElementById('ed-stock').value)||0,desc:document.getElementById('ed-desc').value.trim(),longDesc:document.getElementById('ed-longdesc').value.trim(),ingredients:document.getElementById('ed-ingr').value.split(',').map(s=>s.trim()).filter(Boolean),image:document.getElementById('ed-image').value};
-  if(!data.no||!data.name) { alert('Product code and name are required.'); return; }
+async function saveProduct() {
+  const isNew = document.getElementById('ed-isnew').value==='1';
+  const id = parseInt(document.getElementById('ed-id').value);
+  const data = {
+    no: document.getElementById('ed-no').value.trim(),
+    name: document.getElementById('ed-name').value.trim(),
+    brand: document.getElementById('ed-brand').value,
+    category: document.getElementById('ed-category').value,
+    badge: document.getElementById('ed-badge').value || null,
+    price: parseFloat(document.getElementById('ed-price').value)||0,
+    stock: parseInt(document.getElementById('ed-stock').value)||0,
+    desc: document.getElementById('ed-desc').value.trim(),
+    longDesc: document.getElementById('ed-longdesc').value.trim(),
+    ingredients: document.getElementById('ed-ingr').value.split(',').map(s=>s.trim()).filter(Boolean),
+    image: document.getElementById('ed-image').value
+  };
+  if(!data.no || !data.name) { alert('Product code and name are required.'); return; }
   if(isNew) {
     const palettes=[{bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)',colors:['#f0e0dc','#e6cdc8','#f8f0ee']},{bg:'linear-gradient(145deg,#e4f0e8,#cce0d4)',colors:['#e4f0e8','#cce0d4','#f0f6f2']},{bg:'linear-gradient(145deg,#f4e8f0,#e8d4e4)',colors:['#f4e8f0','#e8d4e4','#faf2f8']},{bg:'linear-gradient(145deg,#dde8f0,#ccd8e8)',colors:['#dde8f0','#ccd8e8','#eef3f8']}];
-    const palette=palettes[Math.floor(Math.random()*palettes.length)];
-    store.products.push({id:store.nextProductId,...data,...palette}); store.nextProductId+=1;
-  } else { const p=store.products.find(x=>x.id===id); if(p) Object.assign(p,data); }
-  saveStore(); refreshAll(); closeAdmModal(); renderAdminBody(); showToast(isNew?'Product added':'Product saved');
+    const palette = palettes[Math.floor(Math.random()*palettes.length)];
+    const { data: inserted } = await db.from('products').insert({...data, ...palette}).select().single();
+    if(inserted) store.products.push(inserted);
+  } else {
+    await db.from('products').update(data).eq('id', id);
+    const p = store.products.find(x=>x.id===id);
+    if(p) Object.assign(p, data);
+  }
+  refreshAll(); closeAdmModal(); renderAdminBody(); showToast(isNew?'Product added':'Product saved');
 }
-function deleteProduct(id) {
+async function deleteProduct(id) {
   if(!confirm('Delete this product?')) return;
-  store.products=store.products.filter(p=>p.id!==id);
-  saveStore(); refreshAll(); renderAdminBody(); showToast('Product deleted');
+  await db.from('products').delete().eq('id', id);
+  store.products = store.products.filter(p=>p.id!==id);
+  refreshAll(); renderAdminBody(); showToast('Product deleted');
 }
 
 function renderAdminPromos() {
@@ -1740,16 +1797,27 @@ function openPromoEditor() {
     <div style="display:flex;gap:10px;margin-top:24px"><button class="btn btn-dark" onclick="savePromo()">Add Code</button><button class="btn btn-outline" onclick="closeAdmModal()" style="margin-left:auto">Cancel</button></div>`;
   document.getElementById('adm-modal').classList.add('open');
 }
-function savePromo() {
-  const code=document.getElementById('pr-code').value.trim().toUpperCase().replace(/\s/g,'');
-  const disc=parseInt(document.getElementById('pr-disc').value);
-  if(!code||disc<1||disc>99) { alert('Invalid code or discount.'); return; }
+async function savePromo() {
+  const code = document.getElementById('pr-code').value.trim().toUpperCase().replace(/\s/g,'');
+  const disc = parseInt(document.getElementById('pr-disc').value);
+  if(!code || disc<1 || disc>99) { alert('Invalid code or discount.'); return; }
   if(store.promos.find(p=>p.code===code)) { alert('Code already exists.'); return; }
-  store.promos.push({code,discount:disc,active:true,uses:0});
-  saveStore(); closeAdmModal(); renderAdminBody(); showToast('Promo code added');
+  const { data } = await db.from('promos').insert({code, discount:disc, active:true, uses:0}).select().single();
+  if(data) store.promos.push(data);
+  closeAdmModal(); renderAdminBody(); showToast('Promo code added');
 }
-function togglePromo(idx) { store.promos[idx].active=!store.promos[idx].active; saveStore(); renderAdminBody(); }
-function deletePromo(idx) { if(!confirm('Delete this promo code?')) return; store.promos.splice(idx,1); saveStore(); renderAdminBody(); }
+async function togglePromo(idx) {
+  const pr = store.promos[idx];
+  await db.from('promos').update({active: !pr.active}).eq('code', pr.code);
+  pr.active = !pr.active;
+  renderAdminBody();
+}
+async function deletePromo(idx) {
+  if(!confirm('Delete this promo code?')) return;
+  await db.from('promos').delete().eq('code', store.promos[idx].code);
+  store.promos.splice(idx, 1);
+  renderAdminBody();
+}
 
 function renderAdminAnnouncement() {
   return `
@@ -1762,9 +1830,13 @@ function renderAdminAnnouncement() {
       <div class="info-bar" style="border-radius:8px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span id="ann-preview">${store.announcement}</span></div>
     </div>`;
 }
-function saveAnnouncement() {
-  store.announcement=document.getElementById('ann-text').value.trim()||'Welcome to Olivéa Skin Care House';
-  saveStore(); refreshAll(); document.getElementById('ann-preview').textContent=store.announcement; showToast('Announcement updated');
+async function saveAnnouncement() {
+  const text = document.getElementById('ann-text').value.trim() || 'Welcome to Olivéa Skin Care House';
+  await db.from('settings').upsert({key: 'announcement', value: JSON.stringify(text)});
+  store.announcement = text;
+  refreshAll();
+  document.getElementById('ann-preview').textContent = text;
+  showToast('Announcement updated');
 }
 
 function renderAdminSettings() {
