@@ -1002,9 +1002,13 @@ body.admin-mode { overflow-x:hidden; }
 <div id="page-admin-announcement" class="page page-admin"></div>
 <div id="page-admin-settings" class="page page-admin"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>  
 <script>
-// ═══════════════════ STORE ═══════════════════
-const STORAGE_KEY = 'olivea-store-v1';
+// ═══════════════════ SUPABASE CONFIG ═══════════════════
+const SUPABASE_URL = 'https://spcoqhaoaozyvmxvgqur.supabase.co';   
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwY29xaGFvYW96eXZteHZncXVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMDQ1MDEsImV4cCI6MjA5Mzg4MDUwMX0.U6vUNlNO8MtdFsYujESKmVTs8HA7KhNr_ckMxV3hpy8';        
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_KEY);
 const ADMIN_PASS = 'olivea2026';
 
 const DEFAULT_PRODUCTS = [
@@ -1067,14 +1071,26 @@ const DEFAULT_STORE = {
   nextOrderId: 1
 };
 
-let store = loadStore();
-function loadStore() {
-  try { const raw = localStorage.getItem(STORAGE_KEY); if(raw) { return {...DEFAULT_STORE, ...JSON.parse(raw)}; } } catch(e) {}
-  return JSON.parse(JSON.stringify(DEFAULT_STORE));
-}
-function saveStore() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(store)); } catch(e) {} }
-function resetStore() { store = JSON.parse(JSON.stringify(DEFAULT_STORE)); saveStore(); refreshAll(); }
+let store = JSON.parse(JSON.stringify(DEFAULT_STORE));
 
+async function loadStore() {
+  const [prodRes, promoRes, settRes] = await Promise.all([
+    db.from('products').select('*'),
+    db.from('promos').select('*'),
+    db.from('settings').select('*')
+  ]);
+  if(prodRes.data?.length)  store.products = prodRes.data;
+  if(promoRes.data?.length) store.promos   = promoRes.data;
+  if(settRes.data?.length) {
+    settRes.data.forEach(s => {
+      if(s.key === 'announcement') store.announcement = JSON.parse(s.value);
+    });
+  }
+  refreshAll();
+}
+
+async function saveStore() {}  // 不再需要整体保存
+function resetStore() {}       // 暂时停用
 let products = store.products;
 
 function refreshAll() {
@@ -1303,7 +1319,7 @@ function applyPromoCode() {
   else { appliedPromo = null; status.innerHTML=`<span style="color:#e57373">Invalid or inactive code</span>`; }
   renderCheckout();
 }
-function placeOrder() {
+async function placeOrder() {
   const order = currentOrder;
   if(!order || !order.length) return;
   const g = id => (document.getElementById(id)?.value||'').trim();
@@ -1313,17 +1329,40 @@ function placeOrder() {
   const shipping = afterDisc>=250?0:10;
   const tax = Math.round(afterDisc*0.08);
   const total = afterDisc+shipping+tax;
-  const ref = 'OLV-2026-'+String(store.nextOrderId).padStart(5,'0');
-  store.nextOrderId += 1;
-  order.forEach(item=>{ const p = store.products.find(x=>x.id===item.id); if(p) p.stock = Math.max(0, p.stock - item.qty); });
-  if(appliedPromo) { const sp = store.promos.find(p=>p.code===appliedPromo.code); if(sp) sp.uses = (sp.uses||0)+1; }
-  store.orders.unshift({ ref, status:'pending', tracking:'', createdAt:Date.now(),
-    customer:{fname:g('co-fname'),lname:g('co-lname'),email:g('co-email'),phone:g('co-phone'),addr1:g('co-addr1'),addr2:g('co-addr2'),city:g('co-city'),post:g('co-post'),state:g('co-state')},
-    items:order.map(i=>({id:i.id,no:i.no,name:i.name,price:i.price,qty:i.qty})),
-    subtotal, discount, promoCode:appliedPromo?appliedPromo.code:'', shipping, tax, total });
-  saveStore(); refreshAll();
-  window._lastOrderRef = ref; window._lastOrderTotal = total;
-  appliedPromo = null; goPage('success');
+  const ref = 'OLV-2026-'+String(Date.now()).slice(-5);
+
+  // 写入 orders 表
+  await db.from('orders').insert({
+    status: 'pending',
+    total,
+    items: order.map(i=>({id:i.id,no:i.no,name:i.name,price:i.price,qty:i.qty})),
+    customer: {fname:g('co-fname'),lname:g('co-lname'),email:g('co-email'),phone:g('co-phone'),addr1:g('co-addr1'),addr2:g('co-addr2'),city:g('co-city'),post:g('co-post'),state:g('co-state')},
+    subtotal, discount, promoCode: appliedPromo?.code||'', shipping, tax, ref
+  });
+
+  // 扣库存
+  for(const item of order) {
+    const p = store.products.find(x=>x.id===item.id);
+    if(p) {
+      const newStock = Math.max(0, p.stock - item.qty);
+      await db.from('products').update({stock: newStock}).eq('id', p.id);
+      p.stock = newStock;
+    }
+  }
+
+  // 更新 promo 使用次数
+  if(appliedPromo) {
+    const sp = store.promos.find(p=>p.code===appliedPromo.code);
+    if(sp) {
+      await db.from('promos').update({uses: (sp.uses||0)+1}).eq('code', sp.code);
+    }
+  }
+
+  refreshAll();
+  window._lastOrderRef = ref;
+  window._lastOrderTotal = total;
+  appliedPromo = null;
+  goPage('success');
 }
 function selectPay(el) {
   document.querySelectorAll('.pay-option').forEach(p=>{p.classList.remove('selected');p.querySelector('input').checked=false});
@@ -1761,8 +1800,8 @@ function changePassword() {
 function closeAdmModal() { document.getElementById('adm-modal').classList.remove('open'); }
 
 // ═══════════════════ INIT ═══════════════════
-function init() {
-  refreshAll();
+async function init() {
+  await loadStore();
   const hash=location.hash.replace('#','');
   if(hash.startsWith('admin-')) { if(!isLoggedIn()) { goPage('login',false); return; } adminSection=hash.replace('admin-','')||'overview'; goPage('admin',false); }
   else if(hash==='admin') { if(!isLoggedIn()) { goPage('login',false); return; } goPage('admin',false); }
