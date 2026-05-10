@@ -243,4 +243,1715 @@ footer{background:var(--brown);color:var(--beige);padding:60px 80px 28px}
 /* ══════════ SEARCH OVERLAY ══════════ */
 .search-overlay{position:fixed;inset:0;background:rgba(61,52,48,.55);z-index:600;opacity:0;pointer-events:none;transition:opacity .25s;backdrop-filter:blur(4px)}
 .search-overlay.open{opacity:1;pointer-events:all}
-.search-b
+.search-box{position:absolute;top:0;left:0;right:0;background:var(--white);padding:20px 24px 16px;box-shadow:var(--sh-lg);transform:translateY(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.search-overlay.open .search-box{transform:translateY(0)}
+.search-input-row{display:flex;align-items:center;gap:12px;border-bottom:2px solid var(--brown);padding-bottom:10px;margin-bottom:16px}
+.search-input{flex:1;border:none;outline:none;font-family:'Playfair Display',serif;font-size:20px;color:var(--brown);background:transparent}
+.search-input::placeholder{color:var(--beige)}
+.search-close{background:none;border:none;color:var(--taupe);cursor:pointer;padding:4px;flex-shrink:0}
+.search-results{max-height:340px;overflow-y:auto}
+.search-result-item{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--beige);cursor:pointer;transition:background .15s}
+.search-result-item:hover{background:var(--ivory);margin:0 -8px;padding:12px 8px;border-radius:8px}
+.search-result-img{width:48px;height:48px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.search-result-name{font-family:'Playfair Display',serif;font-size:14px;color:var(--brown);line-height:20px}
+.search-result-price{font-size:12px;color:var(--rose);font-weight:700;margin-top:2px}
+.search-no-results{text-align:center;padding:24px 0;color:var(--taupe);font-size:13px}
+.search-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--taupe);margin-bottom:10px}
+
+/* ══════════ DESKTOP NAV ══════════ */
+.nav-logo-center{display:none}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media(max-width:768px){
+nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;align-items:center}
+.logo{display:none}
+.nav-links{display:none}
+.hamburger{display:flex;margin-right:0;justify-self:start}
+.nav-logo-center{display:block;text-align:center;cursor:pointer;user-select:none;justify-self:center}
+.nav-logo-center .logo-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;letter-spacing:.3px;color:var(--brown);line-height:1.2}
+.nav-logo-center .logo-sub{font-size:7.5px;letter-spacing:4px;text-transform:uppercase;color:var(--taupe);font-family:'Lato',sans-serif;font-weight:300}
+.nav-right{justify-self:end}
+.nav-right .icon-btn{padding:4px}
+.info-bar{display:none}
+.hero{min-height:100svh;padding:0;align-items:flex-start;background:#f0e5df}
+.hero-img-bg{background-image:url('https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/hero%20phone.png') !important;background-position:center top !important}
+.hero-img-bg::after{background:linear-gradient(to bottom,rgba(250,242,238,.88) 0%,rgba(250,242,238,.6) 30%,rgba(250,242,238,.1) 55%,transparent 70%)}
+.hero-content{padding:32px 24px 0}
+.hero-eyebrow{color:var(--taupe)}
+.hero-title{font-size:40px;line-height:50px;color:var(--brown);font-weight:600;margin-bottom:16px}
+.hero-title em{color:var(--rose)}
+.hero-sub{color:var(--taupe);font-size:13px;line-height:24px;margin-bottom:28px}
+.hero-btns{flex-direction:column;gap:10px}
+.hero-btns .btn{width:100%;padding:15px;font-size:11px}
+.hero-btns .btn-dark{background:var(--brown);color:#fff}
+.hero-btns .btn-outline{border-color:var(--brown);color:var(--brown)}
+#brand-cards{grid-template-columns:1fr 1fr !important;gap:12px}
+.trust-strip{padding:10px 0}
+.trust-item{font-size:9.5px;letter-spacing:2px;padding:0 24px}
+.section{padding:44px 20px}
+.section-title{font-size:26px}
+.section-title-underline{margin-bottom:28px}
+.grid-4{grid-template-columns:repeat(2,1fr);gap:12px}
+.pcard{border-radius:14px}
+.pcard-img{height:160px}
+.pcard-body{padding:13px 14px 15px}
+.pcard-no{font-size:9px;margin-bottom:3px}
+.pcard-name{font-size:13px;margin-bottom:7px;line-height:19px;min-height:38px}
+.pcard-price{font-size:13px;margin-bottom:11px}
+.pcard-body .btn-sm{padding:9px 10px;font-size:9.5px;letter-spacing:1.5px}
+.badge{font-size:8px;padding:3px 9px;top:10px;left:10px}
+.grid-2{grid-template-columns:1fr;gap:28px}
+.grid-2 .story-visual{order:-1}
+.story-visual{height:220px;border-radius:12px}
+.story-text p{font-size:13px;line-height:26px}
+.section .grid-3.cat-row{display:flex;overflow-x:auto;gap:10px;padding-bottom:4px;grid-template-columns:unset;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.section .grid-3.cat-row::-webkit-scrollbar{display:none}
+.cat-card{flex:0 0 140px;height:148px;border-radius:14px}
+.cat-card-name{font-size:17px;margin-top:10px}
+.cat-card-count{font-size:9.5px}
+.page-header{padding:28px 20px 20px}
+.page-header h1{font-size:28px}
+.filter-bar{padding:10px 16px;overflow-x:auto;flex-wrap:nowrap;gap:7px;top:58px}
+.filter-bar::-webkit-scrollbar{display:none}
+.filter-bar-sub{padding:9px 16px}
+.fbtn{white-space:nowrap;padding:7px 14px;font-size:9.5px;letter-spacing:.8px}
+.fbtn-sub{padding:5px 11px;font-size:9px}
+.products-grid-section{padding:20px 16px}
+.products-grid-section .grid-3{grid-template-columns:repeat(2,1fr);gap:12px}
+.breadcrumb{padding:10px 16px;font-size:11px}
+.detail-layout{grid-template-columns:1fr;gap:0;padding:0 0 80px}
+.detail-gallery{position:relative;top:auto}
+.detail-main-img{border-radius:0;height:300px;margin-bottom:12px}
+.detail-thumbs{padding:0 16px;gap:8px}
+.thumb{width:60px;height:60px}
+.detail-info{padding:18px 16px 10px}
+.detail-info h1{font-size:26px;line-height:34px}
+.detail-price{font-size:24px;margin-bottom:16px}
+.detail-desc{font-size:13px;line-height:24px;margin-bottom:22px}
+.qty-row{margin-bottom:20px}
+.detail-actions{display:none}
+.detail-perks{border-radius:10px;padding:16px}
+.perk-item{font-size:11.5px}
+.tab-section{padding:24px 16px}
+.tab-nav{gap:0;overflow-x:auto;scrollbar-width:none}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{padding:10px 14px;font-size:10px;letter-spacing:1.5px;white-space:nowrap}
+.tab-pane p{font-size:13px;line-height:26px}
+.ingr-tag{font-size:11px;padding:5px 12px}
+.mobile-sticky{display:flex}
+.cart-layout{grid-template-columns:1fr;padding:16px;gap:14px;min-height:auto}
+.page-header.cart-header{padding:28px 20px 20px}
+.cart-summary-box{position:relative;top:auto;border-radius:14px;padding:22px}
+.cart-summary-box h3{font-size:16px}
+.citem{gap:12px;padding:13px;border-radius:10px}
+.citem-img{width:64px;height:64px}
+.citem-name{font-size:14px}
+.sum-total{font-size:15px}
+.promo-row{margin:10px 0}
+.checkout-layout{grid-template-columns:1fr;padding:16px;gap:14px}
+.checkout-form{padding:18px 16px;border-radius:14px}
+.form-section-title{font-size:14px}
+.form-row{grid-template-columns:1fr}
+.checkout-summary{position:relative;top:auto;order:-1;border-radius:14px;padding:18px}
+.checkout-summary h3{font-size:15px}
+.co-item-row{padding:8px 0}
+.pay-option{padding:12px 14px}
+.pay-label{font-size:12px}
+.success-page{padding:16px;align-items:flex-start;padding-top:32px}
+.success-card{padding:28px 18px;border-radius:18px}
+.success-card h2{font-size:26px}
+.success-icon{width:68px;height:68px;margin-bottom:20px}
+.success-btns{flex-direction:column}
+footer{padding:32px 18px 20px}
+.footer-grid{grid-template-columns:1fr 1fr;gap:20px}
+.footer-grid>div:first-child{grid-column:1/-1}
+.footer-bottom{flex-direction:column;gap:10px;text-align:center}
+.search-box{padding:16px 18px 14px}
+.search-input{font-size:17px}
+}
+
+/* ═══════════════════ ADMIN DASHBOARD ═══════════════════ */
+body.admin-mode > nav,
+body.admin-mode > .info-bar,
+body.admin-mode > .mobile-sticky,
+body.admin-mode > .drawer,
+body.admin-mode > .drawer-overlay,
+body.admin-mode > .search-overlay { display:none !important; }
+body.admin-mode { overflow-x:hidden; }
+
+/* ── Admin Top Navbar ── */
+.adm-wrap { min-height:100vh; background:#f6f3f0; display:flex; flex-direction:column; }
+
+.adm-navbar {
+  background:var(--white);
+  border-bottom:1px solid var(--beige);
+  height:64px;
+  padding:0 32px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  position:sticky;
+  top:0;
+  z-index:200;
+  box-shadow:var(--sh-sm);
+}
+
+.adm-navbar-logo {
+  cursor:pointer;
+  flex-shrink:0;
+  display:flex;
+  flex-direction:column;
+  margin-right:16px;
+}
+.adm-navbar-logo-sub {
+  font-size:7px;
+  letter-spacing:3.5px;
+  text-transform:uppercase;
+  color:var(--taupe);
+  margin-top:2px;
+}
+
+.adm-navbar-links {
+  display:flex;
+  align-items:center;
+  gap:2px;
+  flex:1;
+}
+
+.adm-nav-item {
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 14px;
+  border-radius:8px;
+  font-size:12px;
+  color:var(--taupe);
+  cursor:pointer;
+  transition:all .15s;
+  letter-spacing:.3px;
+  white-space:nowrap;
+  font-family:'Lato',sans-serif;
+}
+.adm-nav-item:hover { background:var(--ivory); color:var(--brown); }
+.adm-nav-item.active { background:var(--brown); color:#fff; }
+.adm-nav-item svg { flex-shrink:0; }
+
+.adm-navbar-right {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-shrink:0;
+  margin-left:auto;
+}
+
+.adm-logout-btn {
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 16px;
+  background:none;
+  border:1px solid var(--beige);
+  border-radius:8px;
+  color:var(--brown);
+  font-size:11px;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  cursor:pointer;
+  font-family:'Lato',sans-serif;
+  transition:all .2s;
+  white-space:nowrap;
+}
+.adm-logout-btn:hover { background:var(--ivory); }
+
+/* Admin main content */
+.adm-main { padding:36px 44px; width:100%; max-width:1200px; margin:0 auto; }
+.adm-title { font-family:'Playfair Display',serif; font-size:30px; color:var(--brown); margin-bottom:6px; font-weight:500; }
+.adm-sub { font-size:13px; color:var(--taupe); margin-bottom:28px; }
+
+.adm-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:28px; }
+.adm-stat-card { background:var(--white); border-radius:14px; padding:22px; box-shadow:var(--sh-sm); border:1px solid var(--beige); }
+.adm-stat-card.adm-stat-warn { border-color:#e8a957; background:#fff8ef; }
+.adm-stat-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); margin-bottom:8px; }
+.adm-stat-value { font-family:'Playfair Display',serif; font-size:30px; color:var(--brown); font-weight:500; line-height:1.1; }
+.adm-stat-sub { font-size:12px; color:var(--taupe); margin-top:4px; }
+
+.adm-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.adm-panel { background:var(--white); border-radius:14px; padding:24px; border:1px solid var(--beige); box-shadow:var(--sh-sm); }
+.adm-panel-title { font-family:'Playfair Display',serif; font-size:18px; color:var(--brown); margin-bottom:14px; font-weight:500; }
+.adm-row { display:flex; align-items:center; gap:12px; padding:11px 0; border-bottom:1px solid var(--beige); font-size:13px; }
+.adm-row:last-child { border-bottom:none; }
+.adm-empty { font-size:13px; color:var(--taupe); padding:14px 0; }
+
+.adm-filter-row { display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap; }
+.adm-filter { background:var(--white); border:1px solid var(--beige); padding:8px 16px; border-radius:20px; font-size:11px; letter-spacing:1px; text-transform:uppercase; cursor:pointer; color:var(--taupe); font-family:'Lato',sans-serif; }
+.adm-filter.active { background:var(--brown); color:#fff; border-color:var(--brown); }
+
+.adm-table { width:100%; border-collapse:collapse; font-size:13px; }
+.adm-table th { background:var(--ivory); text-align:left; padding:13px 18px; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); font-weight:400; border-bottom:1px solid var(--beige); }
+.adm-table td { padding:14px 18px; border-bottom:1px solid var(--beige); vertical-align:middle; }
+.adm-table tr:last-child td { border-bottom:none; }
+.adm-table tr:hover { background:var(--ivory); }
+
+.adm-badge { display:inline-block; padding:3px 10px; border-radius:4px; font-size:10px; letter-spacing:1px; text-transform:uppercase; font-weight:500; }
+.adm-badge-pending { background:#fff4e0; color:#b07820; }
+.adm-badge-shipped { background:#e0f0ff; color:#1a6dac; }
+.adm-badge-completed { background:#e0f5e8; color:#2a8a4a; }
+.adm-badge-cancelled { background:#f5e0e0; color:#a64040; }
+
+.adm-btn-sm { background:var(--white); border:1px solid var(--beige); padding:6px 12px; border-radius:6px; font-size:11px; letter-spacing:.5px; cursor:pointer; color:var(--brown); font-family:'Lato',sans-serif; margin-right:4px; transition:all .15s; }
+.adm-btn-sm:hover { background:var(--brown); color:#fff; border-color:var(--brown); }
+.adm-btn-danger { color:#a64040; }
+.adm-btn-danger:hover { background:#a64040; color:#fff; border-color:#a64040; }
+
+.adm-input { border:1px solid var(--beige); border-radius:8px; padding:11px 14px; font-family:'Lato',sans-serif; font-size:13px; color:var(--brown); background:var(--ivory); outline:none; width:100%; transition:border-color .2s; }
+.adm-input:focus { border-color:var(--rose); }
+.adm-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); margin-bottom:7px; display:block; }
+
+.adm-modal-overlay { position:fixed; inset:0; background:rgba(50,38,34,.55); z-index:700; opacity:0; pointer-events:none; transition:opacity .25s; backdrop-filter:blur(3px); display:flex; align-items:flex-start; justify-content:center; padding:50px 20px; overflow-y:auto; }
+.adm-modal-overlay.open { opacity:1; pointer-events:all; }
+.adm-modal { background:var(--white); border-radius:16px; padding:32px; max-width:680px; width:100%; position:relative; box-shadow:var(--sh-lg); }
+.adm-modal-close { position:absolute; top:16px; right:16px; background:none; border:none; color:var(--taupe); cursor:pointer; padding:6px; border-radius:6px; transition:background .15s; }
+.adm-modal-close:hover { background:var(--ivory); }
+
+/* ── Admin Responsive (mobile) ── */
+@media(max-width:768px) {
+  .adm-navbar { height:52px; padding:0 12px; gap:0; }
+  .adm-navbar-logo { margin-right:8px; }
+  .adm-navbar-logo img { height:24px; }
+  .adm-navbar-logo-sub { display:none; }
+  .adm-navbar-links {
+    overflow-x:auto;
+    scrollbar-width:none;
+    justify-content:flex-start;
+    gap:2px;
+  }
+  .adm-navbar-links::-webkit-scrollbar { display:none; }
+  .adm-nav-item { padding:7px 10px; font-size:11px; gap:5px; }
+  .adm-nav-item span { display:none; }
+  .adm-nav-item svg { width:18px; height:18px; }
+  .adm-navbar-right { gap:4px; }
+  .adm-logout-btn { padding:7px 10px; font-size:10px; letter-spacing:0; }
+  .adm-logout-btn span { display:none; }
+  .adm-main { padding:16px; }
+  .adm-title { font-size:22px; }
+  .adm-stats { grid-template-columns:1fr 1fr; gap:10px; }
+  .adm-stat-card { padding:14px; }
+  .adm-stat-value { font-size:22px; }
+  .adm-grid-2 { grid-template-columns:1fr; gap:14px; }
+  .adm-panel { padding:16px; }
+  .adm-table { font-size:11.5px; }
+  .adm-table th, .adm-table td { padding:8px 10px; }
+  .adm-modal { padding:22px 18px; }
+}
+
+/* Login page */
+.login-page-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px 20px; background:linear-gradient(135deg,#f9f2ef,#f2e6e1); }
+.login-card { background:var(--white); border-radius:20px; padding:48px 40px; max-width:420px; width:100%; box-shadow:var(--sh-lg); }
+.login-logo { text-align:center; margin-bottom:32px; }
+.login-title { font-family:'Playfair Display',serif; font-size:26px; color:var(--brown); text-align:center; margin-bottom:6px; font-weight:500; }
+.login-sub { font-size:13px; color:var(--taupe); text-align:center; }
+.login-card input { width:100%; border:1px solid var(--beige); border-radius:8px; padding:13px 14px; font-family:'Lato',sans-serif; font-size:14px; color:var(--brown); background:var(--ivory); outline:none; }
+.login-card input:focus { border-color:var(--rose); }
+
+/* Out-of-stock card dimming */
+.pcard-oos { opacity:.7; }
+.pcard-oos:hover { transform:none; box-shadow:var(--sh-sm); }
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#6fcf97" stroke-width="2"/><path d="M7 12l4 4 6-6" stroke="#6fcf97" stroke-width="2" stroke-linecap="round"/></svg>
+  <span id="toast-msg">Added to cart</span>
+</div>
+
+<!-- INFO BAR -->
+<div class="info-bar" id="info-bar">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  <span id="info-bar-text">Free shipping on orders above RM250 · Complimentary sample with every order</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <button class="hamburger" id="hamburger" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="logo" onclick="goPage('home')">
+    <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa Skin Care House" style="height:44px;width:auto;display:block">
+  </div>
+  <div class="nav-logo-center" onclick="goPage('home')">
+    <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa" style="height:34px;width:auto;display:block;margin:0 auto">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="goPage('home');return false">Home</a></li>
+    <li><a href="#" onclick="goPage('products');return false">Shop</a></li>
+    <li><a href="#" onclick="goHomeScroll('our-story');return false">About</a></li>
+    <li><a href="#" onclick="goHomeScroll('footer-contact');return false">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="icon-btn" onclick="openSearch()">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="search-overlay" onclick="closeSearchIfOutside(event)">
+  <div class="search-box">
+    <div class="search-label">Search Products</div>
+    <div class="search-input-row">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" style="flex-shrink:0;color:var(--taupe)"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input class="search-input" id="search-input" placeholder="e.g. serum, mask, cleanser…" oninput="runSearch(this.value)" autocomplete="off">
+      <button class="search-close" onclick="closeSearch()">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-label" style="margin-bottom:14px">Popular</div>
+      <div id="search-results-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ HOMEPAGE ═══════════════════ -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-img-bg" style="background-image:url('https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/hero.png')"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Maria Galland Paris · Est. 1961</div>
+      <h1 class="hero-title">Skin that<br><em>Radiates</em><br>Confidence</h1>
+      <p class="hero-sub">Luxurious French skincare science, thoughtfully curated for you by Olivéa Skin Care House.</p>
+      <div class="hero-btns">
+        <button class="btn btn-dark" onclick="goPage('products')">Shop Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="trust-strip">
+    <div class="trust-track" id="trust-track">
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Maria Galland Paris</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Express Delivery 1–3 Days</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Free Shipping Above RM 250</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Cruelty Free</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2C8 2 5 6 5 10c0 5.25 7 12 7 12s7-6.75 7-12c0-4-3-8-7-8zm0 10a2 2 0 110-4 2 2 0 010 4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Luxury Botanical</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622C17.176 19.29 21 14.591 21 9c0-1.034-.125-2.04-.354-3.016l-.028.016z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Dermatologist Tested</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Clean &amp; Conscious</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Secure Payment</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Maria Galland Paris</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Express Delivery 1–3 Days</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Free Shipping Above RM 250</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Cruelty Free</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2C8 2 5 6 5 10c0 5.25 7 12 7 12s7-6.75 7-12c0-4-3-8-7-8zm0 10a2 2 0 110-4 2 2 0 010 4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Luxury Botanical</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622C17.176 19.29 21 14.591 21 9c0-1.034-.125-2.04-.354-3.016l-.028.016z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Dermatologist Tested</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Clean &amp; Conscious</div>
+      <div class="trust-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Secure Payment</div>
+    </div>
+  </div>
+
+  <div class="section section-white">
+    <div class="section-label">Our Selection</div>
+    <div class="section-title">Bestselling Products</div>
+    <div class="section-title-underline"></div>
+    <div class="grid-4" id="featured-grid"></div>
+    <div style="text-align:center;margin-top:40px">
+      <button class="btn btn-outline" onclick="goPage('products')">View All Products</button>
+    </div>
+  </div>
+
+  <div class="section section-beige" id="our-story">
+    <div class="grid-2">
+      <div class="story-text">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title-sm" style="font-size:34px;line-height:42px;margin-bottom:20px">Timeless. Trusted.<br><em style="color:var(--rose)">Thoughtfully Crafted.</em></h2>
+        <p>Olivéa Skin Care House was founded with one belief — that everyone deserves access to exceptional skincare. As an authorised retailer of Maria Galland Paris and Jyunka, we bring decades of French and Japanese skincare expertise directly to you.</p>
+        <p>Every product in our collection is carefully selected, dermatologist-tested, and formulated with nature's finest ingredients. Your skin deserves nothing less.</p>
+      </div>
+      <div class="story-visual">
+        <svg width="320" height="380" viewBox="0 0 320 380" fill="none">
+          <rect x="40" y="40" width="240" height="300" rx="20" fill="rgba(255,255,255,0.2)"/>
+          <rect x="60" y="60" width="200" height="260" rx="14" fill="rgba(255,255,255,0.15)"/>
+          <rect x="115" y="80" width="90" height="160" rx="10" fill="#e8cfc9"/>
+          <rect x="122" y="88" width="76" height="144" rx="7" fill="rgba(255,255,255,0.3)"/>
+          <rect x="120" y="70" width="80" height="16" rx="6" fill="#d4b4ae"/>
+          <text x="160" y="155" text-anchor="middle" font-family="Playfair Display,serif" font-size="10" fill="#4B403A">OLIVÉA</text>
+          <text x="160" y="168" text-anchor="middle" font-family="Lato,sans-serif" font-size="7" fill="#A8998B" letter-spacing="2">SKIN CARE</text>
+          <ellipse cx="100" cy="290" rx="30" ry="10" fill="#dcc0ba"/>
+          <rect x="70" y="258" width="60" height="32" rx="6" fill="#e8cfc9"/>
+          <ellipse cx="100" cy="258" rx="30" ry="9" fill="#f0ddd8"/>
+          <ellipse cx="220" cy="280" rx="28" ry="9" fill="#dcc0ba"/>
+          <rect x="192" y="250" width="56" height="30" rx="6" fill="#e8d0c8"/>
+          <ellipse cx="220" cy="250" rx="28" ry="9" fill="#f0ddd8"/>
+          <circle cx="80" cy="110" r="4" fill="rgba(255,255,255,0.5)"/>
+          <circle cx="240" cy="90" r="6" fill="rgba(255,255,255,0.4)"/>
+          <circle cx="250" cy="200" r="3" fill="rgba(255,255,255,0.5)"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section-white">
+    <div class="section-label">Browse By</div>
+    <div class="section-title">Our Brands</div>
+    <div class="section-title-underline"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px" id="brand-cards">
+      <div class="cat-card" style="background:linear-gradient(135deg,#f0e0dc,#e6cdc8);height:200px" onclick="goPageBrand('maria-galland')">
+        <svg width="44" height="44" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#4B403A" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="cat-card-name" style="font-size:18px;margin-top:10px">Maria Galland</div>
+        <div class="cat-card-count" style="letter-spacing:1px">Paris · Est. 1961</div>
+        <div style="font-size:10px;color:var(--rose);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px" id="count-mg">6 Products →</div>
+      </div>
+      <div class="cat-card" style="background:linear-gradient(135deg,#e4f0e8,#cce0d4);height:200px" onclick="goPageBrand('jyunka')">
+        <svg width="44" height="44" fill="none" viewBox="0 0 24 24"><path d="M12 22s-8-4-8-10a8 8 0 1116 0c0 6-8 10-8 10z" stroke="#4B403A" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="#4B403A" stroke-width="1.5"/></svg>
+        <div class="cat-card-name" style="font-size:18px;margin-top:10px">Jyunka</div>
+        <div class="cat-card-count" style="letter-spacing:1px">Japanese Botanical</div>
+        <div style="font-size:10px;color:var(--rose);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px" id="count-jy">3 Products →</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa Skin Care House" style="height:38px;width:auto;display:block;filter:brightness(0) invert(1);opacity:0.85;margin-bottom:12px">
+        <p class="footer-desc">Authorised retailer of Maria Galland Paris. SSM Registration: CT0161902-X<br><br>Skincare inspired by nature, perfected by science.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Shop</div>
+        <ul class="footer-links">
+          <li><a href="#">All Products</a></li>
+          <li><a href="#">Cleansers</a></li>
+          <li><a href="#">Serums</a></li>
+          <li><a href="#">Masks</a></li>
+          <li><a href="#">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Help</div>
+        <ul class="footer-links">
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div id="footer-contact">
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="#">+60 12-345 6789</a></li>
+          <li><a href="#">hello@olivea.com.my</a></li>
+          <li><a href="#">olivea.com.my</a></li>
+          <li style="margin-top:12px"><a href="#" style="display:flex;align-items:center;gap:8px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            WhatsApp Us
+          </a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Olivéa Skin Care House · All rights reserved</p>
+      <div class="footer-social">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#A8998B" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="#A8998B" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="#A8998B"/></svg>
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="#A8998B" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════ PRODUCTS PAGE ═══════════════════ -->
+<div id="page-products" class="page">
+  <div class="page-header">
+    <p class="section-label" style="text-align:center">Olivéa Collection</p>
+    <h1>All Products</h1>
+    <p style="margin-top:8px;font-size:13px;color:var(--taupe)">Curated skincare from Maria Galland Paris</p>
+  </div>
+  <div class="filter-bar">
+    <button class="fbtn active" onclick="filterProducts('all',this)">All Brands</button>
+    <button class="fbtn" onclick="filterProducts('maria-galland',this)">Maria Galland Paris</button>
+    <button class="fbtn" onclick="filterProducts('jyunka',this)">Jyunka</button>
+  </div>
+  <div class="filter-bar filter-bar-sub">
+    <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-right:6px">Type</span>
+    <button class="fbtn fbtn-sub active" onclick="filterCategory('all',this)">All</button>
+    <button class="fbtn fbtn-sub" onclick="filterCategory('cleanser',this)">Cleanser</button>
+    <button class="fbtn fbtn-sub" onclick="filterCategory('serum',this)">Serum</button>
+    <button class="fbtn fbtn-sub" onclick="filterCategory('mask',this)">Mask</button>
+    <button class="fbtn fbtn-sub" onclick="filterCategory('moisturiser',this)">Moisturiser</button>
+  </div>
+  <div class="products-grid-section">
+    <div class="grid-3" id="all-products-grid"></div>
+  </div>
+  <footer>
+    <div class="footer-bottom" style="border-top:none;padding-top:0">
+      <p>© 2026 Olivéa Skin Care House</p>
+      <p style="cursor:pointer;color:var(--taupe)" onclick="goPage('home')">← Back to Home</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════ PRODUCT DETAIL ═══════════════════ -->
+<div id="page-detail" class="page">
+  <div class="breadcrumb">
+    <span onclick="goPage('home')">Home</span> &nbsp;/&nbsp;
+    <span onclick="goPage('products')">Shop</span> &nbsp;/&nbsp;
+    <span id="bc-product-name" style="color:var(--brown)"></span>
+  </div>
+  <div class="detail-layout">
+    <div class="detail-gallery">
+      <div class="detail-main-img" id="detail-main-img" style="background:linear-gradient(145deg,#f0e0dc,#e6cdc8)">
+        <div id="detail-img-svg"></div>
+      </div>
+      <div class="detail-thumbs" id="detail-thumbs"></div>
+    </div>
+    <div class="detail-info">
+      <div class="pcard-no" id="d-no"></div>
+      <h1 id="d-name"></h1>
+      <div class="detail-price" id="d-price"></div>
+      <p class="detail-desc" id="d-desc"></p>
+      <div class="qty-row">
+        <span class="qty-label">Qty</span>
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <span class="qty-val" id="d-qty">1</span>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+      </div>
+      <div class="detail-actions">
+        <button class="btn btn-dark" style="flex:1;padding:15px" onclick="buyNow()">Buy Now</button>
+      </div>
+      <div class="detail-perks">
+        <div class="perk-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="var(--rose)" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Secure checkout via FPX, DuitNow &amp; Credit Card
+        </div>
+        <div class="perk-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Free shipping on orders above RM250
+        </div>
+        <div class="perk-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622C17.176 19.29 21 14.591 21 9c0-1.034-.125-2.04-.354-3.016l-.028.016z" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Authentic. Authorised. Guaranteed.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-section">
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('desc',this)">Description</button>
+      <button class="tab-btn" onclick="switchTab('ingr',this)">Ingredients</button>
+    </div>
+    <div class="tab-pane active" id="tab-desc">
+      <p id="tab-desc-text"></p>
+      <p>Suitable for all skin types. For best results, use morning and evening as part of your skincare routine. Apply a small amount onto clean skin and massage gently until absorbed.</p>
+    </div>
+    <div class="tab-pane" id="tab-ingr">
+      <p style="margin-bottom:16px">Key active ingredients:</p>
+      <div class="ingredients-list" id="ingr-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CHECKOUT PAGE ═══════════════════ -->
+<div id="page-checkout" class="page">
+  <div class="page-header" style="padding:40px 80px;text-align:left">
+    <p class="section-label">Final Step</p>
+    <h1>Checkout</h1>
+  </div>
+  <div class="checkout-layout">
+    <div class="checkout-form">
+      <div class="form-section">
+        <h3 class="form-section-title">Contact Information</h3>
+        <div class="form-row">
+          <div class="fg"><label>First Name</label><input id="co-fname" type="text" placeholder="Aisyah"></div>
+          <div class="fg"><label>Last Name</label><input id="co-lname" type="text" placeholder="Rahman"></div>
+        </div>
+        <div class="fg"><label>Email Address</label><input id="co-email" type="email" placeholder="aisyah@email.com"></div>
+        <div class="fg"><label>Phone Number</label><input id="co-phone" type="tel" placeholder="+60 12-345 6789"></div>
+      </div>
+      <div class="form-section">
+        <h3 class="form-section-title">Delivery Address</h3>
+        <div class="fg"><label>Address Line 1</label><input id="co-addr1" type="text" placeholder="No. 12, Jalan Bunga Raya"></div>
+        <div class="fg"><label>Address Line 2</label><input id="co-addr2" type="text" placeholder="Taman Sri Indah (optional)"></div>
+        <div class="form-row">
+          <div class="fg"><label>City</label><input id="co-city" type="text" placeholder="Kuala Lumpur"></div>
+          <div class="fg"><label>Postcode</label><input id="co-post" type="text" placeholder="50480"></div>
+        </div>
+        <div class="fg"><label>State</label>
+          <select id="co-state">
+            <option>Kuala Lumpur</option><option>Selangor</option><option>Johor</option>
+            <option>Penang</option><option>Sabah</option><option>Sarawak</option>
+            <option>Perak</option><option>Kedah</option><option>Melaka</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-section">
+        <h3 class="form-section-title">Promo Code</h3>
+        <div style="display:flex;gap:8px;align-items:center">
+          <input id="promo-input" type="text" placeholder="Enter code (e.g. WELCOME10)" style="flex:1;border:1px solid var(--beige);border-radius:8px;padding:11px 14px;font-family:'Lato',sans-serif;font-size:13px;color:var(--brown);background:var(--ivory);outline:none;text-transform:uppercase">
+          <button class="btn btn-outline btn-sm" onclick="applyPromoCode()">Apply</button>
+        </div>
+        <div id="promo-status" style="font-size:12px;margin-top:6px"></div>
+      </div>
+      <div class="form-section">
+        <h3 class="form-section-title">Payment Method</h3>
+        <div class="pay-option selected" onclick="selectPay(this)">
+          <input type="radio" name="pay" checked>
+          <div>
+            <div class="pay-label">FPX — Online Banking</div>
+            <div class="pay-sub">Maybank, CIMB, RHB, Public Bank &amp; more</div>
+          </div>
+          <svg width="32" height="20" viewBox="0 0 64 40" style="margin-left:auto"><rect width="64" height="40" rx="6" fill="#005BAC"/><text x="32" y="25" text-anchor="middle" font-family="Lato,sans-serif" font-size="11" font-weight="700" fill="#fff">FPX</text></svg>
+        </div>
+        <div class="pay-option" onclick="selectPay(this)">
+          <input type="radio" name="pay">
+          <div>
+            <div class="pay-label">DuitNow QR</div>
+            <div class="pay-sub">Scan and pay instantly</div>
+          </div>
+          <svg width="32" height="20" viewBox="0 0 64 40" style="margin-left:auto"><rect width="64" height="40" rx="6" fill="#FF3A5C"/><text x="32" y="25" text-anchor="middle" font-family="Lato,sans-serif" font-size="8" font-weight="700" fill="#fff">DuitNow</text></svg>
+        </div>
+        <div class="pay-option" onclick="selectPay(this)">
+          <input type="radio" name="pay">
+          <div>
+            <div class="pay-label">Credit / Debit Card</div>
+            <div class="pay-sub">Visa, Mastercard accepted</div>
+          </div>
+          <div style="display:flex;gap:6px;margin-left:auto">
+            <svg width="32" height="20" viewBox="0 0 64 40"><rect width="64" height="40" rx="6" fill="#1A1F71"/><text x="32" y="25" text-anchor="middle" font-family="Lato,sans-serif" font-size="10" font-weight="700" fill="#fff">VISA</text></svg>
+            <svg width="34" height="22" viewBox="0 0 68 44"><rect width="68" height="44" rx="5" fill="#fff" stroke="#ddd" stroke-width="1.5"/><defs><clipPath id="mcOvlp"><circle cx="28" cy="22" r="14"/></clipPath></defs><circle cx="28" cy="22" r="14" fill="#EB001B"/><circle cx="40" cy="22" r="14" fill="#F79E1B"/><circle cx="40" cy="22" r="14" fill="#FF5F00" clip-path="url(#mcOvlp)"/></svg>
+          </div>
+        </div>
+        <button class="btn btn-dark btn-full" style="margin-top:12px;padding:16px" onclick="placeOrder()">Place Order &amp; Pay</button>
+        <p style="text-align:center;font-size:11px;color:var(--taupe);margin-top:12px;letter-spacing:.5px">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" style="vertical-align:middle"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Secured by SSL · Powered by Billplz
+        </p>
+      </div>
+    </div>
+    <div class="checkout-summary">
+      <h3>Order Summary</h3>
+      <div id="co-items-list"></div>
+      <div class="sum-row"><span>Subtotal</span><span id="co-subtotal">RM 0</span></div>
+      <div class="sum-row" id="co-discount-row" style="display:none"><span>Discount</span><span>RM 0</span></div>
+      <div class="sum-row"><span>Shipping</span><span id="co-shipping">RM 10</span></div>
+      <div class="sum-row"><span>SST (8%)</span><span id="co-tax">RM 0</span></div>
+      <div class="sum-total"><span>Total</span><span id="co-total">RM 0</span></div>
+      <p style="font-size:11px;color:var(--taupe);margin-top:12px;line-height:18px">Transaction fee: RM 0.70 per Billplz transaction. Free shipping on orders above RM 250.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SUCCESS PAGE ═══════════════════ -->
+<div id="page-success" class="page">
+  <div class="success-page">
+    <div class="success-card">
+      <div class="success-icon">
+        <svg width="36" height="36" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#52C97A" stroke-width="1.5"/><path d="M7 12l4 4 6-6" stroke="#52C97A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p class="section-label" style="text-align:center;margin-bottom:8px">Payment Confirmed</p>
+      <h2>Thank You!</h2>
+      <p>Your order has been placed successfully.<br>A confirmation email has been sent to you.</p>
+      <div class="order-ref-box">
+        <div class="ref-label">Order Reference</div>
+        <div class="ref-num" id="order-ref">OLV-2026-00142</div>
+      </div>
+      <div class="success-items">
+        <div class="success-items-title">Items Ordered</div>
+        <div id="success-items-list"></div>
+      </div>
+      <div class="sum-row" style="border:none;padding:4px 0"><span style="font-size:13px">Total Paid</span><span style="font-size:15px;font-weight:700;color:var(--rose)" id="success-total">RM 0</span></div>
+      <div class="success-btns" style="margin-top:24px">
+        <button class="btn btn-dark" onclick="goPage('home')">Continue Shopping</button>
+        <button class="btn btn-outline">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" style="margin-right:6px"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ LOGIN PAGE ═══════════════════ -->
+<div id="page-login" class="page">
+  <div class="login-page-wrap">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa Skin Care House" style="height:52px;width:auto;display:block;margin:0 auto">
+      </div>
+      <h2 class="login-title" style="margin-top:16px">Admin Sign In</h2>
+      <p class="login-sub">Enter your password to access the dashboard.</p>
+      <div class="fg" style="margin-top:24px">
+        <label style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:7px;display:block">Password</label>
+        <input id="login-pass" type="password" placeholder="••••••••" onkeypress="if(event.key==='Enter')tryLogin()">
+      </div>
+      <p id="login-err" style="font-size:12px;color:#e57373;margin-top:8px;min-height:18px"></p>
+      <button class="btn btn-dark btn-full" style="margin-top:14px;padding:14px" onclick="tryLogin()">Sign In</button>
+      <p style="font-size:11px;color:var(--taupe);margin-top:18px;text-align:center;line-height:18px">Default password: <code style="background:var(--ivory);padding:2px 8px;border-radius:4px">olivea2026</code><br>Please change after first login.</p>
+      <p style="text-align:center;margin-top:18px"><a href="#" onclick="goPage('home');return false" style="font-size:11px;color:var(--taupe);letter-spacing:1px">← Back to website</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ADMIN PAGES ═══════════════════ -->
+<div id="page-admin" class="page page-admin"></div>
+<div id="page-admin-overview" class="page page-admin"></div>
+<div id="page-admin-orders" class="page page-admin"></div>
+<div id="page-admin-products" class="page page-admin"></div>
+<div id="page-admin-promos" class="page page-admin"></div>
+<div id="page-admin-announcement" class="page page-admin"></div>
+<div id="page-admin-settings" class="page page-admin"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>  
+<script>
+// ═══════════════════ SUPABASE CONFIG ═══════════════════
+const SUPABASE_URL = 'https://spcoqhaoaozyvmxvgqur.supabase.co';   
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwY29xaGFvYW96eXZteHZncXVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMDQ1MDEsImV4cCI6MjA5Mzg4MDUwMX0.U6vUNlNO8MtdFsYujESKmVTs8HA7KhNr_ckMxV3hpy8';        
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+const ADMIN_PASS = 'olivea2026';
+
+const DEFAULT_PRODUCTS = [
+  { id:0, no:'No. 60', name:'Refreshing Cleansing Gel', price:128, stock:24, category:'cleanser', brand:'maria-galland', image:'',
+    bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)', desc:'A gentle yet effective cleansing gel that transforms on contact with water into a refreshing foam, effectively removing all impurities and makeup while maintaining the skin\'s moisture balance.',
+    longDesc:'This luxurious cleansing gel is powered by a unique blend of botanical extracts and French pharmacy-grade actives. Suitable for daily use, it leaves skin feeling clean, balanced, and ready for your next skincare step.',
+    ingredients:['Aqua','Glycerin','Aloe Vera Extract','Green Tea Extract','Chamomile','Panthenol','Niacinamide','Allantoin'],
+    badge:'Best Seller', colors:['#f0e0dc','#e6cdc8','#f8f0ee'] },
+  { id:1, no:'No. 280', name:'Hydra Mask', price:198, stock:18, category:'mask', brand:'maria-galland', image:'',
+    bg:'linear-gradient(145deg,#eadada,#d8c4c0)', desc:'An intensely hydrating mask infused with hyaluronic acid and botanical extracts. Apply, relax for 15 minutes, and reveal a visibly plumper, more radiant complexion.',
+    longDesc:'Formulated with a triple-action hydration complex, this mask penetrates deep into the skin\'s layers to deliver lasting moisture. Perfect for weekly treatment or whenever your skin needs an extra boost.',
+    ingredients:['Aqua','Hyaluronic Acid','Rose Hip Oil','Vitamin C','Ceramide NP','Squalane','Peptide Complex','Shea Butter'],
+    badge:null, colors:['#eadada','#d8c4c0','#f5ecec'] },
+  { id:2, no:'No. 240', name:'Vital Serum', price:268, stock:3, category:'serum', brand:'maria-galland', image:'',
+    bg:'linear-gradient(145deg,#e8e0f0,#d8cce8)', desc:'A lightweight, fast-absorbing serum enriched with peptides and antioxidants. Targets fine lines, uneven tone, and loss of firmness for a visibly revitalised complexion.',
+    longDesc:'This science-backed serum is formulated with clinically proven actives at their optimal concentrations. Lightweight and non-greasy, it layers beautifully beneath your moisturiser.',
+    ingredients:['Aqua','Retinol','Vitamin C','Hyaluronic Acid','Bakuchiol','Resveratrol','Copper Peptides','Ferulic Acid'],
+    badge:'New', colors:['#e8e0f0','#d8cce8','#f4f0f8'] },
+  { id:3, no:'No. 541', name:"Lumin'Éclat Serum", price:298, stock:15, category:'serum', brand:'maria-galland', image:'',
+    bg:'linear-gradient(145deg,#f0e8d8,#e0d0bc)', desc:'A brightening serum that targets dark spots, hyperpigmentation and dullness. Formulated with luminescent actives to restore your skin\'s natural radiance.',
+    longDesc:'Olivéa\'s bestselling brightening treatment. Rich in vitamin C derivatives and botanical lightening agents, it works synergistically to deliver a visibly more even and luminous complexion within 4 weeks.',
+    ingredients:['Aqua','Vitamin C Derivative','Alpha Arbutin','Niacinamide','Tranexamic Acid','Licorice Extract','Kojic Acid','Vitamin E'],
+    badge:'Best Seller', colors:['#f0e8d8','#e0d0bc','#f8f4ec'] },
+  { id:4, no:'No. 391', name:'Uni Perfect SPF50', price:178, stock:0, category:'moisturiser', brand:'maria-galland', image:'',
+    bg:'linear-gradient(145deg,#dde8f0,#ccd8e8)', desc:'A multi-tasking daily moisturiser with broad-spectrum SPF50 protection. Lightweight gel-cream texture that hydrates, protects and primes skin for the day ahead.',
+    longDesc:'Wear it alone for a natural, dewy finish or under makeup. Water-resistant formula with Zinc Oxide and chemical filters provides reliable protection without white cast.',
+    ingredients:['Zinc Oxide','Titanium Dioxide','Niacinamide','Hyaluronic Acid','Vitamin E','Green Tea','Glycerin','Aloe Vera'],
+    badge:null, colors:['#dde8f0','#ccd8e8','#eef3f8'] },
+  { id:5, no:'No. 100', name:'Barrier Moisturising Cream', price:218, stock:12, category:'moisturiser', brand:'maria-galland', image:'',
+    bg:'linear-gradient(145deg,#e8f0e4,#d4e4cc)', desc:'A rich, nourishing moisturiser that strengthens the skin barrier. Infused with ceramides, peptides and botanical oils to deeply nourish and protect.',
+    longDesc:'The cornerstone of any complete skincare routine. This velvety cream melts effortlessly into skin, providing 24-hour hydration and visibly improving skin texture over time.',
+    ingredients:['Ceramide NP','Ceramide AP','Ceramide EOP','Cholesterol','Fatty Acids','Squalane','Centella Asiatica','Panthenol'],
+    badge:null, colors:['#e8f0e4','#d4e4cc','#f0f5ee'] },
+  { id:6, no:'JY-01', name:'Moisture Surge Serum', price:188, stock:20, category:'serum', brand:'jyunka', image:'',
+    bg:'linear-gradient(145deg,#e4f0e8,#cce0d4)', desc:'A deeply hydrating serum inspired by Japanese botanical wisdom. Formulated with fermented rice extract and Centella Asiatica to restore the skin\'s natural moisture barrier.',
+    longDesc:'Jyunka\'s hero serum blends Japanese herbal tradition with modern biotechnology. The lightweight, silky texture absorbs instantly, leaving skin visibly plumped and radiant from within.',
+    ingredients:['Fermented Rice Extract','Centella Asiatica','Hyaluronic Acid','Ceramide','Beta-Glucan','Niacinamide','Squalane','Aqua'],
+    badge:'New', colors:['#e4f0e8','#cce0d4','#f0f6f2'] },
+  { id:7, no:'JY-02', name:'Soothing Botanical Mask', price:158, stock:9, category:'mask', brand:'jyunka', image:'',
+    bg:'linear-gradient(145deg,#f0ece0,#e4d8c4)', desc:'A calming sheet-style cream mask infused with Japanese Camellia oil and Mugwort extract. Soothes sensitive, reactive skin while restoring a healthy, balanced glow.',
+    longDesc:'Deeply inspired by Japanese onsen skincare rituals, this mask creates a protective veil over the skin. Ideal for weekly use on sensitive or stressed skin types.',
+    ingredients:['Camellia Oil','Mugwort Extract','Aloe Vera','Ceramide','Panthenol','Green Tea','Allantoin','Aqua'],
+    badge:null, colors:['#f0ece0','#e4d8c4','#f8f4ec'] },
+  { id:8, no:'JY-03', name:'Brightening Essence', price:228, stock:4, category:'serum', brand:'jyunka', image:'',
+    bg:'linear-gradient(145deg,#f4e8f0,#e8d4e4)', desc:'A lightweight brightening essence powered by Sakura extract and Tranexamic Acid. Targets uneven skin tone, dark spots, and post-blemish marks for a luminous complexion.',
+    longDesc:'Jyunka\'s brightening essence draws on the Japanese concept of "透明感" — a luminous, glass-like skin appearance. Clinically tested for effectiveness on Asian skin tones.',
+    ingredients:['Sakura Extract','Tranexamic Acid','Alpha Arbutin','Vitamin C','Niacinamide','Licorice Root','Hyaluronic Acid','Aqua'],
+    badge:'Best Seller', colors:['#f4e8f0','#e8d4e4','#faf2f8'] }
+];
+
+const DEFAULT_STORE = {
+  products: DEFAULT_PRODUCTS,
+  orders: [],
+  promos: [
+    { code:'WELCOME10', discount:10, active:true, uses:0 },
+    { code:'OLIVEA15', discount:15, active:true, uses:0 }
+  ],
+  announcement: 'Free shipping on orders above RM250 · Complimentary sample with every order',
+  nextProductId: 9,
+  nextOrderId: 1
+};
+
+let store = JSON.parse(JSON.stringify(DEFAULT_STORE));
+
+async function loadStore() {
+  try {
+    const [prodRes, promoRes, settRes] = await Promise.all([
+      db.from('products').select('*').order('id'),
+      db.from('promos').select('*'),
+      db.from('settings').select('*')
+    ]);
+    
+    if(prodRes.data?.length) {
+      // 确保每个产品有 colors/bg/ingredients,即使 Supabase 缺这些字段
+      store.products = prodRes.data.map(p => ({
+        ...p,
+        colors: Array.isArray(p.colors) ? p.colors : ['#f0e0dc','#e6cdc8','#f8f0ee'],
+        ingredients: Array.isArray(p.ingredients) ? p.ingredients : [],
+        bg: p.bg || 'linear-gradient(145deg,#f0e0dc,#e6cdc8)',
+        image: p.image || '',
+        desc: p.desc || '',
+        longDesc: p.longDesc || p.long_desc || '',
+        badge: p.badge || null
+      }));
+    }
+    if(promoRes.data) store.promos = promoRes.data;
+    if(settRes.data?.length) {
+      settRes.data.forEach(s => {
+        if(s.key === 'announcement') {
+          try { 
+  const parsed = JSON.parse(s.value);
+  store.announcement = typeof parsed === 'string' ? parsed : s.value;
+} catch(e) { 
+  store.announcement = s.value; 
+}
+        }
+      });
+    }
+  } catch(e) {
+    console.error('Supabase load failed, using defaults:', e);
+  }
+  refreshAll();
+}
+async function saveStore() {}  // 不再需要整体保存
+function resetStore() {}       // 暂时停用
+let products = store.products;
+
+function refreshAll() {
+  products = store.products;
+  document.getElementById('info-bar-text').textContent = store.announcement;
+  if(document.getElementById('page-products').classList.contains('active')) applyFilters();
+  renderFeaturedProducts();
+}
+
+function productSVG(p, size='md') {
+  if(p.image) {
+    const dim = size==='sm' ? '100%' : '100%';
+    return `<img src="${p.image}" style="width:${dim};height:${dim};object-fit:cover;border-radius:6px" alt="${p.name}">`;
+  }
+  const cat = p.category;
+  if(cat==='mask') {
+    const w = size==='lg'?160:72, h = size==='lg'?120:60;
+    return `<svg width="${w}" height="${h}" viewBox="0 0 100 80" fill="none" preserveAspectRatio="xMidYMid meet">
+      <ellipse cx="50" cy="60" rx="36" ry="11" fill="${p.colors[1]}"/>
+      <rect x="14" y="22" width="72" height="38" rx="8" fill="${p.colors[0]}"/>
+      <ellipse cx="50" cy="22" rx="36" ry="10" fill="${p.colors[2]}"/>
+      <text x="50" y="42" text-anchor="middle" font-family="Playfair Display,serif" font-size="8" fill="#4B403A">OLIVÉA</text>
+      <text x="50" y="54" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">${p.no}</text>
+    </svg>`;
+  }
+  if(cat==='cleanser') {
+    const w = size==='lg'?70:48, h = size==='lg'?140:76;
+    return `<svg width="${w}" height="${h}" viewBox="0 0 70 120" fill="none" preserveAspectRatio="xMidYMid meet">
+      <rect x="15" y="10" width="40" height="100" rx="6" fill="${p.colors[0]}"/>
+      <rect x="20" y="15" width="30" height="90" rx="4" fill="rgba(255,255,255,0.3)"/>
+      <rect x="18" y="5" width="34" height="10" rx="4" fill="${p.colors[1]}"/>
+      <text x="35" y="62" text-anchor="middle" font-family="Playfair Display,serif" font-size="7" fill="#4B403A">OLIVÉA</text>
+      <text x="35" y="73" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">${p.no}</text>
+    </svg>`;
+  }
+  const w = size==='lg'?55:38, h = size==='lg'?160:76;
+  return `<svg width="${w}" height="${h}" viewBox="0 0 55 140" fill="none" preserveAspectRatio="xMidYMid meet">
+    <rect x="12" y="5" width="31" height="120" rx="10" fill="${p.colors[0]}"/>
+    <rect x="16" y="10" width="23" height="110" rx="8" fill="rgba(255,255,255,0.25)"/>
+    <path d="M20 0 Q27.5 -5 35 0 L35 8 L20 8 Z" fill="${p.colors[1]}"/>
+    <text x="27" y="68" text-anchor="middle" font-family="Playfair Display,serif" font-size="6" fill="#4B403A">OLIVÉA</text>
+    <text x="27" y="80" text-anchor="middle" font-family="Lato,sans-serif" font-size="5" fill="#A8998B">${p.no}</text>
+  </svg>`;
+}
+
+let currentOrder = [];
+let currentDetail = null;
+let detailQty = 1;
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+function goPage(name, push=true) {
+  if(name === 'admin' || name.startsWith('admin-')) {
+    if(!isLoggedIn()) { goPage('login', push); return; }
+  }
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const target = document.getElementById('page-'+name);
+  if(!target) { goPage('home', push); return; }
+  target.classList.add('active');
+  if(name === 'admin' || name.startsWith('admin-') || name === 'login') {
+    document.body.classList.add('admin-mode');
+  } else {
+    document.body.classList.remove('admin-mode');
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='products') applyFilters();
+  if(name==='checkout') renderCheckout();
+  if(name==='success') renderSuccess();
+  if(name==='admin' || name.startsWith('admin-')) renderAdmin(name);
+  setTimeout(updateMobileSticky, 50);
+  if(push) history.pushState({page:name}, '', '#'+name);
+}
+window.addEventListener('popstate', e => {
+  const name = (e.state && e.state.page) || (location.hash.replace('#','') || 'home');
+  goPage(name, false);
+});
+
+let filterState = { brand: 'all', category: 'all' };
+
+function pcardHTML(p) {
+  const oos = p.stock <= 0;
+  return `<div class="pcard${oos?' pcard-oos':''}" onclick="goDetail(${p.id})">
+    <div class="pcard-img" style="background:${p.bg}">
+      ${p.badge && !oos?`<span class="badge${p.badge==='New'?' badge-new':''}">${p.badge}</span>`:''}
+      ${oos?'<span class="badge" style="background:#888;left:auto;right:14px">Out of Stock</span>':''}
+      ${productSVG(p)}
+    </div>
+    <div class="pcard-body">
+      <div class="pcard-no">${p.no} · <span style="font-size:9px;letter-spacing:1px;color:var(--taupe);text-transform:uppercase">${p.brand==='jyunka'?'Jyunka':'Maria Galland'}</span></div>
+      <div class="pcard-name">${p.name}</div>
+      <div class="pcard-price">RM ${p.price}</div>
+      ${oos
+        ? `<button class="btn btn-full btn-sm" style="background:#ddd;color:#888;cursor:not-allowed" onclick="event.stopPropagation()">Out of Stock</button>`
+        : `<button class="btn btn-dark btn-full btn-sm" onclick="event.stopPropagation();directBuy(${p.id})">Buy Now</button>`}
+    </div>
+  </div>`;
+}
+
+function applyFilters() {
+  const grid = document.getElementById('all-products-grid');
+  if(!grid) return;
+  let list = store.products;
+  if(filterState.brand !== 'all') list = list.filter(p=>p.brand===filterState.brand);
+  if(filterState.category !== 'all') list = list.filter(p=>p.category===filterState.category);
+  if(!list.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--taupe)">
+      <p style="font-size:14px">No products match this combination.</p>
+      <button class="btn btn-outline btn-sm" style="margin-top:16px" onclick="resetFilters()">Reset Filters</button>
+    </div>`;
+    return;
+  }
+  grid.innerHTML = list.map(pcardHTML).join('');
+}
+
+function renderFeaturedProducts() {
+  const wrap = document.getElementById('featured-grid');
+  if(!wrap) return;
+  const inStock = store.products.filter(p=>p.stock>0);
+  const sorted = inStock.sort((a,b)=>{ const aBest=a.badge==='Best Seller'?1:0; const bBest=b.badge==='Best Seller'?1:0; return bBest-aBest; });
+  wrap.innerHTML = sorted.slice(0,4).map(pcardHTML).join('');
+  const mgEl = document.getElementById('count-mg'); const jyEl = document.getElementById('count-jy');
+  if(mgEl) mgEl.textContent = store.products.filter(p=>p.brand==='maria-galland').length + ' Products →';
+  if(jyEl) jyEl.textContent = store.products.filter(p=>p.brand==='jyunka').length + ' Products →';
+}
+
+function filterProducts(brand, btn) {
+  document.querySelectorAll('.filter-bar:not(.filter-bar-sub) .fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); filterState.brand = brand; applyFilters();
+}
+function filterCategory(cat, btn) {
+  document.querySelectorAll('.fbtn-sub').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); filterState.category = cat; applyFilters();
+}
+function resetFilters() {
+  filterState = { brand:'all', category:'all' };
+  document.querySelectorAll('.fbtn').forEach(b=>{ b.classList.toggle('active', b.textContent.trim()==='All Brands' || b.textContent.trim()==='All'); });
+  applyFilters();
+}
+function goPageBrand(brand) {
+  goPage('products');
+  setTimeout(()=>{
+    filterState = { brand:brand, category:'all' };
+    document.querySelectorAll('.fbtn').forEach(b=>{
+      const oc = b.getAttribute('onclick') || '';
+      if(oc.includes("'"+brand+"'") || (b.textContent.trim()==='All' && oc.includes('filterCategory'))) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+    applyFilters();
+  }, 80);
+}
+
+function goDetail(id) {
+  const p = store.products.find(x=>x.id===id);
+  if(!p) return;
+  currentDetail = p; detailQty = 1;
+  document.getElementById('bc-product-name').textContent = p.name;
+  document.getElementById('d-no').textContent = p.no + ' · ' + (p.brand==='jyunka'?'Jyunka':'Maria Galland');
+  document.getElementById('d-name').textContent = p.name;
+  document.getElementById('d-price').textContent = 'RM '+p.price;
+  document.getElementById('d-desc').textContent = p.desc;
+  document.getElementById('d-qty').textContent = '1';
+  document.getElementById('tab-desc-text').textContent = p.longDesc;
+  document.getElementById('detail-main-img').style.background = p.bg;
+  document.getElementById('detail-img-svg').innerHTML = productSVG(p,'lg');
+  document.getElementById('detail-thumbs').innerHTML = p.colors.map((c,i)=>`
+    <div class="thumb ${i===0?'active':''}" style="background:linear-gradient(135deg,${c},${p.colors[1]})" onclick="selectThumb(this,${i})"></div>`).join('');
+  document.getElementById('ingr-list').innerHTML = p.ingredients.map(i=>`<span class="ingr-tag">${i}</span>`).join('');
+  const buyBtn = document.querySelector('.detail-actions');
+  if(buyBtn) {
+    buyBtn.innerHTML = p.stock <= 0
+      ? '<button class="btn btn-full" style="background:#ddd;color:#888;cursor:not-allowed;flex:1;padding:15px">Out of Stock</button>'
+      : '<button class="btn btn-dark" style="flex:1;padding:15px" onclick="buyNow()">Buy Now</button>';
+  }
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',i===0));
+  document.querySelectorAll('.tab-pane').forEach((p,i)=>p.classList.toggle('active',i===0));
+  goPage('detail');
+}
+function selectThumb(el) { document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active')); el.classList.add('active'); }
+function changeQty(d) { detailQty = Math.max(1, detailQty+d); document.getElementById('d-qty').textContent = detailQty; }
+function buyNow() { if(!currentDetail || currentDetail.stock <= 0) return; currentOrder = [{...currentDetail, qty: detailQty}]; goPage('checkout'); }
+function directBuy(id) { const p = store.products.find(x=>x.id===id); if(!p || p.stock <= 0) return; currentOrder = [{...p, qty: 1}]; goPage('checkout'); }
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active'); document.getElementById('tab-'+name).classList.add('active');
+}
+
+let appliedPromo = null;
+function renderCheckout() {
+  const order = currentOrder;
+  if(!order || !order.length) return;
+  const subtotal = order.reduce((s,i)=>s+i.price*i.qty,0);
+  const discount = appliedPromo ? Math.round(subtotal * appliedPromo.discount / 100) : 0;
+  const afterDisc = subtotal - discount;
+  const shipping = afterDisc>=250?0:10;
+  const tax = Math.round(afterDisc*0.08);
+  const total = afterDisc+shipping+tax;
+  document.getElementById('co-subtotal').textContent='RM '+subtotal;
+  document.getElementById('co-shipping').textContent=shipping===0?'Free':'RM '+shipping;
+  document.getElementById('co-tax').textContent='RM '+tax;
+  document.getElementById('co-total').textContent='RM '+total;
+  const discRow = document.getElementById('co-discount-row');
+  if(discRow) {
+    if(discount>0) { discRow.style.display='flex'; discRow.innerHTML=`<span style="color:#52C97A">Discount (${appliedPromo.code})</span><span style="color:#52C97A">−RM ${discount}</span>`; }
+    else discRow.style.display='none';
+  }
+  document.getElementById('co-items-list').innerHTML=order.map(item=>`
+    <div class="co-item-row">
+      <div class="co-item-img" style="background:${item.bg}">${productSVG(item,'sm')}</div>
+      <div class="co-item-name">${item.name}<br><span style="font-size:11px;color:var(--taupe)">${item.no} × ${item.qty}</span></div>
+      <div class="co-item-price">RM ${item.price*item.qty}</div>
+    </div>`).join('');
+}
+function applyPromoCode() {
+  const input = document.getElementById('promo-input');
+  const status = document.getElementById('promo-status');
+  const code = (input.value||'').trim().toUpperCase();
+  if(!code) { status.textContent=''; return; }
+  const promo = store.promos.find(p=>p.code===code && p.active);
+  if(promo) { appliedPromo = promo; status.innerHTML=`<span style="color:#52C97A">✓ ${promo.discount}% discount applied</span>`; }
+  else { appliedPromo = null; status.innerHTML=`<span style="color:#e57373">Invalid or inactive code</span>`; }
+  renderCheckout();
+}
+async function placeOrder() {
+  const order = currentOrder;
+  if(!order || !order.length) return;
+  const g = id => (document.getElementById(id)?.value||'').trim();
+  const subtotal = order.reduce((s,i)=>s+i.price*i.qty,0);
+  const discount = appliedPromo ? Math.round(subtotal * appliedPromo.discount / 100) : 0;
+  const afterDisc = subtotal - discount;
+  const shipping = afterDisc>=250?0:10;
+  const tax = Math.round(afterDisc*0.08);
+  const total = afterDisc+shipping+tax;
+  const ref = 'OLV-2026-'+String(Date.now()).slice(-5);
+
+  // 写入 orders 表
+  await db.from('orders').insert({
+    status: 'pending',
+    total,
+    items: order.map(i=>({id:i.id,no:i.no,name:i.name,price:i.price,qty:i.qty})),
+    customer: {fname:g('co-fname'),lname:g('co-lname'),email:g('co-email'),phone:g('co-phone'),addr1:g('co-addr1'),addr2:g('co-addr2'),city:g('co-city'),post:g('co-post'),state:g('co-state')},
+    subtotal, discount, promoCode: appliedPromo?.code||'', shipping, tax, ref
+  });
+
+  // 扣库存
+  for(const item of order) {
+    const p = store.products.find(x=>x.id===item.id);
+    if(p) {
+      const newStock = Math.max(0, p.stock - item.qty);
+      await db.from('products').update({stock: newStock}).eq('id', p.id);
+      p.stock = newStock;
+    }
+  }
+
+  // 更新 promo 使用次数
+  if(appliedPromo) {
+    const sp = store.promos.find(p=>p.code===appliedPromo.code);
+    if(sp) {
+      await db.from('promos').update({uses: (sp.uses||0)+1}).eq('code', sp.code);
+    }
+  }
+
+  refreshAll();
+  window._lastOrderRef = ref;
+  window._lastOrderTotal = total;
+  appliedPromo = null;
+  goPage('success');
+}
+function selectPay(el) {
+  document.querySelectorAll('.pay-option').forEach(p=>{p.classList.remove('selected');p.querySelector('input').checked=false});
+  el.classList.add('selected'); el.querySelector('input').checked=true;
+}
+function renderSuccess() {
+  document.getElementById('order-ref').textContent = window._lastOrderRef || ('OLV-2026-'+String(Math.floor(Math.random()*90000)+10000));
+  const order = currentOrder;
+  if(!order || !order.length) return;
+  document.getElementById('success-total').textContent='RM '+(window._lastOrderTotal||0);
+  document.getElementById('success-items-list').innerHTML=order.map(item=>`
+    <div class="success-item-row"><span>${item.name} × ${item.qty}</span><span>RM ${item.price*item.qty}</span></div>`).join('');
+  currentOrder=[];
+}
+
+function openSearch() { document.getElementById('search-overlay').classList.add('open'); setTimeout(()=>document.getElementById('search-input').focus(),300); renderSearchResults(store.products); }
+function closeSearch() { document.getElementById('search-overlay').classList.remove('open'); document.getElementById('search-input').value=''; renderSearchResults(store.products); }
+function closeSearchIfOutside(e) { if(e.target===document.getElementById('search-overlay')) closeSearch(); }
+function runSearch(q) {
+  const t = q.trim().toLowerCase();
+  if(!t) { renderSearchResults(store.products); return; }
+  renderSearchResults(store.products.filter(p=> p.name.toLowerCase().includes(t) || p.no.toLowerCase().includes(t) || p.category.toLowerCase().includes(t) || p.ingredients.some(i=>i.toLowerCase().includes(t))));
+}
+function renderSearchResults(list) {
+  const el = document.getElementById('search-results-list');
+  if(!list.length) { el.innerHTML='<div class="search-no-results">No products found.</div>'; return; }
+  el.innerHTML = list.map(p=>`
+    <div class="search-result-item" onclick="closeSearch();goDetail(${p.id})">
+      <div class="search-result-img" style="background:${p.bg}">${productSVG(p,'sm')}</div>
+      <div><div class="search-result-name">${p.name}</div><div class="search-result-price">RM ${p.price}</div></div>
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" style="margin-left:auto;flex-shrink:0;color:var(--taupe)"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </div>`).join('');
+}
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeSearch(); });
+
+function goHomeScroll(sectionId) {
+  if(!document.getElementById('page-home').classList.contains('active')) {
+    goPage('home'); setTimeout(()=>{ const el=document.getElementById(sectionId); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }, 400);
+  } else { const el=document.getElementById(sectionId); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+}
+function toggleDrawer() {
+  const d=document.getElementById('drawer'); const o=document.getElementById('drawer-overlay'); const h=document.getElementById('hamburger');
+  const isOpen=d.classList.contains('open');
+  d.classList.toggle('open',!isOpen); o.classList.toggle('open',!isOpen); h.classList.toggle('open',!isOpen);
+}
+function updateMobileSticky() {
+  const ms=document.getElementById('mobile-sticky'); if(!ms) return;
+  const isMobile=window.innerWidth<=768;
+  const isDetail=document.getElementById('page-detail').classList.contains('active');
+  ms.style.display=(isMobile&&isDetail)?'flex':'none';
+  if(isMobile&&isDetail&&currentDetail) { document.getElementById('ms-name').textContent=currentDetail.name; document.getElementById('ms-price').textContent='RM '+currentDetail.price; }
+}
+window.addEventListener('resize', updateMobileSticky);
+
+// ═══════════════════ ADMIN ═══════════════════
+function isLoggedIn() { return localStorage.getItem('olivea-admin') === 'yes'; }
+function setLoggedIn(v) { v ? localStorage.setItem('olivea-admin','yes') : localStorage.removeItem('olivea-admin'); }
+function getCurrentPassword() { return localStorage.getItem('olivea-admin-pass') || ADMIN_PASS; }
+
+function tryLogin() {
+  const pass = document.getElementById('login-pass').value;
+  const err = document.getElementById('login-err');
+  if(pass === getCurrentPassword()) {
+    setLoggedIn(true); err.textContent=''; document.getElementById('login-pass').value=''; goPage('admin');
+  } else { err.textContent='Incorrect password. Please try again.'; document.getElementById('login-pass').value=''; }
+}
+function logout() { setLoggedIn(false); document.body.classList.remove('admin-mode'); goPage('home'); }
+
+let adminSection = 'overview';
+
+async function renderAdmin(pageName) {
+  if(!isLoggedIn()) { goPage('login', false); return; }
+  await loadOrders();
+  if(pageName === 'admin') adminSection = adminSection || 'overview';
+  else if(pageName.startsWith('admin-')) adminSection = pageName.replace('admin-','') || 'overview';
+  const activePage = document.getElementById('page-'+pageName);
+  if(activePage) activePage.innerHTML = adminShellHTML();
+  renderAdminBody();
+}
+
+function adminShellHTML() {
+  const LOGO = 'https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png';
+  const ni = (sec, label, svg) => `
+    <div class="adm-nav-item${sec===adminSection?' active':''}" data-section="${sec}" onclick="switchAdmin('${sec}')">
+      ${svg}<span>${label}</span>
+    </div>`;
+  return `
+    <div class="adm-wrap">
+      <nav class="adm-navbar">
+        <div class="adm-navbar-logo" onclick="goPage('home')">
+          <img src="${LOGO}" alt="Olivéa" style="height:28px;width:auto;display:block">
+          <div class="adm-navbar-logo-sub">Admin Panel</div>
+        </div>
+        <div class="adm-navbar-links">
+          ${ni('overview','Overview','<svg width="15" height="15" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="3" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="12" width="7" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="16" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>')}
+          ${ni('orders','Orders','<svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>')}
+          ${ni('products','Products','<svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>')}
+          ${ni('promos','Promotions','<svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="7" cy="7" r="1" fill="currentColor"/></svg>')}
+          ${ni('announcement','Announcement','<svg width="15" height="15" fill="none" viewBox="0 0 24 24"><path d="M3 11l18-7v16L3 13z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>')}
+          ${ni('settings','Settings','<svg width="15" height="15" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.5"/></svg>')}
+        </div>
+        <div class="adm-navbar-right">
+          <button class="adm-btn-sm" style="white-space:nowrap" onclick="if(confirm('Reset all data to defaults?')){resetStore();renderAdminBody();showToast('Reset complete');}">Reset Data</button>
+          <button class="adm-logout-btn" onclick="logout()">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>Sign Out</span>
+          </button>
+        </div>
+      </nav>
+      <main class="adm-main">
+        <div id="admin-body"></div>
+      </main>
+    </div>
+    <div class="adm-modal-overlay" id="adm-modal" onclick="if(event.target===this)closeAdmModal()">
+      <div class="adm-modal">
+        <button class="adm-modal-close" onclick="closeAdmModal()">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div id="adm-modal-body"></div>
+      </div>
+    </div>`;
+}
+
+async function switchAdmin(section) {
+  adminSection = section;
+  const active = document.querySelector('.page-admin.active');
+  if(active) active.innerHTML = adminShellHTML();
+  if(section === 'orders' || section === 'overview') await loadOrders();
+  renderAdminBody();
+  history.pushState({page:'admin-'+section}, '', '#admin-'+section);
+}
+
+function renderAdminBody() {
+  document.querySelectorAll('.adm-nav-item').forEach(el=>el.classList.toggle('active', el.dataset.section===adminSection));
+  const body = document.getElementById('admin-body');
+  if(!body) return;
+  if(adminSection==='overview') body.innerHTML=renderAdminOverview();
+  else if(adminSection==='orders') body.innerHTML=renderAdminOrders();
+  else if(adminSection==='products') body.innerHTML=renderAdminProducts();
+  else if(adminSection==='promos') body.innerHTML=renderAdminPromos();
+  else if(adminSection==='announcement') body.innerHTML=renderAdminAnnouncement();
+  else if(adminSection==='settings') body.innerHTML=renderAdminSettings();
+}
+
+function renderAdminOverview() {
+  const today=new Date(); today.setHours(0,0,0,0);
+  const todayMs=today.getTime();
+  const monthStart=new Date(today.getFullYear(),today.getMonth(),1).getTime();
+  const todayOrders=store.orders.filter(o=>o.createdAt>=todayMs);
+  const monthOrders=store.orders.filter(o=>o.createdAt>=monthStart);
+  const todayRev=todayOrders.reduce((s,o)=>s+o.total,0);
+  const monthRev=monthOrders.reduce((s,o)=>s+o.total,0);
+  const lowStock=store.products.filter(p=>p.stock<=5);
+  const counts={};
+  store.orders.forEach(o=>o.items.forEach(it=>{counts[it.id]=(counts[it.id]||0)+it.qty}));
+  const top=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([id,qty])=>{ const p=store.products.find(x=>x.id==id); return p?{p,qty}:null; }).filter(Boolean);
+  return `
+    <h1 class="adm-title">Overview</h1>
+    <p class="adm-sub">Welcome back. Here's what's happening today.</p>
+    <div class="adm-stats">
+      <div class="adm-stat-card"><div class="adm-stat-label">Today's Orders</div><div class="adm-stat-value">${todayOrders.length}</div><div class="adm-stat-sub">RM ${todayRev}</div></div>
+      <div class="adm-stat-card"><div class="adm-stat-label">This Month Revenue</div><div class="adm-stat-value">RM ${monthRev}</div><div class="adm-stat-sub">${monthOrders.length} orders</div></div>
+      <div class="adm-stat-card"><div class="adm-stat-label">Total Products</div><div class="adm-stat-value">${store.products.length}</div><div class="adm-stat-sub">${store.products.filter(p=>p.stock>0).length} in stock</div></div>
+      <div class="adm-stat-card ${lowStock.length?'adm-stat-warn':''}"><div class="adm-stat-label">Low Stock Alert</div><div class="adm-stat-value">${lowStock.length}</div><div class="adm-stat-sub">${lowStock.length?'needs attention':'all good'}</div></div>
+    </div>
+    <div class="adm-grid-2">
+      <div class="adm-panel">
+        <h3 class="adm-panel-title">Top Selling Products</h3>
+        ${top.length===0?'<p class="adm-empty">No orders yet.</p>':top.map(t=>`
+          <div class="adm-row"><div style="flex:1"><div style="font-weight:500">${t.p.name}</div><div style="font-size:11px;color:var(--taupe)">${t.p.no}</div></div><div style="font-weight:700;color:var(--rose)">${t.qty} sold</div></div>`).join('')}
+      </div>
+      <div class="adm-panel">
+        <h3 class="adm-panel-title">Low Stock Items</h3>
+        ${lowStock.length===0?'<p class="adm-empty">All products are well stocked. ✓</p>':lowStock.map(p=>`
+          <div class="adm-row"><div style="flex:1"><div style="font-weight:500">${p.name}</div><div style="font-size:11px;color:var(--taupe)">${p.no}</div></div><div style="font-weight:700;color:${p.stock===0?'#e57373':'#e8a957'}">${p.stock===0?'Out':p.stock+' left'}</div></div>`).join('')}
+      </div>
+    </div>`;
+}
+async function loadOrders() {
+  const { data } = await db.from('orders').select('*').order('created_at', {ascending: false});
+  if(data) store.orders = data.map(o => ({
+    ...o,
+    ref: o.ref || o.id,
+    createdAt: new Date(o.created_at).getTime(),
+    customer: o.customer || {},
+    items: o.items || []
+  }));
+}
+let adminOrderFilter='all';
+function renderAdminOrders() {
+  return `
+    <h1 class="adm-title">Orders</h1>
+    <div class="adm-filter-row">
+      <button class="adm-filter ${adminOrderFilter==='all'?'active':''}" onclick="filterOrders('all')">All (${store.orders.length})</button>
+      <button class="adm-filter ${adminOrderFilter==='pending'?'active':''}" onclick="filterOrders('pending')">Pending (${store.orders.filter(o=>o.status==='pending').length})</button>
+      <button class="adm-filter ${adminOrderFilter==='shipped'?'active':''}" onclick="filterOrders('shipped')">Shipped (${store.orders.filter(o=>o.status==='shipped').length})</button>
+      <button class="adm-filter ${adminOrderFilter==='completed'?'active':''}" onclick="filterOrders('completed')">Completed (${store.orders.filter(o=>o.status==='completed').length})</button>
+    </div>
+    <div class="adm-panel" style="padding:0">${renderOrderTable()}</div>`;
+}
+function renderOrderTable() {
+  const list=adminOrderFilter==='all'?store.orders:store.orders.filter(o=>o.status===adminOrderFilter);
+  if(!list.length) return '<p class="adm-empty" style="padding:32px">No orders in this view.</p>';
+  return `<table class="adm-table">
+    <thead><tr><th>Order Ref</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+    <tbody>${list.map(o=>`<tr>
+      <td><strong>${o.ref}</strong></td>
+      <td>${o.customer.fname} ${o.customer.lname||''}<br><span style="font-size:11px;color:var(--taupe)">${o.customer.phone||'—'}</span></td>
+      <td>${o.items.reduce((s,i)=>s+i.qty,0)} items</td>
+      <td><strong>RM ${o.total}</strong></td>
+      <td><span class="adm-badge adm-badge-${o.status}">${o.status}</span></td>
+      <td style="font-size:12px;color:var(--taupe)">${new Date(o.createdAt).toLocaleDateString('en-MY',{day:'numeric',month:'short',year:'numeric'})}</td>
+      <td><button class="adm-btn-sm" onclick="openOrder('${o.ref}')">View</button></td>
+    </tr>`).join('')}</tbody></table>`;
+}
+function filterOrders(f) { adminOrderFilter=f; renderAdminBody(); }
+
+function openOrder(ref) {
+  const o=store.orders.find(x=>x.ref===ref); if(!o) return;
+  document.getElementById('adm-modal-body').innerHTML=`
+    <h2 style="font-family:'Playfair Display',serif;margin-bottom:4px">${o.ref}</h2>
+    <p style="color:var(--taupe);font-size:13px;margin-bottom:20px">Placed ${new Date(o.createdAt).toLocaleString('en-MY')}</p>
+    <div class="adm-grid-2" style="gap:24px">
+      <div><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:8px">Customer</h4>
+        <p style="font-size:13px;line-height:22px">${o.customer.fname} ${o.customer.lname||''}<br>${o.customer.email||'—'}<br>${o.customer.phone||'—'}<br><br>${o.customer.addr1||''}${o.customer.addr2?', '+o.customer.addr2:''}<br>${o.customer.city||''} ${o.customer.post||''}<br>${o.customer.state||''}</p></div>
+      <div><h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:8px">Status</h4>
+        <select id="ord-status" class="adm-input" style="margin-bottom:14px">
+          <option value="pending" ${o.status==='pending'?'selected':''}>Pending</option>
+          <option value="shipped" ${o.status==='shipped'?'selected':''}>Shipped</option>
+          <option value="completed" ${o.status==='completed'?'selected':''}>Completed</option>
+          <option value="cancelled" ${o.status==='cancelled'?'selected':''}>Cancelled</option>
+        </select>
+        <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:8px">Tracking</h4>
+        <input id="ord-tracking" class="adm-input" type="text" placeholder="e.g. EC123456789MY" value="${o.tracking||''}"></div>
+    </div>
+    <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin:24px 0 12px">Items</h4>
+    <table class="adm-table"><tbody>${o.items.map(it=>`<tr><td>${it.name}<br><span style="font-size:11px;color:var(--taupe)">${it.no}</span></td><td>× ${it.qty}</td><td><strong>RM ${it.price*it.qty}</strong></td></tr>`).join('')}</tbody></table>
+    <div style="border-top:1px solid var(--beige);padding-top:14px;margin-top:14px;font-size:13px">
+      <div style="display:flex;justify-content:space-between;padding:4px 0"><span>Subtotal</span><span>RM ${o.subtotal}</span></div>
+      ${o.discount?`<div style="display:flex;justify-content:space-between;padding:4px 0;color:#52C97A"><span>Discount (${o.promoCode})</span><span>−RM ${o.discount}</span></div>`:''}
+      <div style="display:flex;justify-content:space-between;padding:4px 0"><span>Shipping</span><span>RM ${o.shipping}</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0"><span>SST</span><span>RM ${o.tax}</span></div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;font-weight:700;font-size:16px;border-top:1px solid var(--beige);margin-top:8px"><span>Total</span><span>RM ${o.total}</span></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:24px">
+      <button class="btn btn-dark" onclick="saveOrderEdits('${o.ref}')">Save Changes</button>
+      <button class="btn btn-outline" onclick="printShippingLabel('${o.ref}')">Print Label</button>
+      <button class="btn btn-outline" style="margin-left:auto" onclick="closeAdmModal()">Close</button>
+    </div>`;
+  document.getElementById('adm-modal').classList.add('open');
+}
+async function saveOrderEdits(ref) {
+  const o = store.orders.find(x=>x.ref===ref); if(!o) return;
+  const newStatus = document.getElementById('ord-status').value;
+  const newTracking = document.getElementById('ord-tracking').value.trim();
+  await db.from('orders').update({status: newStatus, tracking: newTracking}).eq('ref', ref);
+  o.status = newStatus;
+  o.tracking = newTracking;
+  closeAdmModal(); renderAdminBody(); showToast('Order updated');
+}
+function printShippingLabel(ref) {
+  const o=store.orders.find(x=>x.ref===ref); if(!o) return;
+  const w=window.open('','_blank','width=600,height=800');
+  w.document.write(`<!DOCTYPE html><html><head><title>${o.ref}</title>
+    <style>body{font-family:Arial,sans-serif;padding:40px}.label{border:2px solid #333;padding:24px;max-width:500px}h2{font-size:18px}table{width:100%;border-collapse:collapse;margin-top:12px;font-size:12px}td,th{border:1px solid #ccc;padding:6px;text-align:left}</style></head><body>
+    <div class="label"><h2>OLIVÉA SKIN CARE HOUSE</h2><p style="font-size:13px;font-weight:bold;margin:10px 0">${o.ref}</p>
+    <p><strong>${o.customer.fname} ${o.customer.lname||''}</strong><br>${o.customer.addr1||''}<br>${o.customer.city||''} ${o.customer.post||''}, ${o.customer.state||''}<br>${o.customer.phone||''}</p>
+    <table><thead><tr><th>Product</th><th>Qty</th></tr></thead><tbody>${o.items.map(i=>`<tr><td>${i.name}</td><td>${i.qty}</td></tr>`).join('')}</tbody></table>
+    ${o.tracking?`<p style="margin-top:12px"><strong>Tracking:</strong> ${o.tracking}</p>`:''}
+    </div><script>window.print();<\/script></body></html>`);
+  w.document.close();
+}
+
+function renderAdminProducts() {
+  return `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <h1 class="adm-title" style="margin-bottom:0">Products</h1>
+      <button class="btn btn-dark" onclick="openProductEditor()">+ Add Product</button>
+    </div>
+    <div class="adm-panel" style="padding:0">
+      <table class="adm-table">
+        <thead><tr><th>Product</th><th>Brand</th><th>Category</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead>
+        <tbody>${store.products.map(p=>`<tr>
+          <td><div style="display:flex;align-items:center;gap:10px">
+            <div style="width:40px;height:40px;border-radius:6px;background:${p.bg};display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">${productSVG(p,'sm')}</div>
+            <div><strong>${p.name}</strong><br><span style="font-size:11px;color:var(--taupe)">${p.no}</span></div></div></td>
+          <td>${p.brand==='jyunka'?'Jyunka':'Maria Galland'}</td>
+          <td style="text-transform:capitalize">${p.category}</td>
+          <td><strong>RM ${p.price}</strong></td>
+          <td><span style="color:${p.stock===0?'#e57373':p.stock<=5?'#e8a957':'var(--brown)'}">${p.stock}</span></td>
+          <td><button class="adm-btn-sm" onclick="openProductEditor(${p.id})">Edit</button><button class="adm-btn-sm adm-btn-danger" onclick="deleteProduct(${p.id})">Delete</button></td>
+        </tr>`).join('')}</tbody>
+      </table>
+    </div>`;
+}
+
+function openProductEditor(id) {
+  const p = id!=null ? store.products.find(x=>x.id===id) : {id:store.nextProductId,no:'',name:'',price:0,stock:0,category:'serum',brand:'maria-galland',image:'',bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)',desc:'',longDesc:'',ingredients:[],badge:null,colors:['#f0e0dc','#e6cdc8','#f8f0ee']};
+  const isNew = id==null;
+  document.getElementById('adm-modal-body').innerHTML=`
+    <h2 style="font-family:'Playfair Display',serif;margin-bottom:18px">${isNew?'Add Product':'Edit Product'}</h2>
+    <div class="adm-grid-2">
+      <div class="fg"><label class="adm-label">Product Code</label><input id="ed-no" class="adm-input" type="text" value="${p.no}" placeholder="No. 60 or JY-04"></div>
+      <div class="fg"><label class="adm-label">Brand</label><select id="ed-brand" class="adm-input"><option value="maria-galland" ${p.brand==='maria-galland'?'selected':''}>Maria Galland</option><option value="jyunka" ${p.brand==='jyunka'?'selected':''}>Jyunka</option></select></div>
+    </div>
+    <div class="fg"><label class="adm-label">Product Name</label><input id="ed-name" class="adm-input" type="text" value="${p.name}"></div>
+    <div class="adm-grid-2">
+      <div class="fg"><label class="adm-label">Category</label><select id="ed-category" class="adm-input"><option value="cleanser" ${p.category==='cleanser'?'selected':''}>Cleanser</option><option value="serum" ${p.category==='serum'?'selected':''}>Serum</option><option value="mask" ${p.category==='mask'?'selected':''}>Mask</option><option value="moisturiser" ${p.category==='moisturiser'?'selected':''}>Moisturiser</option></select></div>
+      <div class="fg"><label class="adm-label">Badge</label><select id="ed-badge" class="adm-input"><option value="">None</option><option value="Best Seller" ${p.badge==='Best Seller'?'selected':''}>Best Seller</option><option value="New" ${p.badge==='New'?'selected':''}>New</option></select></div>
+    </div>
+    <div class="adm-grid-2">
+      <div class="fg"><label class="adm-label">Price (RM)</label><input id="ed-price" class="adm-input" type="number" value="${p.price}" min="0"></div>
+      <div class="fg"><label class="adm-label">Stock</label><input id="ed-stock" class="adm-input" type="number" value="${p.stock}" min="0"></div>
+    </div>
+    <div class="fg"><label class="adm-label">Short Description</label><textarea id="ed-desc" class="adm-input" rows="2">${p.desc}</textarea></div>
+    <div class="fg"><label class="adm-label">Long Description</label><textarea id="ed-longdesc" class="adm-input" rows="3">${p.longDesc}</textarea></div>
+    <div class="fg"><label class="adm-label">Ingredients (comma separated)</label><input id="ed-ingr" class="adm-input" type="text" value="${(p.ingredients||[]).join(', ')}"></div>
+    <div class="fg"><label class="adm-label">Product Image (optional)</label>
+      <div style="display:flex;gap:10px;align-items:center">
+        <div id="ed-img-preview" style="width:60px;height:60px;border-radius:8px;background:${p.bg};display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">${p.image?`<img src="${p.image}" style="width:100%;height:100%;object-fit:cover">`:productSVG(p,'sm')}</div>
+        <input type="file" accept="image/*" onchange="handleImageUpload(this,'${p.id}')" style="font-size:12px">
+        <button class="adm-btn-sm" onclick="clearProductImage(${p.id})">Use Default</button>
+      </div>
+    </div>
+    <input type="hidden" id="ed-id" value="${p.id}">
+    <input type="hidden" id="ed-isnew" value="${isNew?'1':'0'}">
+    <input type="hidden" id="ed-image" value="${p.image||''}">
+    <div style="display:flex;gap:10px;margin-top:24px">
+      <button class="btn btn-dark" onclick="saveProduct()">${isNew?'Add Product':'Save Changes'}</button>
+      <button class="btn btn-outline" onclick="closeAdmModal()" style="margin-left:auto">Cancel</button>
+    </div>`;
+  document.getElementById('adm-modal').classList.add('open');
+}
+async function handleImageUpload(input) {
+  const file = input.files && input.files[0];
+  if(!file) return;
+  if(file.size > 5*1024*1024) { alert('Image too large. Please use under 5MB.'); return; }
+
+  const preview = document.getElementById('ed-img-preview');
+  preview.innerHTML = `<div style="font-size:10px;color:var(--taupe);text-align:center">Uploading...</div>`;
+
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('upload_preset', 'olivea_products');
+  formData.append('folder', 'olivea');
+
+  try {
+    const res = await fetch('https://api.cloudinary.com/v1_1/dfsiime13/image/upload', {
+      method: 'POST',
+      body: formData
+    });
+    const data = await res.json();
+    if(data.secure_url) {
+      document.getElementById('ed-image').value = data.secure_url;
+      preview.innerHTML = `<img src="${data.secure_url}" style="width:100%;height:100%;object-fit:cover">`;
+    } else {
+      alert('Upload failed. Please try again.');
+      preview.innerHTML = '';
+    }
+  } catch(e) {
+    alert('Upload error: ' + e.message);
+    preview.innerHTML = '';
+  }
+}
+
+function clearProductImage(pid) {
+  document.getElementById('ed-image').value = '';
+  const p = store.products.find(x=>x.id===pid) || {bg:'#eee',colors:['#eee','#ddd','#fff'],category:'serum',no:''};
+  document.getElementById('ed-img-preview').innerHTML = productSVG(p,'sm');
+}
+async function saveProduct() {
+  const isNew = document.getElementById('ed-isnew').value==='1';
+  const id = parseInt(document.getElementById('ed-id').value);
+  const data = {
+    no: document.getElementById('ed-no').value.trim(),
+    name: document.getElementById('ed-name').value.trim(),
+    brand: document.getElementById('ed-brand').value,
+    category: document.getElementById('ed-category').value,
+    badge: document.getElementById('ed-badge').value || null,
+    price: parseFloat(document.getElementById('ed-price').value)||0,
+    stock: parseInt(document.getElementById('ed-stock').value)||0,
+    desc: document.getElementById('ed-desc').value.trim(),
+    longDesc: document.getElementById('ed-longdesc').value.trim(),
+    ingredients: document.getElementById('ed-ingr').value.split(',').map(s=>s.trim()).filter(Boolean),
+    image: document.getElementById('ed-image').value
+  };
+  if(!data.no || !data.name) { alert('Product code and name are required.'); return; }
+  if(isNew) {
+    const palettes=[{bg:'linear-gradient(145deg,#f0e0dc,#e6cdc8)',colors:['#f0e0dc','#e6cdc8','#f8f0ee']},{bg:'linear-gradient(145deg,#e4f0e8,#cce0d4)',colors:['#e4f0e8','#cce0d4','#f0f6f2']},{bg:'linear-gradient(145deg,#f4e8f0,#e8d4e4)',colors:['#f4e8f0','#e8d4e4','#faf2f8']},{bg:'linear-gradient(145deg,#dde8f0,#ccd8e8)',colors:['#dde8f0','#ccd8e8','#eef3f8']}];
+    const palette = palettes[Math.floor(Math.random()*palettes.length)];
+    const { data: inserted } = await db.from('products').insert({...data, ...palette}).select().single();
+    if(inserted) store.products.push(inserted);
+  } else {
+    await db.from('products').update(data).eq('id', id);
+    const p = store.products.find(x=>x.id===id);
+    if(p) Object.assign(p, data);
+  }
+  refreshAll(); closeAdmModal(); renderAdminBody(); showToast(isNew?'Product added':'Product saved');
+}
+async function deleteProduct(id) {
+  if(!confirm('Delete this product?')) return;
+  await db.from('products').delete().eq('id', id);
+  store.products = store.products.filter(p=>p.id!==id);
+  refreshAll(); renderAdminBody(); showToast('Product deleted');
+}
+
+function renderAdminPromos() {
+  return `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <h1 class="adm-title" style="margin-bottom:0">Promotions</h1>
+      <button class="btn btn-dark" onclick="openPromoEditor()">+ Add Promo Code</button>
+    </div>
+    <div class="adm-panel" style="padding:0">
+      <table class="adm-table">
+        <thead><tr><th>Code</th><th>Discount</th><th>Status</th><th>Times Used</th><th>Actions</th></tr></thead>
+        <tbody>${store.promos.length===0?'<tr><td colspan="5" style="text-align:center;padding:32px;color:var(--taupe)">No promo codes yet.</td></tr>':
+        store.promos.map((pr,idx)=>`<tr>
+          <td><strong style="font-family:monospace;letter-spacing:1px">${pr.code}</strong></td>
+          <td><strong style="color:var(--rose)">${pr.discount}%</strong></td>
+          <td><span class="adm-badge ${pr.active?'adm-badge-shipped':'adm-badge-cancelled'}">${pr.active?'Active':'Inactive'}</span></td>
+          <td>${pr.uses||0}</td>
+          <td><button class="adm-btn-sm" onclick="togglePromo(${idx})">${pr.active?'Disable':'Enable'}</button><button class="adm-btn-sm adm-btn-danger" onclick="deletePromo(${idx})">Delete</button></td>
+        </tr>`).join('')}</tbody>
+      </table>
+    </div>`;
+}
+function openPromoEditor() {
+  document.getElementById('adm-modal-body').innerHTML=`
+    <h2 style="font-family:'Playfair Display',serif;margin-bottom:18px">Add Promo Code</h2>
+    <div class="fg"><label class="adm-label">Code (uppercase)</label><input id="pr-code" class="adm-input" type="text" placeholder="e.g. SAVE20" style="text-transform:uppercase;font-family:monospace"></div>
+    <div class="fg"><label class="adm-label">Discount %</label><input id="pr-disc" class="adm-input" type="number" min="1" max="99" value="10"></div>
+    <div style="display:flex;gap:10px;margin-top:24px"><button class="btn btn-dark" onclick="savePromo()">Add Code</button><button class="btn btn-outline" onclick="closeAdmModal()" style="margin-left:auto">Cancel</button></div>`;
+  document.getElementById('adm-modal').classList.add('open');
+}
+async function savePromo() {
+  const code = document.getElementById('pr-code').value.trim().toUpperCase().replace(/\s/g,'');
+  const disc = parseInt(document.getElementById('pr-disc').value);
+  if(!code || disc<1 || disc>99) { alert('Invalid code or discount.'); return; }
+  if(store.promos.find(p=>p.code===code)) { alert('Code already exists.'); return; }
+  const { data } = await db.from('promos').insert({code, discount:disc, active:true, uses:0}).select().single();
+  if(data) store.promos.push(data);
+  closeAdmModal(); renderAdminBody(); showToast('Promo code added');
+}
+async function togglePromo(idx) {
+  const pr = store.promos[idx];
+  await db.from('promos').update({active: !pr.active}).eq('code', pr.code);
+  pr.active = !pr.active;
+  renderAdminBody();
+}
+async function deletePromo(idx) {
+  if(!confirm('Delete this promo code?')) return;
+  await db.from('promos').delete().eq('code', store.promos[idx].code);
+  store.promos.splice(idx, 1);
+  renderAdminBody();
+}
+
+function renderAdminAnnouncement() {
+  return `
+    <h1 class="adm-title">Announcement Bar</h1>
+    <p class="adm-sub">Edit the message shown at the top of every page.</p>
+    <div class="adm-panel">
+      <div class="fg"><label class="adm-label">Announcement Text</label><textarea id="ann-text" class="adm-input" rows="3">${store.announcement}</textarea></div>
+      <button class="btn btn-dark" onclick="saveAnnouncement()">Save Changes</button>
+      <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin:24px 0 10px">Preview</h4>
+      <div class="info-bar" style="border-radius:8px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span id="ann-preview">${store.announcement}</span></div>
+    </div>`;
+}
+async function saveAnnouncement() {
+  const text = document.getElementById('ann-text').value.trim() || 'Welcome to Olivéa Skin Care House';
+  await db.from('settings').upsert({key: 'announcement', value: text}); // 去掉 JSON.stringify
+  store.announcement = text;
+  refreshAll();
+  document.getElementById('ann-preview').textContent = text;
+  showToast('Announcement updated');
+}
+
+function renderAdminSettings() {
+  return `
+    <h1 class="adm-title">Settings</h1>
+    <p class="adm-sub">Manage your admin account.</p>
+    <div class="adm-panel" style="max-width:520px">
+      <h3 class="adm-panel-title">Change Password</h3>
+      <div class="fg" style="margin-bottom:14px"><label class="adm-label">Current Password</label><input id="set-current" class="adm-input" type="password"></div>
+      <div class="fg" style="margin-bottom:14px"><label class="adm-label">New Password</label><input id="set-new" class="adm-input" type="password" placeholder="At least 6 characters"></div>
+      <div class="fg" style="margin-bottom:14px"><label class="adm-label">Confirm New Password</label><input id="set-confirm" class="adm-input" type="password"></div>
+      <p id="set-status" style="font-size:12px;min-height:18px;margin-bottom:10px"></p>
+      <button class="btn btn-dark" onclick="changePassword()">Update Password</button>
+    </div>
+    <div class="adm-panel" style="max-width:520px;margin-top:20px">
+      <h3 class="adm-panel-title">About</h3>
+      <p style="font-size:13px;color:var(--taupe);line-height:22px">Default password: <code style="background:var(--ivory);padding:2px 6px;border-radius:4px;font-size:11px">olivea2026</code><br>Tip: bookmark <code style="background:var(--ivory);padding:2px 6px;border-radius:4px;font-size:11px">/#admin</code> for quick access.</p>
+    </div>`;
+}
+function changePassword() {
+  const current=document.getElementById('set-current').value;
+  const newPass=document.getElementById('set-new').value;
+  const confirm=document.getElementById('set-confirm').value;
+  const status=document.getElementById('set-status');
+  if(current!==getCurrentPassword()) { status.innerHTML='<span style="color:#e57373">Current password is incorrect.</span>'; return; }
+  if(!newPass||newPass.length<6) { status.innerHTML='<span style="color:#e57373">New password must be at least 6 characters.</span>'; return; }
+  if(newPass!==confirm) { status.innerHTML='<span style="color:#e57373">Passwords do not match.</span>'; return; }
+  localStorage.setItem('olivea-admin-pass',newPass);
+  status.innerHTML='<span style="color:#52C97A">✓ Password updated successfully.</span>';
+  document.getElementById('set-current').value=''; document.getElementById('set-new').value=''; document.getElementById('set-confirm').value='';
+  showToast('Password updated');
+}
+function closeAdmModal() { document.getElementById('adm-modal').classList.remove('open'); }
+
+// ═══════════════════ INIT ═══════════════════
+async function init() {
+  await loadStore();
+  const hash = location.hash.replace('#','');
+  
+  // detail page 不能直接靠 hash 还原 — 跳回 home
+  if(hash === 'detail' || hash === 'checkout' || hash === 'success') {
+    goPage('home', false);
+    history.replaceState({page:'home'}, '', '#home');
+    return;
+  }
+  
+  if(hash.startsWith('admin-')) { 
+    if(!isLoggedIn()) { goPage('login',false); return; } 
+    adminSection = hash.replace('admin-','')||'overview'; 
+    goPage('admin',false); 
+  }
+  else if(hash==='admin') { 
+    if(!isLoggedIn()) { goPage('login',false); return; } 
+    goPage('admin',false); 
+  }
+  else if(hash) goPage(hash,false);
+  else goPage('home',false);
+}
+init();
+</script>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa" style="height:32px;width:auto;display:block">
+    <button class="drawer-close" onclick="toggleDrawer()">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <ul class="drawer-links">
+    <li><a href="#" onclick="goPage('home');toggleDrawer();return false">Home</a></li>
+    <li><a href="#" onclick="goPage('products');toggleDrawer();return false">Shop</a></li>
+    <li><a href="#" onclick="toggleDrawer();goHomeScroll('our-story');return false">About</a></li>
+    <li><a href="#" onclick="toggleDrawer();goHomeScroll('footer-contact');return false">Contact</a></li>
+  </ul>
+  <div class="drawer-footer">
+    <p>Follow us</p>
+    <div style="display:flex;gap:14px">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#A8998B" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#A8998B" stroke="none"/></svg>
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#A8998B" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE STICKY BUY NOW -->
+<div class="mobile-sticky" id="mobile-sticky" style="display:none">
+  <div>
+    <div style="font-size:11px;color:var(--taupe);letter-spacing:1px;text-transform:uppercase" id="ms-name"></div>
+    <div class="mobile-sticky-price" id="ms-price"></div>
+  </div>
+  <button class="btn btn-dark" style="padding:13px 26px" onclick="buyNow()">Buy Now</button>
+</div>
+</body>
+</html>
