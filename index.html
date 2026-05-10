@@ -1045,21 +1045,32 @@ const ADMIN_PASS = 'olivea2026';
 
 // ═══════════════════ BILLPLZ CONFIG ═══════════════════
 async function createBillplzBill(orderRef, customer, totalRM) {
+  const amount_cents = Math.round(totalRM * 100);
+  
+  let phone = (customer.phone || '').replace(/\D/g, '');
+  if (phone.startsWith('0')) phone = '6' + phone;
+  if (!phone.startsWith('60')) phone = '60' + phone;
+
   const res = await fetch(
     'https://spcoqhaoaozyvmxvgqur.supabase.co/functions/v1/create-billplz-bill',
     {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',          // ← 这里要有逗号
-        'Authorization': `Bearer ${SUPABASE_KEY}`    // ← 反引号
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${SUPABASE_KEY}`
       },
       body: JSON.stringify({
-        orderRef,
-        customer,
-        totalRM
+        ref: orderRef,
+        amount_cents: amount_cents,
+        name: `${customer.fname} ${customer.lname}`.trim(),
+        email: customer.email,
+        phone: phone,
+        description: `Olivéa Skin Care House — ${orderRef}`,
+        redirect_url: window.location.origin + window.location.pathname
       })
     }
   );
+
   const data = await res.json();
   if (!res.ok) {
     throw new Error(data.error || 'Payment error');
