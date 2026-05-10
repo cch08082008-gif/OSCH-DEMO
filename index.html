@@ -1044,16 +1044,31 @@ const db = createClient(SUPABASE_URL, SUPABASE_KEY);
 const ADMIN_PASS = 'olivea2026';
 
 // ═══════════════════ BILLPLZ CONFIG ═══════════════════
-// ⚠️  Change these before going live. Use environment variables / a backend proxy in production.
-const BILLPLZ_SANDBOX       = true;   // set false for production
-const BILLPLZ_API_KEY       = 'your-sandbox-api-key-here';       // ← Billplz dashboard → Settings → API
-const BILLPLZ_COLLECTION_ID = 'your-sandbox-collection-id-here'; // ← Billplz dashboard → Collections
-const BILLPLZ_BASE_URL      = BILLPLZ_SANDBOX
-  ? 'https://www.billplz-sandbox.com/api/v3'
-  : 'https://www.billplz.com/api/v3';
-// Redirect URL: Billplz will append ?billplz[id]=...&billplz[paid]=true to this
-const BILLPLZ_REDIRECT_URL  = (window.location.origin + window.location.pathname).replace(/\/$/, '');
+async function createBillplzBill(orderRef, customer, totalRM) {
 
+  const res = await fetch(
+    'https://spcoqhaoaozyvmxvgqur.supabase.co/functions/v1/create-billplz-bill',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        orderRef,
+        customer,
+        totalRM
+      })
+    }
+  );
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.error || 'Payment error');
+  }
+
+  return data;
+}
 // ═══════════════════ DEFAULT DATA ═══════════════════
 const DEFAULT_PRODUCTS = [
   { id:0, no:'No. 60', name:'Refreshing Cleansing Gel', price:128, stock:24, category:'cleanser', brand:'maria-galland', image:'',
