@@ -1045,14 +1045,13 @@ const ADMIN_PASS = 'olivea2026';
 
 // ═══════════════════ BILLPLZ CONFIG ═══════════════════
 async function createBillplzBill(orderRef, customer, totalRM) {
-
   const res = await fetch(
     'https://spcoqhaoaozyvmxvgqur.supabase.co/functions/v1/create-billplz-bill',
     {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
-        
+        'Content-Type': 'application/json',          // ← 这里要有逗号
+        'Authorization': `Bearer ${SUPABASE_KEY}`    // ← 反引号
       },
       body: JSON.stringify({
         orderRef,
@@ -1061,15 +1060,13 @@ async function createBillplzBill(orderRef, customer, totalRM) {
       })
     }
   );
-
   const data = await res.json();
-
   if (!res.ok) {
     throw new Error(data.error || 'Payment error');
   }
-
   return data;
 }
+  
 // ═══════════════════ DEFAULT DATA ═══════════════════
 const DEFAULT_PRODUCTS = [
   { id:0, no:'No. 60', name:'Refreshing Cleansing Gel', price:128, stock:24, category:'cleanser', brand:'maria-galland', image:'',
