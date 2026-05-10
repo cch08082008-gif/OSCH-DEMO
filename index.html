@@ -1332,54 +1332,6 @@ function validateCheckoutForm() {
   return valid;
 }
 
-// ─────────────────── BILLPLZ ───────────────────
-/**
- * Creates a Billplz bill and returns the bill object (including bill.url).
- * Note: In production, proxy this through a backend to protect your API key.
- */
-async function createBillplzBill(orderRef, customer, totalRM) {
-  const credentials = btoa(BILLPLZ_API_KEY + ':');
-  const amountCents = String(Math.round(totalRM * 100));
-
-  // Normalise phone: strip non-digits, ensure starts with 60
-  let phone = (customer.phone || '').replace(/\D/g, '');
-  if(phone.startsWith('0')) phone = '6' + phone;
-  if(!phone.startsWith('60')) phone = '60' + phone;
-
-  const body = new URLSearchParams();
-  body.append('collection_id', BILLPLZ_COLLECTION_ID);
-  body.append('email',         customer.email || 'customer@olivea.com.my');
-  body.append('mobile',        phone);
-  body.append('name',          (`${customer.fname} ${customer.lname}`).trim() || 'Customer');
-  body.append('amount',        amountCents);
-  body.append('callback_url',  BILLPLZ_REDIRECT_URL);   // server-to-server callback
-  body.append('redirect_url',  BILLPLZ_REDIRECT_URL);   // browser redirect after payment
-  body.append('description',   `Olivéa Skin Care House — ${orderRef}`);
-  body.append('reference_1_label', 'Order Ref');
-  body.append('reference_1',       orderRef);
-  body.append('reference_2_label', 'Phone');
-  body.append('reference_2',       customer.phone || '-');
-
-  const res = await fetch(`${BILLPLZ_BASE_URL}/bills`, {
-    method: 'POST',
-    headers: {
-      'Authorization':  'Basic ' + credentials,
-      'Content-Type':   'application/x-www-form-urlencoded',
-      'X-Www-Form-Urlencoded-Force': 'true'
-    },
-    body: body.toString()
-  });
-
-  let data;
-  try { data = await res.json(); } catch(e) { throw new Error('Invalid response from Billplz'); }
-
-  if(!res.ok) {
-    // Billplz error response shape: { error: { type, message } }
-    const msg = data?.error?.message || data?.message || `Billplz API error (${res.status})`;
-    throw new Error(msg);
-  }
-  return data; // { id, collection_id, paid, state, amount, url, ... }
-}
 
 // ─────────────────── PLACE ORDER (Billplz flow) ───────────────────
 async function placeOrder() {
