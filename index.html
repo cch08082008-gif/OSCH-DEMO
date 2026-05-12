@@ -44,9 +44,11 @@ nav{background:var(--white);height:76px;padding:0 64px;display:flex;align-items:
 .hero-mobile-cta{display:none;position:absolute;bottom:28px;left:20px;right:20px;z-index:2}
 
 
+/* desktop */
 .info-bar{background:var(--blush);padding:10px 60px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:11.5px;letter-spacing:.8px;color:var(--brown)}
+#info-bar-inner{display:inline-flex;align-items:center;white-space:nowrap}
+.ann-line{display:inline}
 .ann-line+.ann-line::before{content:' · '}
-.ann-line+.ann-line{display:inline}
 
 /* ── TOAST ── */
 .toast{position:fixed;bottom:28px;right:28px;background:var(--brown);color:#fff;padding:13px 22px;border-radius:12px;font-size:13px;display:flex;align-items:center;gap:10px;box-shadow:var(--sh-lg);transform:translateY(80px);opacity:0;transition:all .3s;z-index:999;pointer-events:none}
@@ -83,7 +85,7 @@ nav{background:var(--white);height:76px;padding:0 64px;display:flex;align-items:
 .hero-eyebrow{font-size:10px;letter-spacing:4.5px;text-transform:uppercase;color:var(--taupe);margin-bottom:22px;font-weight:700}
 .hero-title{font-size:56px;line-height:64px;color:var(--brown);margin-bottom:22px;font-weight:600}
 .hero-title em{font-style:italic;color:var(--rose)}
-.hero-sub{font-size:14px;line-height:27px;color:var(--taupe);margin-bottom:38px;max-width:360px;font-weight:700}
+.hero-sub{font-size:14px;line-height:27px;color:var(--taupe);margin-bottom:38px;max-width:360px;font-weight:700;font-style:italic}
 .hero-btns{display:flex;gap:14px}
 
 /* Trust strip */
@@ -304,12 +306,11 @@ nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;
 .nav-logo-center .logo-sub{font-size:7.5px;letter-spacing:4px;text-transform:uppercase;color:var(--taupe);font-family:'Lato',sans-serif;font-weight:300}
 .nav-right{justify-self:end}
 .nav-right .icon-btn{padding:4px}
-.info-bar{display:flex;align-items:center;padding:7px 16px;font-size:10.5px;gap:8px;overflow:hidden}
-.info-bar #info-bar-text{white-space:nowrap;overflow:hidden;display:block}
-.info-bar .ann-line{display:inline}
-.info-bar .ann-line+.ann-line::before{content:' · '}
-.info-bar.scrolling #info-bar-text{animation:marquee 14s linear infinite}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* mobile */
+.info-bar{display:block;padding:7px 0;font-size:10.5px;overflow:hidden}
+#info-bar-inner{display:inline-flex;align-items:center;padding:0 16px;white-space:nowrap}
+.info-bar.scrolling #info-bar-inner{animation:marquee 6s ease-in-out infinite}
+@keyframes marquee{0%,8%{transform:translateX(0)}85%,100%{transform:translateX(var(--marquee-dist,0))}}
 .hero{min-height:100svh;padding:0;align-items:flex-start;background:#f0e5df}
 .hero-img-bg{background-image:url('https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/hero%20phone.png') !important;background-position:center top !important}
 .hero-img-bg::after{background:linear-gradient(to bottom,rgba(250,242,238,.88) 0%,rgba(250,242,238,.6) 30%,rgba(250,242,238,.1) 55%,transparent 70%)}
@@ -554,8 +555,9 @@ body.admin-mode { overflow-x:hidden; }
 
 <!-- INFO BAR -->
 <div class="info-bar" id="info-bar">
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-  <span id="info-bar-text"><span class="ann-line">Free shipping on orders above RM250</span><span class="ann-line">Complimentary sample with every order</span></span>
+  <div id="info-bar-inner">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;vertical-align:middle;margin-right:8px"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span id="info-bar-text"><span class="ann-line">Free shipping on orders above RM250</span><span class="ann-line">Complimentary sample with every order</span></span>
+  </div>
 </div>
 
 <!-- NAV -->
@@ -1299,13 +1301,13 @@ function refreshAll() {
   const annHTML = annParts.length > 1
     ? `<span class="ann-line">${annParts[0].trim()}</span><span class="ann-line">${annParts[1].trim()}</span>`
     : `<span class="ann-line">${store.announcement}</span>`;
-  const el = document.getElementById('info-bar-text');
-  el.innerHTML = annHTML;
-  // Check overflow on mobile and enable marquee
+  document.getElementById('info-bar-text').innerHTML = annHTML;
   requestAnimationFrame(() => {
-    const bar = document.getElementById('info-bar');
-    if(el.scrollWidth > bar.clientWidth - 30) {
-      el.innerHTML = annHTML + '<span style="padding:0 32px">·</span>' + annHTML;
+    const bar   = document.getElementById('info-bar');
+    const inner = document.getElementById('info-bar-inner');
+    const overflow = inner.scrollWidth - bar.clientWidth;
+    if(overflow > 0) {
+      inner.style.setProperty('--marquee-dist', `-${overflow + 24}px`);
       bar.classList.add('scrolling');
     }
   });
