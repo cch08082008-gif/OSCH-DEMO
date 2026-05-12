@@ -304,10 +304,12 @@ nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;
 .nav-logo-center .logo-sub{font-size:7.5px;letter-spacing:4px;text-transform:uppercase;color:var(--taupe);font-family:'Lato',sans-serif;font-weight:300}
 .nav-right{justify-self:end}
 .nav-right .icon-btn{padding:4px}
-.info-bar{display:flex;align-items:center;padding:7px 16px;font-size:10.5px;text-align:left;gap:8px}
-.info-bar #info-bar-text{display:flex;flex-direction:column;gap:2px;white-space:normal;overflow:visible;max-width:none}
-.info-bar .ann-line{display:block}
-.info-bar .ann-line+.ann-line::before{content:none}
+.info-bar{display:flex;align-items:center;padding:7px 16px;font-size:10.5px;gap:8px;overflow:hidden}
+.info-bar #info-bar-text{white-space:nowrap;overflow:hidden;display:block}
+.info-bar .ann-line{display:inline}
+.info-bar .ann-line+.ann-line::before{content:' · '}
+.info-bar.scrolling #info-bar-text{animation:marquee 14s linear infinite}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .hero{min-height:100svh;padding:0;align-items:flex-start;background:#f0e5df}
 .hero-img-bg{background-image:url('https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/hero%20phone.png') !important;background-position:center top !important}
 .hero-img-bg::after{background:linear-gradient(to bottom,rgba(250,242,238,.88) 0%,rgba(250,242,238,.6) 30%,rgba(250,242,238,.1) 55%,transparent 70%)}
@@ -1294,12 +1296,19 @@ let products = store.products;
 function refreshAll() {
   products = store.products;
   const annParts = (store.announcement||'').split('·');
-  if(annParts.length > 1) {
-    document.getElementById('info-bar-text').innerHTML =
-      `<span class="ann-line">${annParts[0].trim()}</span><span class="ann-line">${annParts[1].trim()}</span>`;
-  } else {
-    document.getElementById('info-bar-text').textContent = store.announcement;
-  }
+  const annHTML = annParts.length > 1
+    ? `<span class="ann-line">${annParts[0].trim()}</span><span class="ann-line">${annParts[1].trim()}</span>`
+    : `<span class="ann-line">${store.announcement}</span>`;
+  const el = document.getElementById('info-bar-text');
+  el.innerHTML = annHTML;
+  // Check overflow on mobile and enable marquee
+  requestAnimationFrame(() => {
+    const bar = document.getElementById('info-bar');
+    if(el.scrollWidth > bar.clientWidth - 30) {
+      el.innerHTML = annHTML + '<span style="padding:0 32px">·</span>' + annHTML;
+      bar.classList.add('scrolling');
+    }
+  });
   if(document.getElementById('page-products').classList.contains('active')) applyFilters();
   renderFeaturedProducts();
 }
