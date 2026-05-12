@@ -309,8 +309,8 @@ nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;
 /* mobile */
 .info-bar{display:block;padding:7px 0;font-size:10.5px;overflow:hidden}
 #info-bar-inner{display:inline-flex;align-items:center;padding:0 16px;white-space:nowrap}
-.info-bar.scrolling #info-bar-inner{animation:marquee 6s ease-in-out infinite}
-@keyframes marquee{0%,8%{transform:translateX(0)}85%,100%{transform:translateX(var(--marquee-dist,0))}}
+.info-bar.scrolling #info-bar-inner{animation:marquee 9s linear infinite}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .hero{min-height:100svh;padding:0;align-items:flex-start;background:#f0e5df}
 .hero-img-bg{background-image:url('https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/hero%20phone.png') !important;background-position:center top !important}
 .hero-img-bg::after{background:linear-gradient(to bottom,rgba(250,242,238,.88) 0%,rgba(250,242,238,.6) 30%,rgba(250,242,238,.1) 55%,transparent 70%)}
@@ -1297,17 +1297,16 @@ let products = store.products;
 
 function refreshAll() {
   products = store.products;
-  const annParts = (store.announcement||'').split('·');
-  const annHTML = annParts.length > 1
-    ? `<span class="ann-line">${annParts[0].trim()}</span><span class="ann-line">${annParts[1].trim()}</span>`
-    : `<span class="ann-line">${store.announcement}</span>`;
-  document.getElementById('info-bar-text').innerHTML = annHTML;
+  const annText = (store.announcement||'').replace(/·/g,' · ');
+  const iconSVG = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+  const chunk = `${iconSVG}<span id="info-bar-text" style="margin-left:8px">${annText}</span>`;
+  const gap   = `<span style="display:inline-block;width:60px"></span>`;
+  const inner = document.getElementById('info-bar-inner');
+  const bar   = document.getElementById('info-bar');
+  inner.innerHTML = chunk;
   requestAnimationFrame(() => {
-    const bar   = document.getElementById('info-bar');
-    const inner = document.getElementById('info-bar-inner');
-    const overflow = inner.scrollWidth - bar.clientWidth;
-    if(overflow > 0) {
-      inner.style.setProperty('--marquee-dist', `-${overflow + 24}px`);
+    if(inner.scrollWidth > bar.clientWidth) {
+      inner.innerHTML = chunk + gap + chunk.replace('id="info-bar-text"','') + gap;
       bar.classList.add('scrolling');
     }
   });
