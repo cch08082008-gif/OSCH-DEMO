@@ -1048,7 +1048,7 @@ body.admin-mode { overflow-x:hidden; }
 <!-- ═══════════════════ TRACK ORDER PAGE ═══════════════════ -->
 <div id="page-track-order" class="page">
   <div class="page-header" style="text-align:left;padding:40px 24px 24px;max-width:700px;margin:0 auto">
-    <span onclick="history.back()" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);cursor:pointer;margin-bottom:24px">← Back</span>
+    <span onclick="goPage('home')" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);cursor:pointer;margin-bottom:24px">← Back</span>
     <h1 style="font-size:28px;margin-bottom:32px">Track Your Order</h1>
     <div style="font-size:14px;line-height:1.9;color:#444">
       <p style="margin-bottom:16px">Once your order has been shipped, a shipping confirmation email with your tracking number will be sent to the email address provided during checkout.</p>
@@ -1068,7 +1068,7 @@ body.admin-mode { overflow-x:hidden; }
 <!-- ═══════════════════ PRIVACY POLICY PAGE ═══════════════════ -->
 <div id="page-privacy-policy" class="page">
   <div class="page-header" style="text-align:left;padding:40px 24px 24px;max-width:700px;margin:0 auto">
-    <span onclick="history.back()" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);cursor:pointer;margin-bottom:24px">← Back</span>
+    <span onclick="goPage('home')" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);cursor:pointer;margin-bottom:24px">← Back</span>
     <h1 style="font-size:28px;margin-bottom:8px">Privacy Policy</h1>
     <p style="font-size:13px;color:var(--taupe);margin-bottom:32px">Olivéa Skin Care House values your privacy and is committed to protecting your personal information.</p>
     <div style="font-size:14px;line-height:1.9;color:#444">
@@ -1105,7 +1105,7 @@ body.admin-mode { overflow-x:hidden; }
 <!-- ═══════════════════ TERMS & CONDITIONS PAGE ═══════════════════ -->
 <div id="page-terms" class="page">
   <div class="page-header" style="text-align:left;padding:40px 24px 24px;max-width:700px;margin:0 auto">
-    <span onclick="history.back()" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);cursor:pointer;margin-bottom:24px">← Back</span>
+    <span onclick="goPage('home')" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);cursor:pointer;margin-bottom:24px">← Back</span>
     <h1 style="font-size:28px;margin-bottom:8px">Terms &amp; Conditions</h1>
     <p style="font-size:13px;color:var(--taupe);margin-bottom:32px">By accessing and placing an order on this website, you agree to the following terms and conditions.</p>
     <div style="font-size:14px;line-height:1.9;color:#444">
@@ -1142,6 +1142,7 @@ body.admin-mode { overflow-x:hidden; }
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 // ═══════════════════ SUPABASE CONFIG ═══════════════════
