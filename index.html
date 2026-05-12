@@ -45,6 +45,8 @@ nav{background:var(--white);height:76px;padding:0 64px;display:flex;align-items:
 
 
 .info-bar{background:var(--blush);padding:10px 60px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:11.5px;letter-spacing:.8px;color:var(--brown)}
+.ann-line+.ann-line::before{content:' · '}
+.ann-line+.ann-line{display:inline}
 
 /* ── TOAST ── */
 .toast{position:fixed;bottom:28px;right:28px;background:var(--brown);color:#fff;padding:13px 22px;border-radius:12px;font-size:13px;display:flex;align-items:center;gap:10px;box-shadow:var(--sh-lg);transform:translateY(80px);opacity:0;transition:all .3s;z-index:999;pointer-events:none}
@@ -302,8 +304,10 @@ nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;
 .nav-logo-center .logo-sub{font-size:7.5px;letter-spacing:4px;text-transform:uppercase;color:var(--taupe);font-family:'Lato',sans-serif;font-weight:300}
 .nav-right{justify-self:end}
 .nav-right .icon-btn{padding:4px}
-.info-bar{display:flex;padding:8px 16px;font-size:10.5px;text-align:center}
-.info-bar #info-bar-text{white-space:nowrap;overflow:hidden;text-overflow:clip;max-width:220px}
+.info-bar{display:flex;align-items:center;padding:7px 16px;font-size:10.5px;text-align:left;gap:8px}
+.info-bar #info-bar-text{display:flex;flex-direction:column;gap:2px;white-space:normal;overflow:visible;max-width:none}
+.info-bar .ann-line{display:block}
+.info-bar .ann-line+.ann-line::before{content:none}
 .hero{min-height:100svh;padding:0;align-items:flex-start;background:#f0e5df}
 .hero-img-bg{background-image:url('https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/hero%20phone.png') !important;background-position:center top !important}
 .hero-img-bg::after{background:linear-gradient(to bottom,rgba(250,242,238,.88) 0%,rgba(250,242,238,.6) 30%,rgba(250,242,238,.1) 55%,transparent 70%)}
@@ -549,7 +553,7 @@ body.admin-mode { overflow-x:hidden; }
 <!-- INFO BAR -->
 <div class="info-bar" id="info-bar">
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 7V5a4 4 0 00-8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-  <span id="info-bar-text">Free shipping on orders above RM250 · Complimentary sample with every order</span>
+  <span id="info-bar-text"><span class="ann-line">Free shipping on orders above RM250</span><span class="ann-line">Complimentary sample with every order</span></span>
 </div>
 
 <!-- NAV -->
@@ -734,7 +738,7 @@ body.admin-mode { overflow-x:hidden; }
     <div class="footer-bottom">
       <p>© 2026 Olivéa Skin Care House · All rights reserved</p>
       <div class="footer-social">
-        <a href="https://www.instagram.com/olivea.skincare?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" style="display:flex;align-items:center">
+        <a href="https://www.instagram.com/olivea.skincare?igsh=Y3FxNGh2MDE3Y215" target="_blank" style="display:flex;align-items:center">
           <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#A8998B" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="#A8998B" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="#A8998B"/></svg>
         </a>
         <a href="https://www.facebook.com/share/1XzQRCw38v/" target="_blank" style="display:flex;align-items:center">
@@ -1289,7 +1293,13 @@ let products = store.products;
 
 function refreshAll() {
   products = store.products;
-  document.getElementById('info-bar-text').textContent = store.announcement;
+  const annParts = (store.announcement||'').split('·');
+  if(annParts.length > 1) {
+    document.getElementById('info-bar-text').innerHTML =
+      `<span class="ann-line">${annParts[0].trim()}</span><span class="ann-line">${annParts[1].trim()}</span>`;
+  } else {
+    document.getElementById('info-bar-text').textContent = store.announcement;
+  }
   if(document.getElementById('page-products').classList.contains('active')) applyFilters();
   renderFeaturedProducts();
 }
