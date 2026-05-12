@@ -1624,7 +1624,10 @@ async function handlePaymentReturn() {
 
     refreshAll();
     goPage('success', false);
-    history.replaceState({ page: 'success' }, '', '#success');
+    // Clear the back-stack: replace current entry with home, then push success on top.
+    // This means pressing back from success always lands on home, never billplz/checkout.
+    history.replaceState({ page: 'home' }, '', '#home');
+    history.pushState({ page: 'success' }, '', '#success');
 
   } catch(err) {
     hideLoading();
@@ -1671,6 +1674,8 @@ function goPage(name, push=true) {
 }
 window.addEventListener('popstate', e => {
   const name = (e.state && e.state.page) || (location.hash.replace('#','') || 'home');
+  // Never allow navigating back to checkout once success page was shown
+  if(name === 'checkout' && !cart.length) { goPage('home', false); return; }
   goPage(name, false);
 });
 
