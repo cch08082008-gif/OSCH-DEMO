@@ -302,7 +302,8 @@ nav{height:58px;padding:0 16px;display:grid;grid-template-columns:44px 1fr 44px;
 .nav-logo-center .logo-sub{font-size:7.5px;letter-spacing:4px;text-transform:uppercase;color:var(--taupe);font-family:'Lato',sans-serif;font-weight:300}
 .nav-right{justify-self:end}
 .nav-right .icon-btn{padding:4px}
-.info-bar{display:none}
+.info-bar{display:flex;padding:8px 16px;font-size:10.5px;text-align:center}
+.info-bar #info-bar-text{white-space:nowrap;overflow:hidden;text-overflow:clip;max-width:220px}
 .hero{min-height:100svh;padding:0;align-items:flex-start;background:#f0e5df}
 .hero-img-bg{background-image:url('https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/hero%20phone.png') !important;background-position:center top !important}
 .hero-img-bg::after{background:linear-gradient(to bottom,rgba(250,242,238,.88) 0%,rgba(250,242,238,.6) 30%,rgba(250,242,238,.1) 55%,transparent 70%)}
@@ -696,36 +697,34 @@ body.admin-mode { overflow-x:hidden; }
   <footer>
     <div class="footer-grid">
       <div>
-        <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/main/assets/logo.png" alt="Olivéa Skin Care House" style="height:38px;width:auto;display:block;filter:brightness(0) invert(1);opacity:0.85;margin-bottom:12px">
+        <img src="https://raw.githubusercontent.com/cch08082008-gif/OSCH-DEMO/c82ade168f037a7626234d6646f627ceaa5ee5fe/assets/logo%20footer.png" alt="Olivéa Skin Care House" style="height:38px;width:auto;display:block;margin-bottom:12px">
         <p class="footer-desc">Authorised retailer of Maria Galland Paris. SSM Registration: CT0161902-X<br><br>Skincare inspired by nature, perfected by science.</p>
       </div>
       <div>
         <div class="footer-col-title">Shop</div>
         <ul class="footer-links">
-          <li><a href="#">All Products</a></li>
-          <li><a href="#">Cleansers</a></li>
-          <li><a href="#">Serums</a></li>
-          <li><a href="#">Masks</a></li>
-          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#" onclick="event.preventDefault();goPage('products')">All Products</a></li>
+          <li><a href="#" onclick="event.preventDefault();goShop('cleanser')">Cleansers</a></li>
+          <li><a href="#" onclick="event.preventDefault();goShop('serum')">Serums</a></li>
+          <li><a href="#" onclick="event.preventDefault();goShop('mask')">Masks</a></li>
+          <li><a href="#" onclick="event.preventDefault();goShop('new')">New Arrivals</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Help</div>
         <ul class="footer-links">
-          <li><a href="#">Track Order</a></li>
-          <li><a href="#">Returns</a></li>
-          <li><a href="#">Shipping Info</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="#" onclick="event.preventDefault();goPage('track-order')">Track Order</a></li>
+          <li><a href="#" onclick="event.preventDefault();goPage('privacy-policy')">Privacy Policy</a></li>
+          <li><a href="#" onclick="event.preventDefault();goPage('terms')">Terms &amp; Conditions</a></li>
         </ul>
       </div>
       <div id="footer-contact">
         <div class="footer-col-title">Contact</div>
         <ul class="footer-links">
-          <li><a href="#">+60 12-345 6789</a></li>
-          <li><a href="#">hello@olivea.com.my</a></li>
+          <li><a href="tel:+60107070611">+60 10-707 0611</a></li>
+          <li><a href="mailto:support@oliveaskincare.com">support@oliveaskincare.com</a></li>
           <li><a href="#">olivea.com.my</a></li>
-          <li style="margin-top:12px"><a href="#" style="display:flex;align-items:center;gap:8px">
+          <li style="margin-top:12px"><a href="https://wa.me/60107070611" target="_blank" style="display:flex;align-items:center;gap:8px">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             WhatsApp Us
           </a></li>
@@ -735,8 +734,12 @@ body.admin-mode { overflow-x:hidden; }
     <div class="footer-bottom">
       <p>© 2026 Olivéa Skin Care House · All rights reserved</p>
       <div class="footer-social">
-        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#A8998B" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="#A8998B" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="#A8998B"/></svg>
-        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="#A8998B" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <a href="https://www.instagram.com/olivea.skincare?igsh=Y3FxNGh2MDE3Y215" target="_blank" style="display:flex;align-items:center">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#A8998B" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="#A8998B" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="#A8998B"/></svg>
+        </a>
+        <a href="https://www.facebook.com/share/1XzQRCw38v/" target="_blank" style="display:flex;align-items:center">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="#A8998B" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
       </div>
     </div>
   </footer>
@@ -1042,7 +1045,104 @@ body.admin-mode { overflow-x:hidden; }
 <div id="page-admin-announcement" class="page page-admin"></div>
 <div id="page-admin-settings" class="page page-admin"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- ═══════════════════ TRACK ORDER PAGE ═══════════════════ -->
+<div id="page-track-order" class="page">
+  <div class="page-header" style="text-align:left;padding:40px 24px 24px;max-width:700px;margin:0 auto">
+    <span onclick="history.back()" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);cursor:pointer;margin-bottom:24px">← Back</span>
+    <h1 style="font-size:28px;margin-bottom:32px">Track Your Order</h1>
+    <div style="font-size:14px;line-height:1.9;color:#444">
+      <p style="margin-bottom:16px">Once your order has been shipped, a shipping confirmation email with your tracking number will be sent to the email address provided during checkout.</p>
+      <p style="margin-bottom:16px">Please track your parcel directly through the courier service website.</p>
+      <p style="margin-bottom:24px"><strong>Shipping Partners:</strong> GDEX &nbsp;|&nbsp; SPX Express</p>
+      <p style="margin-bottom:16px">Orders are usually processed within 2 to 3 business days, excluding weekends and public holidays.</p>
+      <p style="margin-bottom:32px">If you have not received your parcel within 14 days after receiving your shipping confirmation email, please contact our support team.</p>
+      <div style="background:#faf8f6;border-left:3px solid var(--taupe);padding:20px 24px;border-radius:0 8px 8px 0">
+        <p style="margin-bottom:8px"><strong>Customer Support:</strong> <a href="mailto:support@oliveaskincare.com" style="color:var(--brown)">support@oliveaskincare.com</a></p>
+        <p style="margin-bottom:8px"><strong>WhatsApp:</strong> <a href="https://wa.me/60107070611" target="_blank" style="color:var(--brown)">+60 10-707 0611</a></p>
+        <p style="margin-bottom:0"><strong>Business Hours:</strong> Monday to Friday, 9:00 AM – 6:00 PM<br><span style="color:var(--taupe);font-size:13px">Replies within 1 business day.</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PRIVACY POLICY PAGE ═══════════════════ -->
+<div id="page-privacy-policy" class="page">
+  <div class="page-header" style="text-align:left;padding:40px 24px 24px;max-width:700px;margin:0 auto">
+    <span onclick="history.back()" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);cursor:pointer;margin-bottom:24px">← Back</span>
+    <h1 style="font-size:28px;margin-bottom:8px">Privacy Policy</h1>
+    <p style="font-size:13px;color:var(--taupe);margin-bottom:32px">Olivéa Skin Care House values your privacy and is committed to protecting your personal information.</p>
+    <div style="font-size:14px;line-height:1.9;color:#444">
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">Information We Collect</h3>
+      <p style="margin-bottom:12px">When you place an order on our website, we may collect:</p>
+      <ul style="padding-left:20px;margin-bottom:24px;line-height:2.2">
+        <li>Name</li><li>Phone number</li><li>Email address</li><li>Shipping address</li><li>Payment related information</li>
+      </ul>
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">How We Use Your Information</h3>
+      <p style="margin-bottom:12px">Your information is collected for:</p>
+      <ul style="padding-left:20px;margin-bottom:24px;line-height:2.2">
+        <li>Order processing</li><li>Shipping and delivery updates</li><li>Customer support communication</li><li>Website analytics and performance improvement</li>
+      </ul>
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">Payment Processing</h3>
+      <p style="margin-bottom:24px">Payments on our website are securely processed through Billplz. Selected customer information, including name and email address, may be shared with Billplz and related payment processing services for transaction purposes only.</p>
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">Analytics</h3>
+      <p style="margin-bottom:24px">Our website uses Google Analytics to understand website traffic and improve user experience.</p>
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">Shipping Notifications</h3>
+      <p style="margin-bottom:24px">Customers will receive order confirmation emails and shipping updates through the email address provided during checkout.</p>
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">Data Protection</h3>
+      <p style="margin-bottom:24px">We take reasonable measures to protect your personal information from unauthorized access, misuse, or disclosure.</p>
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">Third Party Sharing</h3>
+      <p style="margin-bottom:24px">We do not sell or rent customer information to third parties.</p>
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">Contact</h3>
+      <div style="background:#faf8f6;border-left:3px solid var(--taupe);padding:20px 24px;border-radius:0 8px 8px 0;margin-bottom:40px">
+        <p style="margin-bottom:8px">For privacy related inquiries, please contact:</p>
+        <p style="margin-bottom:8px"><a href="mailto:support@oliveaskincare.com" style="color:var(--brown)">support@oliveaskincare.com</a></p>
+        <p style="margin-bottom:0"><strong>WhatsApp:</strong> <a href="https://wa.me/60107070611" target="_blank" style="color:var(--brown)">+60 10-707 0611</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TERMS & CONDITIONS PAGE ═══════════════════ -->
+<div id="page-terms" class="page">
+  <div class="page-header" style="text-align:left;padding:40px 24px 24px;max-width:700px;margin:0 auto">
+    <span onclick="history.back()" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);cursor:pointer;margin-bottom:24px">← Back</span>
+    <h1 style="font-size:28px;margin-bottom:8px">Terms &amp; Conditions</h1>
+    <p style="font-size:13px;color:var(--taupe);margin-bottom:32px">By accessing and placing an order on this website, you agree to the following terms and conditions.</p>
+    <div style="font-size:14px;line-height:1.9;color:#444">
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">General</h3>
+      <p style="margin-bottom:24px">Olivéa Skin Care House reserves the right to update product information, pricing, and website content at any time without prior notice.</p>
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">Product Authenticity</h3>
+      <p style="margin-bottom:24px">All products sold on this website are authentic products sourced from authorized distributors and official brand channels.</p>
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">Orders</h3>
+      <p style="margin-bottom:8px">Orders are processed within 2 to 3 business days, excluding weekends and public holidays.</p>
+      <p style="margin-bottom:24px">Once an order has been confirmed and payment has been completed, cancellations or modifications may not be accepted.</p>
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">Shipping</h3>
+      <p style="margin-bottom:8px">We currently ship within Malaysia only.</p>
+      <p style="margin-bottom:8px">Shipping is handled through selected courier partners including GDEX and SPX Express.</p>
+      <p style="margin-bottom:8px">Free shipping is available for orders above RM250.</p>
+      <p style="margin-bottom:24px">Delivery timelines may vary depending on courier operations and destination.</p>
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">Tracking</h3>
+      <p style="margin-bottom:8px">Tracking numbers will be sent through email once the order has been shipped.</p>
+      <p style="margin-bottom:24px">Customers are responsible for tracking their parcels through the courier provider's tracking platform.</p>
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">Payments</h3>
+      <p style="margin-bottom:12px">We accept:</p>
+      <ul style="padding-left:20px;margin-bottom:12px;line-height:2.2">
+        <li>FPX</li><li>Visa</li><li>Mastercard</li><li>Touch 'n Go eWallet</li><li>GrabPay</li><li>Boost</li>
+      </ul>
+      <p style="margin-bottom:24px">All payments are securely processed through Billplz.</p>
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">Limitation of Liability</h3>
+      <p style="margin-bottom:24px">Olivéa Skin Care House shall not be held responsible for delays, damages, or losses caused by courier services, incorrect customer information, or circumstances beyond reasonable control.</p>
+      <h3 style="font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#111;margin:28px 0 10px">Contact</h3>
+      <div style="background:#faf8f6;border-left:3px solid var(--taupe);padding:20px 24px;border-radius:0 8px 8px 0;margin-bottom:40px">
+        <p style="margin-bottom:8px"><strong>Customer Support:</strong> <a href="mailto:support@oliveaskincare.com" style="color:var(--brown)">support@oliveaskincare.com</a></p>
+        <p style="margin-bottom:8px"><strong>WhatsApp:</strong> <a href="https://wa.me/60107070611" target="_blank" style="color:var(--brown)">+60 10-707 0611</a></p>
+        <p style="margin-bottom:0"><strong>Business Hours:</strong> Monday to Friday, 9:00 AM – 6:00 PM<br><span style="color:var(--taupe);font-size:13px">Replies within 1 business day.</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script>
 // ═══════════════════ SUPABASE CONFIG ═══════════════════
 const SUPABASE_URL = 'https://spcoqhaoaozyvmxvgqur.supabase.co';
@@ -1632,7 +1732,32 @@ function goPageBrand(brand) {
   }, 80);
 }
 
-// ─────────────────── PRODUCT DETAIL ───────────────────
+function goShop(cat) {
+  goPage('products');
+  setTimeout(() => {
+    if(cat === 'new') {
+      filterState = { brand:'all', category:'all' };
+      document.querySelectorAll('.fbtn').forEach(b => {
+        b.classList.toggle('active', b.textContent.trim()==='All Brands' || b.textContent.trim()==='All');
+      });
+      const grid = document.getElementById('all-products-grid');
+      const cards = grid ? grid.querySelectorAll('.pcard') : [];
+      // Show only New badge products if possible, else show all
+      applyFilters();
+    } else {
+      filterState = { brand:'all', category: cat };
+      document.querySelectorAll('.fbtn').forEach(b => {
+        const oc = b.getAttribute('onclick') || '';
+        if(oc.includes("'"+cat+"'")) b.classList.add('active');
+        else if(b.textContent.trim()==='All Brands') b.classList.add('active');
+        else b.classList.remove('active');
+      });
+      applyFilters();
+    }
+  }, 80);
+}
+
+
 function goDetail(id) {
   const p = store.products.find(x => x.id === id);
   if(!p) return;
