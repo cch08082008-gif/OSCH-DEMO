@@ -1007,8 +1007,8 @@ async function handlePaymentReturn(){
   }
   showLoading('Confirming your order','Just a moment…');
   try{
-    // Build the order payload — use only columns that definitely exist
-    const orderPayload={
+    // FIX 400: insert only the columns that exist in Supabase table
+    const{error:insertErr}=await db.from('orders').insert({
       status:'pending',
       total:pending.total,
       subtotal:pending.subtotal,
@@ -1027,44 +1027,10 @@ async function handlePaymentReturn(){
         city:pending.customer.city,
         post:pending.customer.post,
         state:pending.customer.state
-      }
-    };
-    // Add optional columns only if they have values (avoids "column does not exist" errors)
-    if(pending.promoCode) orderPayload.promo_code = pending.promoCode;
-    if(billId) orderPayload.billplz_bill_id = billId;
-
-    // CRITICAL FIX: destructure {error} so Supabase failures are not silently swallowed
-    const{error:insertErr}=await db.from('orders').insert(orderPayload);
-
-    if(insertErr){
-      // Try a minimal fallback insert in case some columns don't exist yet
-      console.warn('Full insert failed, trying minimal insert. Error:',insertErr);
-      const{error:fallbackErr}=await db.from('orders').insert({
-        status:'pending',
-        total:pending.total,
-        subtotal:pending.subtotal,
-        discount:pending.discount,
-        shipping:pending.shipping,
-        tax:pending.tax,
-        ref:pending.ref,
-        items:pending.order.map(i=>({id:i.id,no:i.no,name:i.name,price:i.price,qty:i.qty})),
-        customer:{
-          fname:pending.customer.fname,
-          lname:pending.customer.lname,
-          email:pending.customer.email,
-          phone:pending.customer.phone,
-          addr1:pending.customer.addr1,
-          addr2:pending.customer.addr2||'',
-          city:pending.customer.city,
-          post:pending.customer.post,
-          state:pending.customer.state
-        }
-      });
-      if(fallbackErr){
-        // Both attempts failed — throw with the actual Supabase error message
-        throw new Error('Supabase insert failed: '+JSON.stringify(fallbackErr));
-      }
-    }
+      },
+      promoCode:pending.promoCode||null
+    });
+    if(insertErr) throw new Error('Insert error: '+JSON.stringify(insertErr));
 
     // Deduct stock in parallel
     await Promise.all(pending.order.map(async item=>{
@@ -1380,7 +1346,6 @@ function renderAdminOrders(){
     <button class="adm-filter ${adminOrderFilter==='all'?'active':''}" onclick="filterOrders('all')">All (${store.orders.length})</button>
     <button class="adm-filter ${adminOrderFilter==='pending'?'active':''}" onclick="filterOrders('pending')">Pending (${store.orders.filter(o=>o.status==='pending').length})</button>
     <button class="adm-filter ${adminOrderFilter==='shipped'?'active':''}" onclick="filterOrders('shipped')">Shipped (${store.orders.filter(o=>o.status==='shipped').length})</button>
-    <button class="adm-filter ${adminOrderFilter==='completed'?'active':''}" onclick="filterOrders('completed')">Completed (${store.orders.filter(o=>o.status==='completed').length})</button>
   </div>
   <div class="adm-panel" style="padding:0">${renderOrderTable()}</div>`;
 }
@@ -1420,8 +1385,6 @@ function openOrder(ref){
         <select id="ord-status" class="adm-input" style="margin-bottom:14px">
           <option value="pending" ${o.status==='pending'?'selected':''}>Pending</option>
           <option value="shipped" ${o.status==='shipped'?'selected':''}>Shipped</option>
-          <option value="completed" ${o.status==='completed'?'selected':''}>Completed</option>
-          <option value="cancelled" ${o.status==='cancelled'?'selected':''}>Cancelled</option>
         </select>
         <h4 style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-bottom:8px">Tracking No.</h4>
         <input id="ord-tracking" class="adm-input" type="text" placeholder="e.g. EC123456789MY" value="${o.tracking||''}">
@@ -1438,7 +1401,7 @@ function openOrder(ref){
     </div>
     <div style="display:flex;gap:10px;margin-top:24px">
       <button class="btn btn-dark" onclick="saveOrderEdits('${o.ref}')">Save Changes</button>
-      <button class="btn btn-outline" onclick="printShippingLabel('${o.ref}')">Print Label</button>
+      <button class="btn btn-outline" style="color:#a64040;border-color:#a64040" onclick="confirmDeleteOrder('${o.ref}')">Delete Order</button>
       <button class="btn btn-outline" style="margin-left:auto" onclick="closeAdmModal()">Close</button>
     </div>`;
   document.getElementById('adm-modal').classList.add('open');
@@ -1453,17 +1416,28 @@ async function saveOrderEdits(ref){
   closeAdmModal();renderAdminBody();showToast('Order updated');
 }
 
-function printShippingLabel(ref){
-  const o=store.orders.find(x=>x.ref===ref);if(!o)return;
-  const c=o.customer||{};
-  const w=window.open('','_blank','width=600,height=800');
-  w.document.write(`<!DOCTYPE html><html><head><title>${o.ref}</title><style>body{font-family:Arial,sans-serif;padding:40px}.label{border:2px solid #333;padding:24px;max-width:500px}table{width:100%;border-collapse:collapse;margin-top:12px;font-size:12px}td,th{border:1px solid #ccc;padding:6px;text-align:left}</style></head><body>
-    <div class="label"><h2>OLIVÉA SKIN CARE HOUSE</h2><p style="font-size:13px;font-weight:bold;margin:10px 0">${o.ref}</p>
-    <p><strong>${c.fname||''} ${c.lname||''}</strong><br>${c.addr1||''}${c.addr2?', '+c.addr2:''}<br>${c.city||''} ${c.post||''}, ${c.state||''}<br>${c.phone||''}</p>
-    <table><thead><tr><th>Product</th><th>Qty</th></tr></thead><tbody>${o.items.map(i=>`<tr><td>${i.name}</td><td>${i.qty}</td></tr>`).join('')}</tbody></table>
-    ${o.tracking?`<p style="margin-top:12px"><strong>Tracking:</strong> ${o.tracking}</p>`:''}
-    </div><script>window.print();<\/script></body></html>`);
-  w.document.close();
+function confirmDeleteOrder(ref){
+  // Show password prompt inside the modal
+  document.getElementById('adm-modal-body').innerHTML=`
+    <h2 style="font-family:'Playfair Display',serif;margin-bottom:8px;color:#a64040">Delete Order</h2>
+    <p style="font-size:13px;color:var(--taupe);margin-bottom:20px">Enter your admin password to confirm deletion of order <strong>${ref}</strong>. This cannot be undone.</p>
+    <div class="fg" style="margin-bottom:8px"><label class="adm-label">Admin Password</label><input id="del-pass" class="adm-input" type="password" placeholder="Enter password" onkeypress="if(event.key==='Enter')executeDeleteOrder('${ref}')"></div>
+    <p id="del-err" style="font-size:12px;color:#e57373;min-height:18px;margin-bottom:16px"></p>
+    <div style="display:flex;gap:10px">
+      <button class="btn" style="background:#a64040;color:#fff;flex:1;padding:12px" onclick="executeDeleteOrder('${ref}')">Confirm Delete</button>
+      <button class="btn btn-outline" onclick="closeAdmModal()">Cancel</button>
+    </div>`;
+  setTimeout(()=>{const p=document.getElementById('del-pass');if(p)p.focus();},100);
+}
+
+async function executeDeleteOrder(ref){
+  const pass=document.getElementById('del-pass').value;
+  const errEl=document.getElementById('del-err');
+  if(pass!==getCurrentPassword()){errEl.textContent='Incorrect password.';return;}
+  const{error}=await db.from('orders').delete().eq('ref',ref);
+  if(error){errEl.textContent='Delete failed: '+error.message;return;}
+  store.orders=store.orders.filter(o=>o.ref!==ref);
+  closeAdmModal();renderAdminBody();showToast('Order deleted');
 }
 
 function renderAdminProducts(){
