@@ -1007,26 +1007,84 @@ async function handlePaymentReturn(){
   }
   showLoading('Confirming your order','Just a moment…');
   try{
-    // FIX 1 & 2: Full customer address written to Supabase orders table
-    await db.from('orders').insert({
-      status:'pending',total:pending.total,
+    // Build the order payload — use only columns that definitely exist
+    const orderPayload={
+      status:'pending',
+      total:pending.total,
+      subtotal:pending.subtotal,
+      discount:pending.discount,
+      shipping:pending.shipping,
+      tax:pending.tax,
+      ref:pending.ref,
       items:pending.order.map(i=>({id:i.id,no:i.no,name:i.name,price:i.price,qty:i.qty})),
-      customer:{fname:pending.customer.fname,lname:pending.customer.lname,email:pending.customer.email,phone:pending.customer.phone,addr1:pending.customer.addr1,addr2:pending.customer.addr2||'',city:pending.customer.city,post:pending.customer.post,state:pending.customer.state},
-      subtotal:pending.subtotal,discount:pending.discount,promoCode:pending.promoCode,shipping:pending.shipping,tax:pending.tax,ref:pending.ref,billplz_bill_id:billId
-    });
-    // FIX 3: Deduct stock in parallel — no full store reload needed
+      customer:{
+        fname:pending.customer.fname,
+        lname:pending.customer.lname,
+        email:pending.customer.email,
+        phone:pending.customer.phone,
+        addr1:pending.customer.addr1,
+        addr2:pending.customer.addr2||'',
+        city:pending.customer.city,
+        post:pending.customer.post,
+        state:pending.customer.state
+      }
+    };
+    // Add optional columns only if they have values (avoids "column does not exist" errors)
+    if(pending.promoCode) orderPayload.promo_code = pending.promoCode;
+    if(billId) orderPayload.billplz_bill_id = billId;
+
+    // CRITICAL FIX: destructure {error} so Supabase failures are not silently swallowed
+    const{error:insertErr}=await db.from('orders').insert(orderPayload);
+
+    if(insertErr){
+      // Try a minimal fallback insert in case some columns don't exist yet
+      console.warn('Full insert failed, trying minimal insert. Error:',insertErr);
+      const{error:fallbackErr}=await db.from('orders').insert({
+        status:'pending',
+        total:pending.total,
+        subtotal:pending.subtotal,
+        discount:pending.discount,
+        shipping:pending.shipping,
+        tax:pending.tax,
+        ref:pending.ref,
+        items:pending.order.map(i=>({id:i.id,no:i.no,name:i.name,price:i.price,qty:i.qty})),
+        customer:{
+          fname:pending.customer.fname,
+          lname:pending.customer.lname,
+          email:pending.customer.email,
+          phone:pending.customer.phone,
+          addr1:pending.customer.addr1,
+          addr2:pending.customer.addr2||'',
+          city:pending.customer.city,
+          post:pending.customer.post,
+          state:pending.customer.state
+        }
+      });
+      if(fallbackErr){
+        // Both attempts failed — throw with the actual Supabase error message
+        throw new Error('Supabase insert failed: '+JSON.stringify(fallbackErr));
+      }
+    }
+
+    // Deduct stock in parallel
     await Promise.all(pending.order.map(async item=>{
       try{
         const{data:prod}=await db.from('products').select('id,stock').eq('id',item.id).single();
-        if(prod)await db.from('products').update({stock:Math.max(0,prod.stock-item.qty)}).eq('id',item.id);
-      }catch(e){console.error('Stock update error:',e);}
+        if(prod){
+          const{error:stockErr}=await db.from('products').update({stock:Math.max(0,prod.stock-item.qty)}).eq('id',item.id);
+          if(stockErr)console.warn('Stock update error for item',item.id,stockErr);
+        }
+      }catch(e){console.error('Stock update exception:',e);}
     }));
+
+    // Increment promo usage
     if(pending.promoCode){
       try{
         const{data:promo}=await db.from('promos').select('uses').eq('code',pending.promoCode).single();
         if(promo)await db.from('promos').update({uses:(promo.uses||0)+1}).eq('code',pending.promoCode);
-      }catch(e){}
+      }catch(e){console.warn('Promo update error:',e);}
     }
+
     localStorage.removeItem('olivea-pending-order');
     hideLoading();
     window._lastOrderRef=pending.ref;
@@ -1036,12 +1094,17 @@ async function handlePaymentReturn(){
     goPage('success',false);
     history.replaceState({page:'home'},'','#home');
     history.pushState({page:'success'},'','#success');
-    loadStore(); // refresh in background
+    loadStore();
   }catch(err){
     hideLoading();
     console.error('Order save error:',err);
     localStorage.removeItem('olivea-pending-order');
-    showErrorModal('Order Confirmation Issue',`Your payment was received (Bill: ${billId}) but we had an issue saving. Please contact us with ref: ${pending.ref}`,null);
+    // Show the ACTUAL error message so you can debug
+    showErrorModal(
+      'Order Save Failed',
+      `Payment received (Bill: ${billId}), but order could not be saved.\n\nError: ${err.message}\n\nPlease contact support with ref: ${pending.ref}`,
+      null
+    );
     goPage('home',false);
   }
   return true;
